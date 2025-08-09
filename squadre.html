@@ -9,14 +9,16 @@
 <body>
     <header class="header-tot">
         <img class="brand-logo" src="img/logonuovorosa.png" alt="Logo">
-    
-        <nav>
-          <a href="index.html" data-url="index.html">Home</a>
-          <a href="squadre.html" data-url="squadre.html">Squadre</a>
-          <a href="calendario.html" data-url="calendario.html">Calendario e Risultati</a>
-          <a href="classifiche.html" data-url="classifiche.html">Classifiche</a>
-          <a href="contatti.html" data-url="contatti.html">Contatti</a>
-        </nav>
+        <button class="hamburger" id="hamburger" aria-label="Apri menu">
+            &#9776; <!-- icona ☰ -->
+          </button>
+          <nav id="navbar">
+            <a href="index.html" data-url="index.html">Home</a>
+            <a href="squadre.html" data-url="squadre.html">Squadre</a>
+            <a href="calendario.html" data-url="calendario.html">Calendario e Risultati</a>
+            <a href="classifiche.html" data-url="classifiche.html">Classifiche</a>
+            <a href="contatti.html" data-url="contatti.html">Contatti</a>
+          </nav>
         <a href="https://www.instagram.com/a.s.d.volley96/" target="_blank" rel="noopener noreferrer">
           <img class="social-logo" src="img/instagram.png" alt="Instagram">
         </a>
@@ -31,6 +33,7 @@
     <section id="giocatori-list" class="team-list"></section>
     <script src="js/fade.js"></script>
   </main>
+  <script src="js/menu.js" defer></script>
 
   <footer>
     <p>© 2025 Danilo Alacqua</p>
@@ -38,6 +41,6 @@
 
   <script src="js/squadre.js" defer></script>
 
-
+  
 </body>
 </html>

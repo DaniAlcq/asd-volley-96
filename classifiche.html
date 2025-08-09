@@ -9,15 +9,16 @@
 <body>
   <header class="header-tot">
     <img class="brand-logo" src="img/logonuovorosa.png" alt="Logo">
-
-    <nav>
-      <a href="index.html" data-url="index.html">Home</a>
-      <a href="squadre.html" data-url="squadre.html">Squadre</a>
-      <a href="calendario.html" data-url="calendario.html">Calendario e Risultati</a>
-      <a href="classifiche.html" data-url="classifiche.html">Classifiche</a>
-      <a href="contatti.html" data-url="contatti.html">Contatti</a>
-    </nav>
-
+    <button class="hamburger" id="hamburger" aria-label="Apri menu">
+        &#9776; <!-- simbolo ☰ -->
+      </button>
+      <nav id="navbar">
+        <a href="index.html" data-url="index.html">Home</a>
+        <a href="squadre.html" data-url="squadre.html">Squadre</a>
+        <a href="calendario.html" data-url="calendario.html">Calendario e Risultati</a>
+        <a href="classifiche.html" data-url="classifiche.html">Classifiche</a>
+        <a href="contatti.html" data-url="contatti.html">Contatti</a>
+      </nav>
     <a href="https://www.instagram.com/a.s.d.volley96/" target="_blank" rel="noopener noreferrer">
       <img class="social-logo" src="img/instagram.png" alt="Instagram">
     </a>
@@ -30,20 +31,23 @@
       <button id="btn-femminile">Femminile</button>
       <button id="btn-maschile">Maschile</button>
     </div>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Posizione</th>
-        <th>Squadra</th>
-        <th>Punti</th>
-        <th>Partite Giocate</th>
-        <th>Vittorie</th>
-        <th>Sconfitte</th>
-      </tr>
-    </thead>
-    <tbody id="tabella-classifica"></tbody>
-  </table>
+    <div class="table-wrapper">
+        <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Squadra</th>
+                <th>P</th>
+                <th>PG</th>
+                <th>V</th>
+                <th>S</th>
+              </tr>
+            </thead>
+            <tbody id="tabella-classifica"></tbody>
+          </table>
+      </div>
+      
+ 
   <script src="js/fade.js"></script>
 </main>
 
@@ -55,6 +59,7 @@
   <!-- Script JS -->
   <script src="js/classifiche.js" defer></script>
   <script src="js/fade.js"></script>
+  <script src="js/menu.js" defer></script>
 
 </body>
 </html>
