@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASD VOLLEY 96</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header-tot">
+    <img class="brand-logo" src="img/logonuovorosa.png" alt="Logo">
+
+    <nav>
+      <a href="index.html" data-url="index.html">Home</a>
+      <a href="squadre.html" data-url="squadre.html">Squadre</a>
+      <a href="calendario.html" data-url="calendario.html">Calendario e Risultati</a>
+      <a href="classifiche.html" data-url="classifiche.html">Classifiche</a>
+      <a href="contatti.html" data-url="contatti.html">Contatti</a>
+    </nav>
+    <a href="https://www.instagram.com/a.s.d.volley96/" target="_blank" rel="noopener noreferrer">
+      <img class="social-logo" src="img/instagram.png" alt="Instagram">
+    </a>
+  </header>
+
+  <main>
+    <div>
+
+      <div class="news-wrapper">
+        <h2 class="news-title">NEWS</h2>
+        <section class="news-carousel">
+          <button class="prev">❮</button>
+          <div class="slides">
+            <!-- Slide generate da JS -->
+          </div>
+          <button class="next">❯</button>
+        </section>
+        <section class="news-grid"></section>
+      </div>
+      
+    </div>
+    
+
+    <a href="https://www.fimaformazione.it/" target="_blank" rel="noopener noreferrer">
+      <div class="sponsor-banner">
+        <img src="img/cropped-Fima-Logo-01.png" alt="Sponsor Logo" class="sponsor-logo">
+      </div>
+    </a>
+
+    <section class="results-section">
+      <h2 class="results-title">Ultimi Risultati</h2>
+      <div class="buttons-filter">
+        <button data-cat="Femminile" class="filter-btn active">Femminile</button>
+        <button data-cat="Maschile" class="filter-btn">Maschile</button>
+      </div>
+      <div class="results-grid" id="results-container">
+        <!-- Le card dei risultati saranno inserite dinamicamente qui -->
+      </div>
+    </section>
+    
+    
+
+    <section class="mvp-section">
+      <h2 class="mvp-title">Ultimi scarabei di giornata</h2>
+      <div class="mvp-grid" id="scarabei-container"></div>
+    </section>
+    
+    <script src="scarabei.js"></script>
+    
+      
+   
+    <section class="teams-section">
+      <h2 class="teams-title">Le nostre squadre</h2>
+      
+      <div class="teams-grid">
+        <a href="squadre.html?cat=Femminile" data-url="squadre.html?cat=Femminile">
+          <div class="team-card">
+            <img src="img/femminile.jpg" alt="Squadra 1">
+            <h3>Serie C femminile</h3>
+          </div>
+        </a>
+       
+        <a href="squadre.html?cat=Maschile" data-url="squadre.html?cat=Maschile">
+          <div class="team-card">
+            <img src="img/maschile.jpg" alt="Squadra 2">
+            <h3>Serie C maschile</h3>
+          </div>
+        </a>
+        
+    </section>
+
+ <script src="js/fade.js"></script>
+  </main>
+
+  <footer>
+    <p> © 2025 - Danilo Alacqua</p>
+  </footer>
+
+  <script src="js/script.js" defer></script>
+ 
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+[
+    {
+      "id": "news1",
+      "titolo": "Questa è una prova",
+      "immagine": "https://i.ibb.co/v6cmscjk/logosquadranerocompleto.png",
+      "contenuto": "Descrizione dettagliata della news 1..."
+    },
+    {
+      "id": "news2",
+      "titolo": "Nuovo acquisto per l'ASD VOLLEY 96",
+      "immagine": "img/battuta.png",
+      "contenuto": "Descrizione dettagliata della news 2..."
+    },
+    {
+      "id": "news3",
+      "titolo": "Comunicato ufficiale",
+      "immagine": "img/logonuovo.png",
+      "contenuto": "L'ASD Volley 96 è lieta di annunciare il nuovo logo, creato per unire la storia della nostra città con l'amore per la pallavolo"
+    }
+  ]
+  

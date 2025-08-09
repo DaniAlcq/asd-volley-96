@@ -1,0 +1,6 @@
+[
+    { "posizione": 1, "nome": "Volley Pink", "logo": "img/barcellonavolley.jpeg", "punti": 42, "partite_giocate": 3, "vittorie": 5, "sconfitte": 3},
+    { "posizione": 2, "nome": "Rosa Team","logo": "img/ninoromano.jpeg", "punti": 37, "partite_giocate": 3, "vittorie": 5, "sconfitte": 3 },
+    { "posizione": 3, "nome": "ASD Volley 96","logo": "img/ninoromano.jpeg", "punti": 34, "partite_giocate": 3, "vittorie": 5, "sconfitte": 3 }
+  ]
+  

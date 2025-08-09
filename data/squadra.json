@@ -1,0 +1,98 @@
+{
+    "femminile": [
+      {
+        "nome": "Laura Tassone",
+        "numero": 7,
+        "ruolo": "Centrale",
+        "categoria": "Femminile",
+        "immagine": "img/lauratassone.png"
+      },
+      {
+        "nome": "Ada Regalbuto",
+        "numero": 5,
+        "ruolo": "Ala",
+        "categoria": "Femminile",
+        "immagine": "img/ada.png"
+      },
+      {
+        "nome": "Marina Fernandez",
+        "numero": 12,
+        "ruolo": "Opposto",
+        "categoria": "Femminile",
+        "immagine": "img/Marina.png"
+      },
+      {
+        "nome": "Claudia Irrera",
+        "numero": 8,
+        "ruolo": "Palleggiatrice",
+        "categoria": "Femminile",
+        "immagine": "img/alzatrice.png"
+      },
+      {
+        "nome": "Laura Tassone",
+        "numero": 7,
+        "ruolo": "Centrale",
+        "categoria": "Femminile",
+        "immagine": "img/azione.jpg"
+      },
+      {
+        "nome": "Laura Tassone",
+        "numero": 7,
+        "ruolo": "Centrale",
+        "categoria": "Femminile",
+        "immagine": "img/azione.jpg"
+      },
+      {
+        "nome": "Laura Tassone",
+        "numero": 7,
+        "ruolo": "Centrale",
+        "categoria": "Femminile",
+        "immagine": "img/azione.jpg"
+      },
+      {
+        "nome": "Laura Tassone",
+        "numero": 7,
+        "ruolo": "Centrale",
+        "categoria": "Femminile",
+        "immagine": "img/azione.jpg"
+      },
+      {
+        "nome": "Martina Bianchi",
+        "numero": 2,
+        "ruolo": "Schiacciatrice",
+        "categoria": "Femminile",
+        "immagine": "img/martina.jpg"
+      }
+    ],
+    "maschile": [
+      {
+        "nome": "Marco Verdi",
+        "numero": 10,
+        "ruolo": "Centrale",
+        "categoria": "Maschile",
+        "immagine": "img/marco.jpg"
+      },
+      {
+        "nome": "Luca Neri",
+        "numero": 11,
+        "ruolo": "Libero",
+        "categoria": "Maschile",
+        "immagine": "img/luca.jpg"
+      }
+    ],
+    "staff": [
+      {
+        "nome": "Alessandro Gialli",
+        "ruolo": "Allenatore",
+        "categoria": "Staff",
+        "immagine": "img/alessandro.jpg"
+      },
+      {
+        "nome": "Francesca Blu",
+        "ruolo": "Assistente",
+        "categoria": "Staff",
+        "immagine": "img/francesca.jpg"
+      }
+    ]
+  }
+  
