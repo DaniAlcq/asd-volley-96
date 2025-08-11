@@ -1,13 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const navLinks = document.querySelectorAll("nav a");           // Restituisce tutti i link nav
-  navLinks.forEach((link, index) => {
-    link.addEventListener("click", e => {
-      //e.preventDefault();
-    });
-  });
-});
-document.addEventListener("DOMContentLoaded", () => {
-  // Carica il JSON del carosello e inizializza
+
+  /* ========================
+     CAROSELLO NEWS
+  ======================== */
   async function fetchCarosello() {
     try {
       const res = await fetch("data/carosello.json");
@@ -15,19 +10,24 @@ document.addEventListener("DOMContentLoaded", () => {
       const slidesData = await res.json();
 
       const slidesContainer = document.querySelector(".news-carousel .slides");
-      slidesContainer.innerHTML = ""; // pulisci
+      slidesContainer.innerHTML = "";
 
       slidesData.forEach(slide => {
         const slideDiv = document.createElement("div");
         slideDiv.className = "slide";
         slideDiv.innerHTML = `
-          <img src="${slide.immagine}" alt="${slide.caption}">
-          <div class="caption">${slide.caption}</div>
+          <div class="slide-left">
+            <img src="${slide.immagine}" alt="${slide.caption}">
+          </div>
+          <div class="slide-right">
+            <h3>${slide.caption}</h3>
+            <p>${slide.descrizione || ""}</p>
+          </div>
         `;
         slidesContainer.appendChild(slideDiv);
       });
 
-      initCarosello(); // inizializza SOLO dopo che le slide ci sono
+      initCarosello();
     } catch (err) {
       console.error(err);
     }
@@ -42,8 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let current = 0;
 
     function updateSlides() {
-      const x = -current * 100;
-      wrapper.style.transform = `translateX(${x}%)`;
+      wrapper.style.transform = `translateX(${-current * 100}%)`;
     }
 
     prevBtn.addEventListener("click", () => {
@@ -64,50 +63,41 @@ document.addEventListener("DOMContentLoaded", () => {
     updateSlides();
   }
 
-  fetchCarosello(); // avvia caricamento
-});
+  fetchCarosello();
 
-
-//click delle card
-document.addEventListener("DOMContentLoaded", () => {
-  const main = document.querySelector("main");
+  /* ========================
+     NEWS GRID
+  ======================== */
   let newsData = [];
 
-  // Carica il JSON delle news (ritorna una Promise)
   async function fetchNews() {
     try {
       const res = await fetch("data/news.json");
       if (!res.ok) throw new Error("Errore nel caricamento delle news");
       newsData = await res.json();
-  
-      // Genera le card dinamicamente
+
       const newsGrid = document.querySelector(".news-grid");
-      newsGrid.innerHTML = ""; // pulisci prima
-  
+      newsGrid.innerHTML = "";
+
       newsData.forEach(news => {
         const figure = document.createElement("figure");
         figure.className = "news-card";
         figure.setAttribute("data-id", news.id);
         figure.style.cursor = "pointer";
-  
+
         figure.innerHTML = `
           <img src="${news.immagine}" alt="${news.titolo}">
           <figcaption>${news.titolo}</figcaption>
         `;
-  
         newsGrid.appendChild(figure);
       });
-  
     } catch (err) {
       console.error(err);
     }
   }
-  
-  
-  // Mostra una news specifica
+
   function showNews(id, replace = false) {
-    console.log("ID richiesto:", id);
-    console.log("Dati news:", newsData);
+    const main = document.querySelector("main");
     const news = newsData.find(n => n.id === id);
     if (!news) {
       main.innerHTML = `<p>News non trovata.</p>`;
@@ -118,7 +108,8 @@ document.addEventListener("DOMContentLoaded", () => {
         <h2>${news.titolo}</h2>
         <img src="${news.immagine}" alt="${news.titolo}">
         <p>${news.contenuto}</p>
-        <button onclick="history.back()">⬅ Torna indietro</button>
+        <button class="back-btn" onclick="history.back()">⬅ Torna indietro</button>
+
       </article>
     `;
     window.scrollTo({ top: 0 });
@@ -129,8 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Inizializza tutto solo DOPO che le news sono state caricate
-  async function init() {
+  async function initNewsGrid() {
     await fetchNews();
 
     document.addEventListener("click", e => {
@@ -150,50 +140,42 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Se la pagina è caricata con un hash (es: #news2), mostra subito quella news
     const hashId = location.hash.slice(1);
     if (hashId) {
       showNews(hashId, true);
     }
   }
+  initNewsGrid();
 
-  init();
-});
-
-//Scarabei di giornata
-
-document.addEventListener("DOMContentLoaded", () => {
+  /* ========================
+     SCARABEI DI GIORNATA
+  ======================== */
   fetch("data/scarabei.json")
     .then(response => response.json())
     .then(data => {
       const container = document.getElementById("scarabei-container");
-      
       data.forEach(player => {
         const card = document.createElement("div");
         card.className = "mvp-card";
-        
         card.innerHTML = `
           <img src="${player.immagine}" alt="${player.nome}">
-          <h3><span class="volley-icon"></span> ${player.nome}</h3>
+          <h3>${player.nome}</h3>
           <p>${player.categoria}</p>
           <p>${player.prestazione}</p>
         `;
-        
         container.appendChild(card);
       });
     })
     .catch(error => console.error("Errore nel caricamento JSON:", error));
-});
 
-
-//ultimi risultati
-document.addEventListener("DOMContentLoaded", () => {
+  /* ========================
+     ULTIMI RISULTATI
+  ======================== */
   const buttons = document.querySelectorAll(".filter-btn");
-  const container = document.getElementById("results-container");
+  const resultsContainer = document.getElementById("results-container");
 
-  // Funzione per renderizzare le card
-  function render(category, data) {
-    container.innerHTML = "";
+  function renderResults(category, data) {
+    resultsContainer.innerHTML = "";
     const filtered = data.filter(m => m.categoria === category);
     filtered.slice(0, 3).forEach(match => {
       const card = document.createElement("div");
@@ -207,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
           <div class="resCasa">${match.risultatoCasa}</div>
           <div class="vs">-</div>
-                  <div class="resOsp">${match.risultatoOspite}</div>
+          <div class="resOsp">${match.risultatoOspite}</div>
           <div class="team">
             <img src="${match.squadraOspite.logo}" alt="${match.squadraOspite.nome}">
             <span>${match.squadraOspite.nome}</span>
@@ -215,44 +197,29 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <ul class="result-sets">${match.sets.map(s => `<li>${s}</li>`).join("")}</ul>
       `;
-      container.appendChild(card);
+      resultsContainer.appendChild(card);
     });
   }
 
-  // Caricamento dei dati dal file JSON
   fetch("data/results.json")
     .then(response => response.json())
     .then(data => {
-      // Render iniziale per la categoria "Femminile"
-      render("Femminile", data);
-
-      // Gestione dei click sui pulsanti
+      renderResults("Femminile", data);
       buttons.forEach(btn => {
         btn.addEventListener("click", () => {
           buttons.forEach(b => b.classList.remove("active"));
           btn.classList.add("active");
-          render(btn.dataset.cat, data);
+          renderResults(btn.dataset.cat, data);
         });
       });
     })
     .catch(error => console.error("Errore nel caricamento dei dati:", error));
-});
 
-document.addEventListener("DOMContentLoaded", () => {
+  /* ========================
+     MENU ATTIVO
+  ======================== */
   const navLinks = document.querySelectorAll("nav a");
-  const currentPage = window.location.pathname.split("/").pop(); // prende il file corrente, es: "index.html"
-
-  navLinks.forEach(link => {
-    const linkPage = link.getAttribute("href");
-    if (linkPage === currentPage) {
-      link.classList.add("active"); // aggiunge la classe 'active' al link della pagina corrente
-    }
-  });
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const navLinks = document.querySelectorAll("nav a");
-  const currentPage = window.location.pathname.split("/").pop(); // es: "squadre.html"
-
+  const currentPage = window.location.pathname.split("/").pop();
   navLinks.forEach(link => {
     const linkPage = link.getAttribute("href");
     if (linkPage === currentPage) {
@@ -261,5 +228,5 @@ document.addEventListener("DOMContentLoaded", () => {
       link.classList.remove("active");
     }
   });
-});
 
+});

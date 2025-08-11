@@ -11,6 +11,7 @@
   top: 50%;
   transform: translateY(-50%);
   background: none;
+  color: rgb(255, 14, 211);
   border: none;
   font-size: 2rem;
   cursor: pointer;
@@ -176,108 +177,188 @@ body {
   }
 
 
-  .news-carousel {
-    position: relative;
-    width: 100%;
-    max-width: 650px; /* larghezza massima */
-    margin: 10px auto;
-    overflow: hidden; 
-    border-radius: 10px;
-    height: max-content;
-    border: 2px solid rgb(255, 14, 211);;
-  }
-  
-  .news-carousel .slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
-    height: max-content;
-  }
 
+
+
+
+
+ /* ------------------------------
+   CAROSELLO NEWS PRINCIPALE
+------------------------------ */
+.news-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.news-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Struttura carosello */
+/* Rimuovi eventuali limitazioni dal wrapper */
+.news-wrapper {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Carosello a tutta larghezza */
+.news-carousel {
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+  background: transparent;
+  max-height: fit-content; /* o l’altezza massima che vuoi */
+
+}
+
+/* Contenitore slide: larghezza in base al numero di slide */
+.news-carousel .slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%; /* larghezza fluida */
+  max-height: 550px;
+  
+}
+
+/* Ogni singola slide occupa tutta la viewport */
+.news-carousel .slide {
+  flex: 0 0 100vw;
+  display: flex;
+  height: auto; /* lascia altezza fluida */
+  min-height: 500px;
+  overflow: hidden; /* Importantissimo per non far uscire contenuti */
+  
+}
+
+.slide-right {
+  flex: 0 0 40%;
+  padding-right: 60px; 
+  padding-left: 30px;
+  background-color: #00058d;
+  color: rgb(255, 14, 211);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  white-space: normal;
+  overflow-wrap: break-word;
+  text-align: left;
+  margin-left: 0;
+  margin-right: 20px; /* margine a destra */
+  box-sizing: border-box;
+  position: relative;
+  max-width: 40%;
+  position: relative;
+  z-index: 15;
+
+}
+
+.slide-right p{
+  color: white;
+}
+/* Immagine a sinistra */
+.slide-left {
+  flex: 0 0 60%;
+  border: 2px solid rgb(255, 14, 211);
+  background-color: #00058d;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* evita che il bordo venga nascosto */
+   /* o l'altezza minima che ti serve */
+}
+
+
+.slide-left img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  background-color: transparent;
+  flex-shrink: 0; /* evita che l'immagine si riduca troppo */
+}
+/* Pulsanti freccia */
+.news-carousel .prev,
+.news-carousel .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.6);
+  color: rgb(255, 14, 211);
+  border: none;
+  font-size: 2rem;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 10%;
+  z-index: 10;
+  transition: 0.3s ease;
+}
+
+.news-carousel .prev {
+  left: 10px;
+}
+
+.news-carousel .next {
+  right: 10px;
+}
+
+.news-carousel .prev:hover,
+.news-carousel .next:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  /* Stile slide in verticale */
   .news-carousel .slide {
-    min-width: 100%;
-    position: relative;
-    height: 350px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* ombra leggera e tono su tono */
-    overflow: hidden; /* per far rispettare il bordo arrotondato anche all'immagine */
-    background-color: #0f004d; /* sfondo chiaro se serve */
+    flex-direction: column;
+    min-height: auto; /* lascia altezza fluida */
   }
-  
-  
 
-  .news-carousel .slide img {
+  /* Immagine sopra */
+  .slide-left {
+    flex: 0 100px auto;
+    width: 98%;
+    border: none; /* bordo tolto su mobile, puoi rimetterlo se vuoi */
+    background-color: transparent;
+    padding: 0;
+    border: 2px solid rgb(255, 14, 211);
+  }
+
+  .slide-left img {
     width: 100%;
     height: auto;
-    max-height: 500px;
-    object-fit: contain; /* mantiene proporzioni senza tagliare, può lasciare spazi */
-    border-radius: 10px;
-    background-color: #e0e0e0; /* per i bordi trasparenti */
+    object-fit: contain; /* mostra tutta l'immagine senza tagliarla */
     display: block;
-    margin: 0 auto;
   }
-  
-  button{
-    padding: 0.5rem 1rem;
-  border: 2px solid #ff0bd3;
-  background-color: white;
-  color: #ff0bd3;
-  font-weight: bold;
-  border-radius: 30px;
-  cursor: pointer;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  }
-  
-  .news-carousel .caption {
-    position: absolute;
-    bottom: 2%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: rgb(255, 14, 211);
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 24px;
+
+  /* Testo sotto con sfondo scuro */
+  .slide-right {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+    background-color:  #00058d;/* sfondo scuro trasparente */
+    padding: 20px;
+    margin: 0;
     text-align: center;
-    max-width: 90%;
-    width: 90%;
+    color:  rgb(255, 14, 211);
+    box-sizing: border-box;
+    
   }
-  
-  /* Pulsanti prev e next */
-  .news-carousel .prev,
-  .news-carousel .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: rgb(255, 14, 211);
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 24px;
-    border-radius: 5px;
-    z-index: 10;
+
+  .slide-right p {
+    color: white;
   }
-  
-  /* Posizione specifica */
-  .news-carousel .prev {
-    left: 10px;
-  }
-  
-  .news-carousel .next {
-    right: 10px;
-  }
-  
-  /* Hover per più contrasto */
-  .news-carousel .prev:hover,
-  .news-carousel .next:hover {
-    background: rgba(0, 0, 0, 0.8);
-  }
-  
-  
+}
+
+
+
   
   .news-grid {
     
@@ -451,7 +532,7 @@ body {
 }
 
 .mvp-card {
-  background: #00058d;;
+  background: #00058d;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 6px 12px rgba(0,0,0,0.25);
@@ -823,6 +904,34 @@ button:hover {
 
 
 /* Pulsanti filtro */
+
+
+.back-btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid #ff0bd3;
+  background-color: white;
+  color: #ff0bd3;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover,
+.back-btn:active {
+  background-color: #ff0bd3;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
 .filter-buttons {
   text-align: center;
   margin: 20px 0;
@@ -950,6 +1059,17 @@ body {
   transition: background-color 0.3s;
 }
 
+
+
+
+
+
+
+
+
+
+
+
 .table th:nth-child(1),
 .table td:nth-child(1) {
   width: 30px;
@@ -967,6 +1087,12 @@ body {
 }
 
 .table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* scorrimento più fluido su iOS */
+  width: 100%;
+}
+
+.calendar-wrapper{
   overflow-x: auto;
   -webkit-overflow-scrolling: touch; /* scorrimento più fluido su iOS */
   width: 100%;
