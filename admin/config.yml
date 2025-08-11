@@ -1,0 +1,22 @@
+backend:
+backend:
+  name: github
+  repo: DaniAlcq/asd-volley-96
+  branch: main
+  auth_type: implicit
+  app_id: Ov23livMbPvPbG7ZG5Hd  # quello che hai preso da GitHub
+
+
+media_folder: "img" # cartella per le immagini caricate
+public_folder: "/images/uploads"      # percorso pubblico delle immagini
+
+collections:
+  - name: "dati"
+    label: "Dati JSON"
+    folder: "data"
+    create: true
+    format: json
+    fields:
+      - { label: "Titolo", name: "title", widget: "string" }
+      - { label: "Descrizione", name: "description", widget: "text" }
+      # aggiungi qui i campi del tuo JSON
