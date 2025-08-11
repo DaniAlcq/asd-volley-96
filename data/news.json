@@ -1,9 +1,10 @@
 [
     {
       "id": "news1",
-      "titolo": "Questa è una prova",
-      "immagine": "https://i.ibb.co/v6cmscjk/logosquadranerocompleto.png",
-      "contenuto": "Descrizione dettagliata della news 1..."
+      "titolo": "Rinnoviamo la nostra identità: il nuovo logo",
+      "immagine": "img/logosquadrabiancocompleto.png",
+      "contenuto": "Ecco il nostro nuovo logo, simbolo di identità, forza e unità. Rappresenta i valori e la passione che mettiamo ogni giorno in campo, un segno distintivo che ci accompagnerà verso nuove vittorie. Siamo pronti a fare la differenza con questo nuovo look!"
+ 
     },
     {
       "id": "news2",

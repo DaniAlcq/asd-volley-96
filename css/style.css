@@ -7,7 +7,7 @@
 .hamburger {
   display: none;
   position: absolute;
-  right: 100px; /* sposta più a sinistra */
+  right: 55px; /* sposta più a sinistra */
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -15,7 +15,8 @@
   border: none;
   font-size: 2rem;
   cursor: pointer;
-   margin-left: 10px;
+   margin-left: 20px;
+   border-radius: 10px;
 }
 
 
@@ -28,18 +29,22 @@
   #navbar {
     display: none;
     flex-direction: column;
-   background: #00058d;
+    background: #00058d;
     position: absolute;
     top: 60px;
-    right: 10px;
+    left: auto;       /* reset */
+    right: 0px;      /* spostato più a destra */
     width: 200px;
     border-left: 1px solid #ccc;
+    text-align: center;
   }
 
   #navbar.active {
     display: flex;
+    border-radius: 10px;
   }
 }
+
 
 body, 
 main,
@@ -49,8 +54,7 @@ main,
 .results-section,
 .teams-section,
 footer {
-  padding-left: 5px;
-  padding-right: 5px;
+
   box-sizing: border-box; /* Per sicurezza */
 
 }
@@ -120,7 +124,7 @@ body {
     right: 0; 
     display: flex;
     height: 70px;
-    padding-right: 20px; 
+    padding-right: 0px; 
     justify-content: space-between;
     padding: 0 20px; /* spazio ai lati */
 
@@ -137,7 +141,7 @@ body {
   
   .social-logo {
     position: absolute;
-    right: 60px; /* sposta più a sinistra */
+    right: 20px; /* sposta più a sinistra */
     top: 50%;
     transform: translateY(-50%);
     height: 30px;
@@ -235,6 +239,7 @@ body {
   min-height: 500px;
   overflow: hidden; /* Importantissimo per non far uscire contenuti */
   
+  
 }
 
 .slide-right {
@@ -315,47 +320,47 @@ body {
 
 /* Responsive */
 @media (max-width: 900px) {
-  /* Stile slide in verticale */
-  .news-carousel .slide {
-    flex-direction: column;
-    min-height: auto; /* lascia altezza fluida */
+  .slide {
+    position: relative;
+    border: 2px solid rgb(255, 14, 211); /* bordo su tutto */
+    box-sizing: border-box;
+    overflow: hidden;
+    width: 98vw; /* leggermente più stretto per evitare taglio lato destro */
+    margin: 0 auto; /* centrato */
   }
 
-  /* Immagine sopra */
-  .slide-left {
-    flex: 0 100px auto;
-    width: 98%;
-    border: none; /* bordo tolto su mobile, puoi rimetterlo se vuoi */
-    background-color: transparent;
-    padding: 0;
-    border: 2px solid rgb(255, 14, 211);
+  .slide-left,
+  .slide-right {
+    border: none !important;
+    flex: none;
+    max-width: 100% !important;
+    
   }
-
+h3{
+  color: rgb(255, 14, 211);
+}
   .slide-left img {
     width: 100%;
-    height: auto;
-    object-fit: cover; /* mostra tutta l'immagine senza tagliarla */
+    height: 100%;
+    object-fit: cover;
     display: block;
   }
 
-  /* Testo sotto con sfondo scuro */
   .slide-right {
-    flex: 0 0 auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     width: 100%;
-    max-width: 100%;
-    background-color:  #00058d;/* sfondo scuro trasparente */
-    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px 15px;
     margin: 0;
     text-align: center;
-    color:  rgb(255, 14, 211);
     box-sizing: border-box;
-    
-  }
-
-  .slide-right p {
-    color: white;
   }
 }
+
 
 
 
@@ -408,6 +413,7 @@ body {
     display: block;   /* Rimuove eventuali spazi sotto l'immagine */
     object-fit: cover; /* Opzionale: fa sì che l'immagine riempia il contenitore senza deformarsi */
     border-radius: 6px; 
+    background-color: #00058d;
   }
   .news-card figcaption {
     position: absolute;
@@ -507,6 +513,7 @@ body {
     margin: 0 auto;     /* centra l'immagine */
     border-radius: 10px;
     border: 2px solid rgb(255, 14, 211);
+    background-color: #00058d;
 }
 
 

@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const slidesContainer = document.querySelector(".news-carousel .slides");
       slidesContainer.innerHTML = "";
-
+      
       slidesData.forEach(slide => {
         const slideDiv = document.createElement("div");
         slideDiv.className = "slide";
