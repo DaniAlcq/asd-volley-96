@@ -334,7 +334,7 @@ body {
   .slide-left img {
     width: 100%;
     height: auto;
-    object-fit: contain; /* mostra tutta l'immagine senza tagliarla */
+    object-fit: cover; /* mostra tutta l'immagine senza tagliarla */
     display: block;
   }
 
