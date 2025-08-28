@@ -8,7 +8,7 @@
 </head>
 <body>
     <header class="header-tot">
-        <img class="brand-logo" src="img/logonuovorosa.png" alt="Logo">
+        <img class="brand-logo" src="img/logonuovobianco.png" alt="Logo">
         <button class="hamburger" id="hamburger" aria-label="Apri menu">
             &#9776; <!-- icona ☰ -->
           </button>
@@ -35,10 +35,20 @@
   </main>
   <script src="js/menu.js" defer></script>
 
-  <footer>
-    <p>© 2025 Danilo Alacqua</p>
+  <footer class="site-footer">
+    <p>© <span id="year"></span> ASD VOLLEY 96 — Tutti i diritti riservati</p>
+    <p>
+      Sito realizzato da 
+      <a href="mailto:danilo.alacqua@example.com">Danilo Alacqua</a>
+    </p>
   </footer>
-
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    });
+  </script>
   <script src="js/squadre.js" defer></script>
 
   

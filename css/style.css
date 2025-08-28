@@ -1,1179 +1,798 @@
-/* style.css */
-/* Base layout */
-/* Hamburger nascosto su desktop */
-/* Stile di base per hamburger */
-/* Di default su desktop */
-/* Posizionamento hamburger */
-.hamburger {
+/* ==============================
+   VARIABILI & RESET DI BASE
+============================== */
+:root {
+  --blue: #121212;
+  --pink: #fc43a3;              /* rosa brand */
+  --pink-strong: #fc43a3;
+  --text: #333;
+  --bg: #ffffff;
+  --shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+  /* nuovo gradiente: dal nero/graphite al rosa */
+  --gradient: linear-gradient(135deg, #fc43a3 0%,#1a1a1a 30%, #1a1a1a 80%, #fc43a3 100%);
+  --gradient-transparent: linear-gradient(
+    135deg,
+    rgba(18,18,18,0.85) 0%,
+    rgba(26,26,26,0.85) 30%,
+    #fc43a3 100%
+  );
+  --gradientCarosell: linear-gradient(135deg, #fc43a3 0%,#1a1a1a 15%, #1a1a1a 85%, #fc43a3 100%);
+  --gradientResult: linear-gradient(135deg, #fc43a3 0%, white 15%, white 85%, #fc43a3 100%);
+
+}
+
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Gill Sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.5;
+  background-color: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  /* effetti fade-in */
+  opacity: 0;
+  transform: scale(1);
+  filter: blur(0);
+  transition:
+    opacity 0.0s ease,
+    transform 0.0s ease,
+    filter 0.0s ease,
+    background-color 0.0s ease;
+}
+body.fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+  filter: blur(4px);
+  background-color: #f5f5f5;
+}
+body.loaded {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+  background-color: #fff;
+}
+
+/* Utili */
+h1 { text-align: center; color: var(--pink); }
+p  { color: var(--pink-strong); }
+address { font-style: normal; }
+
+/* ==============================
+   HEADER / NAVBAR FISSA
+============================== */
+.header-tot{
+  position: fixed;             /* sempre visibile */
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;             /* spazio ai lati */
+  background-color: var(--blue);
+  color: var(--pink-strong);
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+}
+
+/* Logo a sinistra */
+.brand-logo{
+  height: 80px;
+  width: auto;
+  margin-left: 5px;
+}
+
+/* Icona Instagram a destra (desktop & mobile) */
+.social-logo{
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 30px;
+}
+
+/* NAV DESKTOP */
+#navbar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 0 auto;              /* centrato */
+  padding: 0;
+  max-width: 100%;
+}
+#navbar a{
+  position: relative;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 8px 12px;
+  transition: color .3s ease;
+}
+#navbar a::after{
+  content: "";
+  position: absolute;
+  width: 0; height: 2px;
+  bottom: 0; left: 50%;
+  background-color: var(--pink);
+  transform: translateX(-50%);
+  transition: width .3s ease;
+}
+#navbar a:hover{ color: #fff; }
+#navbar a:hover::after{ width: 100%; }
+#navbar a.active{
+  color: var(--pink);
+  border-bottom: 2px solid var(--pink);
+  pointer-events: none;
+}
+#navbar a.active:hover{ color: inherit; text-decoration: none; }
+
+/* HAMBURGER (desktop nascosto) */
+.hamburger{
   display: none;
   position: absolute;
-  right: 55px; /* sposta più a sinistra */
+  right: 55px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
-  color: rgb(255, 14, 211);
+  color: var(--pink-strong);
   border: none;
   font-size: 2rem;
   cursor: pointer;
-   margin-left: 20px;
-   border-radius: 10px;
+  margin-left: 20px;
+  border-radius: 10px;
 }
 
+/* SPAZIO SOTTO L’HEADER FISSO */
+main{ padding-top: 90px; }
 
+/* ==============================
+   MENU MOBILE
+============================== */
+@media (max-width: 768px){
+  .hamburger{ display: block; }
 
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
-
-  #navbar {
+  /* nascondo la nav di base e la trasformo in menu a tendina */
+  #navbar{
     display: none;
     flex-direction: column;
-    background: #00058d;
     position: absolute;
-    top: 60px;
-    left: auto;       /* reset */
-    right: 0px;      /* spostato più a destra */
-    width: 200px;
+    top: 70px;                 /* esattamente l’altezza dell’header */
+    right: 0;
+    width: 220px;
+    background: var(--blue);
     border-left: 1px solid #ccc;
     text-align: center;
+    padding: 8px 0;
+    box-shadow: var(--shadow);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
+  #navbar.active{ display: flex; }
 
-  #navbar.active {
-    display: flex;
-    border-radius: 10px;
-  }
-}
-
-
-body, 
-main,
-.header-tot,
-.news-wrapper,
-.sponsor-banner,
-.results-section,
-.teams-section,
-footer {
-
-  box-sizing: border-box; /* Per sicurezza */
-
-}
-
-/* Se la scritta FIMA è in immagine, assicuriamoci che il div non tagli */
-.sponsor-banner img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Nel caso il menu o altri elementi abbiano larghezza fissa */
-nav#navbar a {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-
-
-body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Gill Sans';
-      line-height: 1.5;
-      background-color: rgb(255, 255, 255);
-      color: beige;
-      overflow-x: hidden; /* nasconde lo scroll orizzontale */
-      opacity: 0;
-
-      overflow-x: hidden;
-      opacity: 0;
-      transform: scale(1);
-      filter: blur(0);
-      transition: 
-        opacity 0.0s ease,
-        transform 0.0s ease,
-        filter 0.0s ease,
-        background-color 0.0s ease;
-    
-    }
-    body.fade-out {
-      opacity: 0;
-      transform: scale(0.95);
-      filter: blur(4px);
-      background-color: #f5f5f5; /* leggero schiarimento */
-    }
-    body.loaded {
-      opacity: 1;
-      transform: scale(1);
-      filter: blur(0);
-      background-color: white;
-    }
-    .news-wrapper {
-      position: relative;
-      overflow: hidden;
-    }
-    
- 
-    
-    
-  .header-tot {
-    position: relative;
-    top: 0;
-    z-index: 1000;
+  #navbar a{
     width: 100%;
-    left: 0;
-    right: 0; 
-    display: flex;
-    height: 70px;
-    padding-right: 0px; 
-    justify-content: space-between;
-    padding: 0 20px; /* spazio ai lati */
-
-
+    font-size: 18px;
+    padding: 10px 14px;
   }
 
-  
-  .brand-logo {
-    width: auto;
-    height: auto;
-    margin-left: 5px;
+  .social-logo{ right: 16px; }
+}
 
-  }
-  
-  .social-logo {
-    position: absolute;
-    right: 20px; /* sposta più a sinistra */
-    top: 50%;
-    transform: translateY(-50%);
-    height: 30px;
-  }
-  
-  header{
-    background-color: #00058d;
-    text-align: start;
-    color: rgb(255, 14, 211);
-  }
-  
-  nav{
-    display: flex;               
-    align-items: center;         
-    justify-content: center;     /* centra i link orizzontalmente */
-    gap: 1.5rem;                 
-    padding: 0;                  
-    margin: 0 auto;              /* centra nel contenitore */
-    max-width: 100%;             /* impedisce di superare il viewport */
-    color: rgb(255, 14, 211);
-    flex-wrap: wrap; 
-  
-  
-  }
-  nav a {
-    text-decoration: none;
-    color: rgb(255, 14, 211);
-    font-size: 20px;
-  }
- 
-  .news-title {
-    text-align: center;
-    font-size: 2rem;
-    color: rgb(255, 14, 211);
-    font-weight: bold;
-    margin: 20px; padding: 0;
-  }
+/* ==============================
+   SPONSOR BANNER
+============================== */
+.sponsor-banner{
+  background-color: #dcdcdc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  margin-bottom: 1rem;
+  border: 2px solid var(--pink-strong);
+}
+.sponsor-banner img{ max-width: 100%; display: block; }
+.sponsor-logo{ max-height: 180px; width: auto; object-fit: contain; }
 
-
-
-
-
-
-
- /* ------------------------------
-   CAROSELLO NEWS PRINCIPALE
------------------------------- */
-.news-wrapper {
+/* ==============================
+   NEWS – CAROSELLO PRINCIPALE
+============================== */
+.news-wrapper{
+  position: relative;
   width: 100%;
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
-}
-
-.news-title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 15px;
-  text-align: center;
-}
-
-/* Struttura carosello */
-/* Rimuovi eventuali limitazioni dal wrapper */
-.news-wrapper {
-  max-width: 100%;
-  padding: 0;
   margin: 0;
+  padding: 0;
   overflow: hidden;
 }
+.news-title{
+  text-align: center;
+  font-size: 2rem;
+  color: var(--pink-strong);
+  font-weight: 700;
+  margin: 20px 0;
+}
 
-/* Carosello a tutta larghezza */
-.news-carousel {
+/* Carosello full width */
+.news-carousel{
   position: relative;
   width: 100vw;
   overflow: hidden;
   background: transparent;
-  max-height: fit-content; /* o l’altezza massima che vuoi */
-
+  max-height: fit-content;
 }
-
-/* Contenitore slide: larghezza in base al numero di slide */
-.news-carousel .slides {
+.news-carousel .slides{
   display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: 100%; /* larghezza fluida */
+  transition: transform .5s ease-in-out;
+  width: 100%;
   max-height: 550px;
-  
 }
-
-/* Ogni singola slide occupa tutta la viewport */
-.news-carousel .slide {
+.news-carousel .slide{
   flex: 0 0 100vw;
   display: flex;
-  height: auto; /* lascia altezza fluida */
   min-height: 500px;
-  overflow: hidden; /* Importantissimo per non far uscire contenuti */
-  
-  
+  overflow: hidden;
 }
 
-.slide-right {
+/* Immagine a sinistra */
+.slide-left{
+  flex: 0 0 60%;
+  border: 2px solid var(--pink-strong);
+  background-color: var(--blue);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.slide-left img{
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background-color: transparent;
+  flex-shrink: 0;
+}
+
+/* Testo a destra */
+.slide-right{
   flex: 0 0 40%;
-  padding-right: 60px; 
-  padding-left: 30px;
-  background-color: #00058d;
-  color: rgb(255, 14, 211);
+  padding: 0 60px 0 30px;
+  background-color: var(--blue);
+  color: var(--pink-strong);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  white-space: normal;
   overflow-wrap: break-word;
   text-align: left;
-  margin-left: 0;
-  margin-right: 20px; /* margine a destra */
   box-sizing: border-box;
-  position: relative;
   max-width: 40%;
-  position: relative;
   z-index: 15;
-
 }
+.slide-right p{ color: #fff; }
 
-.slide-right p{
-  color: white;
-}
-/* Immagine a sinistra */
-.slide-left {
-  flex: 0 0 60%;
-  border: 2px solid rgb(255, 14, 211);
-  background-color: #00058d;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden; /* evita che il bordo venga nascosto */
-   /* o l'altezza minima che ti serve */
-}
-
-
-.slide-left img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-  background-color: transparent;
-  flex-shrink: 0; /* evita che l'immagine si riduca troppo */
-}
-/* Pulsanti freccia */
+/* Frecce */
 .news-carousel .prev,
-.news-carousel .next {
+.news-carousel .next{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.6);
-  color: rgb(255, 14, 211);
+  background: rgba(0,0,0,.6);
+  color: var(--pink-strong);
   border: none;
   font-size: 2rem;
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 10%;
   z-index: 10;
-  transition: 0.3s ease;
+  transition: .3s ease;
 }
-
-.news-carousel .prev {
-  left: 10px;
-}
-
-.news-carousel .next {
-  right: 10px;
-}
-
+.news-carousel .prev{ left: 10px; }
+.news-carousel .next{ right: 10px; }
 .news-carousel .prev:hover,
-.news-carousel .next:hover {
-  background: rgba(0,0,0,0.8);
-}
+.news-carousel .next:hover{ background: rgba(0,0,0,.8); }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .slide {
+/* Carosello responsive */
+@media (max-width: 900px){
+  .news-carousel .slide{
     position: relative;
-    border: 2px solid rgb(255, 14, 211); /* bordo su tutto */
+    border: 2px solid var(--pink-strong);
     box-sizing: border-box;
     overflow: hidden;
-    width: 98vw; /* leggermente più stretto per evitare taglio lato destro */
-    margin: 0 auto; /* centrato */
+    width: 98vw;
+    margin: 0 auto;
   }
-
   .slide-left,
-  .slide-right {
+  .slide-right{
     border: none !important;
     flex: none;
     max-width: 100% !important;
-    
   }
-h3{
-  color: rgb(255, 14, 211);
-}
-  .slide-left img {
+  .slide-left img{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
   }
-
-  .slide-right {
+  .slide-right{
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 0; left: 0; right: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
+    background: rgba(0,0,0,.8);
+    color: #fff;
     padding: 12px 15px;
     margin: 0;
     text-align: center;
-    box-sizing: border-box;
   }
+  h3{ color: var(--pink-strong); }
 }
 
-
-
-
-  
-  .news-grid {
-    
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    max-width: 1200px;
-    margin: 1rem auto;
-    row-gap: 0.4rem;
-    column-gap: 0.6rem;
-
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;                /* spazio tra le card */
-    padding: 0 10px;   
-  }
-
-  .news-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;  /* centra le card orizzontalmente */
-    gap: 20px;                /* spazio tra le card */
-    padding: 0 10px;          /* spazi laterali per evitare che tocchino i bordi su mobile */
-  }
-
-
-  .news-card {
-    position: relative;
-    max-height: 200px;
-    overflow: hidden;
-    border-radius: 8px;
-    cursor: pointer;
-    background: rgba(0, 0, 0, 0.8);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    max-width: 300px; /* o la larghezza che vuoi */
- 
-    display: flex;
-
-    flex-direction: column; /* impila immagine e caption in colonna */
-    justify-content: center; /* centra verticalmente il contenuto */
-    align-items: center; /* centra orizzontalmente */
-   
-  }
-
-  .news-card img {
-    width: 100%;
-    display: block;   /* Rimuove eventuali spazi sotto l'immagine */
-    object-fit: cover; /* Opzionale: fa sì che l'immagine riempia il contenitore senza deformarsi */
-    border-radius: 6px; 
-    background-color: #00058d;
-  }
-  .news-card figcaption {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
-    padding: 0.5rem;
-    font-size: 1.2rem;
-    text-align: center;
-    box-sizing: border-box;
-    opacity: 1;
-    transition: opacity 0.3s ease;
-    background: rgba(0, 0, 0, 0.8);
-    color: rgb(255, 14, 211);
-
-
-    padding: 10px;
-    flex-grow: 1; /* occupa spazio rimanente sotto l’immagine */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .news-card, .news-card figure {
-    margin: 0px;
-  }
-
-  
-
-  
-  .news-card:hover img {
-    transform: scale(1.05);
-  }
-  
-  .news-card:hover figcaption {
-    opacity: 1;
-  }
-  @media (max-width: 600px) {
-    .news-card figcaption {
-      font-size: 0.8rem;
-      padding: 0.4rem;
-      color: rgb(255, 14, 211);
-    }
-  }
-    
-  article {
-    margin-top: 700px;
-    margin: 2rem auto;
-    max-width: 720px;
-    padding: 0 1rem;
-    
-  }
-  .sponsor-banner {
-    background-color: #dcdcdc; /* grigio chiaro */
-    display: flex;
-    justify-content: center; /* centra orizzontalmente */
-    align-items: center;     /* centra verticalmente */
-    padding: 20px 0;         /* spazio sopra e sotto */
-    margin-bottom: 1rem;     /* margine sotto fascione */
-    border: 2px solid rgb(255, 14, 211);
-  }
-  
-  .sponsor-logo {
-    max-height: 180px;        /* dimensione grande ma proporzionata */
-    width: auto;
-    object-fit: contain;
-  }
-  
-
-  main{
-    margin-top: 0px;
-  }
-
-  .news-detail h2 {
-    text-align: center;   /* centra il testo orizzontalmente */
-    margin-bottom: 20px;  /* spazio sotto il titolo, opzionale */
-    font-size: 2rem;      /* puoi modificare la dimensione a piacere */
-    font-weight: bold;    /* rende il titolo più marcato */
-    color: rgb(255, 14, 211);
-    
-  }
-
-  .news-card{
-    height: 300px;
-    border-radius: 10px;
-    border: 2px solid rgb(255, 14, 211);
-  }
-
-  p{
-    color: rgb(255, 14, 211);
-  }
-  
-  .news-detail img {
-    width: 100%;        /* L'immagine occupa tutta la larghezza del contenitore */
-    max-width: 600px;   /* ma non oltre 600px */
-    height: auto;       /* mantiene le proporzioni */
-    display: block;     /* elimina spazi sotto l'immagine */
-    margin: 0 auto;     /* centra l'immagine */
-    border-radius: 10px;
-    border: 2px solid rgb(255, 14, 211);
-    background-color: #00058d;
+/* ==============================
+   NEWS – GRID CARDS
+============================== */
+.news-grid{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 10px;
+  max-width: 1200px;
+  margin: 1rem auto;
+}
+.news-card{
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  height: 250px;
+  max-height: 300px;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 2px solid var(--pink-strong);
+  cursor: pointer;
+  background: rgba(0,0,0,.8);
+  box-shadow: 0 4px 8px rgba(0,0,0,.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.news-card figure,
+.news-card{ margin: 0; }
+.news-card img{
+  width: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  background-color: var(--blue);
+}
+.news-card figcaption{
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  width: 100%;
+  background: rgba(0,0,0,.8);
+  color: var(--pink-strong);
+  padding: 10px;
+  font-size: 1.1rem;
+  text-align: center;
+  transition: opacity .3s ease;
+}
+.news-card:hover img{ transform: scale(1.05); }
+@media (max-width: 600px){
+  .news-card figcaption{ font-size: .85rem; padding: .4rem; }
 }
 
+/* ==============================
+   DETTAGLIO NEWS
+============================== */
+.news-detail h2{
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--pink-strong);
+}
+.news-detail img{
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 2px solid var(--pink-strong);
+  background-color: var(--blue);
+  display: block;
+}
 
-
-.mvp-section {
+/* ==============================
+   MVP SECTION
+============================== */
+.mvp-section{
   max-width: 1000px;
   margin: 2rem auto;
   text-align: center;
 }
-
-.mvp-title {
+.mvp-title{
   font-size: 2.4rem;
-  font-weight: bold;
-  color: rgb(255, 14, 211);
+  font-weight: 700;
+  color: var(--pink-strong);
   margin-bottom: 2rem;
 }
-
-.mvp-grid {
+.mvp-grid{
   display: flex;
   justify-content: center;
   gap: 2.5rem;
   flex-wrap: wrap;
 }
-
-.mvp-card {
-  background: #00058d;
+.mvp-card{
+  background: var(--blue);
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
-  transition: transform 0.3s ease;
-  width: 260px;       /* più larga */
-  height: 420px;      /* più alta */
+  box-shadow: 0 6px 12px rgba(0,0,0,.25);
+  transition: transform .3s ease;
+  width: 260px;
+  height: 420px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid rgb(255, 14, 211);
+  border: 2px solid var(--pink-strong);
 }
-
-.mvp-card:hover {
-  transform: scale(1.07);
-}
-
-.mvp-card img {
+.mvp-card:hover{ transform: scale(1.07); }
+.mvp-card img{
   width: 100%;
-  height: 260px;       /* immagine più alta */
+  height: 260px;
   object-fit: cover;
 }
-
-.mvp-card h3 {
-  margin: 0.8rem 0 0.3rem;
-  color: #ffff;
+.mvp-card h3{
+  margin: .8rem 0 .3rem;
+  color: #fff;
   font-size: 1.5rem;
 }
-
-.mvp-card p {
-  color: rgb(255, 14, 211);
+.mvp-card p{
+  color: var(--pink-strong);
   font-size: 1.1rem;
   margin-bottom: 1rem;
 }
 
-
-
-
-
-
-
-.teams-section {
+/* ==============================
+   TEAMS SECTION
+============================== */
+.teams-section{
   max-width: 1200px;
   margin: 2rem auto;
   padding: 0 1rem;
   text-align: center;
 }
-
-.teams-title {
+.teams-title{
   font-size: 2rem;
-  font-weight: bold;
-  color: rgb(255, 14, 211);
+  font-weight: 700;
+  color: var(--pink-strong);
   margin-bottom: 1.5rem;
 }
-
-.teams-grid {
+.teams-grid{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.2rem;
 }
-
-.team-card {
-  background: #f0f0f0; /* grigio chiaro */
+.team-card{
+  background: #f0f0f0;
   border-radius: 10px;
-  border: 2px solid rgb(255, 14, 211);;
+  border: 2px solid var(--pink-strong);
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,.1);
+  transition: transform .3s ease;
 }
-
-.team-card:hover {
-  transform: scale(1.05);
-}
-
-.team-card img {
+.team-card:hover{ transform: scale(1.05); }
+.team-card img{
   width: 100%;
   height: 180px;
   object-fit: cover;
 }
-
-.team-card h3 {
-  background: #00058d;
-  color: rgb(255, 14, 211);
+.team-card h3{
+  background: var(--blue);
+  color: var(--pink-strong);
   margin: 0;
-  padding: 0.8rem;
+  padding: .8rem;
   font-size: 1.2rem;
 }
 
-/* Sezione dei risultati */
-.results-section {
+/* ==============================
+   RESULTS SECTION
+============================== */
+.results-section{
   text-align: center;
   padding: 2rem;
   background-color: #f9f9f9;
 }
-
-/* Titolo della sezione */
-.results-title {
+.results-title{
   font-size: 1.8rem;
-  font-weight: bold;
-  color: #ff0bd3;
+  font-weight: 700;
+  color: var(--pink);
   margin-bottom: 1.5rem;
 }
-
-/* Pulsanti di filtro */
-.buttons-filter {
+.buttons-filter{
   display: flex;
   justify-content: center;
   gap: 1rem;
   margin-bottom: 2rem;
 }
-
-.filter-btn {
-  padding: 0.5rem 1rem;
-  border: 2px solid #ff0bd3;
-  background-color: white;
-  color: #ff0bd3;
-  font-weight: bold;
+.filter-btn{
+  padding: .5rem 1rem;
+  border: 2px solid var(--pink);
+  background-color: #fff;
+  color: var(--pink);
+  font-weight: 700;
   border-radius: 30px;
   cursor: pointer;
   text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: .9rem;
   letter-spacing: 1px;
-  transition: all 0.3s ease;
+  transition: all .3s ease;
+}
+.filter-btn.active,
+.filter-btn:hover{
+  background-color: var(--pink);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0,0,0,.1);
 }
 
-.filter-btn.active,
-.filter-btn:hover {
-  background-color: #ff0bd3;
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-/* Layout della griglia */
-/* Layout della griglia dei risultati */
-/* Layout della griglia dei risultati */
-/* Layout della griglia dei risultati */
-.results-grid {
+/* Griglia risultati */
+.results-grid{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
   justify-content: center;
   margin-top: 1rem;
 }
-
-/* Stile della card */
-.result-card {
-  background-color: white;
-  border: 2px solid #ff0bd3;
+.result-card{
+  background-color: #fff;
+  border: 2px solid var(--pink);
   border-radius: 10px;
   padding: 1rem;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  box-shadow: var(--shadow);
+  transition: transform .3s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 320px;
   overflow: hidden;
-  color: #00058d;
+  color: var(--blue);
 }
-
-/* Effetto hover */
-.result-card:hover {
-  transform: translateY(-5px);
+.result-card:hover{ transform: translateY(-5px); }
+.result-card .logos{
+  display: flex; justify-content: center; align-items: center;
+  gap: 1rem; margin-bottom: 1rem; width: 100%;
 }
-
-/* Sezione loghi e squadre */
-.result-card .logos {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  width: 100%;
+.result-card .team{ display: flex; flex-direction: column; align-items: center; flex: 1; }
+.result-card .team img{
+  height: 80px; width: auto; object-fit: contain; max-width: 100%;
 }
-
-.result-card .team {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
+.result-card .vs{
+  font-weight: 700; color: var(--blue); font-size: 2rem;
 }
-
-.result-card .team img {
-  height: 80px;
-  width: auto;
-  object-fit: contain;
-  max-width: 100%;
-}
-
-.result-card .vs {
-  font-weight: bold;
-color: #00058d;
-  font-size: 2rem;
-  margin: 0 0.5rem;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.result-card .resCasa {
-color: #ff0bd3;
-font-weight: bold;
+.result-card .resCasa,
+.result-card .resOsp{
+  color: var(--pink);
+  font-weight: 700;
   font-size: 2.5rem;
-  display: inline-block;
-  vertical-align: middle;
 }
-
-.result-card .resOsp {
-  color: #ff0bd3;
-  font-weight: bold;
-    font-size: 2.5rem;
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-
-/* Risultato della partita */
-.result-card .result-score {
-  font-size: 2.6rem;
-  font-weight: bold;
-  color: #ff0bd3;
-  margin: 0.5rem 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
+.result-card .result-score{
+  font-size: 2.6rem; font-weight: 700; color: var(--pink);
+  margin: .5rem 0; display: flex; justify-content: center; align-items: center; gap: .5rem;
 }
-
-/* Elenco dei set */
-.result-card .result-sets {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 1rem;
-  color: #ffffff;
-  display: flex;
-  justify-content: center;
-  gap: 0.2rem;
-  width: 100%;
+.result-card .result-sets{
+  list-style: none; padding: 0; margin: 0;
+  font-size: 1rem; color: #fff;
+  display: flex; justify-content: center; gap: .2rem; width: 100%;
 }
-
-.result-card .result-sets li {
-  background-color: #00058d;
+.result-card .result-sets li{
+  background-color: var(--blue);
   border-radius: 5px;
-  padding: 0.2rem 0.2rem;
-  margin: 0 0.3rem;
+  padding: .2rem .2rem;
+  margin: 0 .3rem;
   text-align: center;
-  width: auto;
-  min-width: 25px;
-  flex-grow: 1;
-  max-width: 80px;
+  min-width: 25px; max-width: 80px; flex-grow: 1;
 }
-
-.result-card .result-sets li::before {
+.result-card .result-sets li::before{
   content: attr(data-set);
-  font-weight: bold;
+  font-weight: 700;
   display: block;
-  margin-bottom: 0.2rem;
+  margin-bottom: .2rem;
   font-size: 1.1rem;
 }
+.result-card .result-sets li span{ font-size: 1.1rem; font-weight: 400; }
 
-.result-card .result-sets li span {
-  font-size: 1.1rem;
-  font-weight: normal;
+/* ==============================
+   LISTA SQUADRE (pagina squadre)
+============================== */
+.filter-buttons{
+  display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem;
 }
-
-
-
-h1{
-  text-align: center;
-  color: #ff0bd3;
-}
-.filter-buttons {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  margin-bottom: 20px;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-/* Container delle card */
-.team-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  justify-content: center;
-}
-
-.team-cardList {
-  background-color: white;
-  border: 2px solid rgb(255, 14, 211);
-  margin: 0;  /* togli margini per non interferire con il gap */
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  max-height: 360px;
-  height: fit-content;
-}
-
-.team-cardList:hover {
-  transform: scale(1.05);
-}
-
-.team-cardList img {
-  width: 100%;
-  max-width: 200px;
-  height: 200px;
-  border-radius: 10px;
-  object-fit: contain;
-  margin: 0 auto;
-}
-
-.team-cardList h3 {
-  background: #00058d;
-  color: rgb(255, 14, 211);
-  margin: 0;
-  padding: 0.8rem;
-  font-size: 1rem;
-}
-
-.team-info {
-  margin-top: 10px;
-}
-
-.team-info p {
-  margin: 5px 0;
-}
-
-button.active {
-  background-color: #ff0bd3;
-  color: white;
-}
-
-button:hover {
-  background-color: #ff0bd3;
-  color: #f0f0f0;
-}
-
-/* MEDIA QUERY PER CELLULARE: 2 CARD PER RIGA */
-@media (max-width: 600px) {
-  .team-list {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  .team-cardList {
-    max-height: none;
-    padding: 10px;
-  }
-
-  .team-cardList img {
-    height: 120px;
-  }
-
-  .team-cardList h3 {
-    font-size: 0.85rem;
-    padding: 0.5rem;
-  }
-
-  .team-info p {
-    font-size: 0.75rem;
-    margin: 3px 0;
-  }
-}
-
-
-
-/* Pulsanti filtro */
-
-
-.back-btn {
-  padding: 0.5rem 1rem;
-  border: 2px solid #ff0bd3;
-  background-color: white;
-  color: #ff0bd3;
-  font-weight: bold;
-  border-radius: 30px;
-  cursor: pointer;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-}
-
-.back-btn:hover,
-.back-btn:active {
-  background-color: #ff0bd3;
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-
-
-
-
-.filter-buttons {
-  text-align: center;
-  margin: 20px 0;
-}
-.filter-buttons button {
+.filter-buttons button{
   padding: 10px 20px;
-  margin: 0 8px;
-  background-color: white;
-  border: none;
-  border-radius: 5px;
-  color: #ff0bd3;;
+  background-color: #fff;
+  color: var(--pink);
+  border-radius: 30px;
   font-size: 1rem;
+  border: 2px solid var(--pink);
   cursor: pointer;
-  transition: background-color 0.3s;
-  border: 2px solid #ff0bd3;
+  transition: background-color .3s;
 }
 .filter-buttons button.active,
-.filter-buttons button:hover {
-  background-color: #ff0bd3;
-  border: 2px solid #f1f0f1;
-  color: #f1f0f1;
+.filter-buttons button:hover{
+  background-color: var(--pink);
+  color: #fff;
+  border-color: #f1f0f1;
 }
 
-/* Tabella calendario */
-#calendar-table {
+.team-list{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px; justify-content: center;
+}
+.team-cardList{
+  background-color: #fff;
+  border: 2px solid var(--pink-strong);
+  margin: 0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,.1);
+  text-align: center;
+  overflow: hidden;
+  transition: transform .3s ease;
+  height: fit-content;
+}
+.team-cardList:hover{ transform: scale(1.05); }
+.team-cardList img{
+  width: 100%; max-width: 200px; height: 200px;
+  border-radius: 10px; object-fit: contain; margin: 0 auto;
+}
+.team-cardList h3{
+  background: var(--blue);
+  color: var(--pink-strong);
+  margin: 0; padding: .8rem; font-size: 1rem;
+  border-radius: 10px;
+}
+.team-info{ margin-top: 10px; }
+.team-info p{ margin: 5px 0; }
+@media (max-width: 600px){
+  .team-list{ grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .team-cardList{ padding: 10px; }
+  .team-cardList img{ height: 120px; }
+  .team-cardList h3{ font-size: .85rem; padding: .5rem; }
+  .team-info p{ font-size: .75rem; margin: 3px 0; }
+}
+
+/* ==============================
+   TABELLE (Calendario & generiche)
+============================== */
+#calendar-table{
   width: 100%;
   max-width: 800px;
   margin: 0 auto 40px;
-  border-collapse: collapse;
-  color: #00058d;
-  background-color: #ffffff;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: var(--blue);
+  background: #fff;
+  border-radius: 10px;
+  border: 2px solid var(--blue);
+  overflow: hidden;
 }
 #calendar-table th,
-#calendar-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: center;
-}
-#calendar-table thead {
- background-color: #00058d;
-  color: #ff0bd3;
-}
-
-#calendar-table tbody tr:hover {
-  background-color: #eef;
-}
-.logo-cell {
-  height: 30px;
-  width: auto;
-  vertical-align: middle;
-  margin-right: 6px;
-}
-/* Tabella calendario con bordi stondati */
-/* Stili per aggiunta colonna “Giornata” */
-#calendar-table th:first-child,
-#calendar-table td:first-child {
-  width: 80px;
-  font-weight: bold;
-}
-
-/* Bordi stondati e struttura tabella (già descritti) */
-#calendar-table {
-  border-spacing: 0;
-  border-collapse: separate;
-  border-radius: 10px;
-  border: 2px solid #00058d;
-  overflow: hidden;
-}
-#calendar-table th:not(:last-child),
-#calendar-table td:not(:last-child) {
+#calendar-table td{
   border-right: 1px solid #ddd;
-}
-#calendar-table thead tr:not(:last-child) th,
-#calendar-table tbody tr:not(:last-child) td {
   border-bottom: 1px solid #ddd;
+  padding: 8px; text-align: center;
 }
-#calendar-table thead tr:first-child th:first-child {
-  border-top-left-radius: 10px;
+#calendar-table thead{
+  background-color: var(--blue);
+  color: var(--pink);
+  font-weight: 700;
 }
-#calendar-table thead tr:first-child th:last-child {
-  border-top-right-radius: 10px;
+#calendar-table tbody tr:hover{ background-color: #eef; }
+#calendar-table th:first-child,
+#calendar-table td:first-child{
+  width: 80px; font-weight: 700;
 }
-#calendar-table tbody tr:last-child td:first-child {
-  border-bottom-left-radius: 10px;
+.logo-cell{ height: 30px; width: auto; vertical-align: middle; margin-right: 6px; }
+.logo-squadra{
+  width: 50px; height: 40px; border-radius: 40%;
+  margin-right: 8px; vertical-align: middle; object-fit: contain;
 }
-#calendar-table tbody tr:last-child td:last-child {
-  border-bottom-right-radius: 10px;
-}
-
-/* Altri stili già presenti per righe, hover, logo-cell, ecc. */
-.logo-squadra {
-  width: 50px;
-  height: 40px;
-  border-radius: 40%;
-  margin-right: 8px;
-  vertical-align: middle;
-  object-fit: contain;
-}
-body {
-
-  margin: 0;
-  padding: 0;
-  background-color: #f8f9fa;
-  color: #333;
+#calendar-table thead tr:first-child {
+  background: var(--gradient);
+  color: #fff;
 }
 
-
-
-.filter-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 30px;
-}
-
-.filter-buttons button {
-  background-color: #ffffff;
-  color: #ff0bd3;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 30px;
-  font-size: 1rem;
-  border: 2px solid #ff0bd3;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-.table th:nth-child(1),
-.table td:nth-child(1) {
-  width: 30px;
-  max-width: 30px;
-  text-align: center;
-  white-space: nowrap;
-  font-size: 1rem; /* riduce la dimensione del testo */
-}
-
-.table {
+/* classifica */
+.table-wrapper,
+.calendar-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   width: 100%;
+  margin: 2rem 0;
+}
+
+/* Tabella principale */
+.table {
+  width: 90%;
+  min-width: 600px;
+  margin: 0 auto;
   border-collapse: collapse;
-  text-align: left;
-  min-width: 600px; 
-}
-
-.table-wrapper {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* scorrimento più fluido su iOS */
-  width: 100%;
-}
-
-.calendar-wrapper{
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* scorrimento più fluido su iOS */
-  width: 100%;
-}
-
-
-.table thead {
-  background-color: #e91e63;
-  color: white;
-}
-
-.table th,
-.table td {
-  padding: 12px 15px;
-  border-bottom: 1px solid #ddd;
-}
-
-.table tbody tr:hover {
-  background-color: #f1f1f1;
-}
-
-.logo-squadra {
-  width: 40px;
-  height: 40px;
-  border-radius: 10%;
-  margin-right: 10px;
-  vertical-align: middle;
-  object-fit: contain;
-
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #00058d;
-  margin-top: 40px;
-  color: rgb(255, 0, 208);
-
-}
-
-
-.table {
-  width: 80%;
-  margin: 0 auto; /* centro la tabella */
-  border-collapse: collapse; /* serve per le linee interne */
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 0 0 1px #ccc;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  font-size: .95rem;
+  background: #fff;
 }
 
+/* Header */
 .table thead {
-  background-color: #00058d;
-  color: rgb(255, 14, 211);
-  font-weight: bold;
+  background: var(--gradient);
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.table thead th {
+  padding: 14px 16px;
+  font-size: 1rem;
 }
 
+/* Celle */
 .table th,
 .table td {
   padding: 12px 14px;
-  text-align: center; /* centra tutto */
-  border: 1px solid #ddd; /* linee tra le colonne */
-  font-size: 0.95rem;
+  border: 1px solid #e5e5e5;
+  vertical-align: middle;  /* centra verticalmente */
 }
 
-/* Alternanza righe */
-.table tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
+/* Celle con logo + testo */
+.table td.team-cell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;  /* logo a sinistra, testo accanto */
+  gap: 10px;
 }
 
-/* Hover effetto */
+/* Loghi più grandi */
+.table td.team-cell img.logo-squadra {
+  width: 65px;
+  height: 55px;
+  object-fit: contain;
+  border-radius: 8px;   /* opzionale */
+}
+
+/* Righe alternate */
+.table tbody tr:nth-child(even) { background-color: #fafafa; }
+.table tbody tr:nth-child(odd) { background-color: #fff; }
+
+/* Hover */
 .table tbody tr:hover {
-  background-color: #eef6ff;
+  background-color: rgba(255, 11, 211, 0.1);
+  transition: background-color .25s ease;
 }
-.contatti-wrapper {
+
+/* Prima colonna */
+.table th:nth-child(1),
+.table td:nth-child(1) {
+  width: 50px;
+  max-width: 50px;
+  white-space: nowrap;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+
+/* ==============================
+   CONTATTI / MAPPA
+============================== */
+.contatti-wrapper{
   max-width: 800px;
   margin: 2rem auto;
   padding: 1rem;
@@ -1181,92 +800,310 @@ footer {
   flex-direction: column;
   gap: 2rem;
 }
+.contatti-info p{ margin: .5rem 0; font-size: 1rem; }
+.contatti p{ font-size: 1.1em; margin: 8px 0; }
+.mappa{ margin-top: 20px; }
+.mappa iframe,
+iframe{ width: 100%; height: 300px; border: 0; border-radius: 10px; }
 
-.contatti-info p {
-  margin: 0.5rem 0;
-  font-size: 1rem;
+/* ==============================
+   LINK INSTAGRAM INLINE
+============================== */
+.insta-link{
+  display: inline-flex; align-items: center; gap: 5px;
+  text-decoration: none; color: #000; font-weight: 700;
+  transition: color .3s ease;
+}
+.insta-link:hover{ color: #e1306c; }
+.social-logo{ width: 32px; vertical-align: middle; }
+
+/* ==============================
+   BUTTONS GENERICI
+============================== */
+button.active{ background-color: var(--pink); color: #fff; }
+button:hover{ background-color: var(--pink); color: #f0f0f0; }
+
+/* ==============================
+   FOOTER
+============================== */
+.site-footer{
+  background: var(--blue);
+  color: #f2f2f2;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: .95rem;
+  margin-top: 3rem;
+}
+.site-footer a{
+  color: #f2f2f2;
+  text-decoration: none;
+  font-weight: 600;
+}
+.site-footer a:hover{ text-decoration: underline; }
+/* --- FIX NAVBAR FISSA CHE SCOMPARE --- */
+body {
+  /* annulla proprietà che rompono position: fixed */
+  transform: none !important;
+  filter: none !important;
+  /* semplifica la transition: niente transform/filter */
+  transition:
+    opacity 0.0s ease,
+    background-color 0.0s ease !important;
 }
 
-.mappa iframe {
+/* anche sugli stati usati dallo script di fade */
+body.fade-out,
+body.loaded {
+  transform: none !important;
+  filter: none !important;
+}
+
+/* assicurati che stia sopra a tutto */
+.header-tot {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 9999 !important;
+  background-color: var(--blue); /* solido per coprire il sotto */
+  height: 70px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+}
+
+/* evita che il contenuto finisca sotto l’header */
+main {
+  padding-top: 90px !important; /* ~ altezza header */
+}
+
+/* menu mobile: si apre subito sotto l'header fisso */
+@media (max-width: 768px) {
+  #navbar {
+    top: 70px !important;
+  }
+}
+
+/* Footer trasparente */
+.site-footer{
+  background: var(--gradient) !important;
+  color: #fff;                 /* contrasto migliore */
+  backdrop-filter: blur(4px);  /* opzionale effetto vetro */
+}
+
+.header-tot{
+  background: var(--gradient) !important;
+            /* leggero effetto vetro */
+  background: rgba(18,18,18,0.9); /* nero 90% */
+  backdrop-filter: blur(6px);
+}
+/* Instagram bianco sulla destra */
+.social-logo{
+  filter: brightness(0) invert(1);          /* rende l’icona bianca */
+  opacity: 0.95;
+  transition: filter .2s ease, opacity .2s ease;
+}
+
+.header-tot .social-logo:hover{
+  opacity: 1;
+  filter: brightness(0) invert(1) drop-shadow(0 0 3px var(--pink));
+}
+#navbar a.active{
+  color: var(--pink) !important;
+  border-bottom: 2px solid var(--pink) !important;
+}
+.slide-right{
+  background: var(--gradientCarosell) !important;
+  color: #fff;                 /* testo bianco leggibile */
+}
+.slide-right h3,
+.slide-right p{ color: #fff; } /* forza bianco nel testo */
+
+/* Mobile: la .slide-right è overlay sull’immagine → usa il gradiente trasparente */
+@media (max-width: 900px){
+  .slide-right{
+    background: var(--gradient-transparent) !important;
+    color: #fff;
+  }
+}
+.result-card {
+  background: #ffe6f7;
+  border: 2px solid #ff0bd3;
+  color: #121212;  /* testo scuro per leggibilità */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(255,11,211,0.3);
+}
+/* ===== TABELL A CLASSIFICHE ===== */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   width: 100%;
-  height: 300px;
-  border-radius: 8px;
+  margin: 2rem 0;
 }
 
-.contatti p {
-  font-size: 1.1em;
-  margin: 8px 0;
+.table {
+  width: 70%;
+  min-width: 50px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  font-size: .95rem;
 }
 
-.mappa {
-  margin-top: 20px;
+/* Header tabella */
+.table thead {
+  background: var(--gradient);   /* gradiente rosa/nero */
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.table thead th {
+  padding: 14px 16px;
+  white-space: nowrap;
 }
 
-iframe {
-  max-width: 100%;
-  border-radius: 10px;
-}
-
-/* --- Stile Instagram --- */
-.social-logo {
-  width: 32px;
+/* Celle base */
+.table th,
+.table td {
+  padding: 12px 14px;
+  border: 1px solid #e5e5e5;
+  text-align: center;
   vertical-align: middle;
+  font-size: 20px;
 }
 
-.insta-link {
-  display: inline-flex;
+/* Colonna posizione (#) */
+.table th:nth-child(1),
+.table td:nth-child(1) {
+  width: 60px;
+  max-width: 60px;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+/* Colonna squadra */
+.table thead th.team-col { text-align: left; }
+.table td:nth-child(2) { text-align: left; font-size: 10px;}
+
+/* Logo + nome squadra */
+.table td.squadra-cell {
+  display: flex;
   align-items: center;
-  gap: 5px;
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
-  transition: color 0.3s ease;
+  gap: 20px;
+  width: 100%;
+  height: 80px;
 }
 
-.insta-link:hover {
-  color: #e1306c; /* Rosa Instagram */
-}
-/* --- Navbar --- */
-nav a {
-  position: relative;
-  color: rgb(255, 14, 211);
-  text-decoration: none;
-  padding: 8px 12px;
-  font-weight: bold;
-  transition: color 0.3s ease;
+.table td.squadra-cell .logo-squadra {
+  flex-shrink: 0;
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  display: block;
 }
 
-nav a::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 50%;
-  background-color: rgb(255, 255, 255);
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
+.table td.squadra-cell span {
+  flex: 1;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #111;
+  white-space: normal;
+  word-break: break-word;
 }
 
-nav a:hover {
-  color: #ffffff; /* Testo blu al passaggio */
+
+
+/* Righe alternate + hover */
+.table tbody tr:nth-child(even) { background-color: #fafafa; }
+.table tbody tr:nth-child(odd)  { background-color: #fff; }
+.table tbody tr:hover {
+  background-color: rgba(255, 11, 211, 0.10);
+  transition: background-color .25s ease;
 }
 
-nav a:hover::after {
-  width: 100%; /* Linea si espande */
+/* Responsive */
+@media (max-width: 900px) {
+  .table { min-width: 640px; }
+  .table td.team-cell .logo-squadra { width: 70px; height: 56px; }
+  .table td.team-cell .team-name { max-width: 220px; }
 }
-nav a.active {
-  color: #ffffff;
-  font-weight: bold;
-  border-bottom: 2px solid #ffffff;
-  pointer-events: none; /* disabilita clic e hover */
+@media (max-width: 600px) {
+  .table { min-width: 560px; }
+  .table td.team-cell .logo-squadra { width: 60px; height: 48px; }
+  .table td.team-cell .team-name { max-width: 160px; }
+}
+/* Cella squadra occupa tutta la larghezza disponibile */
+.table td.team-cell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;              /* spazio tra logo e testo */
+  width: 100%;            /* occupa tutta la cella */
+  padding: 12px 16px;
+  box-sizing: border-box;
 }
 
-/* Oppure, se vuoi solo togliere l’effetto hover, senza disabilitare clic: */
-
-nav a.active:hover {
-  color: inherit;  /* non cambia colore */
-  cursor: default; /* cursore normale */
-  text-decoration: none; /* niente sottolineatura */
+/* Logo molto più grande */
+.table td.team-cell .logo-squadra {
+  flex-shrink: 0;         /* il logo non si riduce mai */
+  width: 120px;           /* più grande (puoi aumentare ancora se vuoi) */
+  height: 120px;
+  object-fit: contain;
+  display: block;
 }
 
+/* Nome squadra prende il resto della riga */
+.table td.team-cell .team-name {
+  flex: 1;                /* occupa lo spazio rimanente */
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #222;
+  white-space: normal;    /* va a capo se troppo lungo */
+  word-break: break-word; /* spezza nomi lunghi */
+}
+/* Cella squadra: logo grande + nome allineati, usa tutta la larghezza */
+.table td.team-cell{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  width: 100%;
+  padding: 12px 16px;
+  box-sizing: border-box;
+}
+
+/* Logo molto più grande */
+.table td.team-cell .logo-squadra{
+  flex-shrink: 0;
+  width: 120px;           /* aumenta/diminuisci a piacere */
+  height: 120px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Nome squadra prende lo spazio restante */
+.table td.team-cell .team-name{
+  flex: 1;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #222;
+  white-space: normal;      /* può andare a capo */
+  word-break: break-word;
+}
+
+/* Responsive: su schermi stretti riduci un po' il logo */
+@media (max-width: 900px){
+  .table td.team-cell .logo-squadra{ width: 90px; height: 90px; }
+}
+@media (max-width: 600px){
+  .table td.team-cell{ gap: 12px; }
+  .table td.team-cell .logo-squadra{ width: 72px; height: 72px; }
+  .table td.team-cell .team-name{ font-size: 1.1rem; }
+}

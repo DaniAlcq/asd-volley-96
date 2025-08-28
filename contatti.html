@@ -8,7 +8,7 @@
 </head>
 <body>
   <header class="header-tot">
-    <img class="brand-logo" src="img/logonuovorosa.png" alt="Logo">
+    <img class="brand-logo" src="img/logonuovobianco.png" alt="Logo">
     <button class="hamburger" id="hamburger" aria-label="Apri menu">
         &#9776; <!-- simbolo ☰ -->
       </button>
@@ -54,11 +54,43 @@
     <script src="js/fade.js"></script>
   </main>
 
-  <footer>
-    <p>© 2025 Danilo Alacqua</p>
+  <footer class="site-footer">
+    <p>© <span id="year"></span> ASD VOLLEY 96 — Tutti i diritti riservati</p>
+    <p>
+      Sito realizzato da 
+      <a href="mailto:danilo.alacqua@example.com">Danilo Alacqua</a>
+    </p>
   </footer>
-
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    });
+  </script>
   <script src="js/menu.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const currPath = location.pathname.split('/').pop() || 'index.html';
+      const currQuery = location.search || '';
+    
+      document.querySelectorAll('#navbar a').forEach(a => {
+        // Preferisci data-url (già presente nel tuo HTML), altrimenti usa href
+        const target = (a.dataset.url || a.getAttribute('href') || '').split('/').pop();
+    
+        // Confronto sia con il nome file, sia con file+query (es: squadre.html?cat=Femminile)
+        const isExact = target === currPath;
+        const isWithQuery = (target && currQuery && (target + currQuery) === (currPath + currQuery));
+    
+        if (isExact || isWithQuery) {
+          a.classList.add('active');
+        } else {
+          a.classList.remove('active');
+        }
+      });
+    });
+    </script>
+    
 
 </body>
 </html>
