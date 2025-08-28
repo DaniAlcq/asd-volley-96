@@ -1038,15 +1038,15 @@ main {
   .table { min-width: 560px; }
   .table td.squadra-cell .logo-squadra {
     flex-shrink: 0;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     object-fit: contain;
     display: block;
   }
   .table td.squadra-cell span {
     flex: 1;
     font-weight: 600;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     color: #111;
     white-space: normal;
     word-break: break-word;
@@ -1057,15 +1057,15 @@ main {
   .table { min-width: 560px; }
   .table td.squadra-cell .logo-squadra {
     flex-shrink: 0;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
     display: block;
   }
   .table td.squadra-cell span {
     flex: 1;
     font-weight: 600;
-    font-size: 0.4rem;
+    font-size: 0.6rem;
     color: #111;
     white-space: normal;
     word-break: break-word;
