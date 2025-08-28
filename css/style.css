@@ -1107,3 +1107,8 @@ main {
   .table td.team-cell .logo-squadra{ width: 72px; height: 72px; }
   .table td.team-cell .team-name{ font-size: 1.1rem; }
 }
+.teams-grid a {
+  text-decoration: none;   /* toglie underline a tutto il link */
+  color: inherit;          /* eredita il colore del contenuto */
+  display: block;          /* rende il link un blocco che avvolge la card */
+}
