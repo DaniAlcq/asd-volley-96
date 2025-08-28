@@ -1036,8 +1036,41 @@ main {
 }
 @media (max-width: 600px) {
   .table { min-width: 560px; }
-  .table td.team-cell .logo-squadra { width: 60px; height: 48px; }
-  .table td.team-cell .team-name { max-width: 160px; }
+  .table td.squadra-cell .logo-squadra {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    display: block;
+  }
+  .table td.squadra-cell span {
+    flex: 1;
+    font-weight: 600;
+    font-size: 0.6rem;
+    color: #111;
+    white-space: normal;
+    word-break: break-word;
+  }
+  .table td.squadra-cell .team-name { max-width: 160px; }
+}
+@media (max-width: 400px) {
+  .table { min-width: 560px; }
+  .table td.squadra-cell .logo-squadra {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    display: block;
+  }
+  .table td.squadra-cell span {
+    flex: 1;
+    font-weight: 600;
+    font-size: 0.4rem;
+    color: #111;
+    white-space: normal;
+    word-break: break-word;
+  }
+  .table td.squadra-cell .team-name { max-width: 160px; }
 }
 /* Cella squadra occupa tutta la larghezza disponibile */
 .table td.team-cell {
@@ -1100,11 +1133,11 @@ main {
 
 /* Responsive: su schermi stretti riduci un po' il logo */
 @media (max-width: 900px){
-  .table td.team-cell .logo-squadra{ width: 90px; height: 90px; }
+  .table td.team-cell .logo-squadra{ width: 40px; height: 40px; }
 }
 @media (max-width: 600px){
   .table td.team-cell{ gap: 12px; }
-  .table td.team-cell .logo-squadra{ width: 72px; height: 72px; }
+  .table td.team-cell .logo-squadra{ width: 42px; height: 42px; }
   .table td.team-cell .team-name{ font-size: 1.1rem; }
 }
 .teams-grid a {
@@ -1196,7 +1229,7 @@ main {
     width:100%;
     max-width:100%;
     table-layout: fixed;      /* stringe in orizzontale */
-    font-size:.78rem;
+    font-size:.50rem;
   }
 
   #calendar-table thead th,
@@ -1233,6 +1266,16 @@ main {
   #calendar-table td:nth-child(4){
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   } */
+}
+
+
+/* Prima colonna (Giornata) più larga */
+#calendar-table th:first-child,
+#calendar-table td:first-child {
+  width: 90px;       /* allarga la colonna */
+  min-width: 90px;   /* non scende sotto */
+  text-align: center;
+  font-weight: 700;
 }
 
 
@@ -1277,4 +1320,6 @@ main {
     font-size:.8rem; line-height:1.2;
     overflow:hidden; text-overflow:ellipsis;
   }
+
+  
 }
