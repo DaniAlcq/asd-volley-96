@@ -1112,3 +1112,58 @@ main {
   color: inherit;          /* eredita il colore del contenuto */
   display: block;          /* rende il link un blocco che avvolge la card */
 }
+@media (max-width: 600px) {
+  .table {
+    width: 100%;       /* occupa tutto lo schermo */
+    min-width: unset;  /* elimina larghezza minima */
+    font-size: 0.8rem; /* testo più piccolo */
+  }
+
+  .table thead th,
+  .table td {
+    padding: 6px 4px;  /* celle più compatte */
+    font-size: 0.75rem;
+  }
+
+  /* Logo squadra più piccolo */
+  .table td.team-cell img.logo-squadra {
+    width: 40px;
+    height: 32px;
+  }
+
+  /* Nome squadra più compatto */
+  .table td.team-cell {
+    gap: 6px;
+  }
+  .table td.team-cell .team-name {
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 600px) {
+  #calendar-table {
+    width: 100%;         /* si adatta allo schermo */
+    max-width: 100%;     /* niente limite fisso */
+    font-size: 0.75rem;  /* testo più piccolo */
+  }
+
+  #calendar-table th,
+  #calendar-table td {
+    padding: 6px 4px;    /* celle più compatte */
+    font-size: 0.7rem;
+    white-space: nowrap; /* impedisce che il testo vada a capo troppo presto */
+  }
+
+  /* prima colonna (giornata) più stretta */
+  #calendar-table th:first-child,
+  #calendar-table td:first-child {
+    width: 50px;
+    font-size: 0.7rem;
+  }
+
+  /* loghi più piccoli */
+  .logo-squadra {
+    width: 32px;
+    height: 28px;
+    margin-right: 4px;
+  }
+}
