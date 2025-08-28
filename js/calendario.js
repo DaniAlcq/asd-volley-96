@@ -45,13 +45,17 @@ document.addEventListener("DOMContentLoaded", () => {
         filtered.forEach(m => {
           const tr = document.createElement("tr");
           tr.innerHTML = `
-            <td>${m.giornata || "-"}</td>
-            <td>${m.data}</td>
-            <td><img src="${m.logo}" alt="${m.avversario}" class="logo-cell"> ${m.avversario}</td>
-            <td>${m.luogo}</td>
-            <td>${m.ora || "-"}</td>
-            <td>${m.risultato || "-"}</td>
-          `;
+  <td>${m.giornata || "-"}</td>
+  <td>${m.data}</td>
+  <td class="avversario-cell">
+    <img src="${m.logo}" alt="${m.avversario}" class="logo-squadra">
+    <span>${m.avversario}</span>
+  </td>
+  <td>${m.luogo}</td>
+  <td>${m.ora || "-"}</td>
+  <td>${m.risultato || "-"}</td>
+`;
+
           tbody.appendChild(tr);
         });
       }
