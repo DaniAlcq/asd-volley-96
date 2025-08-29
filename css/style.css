@@ -1345,7 +1345,7 @@ main {
 
   #calendar-table th:nth-child(4), #calendar-table td:nth-child(4){ width:25%; align-items: center; }  /* Luogo */
     /* H */
-  #calendar-table th:nth-child(6), #calendar-table td:nth-child(6){ width:10%;  }  /* Risultato */
+   /* Risultato */
 
   /* Avversario: logo sopra, nome sotto */
   #calendar-table td.avversario-cell{
@@ -1361,4 +1361,15 @@ main {
     height: 38px;
     object-fit: contain;
   }
+}
+
+.luogo-cell {
+  text-align: center;
+}
+
+.icon-luogo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: inline-block;
 }
