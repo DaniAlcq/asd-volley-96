@@ -2,7 +2,7 @@ backend:
   name: github
   repo: DaniAlcq/asd-volley-96
   branch: main
-  base_url: https://volley96-cms-proxy.onrender.com   # <-- il TUO dominio del proxy
+  base_url: https://volley96-auth-proxy.onrender.com   # <-- il TUO dominio del proxy
   auth_endpoint: /auth
 
 
