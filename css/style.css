@@ -1256,12 +1256,7 @@ main {
   }
 
   /* **Luogo**: permetti il wrap per evitare overflow */
-  #calendar-table th:nth-child(4),
-  #calendar-table td:nth-child(4){
-    white-space: normal;       /* consenti a capo */
-    word-break: break-word;    /* spezza se serve */
-    text-align: left;          /* più leggibile su righe lunghe */
-  }
+ 
 
   /* Se vuoi tagliare su una riga sola invece di andare a capo:
   #calendar-table td:nth-child(4){
@@ -1336,18 +1331,20 @@ main {
 
   #calendar-table th,
   #calendar-table td{
-    padding: 6px 4px;
-    font-size: .7rem;
+    
+    font-size: .6rem;
     vertical-align: middle;
-    white-space: nowrap;
+    white-space: wrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
   /* Distribuzione più bilanciata */
-  #calendar-table th:nth-child(1), #calendar-table td:nth-child(1){ width:4%; }  /* G */
+  #calendar-table th:nth-child(1), #calendar-table td:nth-child(1){ width:7%; }  /* G */
   #calendar-table th:nth-child(2), #calendar-table td:nth-child(2){ width:22%; }  /* Data */
 
+  #calendar-table th:nth-child(4), #calendar-table td:nth-child(4){ width:25%; align-items: center; }  /* Luogo */
+    /* H */
   #calendar-table th:nth-child(6), #calendar-table td:nth-child(6){ width:10%;  }  /* Risultato */
 
   /* Avversario: logo sopra, nome sotto */
