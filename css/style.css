@@ -10,14 +10,14 @@
   --shadow: 0 4px 8px rgba(0,0,0,0.1);
 
   /* nuovo gradiente: dal nero/graphite al rosa */
-  --gradient: linear-gradient(135deg, #fc43a3 0%,#1a1a1a 30%, #1a1a1a 80%, #fc43a3 100%);
+  --gradient: linear-gradient(-135deg, #fc43a3 0%,#1a1a1a 20%, #1a1a1a 70%, #fc43a3 100%);
   --gradient-transparent: linear-gradient(
     135deg,
     rgba(18,18,18,0.85) 0%,
     rgba(26,26,26,0.85) 30%,
     #fc43a3 100%
   );
-  --gradientCarosell: linear-gradient(135deg, #fc43a3 0%,#1a1a1a 15%, #1a1a1a 85%, #fc43a3 100%);
+  --gradientCarosell: linear-gradient(-135deg, #fc43a3 0%,#1a1a1a 19%, #1a1a1a 80%, #fc43a3 100%);
   --gradientResult: linear-gradient(135deg, #fc43a3 0%, white 15%, white 85%, #fc43a3 100%);
 
 }
@@ -211,7 +211,7 @@ main{ padding-top: 90px; }
 .news-wrapper{
   position: relative;
   width: 100%;
-  margin: 0;
+  margin-top: -20px;
   padding: 0;
   overflow: hidden;
 }
@@ -866,7 +866,7 @@ body.loaded {
   background-color: var(--blue); /* solido per coprire il sotto */
   height: 70px;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 20px;
+  padding: 0px;
   box-shadow: 0 2px 6px rgba(0,0,0,.15);
 }
 
@@ -894,6 +894,7 @@ main {
             /* leggero effetto vetro */
   background: rgba(18,18,18,0.9); /* nero 90% */
   backdrop-filter: blur(6px);
+  
 }
 /* Instagram bianco sulla destra */
 .social-logo{
@@ -1224,7 +1225,7 @@ main {
 
 
 /* ===== Calendario: fix overflow mobile ===== */
-@media (max-width: 600px){
+@media (max-width: 400px){
   #calendar-table{
     width:100%;
     max-width:100%;
@@ -1322,4 +1323,52 @@ main {
   }
 
   
+}
+/* ---- Calendario: layout mobile super leggibile (≤ 430px) ---- */
+/* ===== Calendario: layout mobile forzato (≤ 430px) ===== */
+@@media (max-width: 430px){
+  #calendar-table{
+    table-layout: fixed;
+    width: 100%;
+    max-width: 100%;
+    font-size: .7rem;
+  }
+
+  #calendar-table th,
+  #calendar-table td{
+    padding: 6px 4px;
+    font-size: .7rem;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Distribuzione più bilanciata */
+  #calendar-table th:nth-child(1), #calendar-table td:nth-child(1){ width:12%; }  /* G */
+  #calendar-table th:nth-child(2), #calendar-table td:nth-child(2){ width:22%; }  /* Data */
+  #calendar-table th:nth-child(3), #calendar-table td:nth-child(3){
+    width:26%;               /* più spazio */
+    min-width: 80px;         /* non si schiaccia mai troppo */
+    white-space: normal;     /* consenti a capo */
+    text-align: center;
+  }
+  #calendar-table th:nth-child(4), #calendar-table td:nth-child(4){ width:28%; }  /* Luogo */
+  #calendar-table th:nth-child(5), #calendar-table td:nth-child(5){ width:7%;  }  /* H */
+  #calendar-table th:nth-child(6), #calendar-table td:nth-child(6){ width:5%;  }  /* Risultato */
+
+  /* Avversario: logo sopra, nome sotto */
+  #calendar-table td.avversario-cell{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    line-height: 1.1;
+  }
+  #calendar-table td.avversario-cell img.logo-squadra{
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+  }
 }
