@@ -2,7 +2,7 @@
     {
         "categoria": "Femminile",
         "giornata": "1ª",
-        "data": "2025-09-10 18:00",
+        "data": "2025-09-10 - 18:00",
         "avversario": "Nino Romano",
         "logo": "img/ninoromano.jpeg",
         "luogo": "img/house.png",
@@ -11,7 +11,7 @@
       {
         "categoria": "Femminile",
         "giornata": "2ª",
-        "data": "2025-09-10 18:00",
+        "data": "2025-09-10 - 18:00",
         "avversario": "Nino Romano",
         "logo": "img/ninoromano.jpeg",
         "luogo": "img/bus.png",
@@ -20,7 +20,7 @@
       {
         "categoria": "Femminile",
         "giornata": "3ª",
-        "data": "2025-09-10 19:00",
+        "data": "2025-09-10 - 19:00",
         "avversario": "Play Volley",
         "logo": "img/barcellonavolley.jpeg",
         "luogo": "img/house.png",
