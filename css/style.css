@@ -1326,7 +1326,7 @@ main {
 }
 /* ---- Calendario: layout mobile super leggibile (≤ 430px) ---- */
 /* ===== Calendario: layout mobile forzato (≤ 430px) ===== */
-@@media (max-width: 430px){
+@media (max-width: 430px){
   #calendar-table{
     table-layout: fixed;
     width: 100%;
