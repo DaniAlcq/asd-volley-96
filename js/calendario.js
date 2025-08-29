@@ -55,10 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
             <img src="${m.luogo}" alt="Luogo" class="icon-luogo">
           </td>
           <td>${m.risultato || "-"}</td>
-        `;
-        
-
-          tbody.appendChild(tr);
+        `;  
+        tbody.appendChild(tr);
         });
       }
       

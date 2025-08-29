@@ -25,5 +25,23 @@
         "logo": "img/barcellonavolley.jpeg",
         "luogo": "img/house.png",
         "risultato": ""
+      },
+      {
+        "categoria": "Maschile",
+        "giornata": "1ª",
+        "data": "2025-09-10 - 18:00",
+        "avversario": "Nino Romano",
+        "logo": "img/ninoromano.jpeg",
+        "luogo": "img/house.png",
+        "risultato": ""
+      },  
+      {
+        "categoria": "Maschile",
+        "giornata": "2ª",
+        "data": "2025-09-10 - 18:00",
+        "avversario": "Nino Romano",
+        "logo": "img/ninoromano.jpeg",
+        "luogo": "img/house.png",
+        "risultato": ""
       }
 ]
