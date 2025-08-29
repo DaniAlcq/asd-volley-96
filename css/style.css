@@ -1373,3 +1373,7 @@ main {
   object-fit: contain;
   display: inline-block;
 }
+
+.icon-luogo {
+  filter: invert(30%) sepia(100%) saturate(700%) hue-rotate(290deg);
+}
