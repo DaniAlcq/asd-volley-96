@@ -1345,17 +1345,17 @@ main {
   }
 
   /* Distribuzione più bilanciata */
-  #calendar-table th:nth-child(1), #calendar-table td:nth-child(1){ width:12%; }  /* G */
+  #calendar-table th:nth-child(1), #calendar-table td:nth-child(1){ width:4%; }  /* G */
   #calendar-table th:nth-child(2), #calendar-table td:nth-child(2){ width:22%; }  /* Data */
   #calendar-table th:nth-child(3), #calendar-table td:nth-child(3){
-    width:26%;               /* più spazio */
+    width:30%;               /* più spazio */
     min-width: 80px;         /* non si schiaccia mai troppo */
     white-space: normal;     /* consenti a capo */
     text-align: center;
   }
-  #calendar-table th:nth-child(4), #calendar-table td:nth-child(4){ width:28%; }  /* Luogo */
-  #calendar-table th:nth-child(5), #calendar-table td:nth-child(5){ width:7%;  }  /* H */
-  #calendar-table th:nth-child(6), #calendar-table td:nth-child(6){ width:5%;  }  /* Risultato */
+  #calendar-table th:nth-child(4), #calendar-table td:nth-child(4){ width:35%; }  /* Luogo */
+  #calendar-table th:nth-child(5), #calendar-table td:nth-child(5){ width:5%;  }  /* H */
+  #calendar-table th:nth-child(6), #calendar-table td:nth-child(6){ width:4%;  }  /* Risultato */
 
   /* Avversario: logo sopra, nome sotto */
   #calendar-table td.avversario-cell{
@@ -1367,8 +1367,8 @@ main {
     line-height: 1.1;
   }
   #calendar-table td.avversario-cell img.logo-squadra{
-    width: 28px;
-    height: 28px;
+    width: 38px;
+    height: 38px;
     object-fit: contain;
   }
 }
