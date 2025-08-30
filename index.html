@@ -94,14 +94,14 @@
       <div class="teams-grid">
         <a href="squadre.html?cat=Femminile" data-url="squadre.html?cat=Femminile">
           <div class="team-card">
-            <img src="img/femminile.jpg" alt="Squadra 1">
+            <img src="img/squadra_femminile/femminile.jpg" alt="Squadra 1">
             <h3>Serie C femminile</h3>
           </div>
         </a>
        
         <a href="squadre.html?cat=Maschile" data-url="squadre.html?cat=Maschile">
           <div class="team-card">
-            <img src="img/maschile.jpg" alt="Squadra 2">
+            <img src="img/squadra_maschile/maschile.jpg" alt="Squadra 2">
             <h3>Serie C maschile</h3>
           </div>
         </a>
@@ -323,11 +323,16 @@
             const card = document.createElement("div");
             card.className = "mvp-card";
             card.innerHTML = `
-              <img src="${fixImg(player.immagine)}" alt="${tidy(player.nome)}">
-              <h3>${tidy(player.nome)}</h3>
-              <p>${tidy(player.categoria)}</p>
-              ${player.prestazione ? `<p>${tidy(player.prestazione)}</p>` : ""}
-            `;
+  <img src="${fixImg(player.immagine)}" alt="${tidy(player.nome)}">
+  <h3>${tidy(player.nome)}</h3>
+  <p>${tidy(player.categoria)}</p>
+  ${player.prestazione ? `
+    <p>
+      <strong>Prestazione 🏐</strong><br>
+      ${tidy(player.prestazione)}
+    </p>` : ""}
+`;
+
             container.appendChild(card);
           });
         } catch (e) {
