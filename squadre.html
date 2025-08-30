@@ -52,7 +52,141 @@
       if (y) y.textContent = new Date().getFullYear();
     });
   </script>
-  <script src="js/squadre.js" defer></script>
+  
   <script src="js/menu.js" defer></script>
+  <script>
+    // ======= Google Sheets via Opensheet: config + helper =======
+    const SHEET_ID = "1ucM1JY5MXHF7-9mpjp2mfB41TvoA1ziMUGGz86woQXA"; // <-- mette l'ID del tuo Google Sheet
+    const GS = (tab) => `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(tab)}`;
+    
+    async function fetchSheet(tab) {
+      const url = GS(tab);
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error(`Fetch fallito: ${tab} (${res.status})`);
+      return res.json(); // array di righe, chiavi = intestazioni del foglio
+    }
+    
+    // Utility: normalizza stringhe/immagini
+    const tidy  = (s) => (typeof s === "string" ? s.trim() : s);
+    const fixImg = (s) => tidy(s);
+    
+    // ======================== App ========================
+    document.addEventListener("DOMContentLoaded", () => {
+      /* ========= Riferimenti DOM (con fallback) ========= */
+      const btnFemminile = document.getElementById("btn-femminile");
+      const btnMaschile  = document.getElementById("btn-maschile");
+      const teamList     = document.getElementById("giocatori-list");
+      const buttons      = [btnFemminile, btnMaschile].filter(Boolean);
+    
+      let playersData = {
+        femminile: [],
+        maschile:  [],
+        staff:     []
+      };
+    
+      /* ========= UI: Active state sui bottoni ========= */
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          buttons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+        });
+      });
+    
+      /* ========= Render cards ========= */
+      function cardHTML(player) {
+        const hasNumero = player.numero !== undefined && player.numero !== null && String(player.numero).trim() !== "";
+        return `
+          <div class="team-cardList">
+            <img src="${fixImg(player.immagine)}" alt="${tidy(player.nome) || ""}">
+            <div class="team-info">
+              <h3>${tidy(player.nome) || ""}</h3>
+              ${hasNumero ? `<p>Numero: ${tidy(player.numero)}</p>` : ""}
+              <p>Ruolo: ${tidy(player.ruolo) || ""}</p>
+            </div>
+          </div>
+        `;
+      }
+    
+      function displayPlayers(categoria) {
+        if (!teamList) return;
+        teamList.innerHTML = "";
+    
+        const list  = playersData[categoria] || [];
+        const staff = playersData.staff || [];
+    
+        // Mostra giocatori della categoria + staff
+        [...list, ...staff].forEach((p) => {
+          teamList.insertAdjacentHTML("beforeend", cardHTML(p));
+        });
+      }
+    
+      /* ========= Caricamento dati da Google Sheets =========
+         Tab atteso: "Squadre"
+         Colonne: nome | numero | ruolo | categoria | immagine
+      ====================================================== */
+      async function loadData() {
+        try {
+          const rows = await fetchSheet("Squadre");
+          // ripulisci e smista per categoria
+          const femminile = [];
+          const maschile  = [];
+          const staff     = [];
+    
+          rows.forEach(r => {
+            const player = {
+              nome: tidy(r.nome),
+              numero: tidy(r.numero),
+              ruolo: tidy(r.ruolo),
+              categoria: tidy(r.categoria),
+              immagine: fixImg(r.immagine)
+            };
+    
+            const cat = (player.categoria || "").toLowerCase();
+            if (cat === "femminile") femminile.push(player);
+            else if (cat === "maschile") maschile.push(player);
+            else if (cat === "staff") staff.push(player);
+          });
+    
+          playersData = { femminile, maschile, staff };
+    
+          // Selettore categoria da URL ?cat=Femminile|Maschile
+          const urlParams = new URLSearchParams(window.location.search);
+          const rawCat = urlParams.get("cat");
+          const catFromUrl = rawCat ? rawCat.toLowerCase() : null;
+    
+          let categoria = "femminile";
+          if (catFromUrl === "femminile" || catFromUrl === "maschile") {
+            categoria = catFromUrl;
+          }
+    
+          // Aggiorna stato pulsanti (se esistono)
+          buttons.forEach((b) => b.classList.remove("active"));
+          if (categoria === "femminile" && btnFemminile) btnFemminile.classList.add("active");
+          if (categoria === "maschile"  && btnMaschile)  btnMaschile.classList.add("active");
+    
+          displayPlayers(categoria);
+        } catch (error) {
+          console.error("Errore nel caricamento dati squadra (Sheets):", error);
+          if (teamList) teamList.innerHTML = `<p>Impossibile caricare i dati.</p>`;
+        }
+      }
+    
+      // Click handler per i bottoni (se presenti)
+      if (btnFemminile) btnFemminile.addEventListener("click", () => displayPlayers("femminile"));
+      if (btnMaschile)  btnMaschile.addEventListener("click",  () => displayPlayers("maschile"));
+    
+      loadData();
+    
+      /* ========= Evidenzia link di menu attivo ========= */
+      const navLinks = document.querySelectorAll("nav a");
+      const currentPage = window.location.pathname.split("/").pop() || "index.html";
+      navLinks.forEach((link) => {
+        const linkPage = link.getAttribute("href");
+        if (linkPage === currentPage) link.classList.add("active");
+        else link.classList.remove("active");
+      });
+    });
+    </script>
+    
 </body>
 </html>

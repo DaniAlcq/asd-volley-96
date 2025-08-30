@@ -68,9 +68,108 @@
     });
   </script>
 
-  <script src="js/calendario.js" defer></script>
+  
 
   <script src="js/menu.js" defer></script>
+  <script>
+    // ======= Google Sheets via Opensheet =======
+    const SHEET_ID = "1ucM1JY5MXHF7-9mpjp2mfB41TvoA1ziMUGGz86woQXA"; // <-- sostituisci con l'ID del tuo foglio
+    const GS = (tab) => `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(tab)}`;
+  
+    async function fetchSheet(tab) {
+      const res = await fetch(GS(tab), { cache: "no-store" });
+      if (!res.ok) throw new Error(`Fetch fallito: ${tab} (${res.status})`);
+      return res.json();
+    }
+  
+    // Utils
+    const tidy = (s) => (typeof s === "string" ? s.trim() : s);
+    const num = (s) => {
+      const n = parseInt(String(s || "").replace(/\D/g, ""), 10);
+      return Number.isFinite(n) ? n : null;
+    };
+  
+    document.addEventListener("DOMContentLoaded", () => {
+      const btnFem = document.getElementById("btn-femminile");
+      const btnMas = document.getElementById("btn-maschile");
+      const tbody  = document.getElementById("calendar-body");
+  
+      const TABS = {
+        femminile: "Calendario Femminile",
+        maschile:  "Calendario Maschile",
+      };
+  
+      function rowHTML(r) {
+        const giornata   = tidy(r.giornata) ?? "-";
+        const data       = tidy(r.data) ?? "-";
+        const avversario = tidy(r.avversario) ?? "";
+        const logo       = tidy(r.logo) || "";
+        const luogo      = tidy(r.luogo) || "";   // immagine (casa/bus)
+        const risultato  = tidy(r.risultato) ?? "-";
+  
+        return `
+          <tr>
+            <td>${giornata || "-"}</td>
+            <td>${data || "-"}</td>
+            <td class="avversario-cell">
+              ${logo ? `<img src="${logo}" alt="${avversario}" class="logo-squadra">` : ""}
+              <span>${avversario}</span>
+            </td>
+            <td class="luogo-cell">
+              ${luogo ? `<img src="${luogo}" alt="C/T" class="icon-luogo" />` : ""}
+            </td>
+            <td>${risultato || "-"}</td>
+          </tr>
+        `;
+      }
+  
+      function render(rows) {
+        if (!tbody) return;
+        tbody.innerHTML = rows.map(rowHTML).join("");
+      }
+  
+      async function loadCalendar(tabName, activeBtn) {
+        try {
+          const rowsRaw = await fetchSheet(tabName);
+          const rows = rowsRaw
+            .filter(r => r && (r.giornata || r.data || r.avversario || r.logo || r.luogo || r.risultato))
+            .sort((a, b) => {
+              const ga = num(a.giornata);
+              const gb = num(b.giornata);
+              if (ga === null && gb === null) return 0;
+              if (ga === null) return 1;
+              if (gb === null) return -1;
+              return ga - gb;
+            });
+  
+          render(rows);
+  
+          [btnFem, btnMas].filter(Boolean).forEach(b => b.classList.remove("active"));
+          if (activeBtn) activeBtn.classList.add("active");
+        } catch (e) {
+          console.error("Errore calendario:", e);
+          if (tbody) tbody.innerHTML = `<tr><td colspan="5">Impossibile caricare il calendario.</td></tr>`;
+        }
+      }
+  
+      // Click handler
+      if (btnFem) btnFem.addEventListener("click", () => loadCalendar(TABS.femminile, btnFem));
+      if (btnMas) btnMas.addEventListener("click", () => loadCalendar(TABS.maschile,  btnMas));
+  
+      // Iniziale (supporta ?cat=Femminile|Maschile)
+      (function init() {
+        const params = new URLSearchParams(location.search);
+        const cat = (params.get("cat") || "Femminile").toLowerCase();
+        if (cat === "maschile" && btnMas) {
+          loadCalendar(TABS.maschile, btnMas);
+        } else if (btnFem) {
+          loadCalendar(TABS.femminile, btnFem);
+        }
+      })();
+    });
+  </script>
+  
+  
 
 </body>
 </html>
