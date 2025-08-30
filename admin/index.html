@@ -1,14 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ASD Volley 96 — Admin</title>
-  <script>window.CMS_MANUAL_INIT = true;</script>
-</head>
-<body>
-  <div id="nc-root"></div>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  <script>CMS.init();</script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ASD Volley 96 — Admin</title>
+    <!-- evita l’auto-init prima che il DOM sia pronto -->
+    <script>window.CMS_MANUAL_INIT = true;</script>
+  </head>
+  <body>
+    <div id="nc-root"></div>
+
+    <!-- Bundle ufficiale -->
+    <script src="https://unpkg.com/decap-cms-app@^3.0.0/dist/decap-cms-app.js"></script>
+
+    <!-- Inizializzazione quando tutto è carico -->
+    <script>
+      window.addEventListener('load', () => {
+        window.CMS.init(); // carica automaticamente admin/config.yml
+      });
+    </script>
+  </body>
 </html>
