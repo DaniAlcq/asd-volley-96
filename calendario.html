@@ -97,28 +97,30 @@
       };
 
       function rowHTML(r) {
-  const giornata   = (r.giornata ?? "").toString().trim() || "-";
-  const data       = (r.data ?? "").toString().trim() || "-";
-  const avversario = (r.avversario ?? "").toString().trim();
-  const logo       = (r.logo ?? "").toString().trim();
-  const luogo      = (r.luogo ?? "").toString().trim();   // icona casa/trasferta
-  const risultato  = (r.risultato ?? "").toString().trim() || "-";
+  const giornata   = tidy(r.giornata) ?? "-";
+  const data       = tidy(r.data) ?? "-";
+  const orario     = tidy(r.orario) ?? "";   // <-- colonna aggiuntiva nello sheet
+  const avversario = tidy(r.avversario) ?? "";
+  const logo       = tidy(r.logo) || "";
+  const luogo      = tidy(r.luogo) || "";
+  const risultato  = tidy(r.risultato) ?? "-";
 
   return `
     <tr>
       <td>${giornata}</td>
-      <td>${data}</td>
+      <td class="data-cell">${data}${orario ? "\nore " + orario : ""}</td>
       <td class="avversario-cell">
         ${logo ? `<img src="${logo}" alt="${avversario}" class="logo-squadra">` : ""}
-        <span class="team-name">${avversario}</span>
+        <span>${avversario}</span>
       </td>
       <td class="luogo-cell">
-        ${luogo ? `<img src="${luogo}" alt="C/T" class="icon-luogo">` : ""}
+        ${luogo ? `<img src="${luogo}" alt="C/T" class="icon-luogo" />` : ""}
       </td>
       <td>${risultato}</td>
     </tr>
   `;
 }
+
 
 
       function render(rows) {

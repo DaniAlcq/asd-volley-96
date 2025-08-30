@@ -1487,10 +1487,10 @@ main {
 }
 
 /* mobile: mantieni leggibile ma compatto */
-@media (max-width: 600px){
+@media (max-width: 430px){
   .table { table-layout: fixed; }
   .table td.team-cell .logo-squadra { width: 42px; height: 42px; }
-  .table td.team-cell .team-name { font-size: .8rem; }
+  .table td.team-cell .team-name { font-size: .5rem; }
 }
 
 /* ===== FIX CALENDARIO: header bianco, data più grande ma colonna stretta ===== */
@@ -1515,7 +1515,7 @@ main {
 
 /* Mobile: compattiamo ulteriormente */
 @media (max-width: 430px){
-  #calendar-table { table-layout: fixed; font-size: .7rem; }
+  #calendar-table { table-layout: fixed; font-size: .5rem; }
   #calendar-table th, #calendar-table td { padding: 6px 4px; }
   #calendar-table th:nth-child(1), #calendar-table td:nth-child(1){ width: 48px; }
   #calendar-table th:nth-child(2), #calendar-table td:nth-child(2){ width: 96px; }
@@ -1529,4 +1529,31 @@ main {
 .buttons-filter .filter-btn{
   font-weight: 500;               /* non bold */
   text-transform: capitalize;     /* solo iniziale maiuscola */
+}
+
+
+
+
+
+/* Avversario: logo sopra, nome sotto e centrato */
+#calendar-table td.avversario-cell {
+  display: flex;
+  flex-direction: column;  /* verticale */
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+}
+#calendar-table td.avversario-cell img.logo-squadra {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+}
+
+/* Data e orario su due righe */
+#calendar-table td.data-cell {
+  white-space: pre-line;   /* rispetta \n nel testo */
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
 }
