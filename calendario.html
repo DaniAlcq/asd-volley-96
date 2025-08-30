@@ -110,9 +110,12 @@
       <td>${giornata}</td>
       <td class="data-cell">${data}${orario ? "\nore " + orario : ""}</td>
       <td class="avversario-cell">
-        ${logo ? `<img src="${logo}" alt="${avversario}" class="logo-squadra">` : ""}
-        <span>${avversario}</span>
-      </td>
+  <div class="avv-wrap">
+    ${logo ? `<img src="${logo}" alt="${avversario}" class="logo-squadra">` : ""}
+    <span>${avversario}</span>
+  </div>
+</td>
+
       <td class="luogo-cell">
         ${luogo ? `<img src="${luogo}" alt="C/T" class="icon-luogo" />` : ""}
       </td>

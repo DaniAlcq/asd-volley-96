@@ -1490,7 +1490,7 @@ main {
 @media (max-width: 430px){
   .table { table-layout: fixed; }
   .table td.team-cell .logo-squadra { width: 42px; height: 42px; }
-  .table td.team-cell .team-name { font-size: .5rem; }
+  .table td.team-cell .team-name { font-size: px; }
 }
 
 /* ===== FIX CALENDARIO: header bianco, data più grande ma colonna stretta ===== */
@@ -1556,4 +1556,532 @@ main {
   font-size: 1rem;
   font-weight: 600;
   text-align: center;
+}
+
+
+
+
+
+
+
+/* ===========================
+   MOBILE OVERRIDES (≤ 600px)
+   — Classifica + Calendario
+   — numeri/icone stretti, testo/logo largo
+=========================== */
+@media (max-width: 600px){
+
+  /* ---------- CLASSIFICA ---------- */
+  .table{
+    width: 100% !important;
+    table-layout: fixed !important;      /* distribuzione stabile su schermi piccoli */
+    font-size: .7rem !important;
+  }
+  .table thead th,
+  .table td{
+    padding: 6px 4px !important;
+  }
+
+  /* colonne numeriche strette (#, P, PG, V, S) */
+  .table thead th:nth-child(1),
+  .table td:nth-child(1){ width: 10% !important; max-width: 10% !important; }
+  .table thead th:nth-child(3),
+  .table td:nth-child(3),
+  .table thead th:nth-child(4),
+  .table td:nth-child(4),
+  .table thead th:nth-child(5),
+  .table td:nth-child(5),
+  .table thead th:nth-child(6),
+  .table td:nth-child(6){ width: 12% !important; max-width: 12% !important; }
+
+  /* SQUADRA prende lo spazio rimanente */
+  .table thead th:nth-child(2),
+  .table td:nth-child(2){ width: auto !important; }
+
+  /* cella squadra: logo piccolo + testo che va a capo */
+  .table td.squadra-cell{
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    white-space: normal !important;
+  }
+  .table td.squadra-cell .logo-squadra{
+    width: 38px !important;
+    height: 38px !important;
+    flex-shrink: 0 !important;
+    object-fit: contain !important;
+  }
+  .table td.squadra-cell .team-name{
+    font-size: .6rem !important;
+    line-height: 1.15 !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+
+  /* ---------- CALENDARIO ---------- */
+  #calendar-table{
+    width: 100% !important;
+    table-layout: fixed !important;
+    font-size: .7rem !important;
+  }
+  #calendar-table th,
+  #calendar-table td{
+    padding: 6px 4px !important;
+  }
+
+  /* G, DATA, C/T, RIS. stretti — AVV largo */
+  #calendar-table th:nth-child(1),
+  #calendar-table td:nth-child(1){  /* G */
+    width: 10% !important; max-width: 10% !important; white-space: nowrap !important;
+  }
+  #calendar-table th:nth-child(2),
+  #calendar-table td:nth-child(2){  /* DATA */
+    width: 26% !important; max-width: 26% !important;
+    font-size: .7rem !important;
+    line-height: 1 !important;
+    white-space: normal !important;     /* consente andare a capo tra data e ora */
+  }
+  #calendar-table th:nth-child(4),
+  #calendar-table td:nth-child(4){  /* C/T */
+    width: 8% !important; max-width: 8% !important; text-align: center !important;
+  }
+  #calendar-table th:nth-child(5),
+  #calendar-table td:nth-child(5){  /* RIS. */
+    width: 12% !important; max-width: 12% !important; text-align: center !important;
+  }
+  /* AVV (3) prende lo spazio rimanente */
+  #calendar-table th:nth-child(3),
+  #calendar-table td:nth-child(3){ width: 100px !important; }
+
+  /* AVV: logo sopra, nome sotto, niente spazio extra verso C/T */
+  #calendar-table td.avversario-cell{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    text-align: center !important;
+    padding-right: 4px !important;      /* chiude lo “spazietto” prima di C/T */
+  }
+  #calendar-table td.avversario-cell img.logo-squadra{
+    width: 70px !important;
+    height: 36px !important;
+    object-fit: contain !important;
+    margin: 0 !important;
+  }
+  #calendar-table td.luogo-cell{        /* C/T */
+    padding-left: 4px !important;
+  }
+  #calendar-table td.luogo-cell .icon-luogo{
+    width: 18px !important; height: 18px !important;
+  }
+}
+
+/* Extra compatto per schermi molto piccoli (≤ 430px) */
+@media (max-width: 430px){
+  .table td.squadra-cell .team-name{ font-size: .72rem !important; }
+  #calendar-table td:nth-child(2){ font-size: .85rem !important; }
+}
+
+
+
+
+
+/* ===== Calendario: layout mobile corretto (≤ 600px) ===== */
+@media (max-width: 600px){
+  #calendar-table{
+    width: 100% !important;
+    table-layout: fixed !important;     /* rispetta le % sotto */
+    font-size: .8rem !important;
+  }
+  #calendar-table th,
+  #calendar-table td{
+    padding: 8px 6px !important;
+  }
+
+  /* Distribuzione colonne (G / DATA / AVV / C/T / RIS.) */
+  #calendar-table th:nth-child(1),
+  #calendar-table td:nth-child(1){      /* G */
+    width: 10% !important; max-width: 10% !important;
+    white-space: nowrap !important;
+  }
+  #calendar-table th:nth-child(2),
+  #calendar-table td:nth-child(2){      /* DATA */
+    width: 28% !important; max-width: 28% !important;
+    font-size: .9rem !important;
+    line-height: 1.2 !important;
+    white-space: normal !important;     /* consenti “data\nore” */
+  }
+  #calendar-table th:nth-child(3),
+  #calendar-table td:nth-child(3){
+    width: auto !important;
+    min-width: 40% !important;
+  }
+  
+  #calendar-table th:nth-child(4),
+  #calendar-table td:nth-child(4){      /* C/T */
+    width: 10% !important; max-width: 10% !important;
+    text-align: center !important;
+  }
+  #calendar-table th:nth-child(5),
+  #calendar-table td:nth-child(5){      /* RIS. */
+    width: 10% !important; max-width: 10% !important;
+    text-align: center !important;
+  }
+
+  /* AVV: logo sopra, nome sotto, niente spazio extra verso C/T */
+  #calendar-table td.avversario-cell{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    text-align: center !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;        /* elimina “fuga” di spazio */
+  }
+  #calendar-table td.avversario-cell img.logo-squadra{
+    width: 44px !important;
+    height: 44px !important;
+    object-fit: contain !important;
+    margin: 0 !important;
+  }
+
+  /* C/T icona compatta */
+  #calendar-table td.luogo-cell .icon-luogo{
+    width: 18px !important;
+    height: 18px !important;
+  }
+}
+
+/* extra-compatto per telefoni piccoli (≤ 430px) */
+@media (max-width: 430px){
+  #calendar-table td:nth-child(2){ font-size: .85rem !important; }
+  #calendar-table td.avversario-cell img.logo-squadra{ width: 38px !important; height: 38px !important; }
+}
+
+
+/* ===== Calendario: layout smartphone (≤600px) ===== */
+@media (max-width: 600px){
+  #calendar-table{
+    width: 100%;
+    max-width: 100%;
+    table-layout: auto !important;   /* lascia che le colonne si allarghino */
+    font-size: .8rem;
+  }
+
+  #calendar-table th,
+  #calendar-table td{
+    box-sizing: border-box;
+    padding: 6px 6px;
+    vertical-align: middle;
+  }
+
+  /* G (stretta) */
+  #calendar-table th:nth-child(1),
+  #calendar-table td:nth-child(1){
+    width: 10% !important;
+    min-width: 40px;
+    text-align: center;
+  }
+
+  /* DATA (più grande ma compatta su una riga) */
+  #calendar-table th:nth-child(2),
+  #calendar-table td:nth-child(2){
+    width: 25% !important;
+    min-width: 80px;
+    white-space: nowrap !important;
+    font-size: .9rem;
+    text-align: left;
+  }
+
+  /* AVV (prende quasi tutto lo spazio) */
+  #calendar-table th:nth-child(3),
+  #calendar-table td:nth-child(3){
+    width: 10% !important;          /* quota principale */
+    max-width: 9999px !important;   /* niente “tetto” */
+  }
+
+  /* C/T (strettissima) */
+  #calendar-table th:nth-child(4),
+  #calendar-table td:nth-child(4){
+    width: 6% !important;
+    min-width: 32px;
+    text-align: center;
+  }
+
+  /* RIS. (strettissima) */
+  #calendar-table th:nth-child(5),
+  #calendar-table td:nth-child(5){
+    width: 4% !important;
+    min-width: 28px;
+    text-align: center;
+  }
+
+  /* AVV: logo sopra, nome sotto, niente padding che ruba spazio */
+  #calendar-table td.avversario-cell{
+    
+   
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    text-align: center !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    white-space: normal !important;     /* consenti a capo del nome */
+    overflow: visible !important;
+  }
+  #calendar-table td.avversario-cell img.logo-squadra{
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+  }
+}
+
+
+
+
+
+/* ===== Calendario: layout smartphone (<= 600px) ===== */
+@media (max-width: 600px){
+
+  /* Lascia che le colonne rispettino le larghezze che forziamo */
+  #calendar-table{
+    width:100%;
+    max-width:100%;
+    table-layout: fixed !important;
+    font-size: .85rem;
+  }
+
+  #calendar-table th,
+  #calendar-table td{
+    padding: 8px 6px;
+    vertical-align: middle;
+    box-sizing: border-box;
+  }
+
+  /* LARGHEZZE COLONNE (somma ~100%) */
+  /* G */
+  #calendar-table th:nth-child(1),
+  #calendar-table td:nth-child(1){
+    width: 10% !important;
+    min-width: 44px;
+    text-align: center;
+  }
+
+  /* DATA (compatta ma leggibile) */
+  #calendar-table th:nth-child(2),
+  #calendar-table td:nth-child(2){
+    width: 32% !important;
+    min-width: 110px;
+    white-space: nowrap !important;   /* tutto su una riga */
+    font-weight: 700;
+    font-size: .95rem;
+    text-align: left;
+  }
+  /* “Data \n ore HH:MM” – rispetta l’andata a capo se usi \n */
+  #calendar-table td.data-cell{
+    white-space: pre-line !important;
+  }
+
+  /* AVV (logo sopra, nome sotto) → prende la fetta più grande */
+  #calendar-table th:nth-child(3),
+  #calendar-table td:nth-child(3){
+    width: 38% !important;            /* colonna ampia */
+  }
+  #calendar-table td.avversario-cell{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    text-align: center !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;      /* niente spazio perso ai lati */
+    white-space: normal !important;    /* il nome può andare a capo */
+  }
+  #calendar-table td.avversario-cell img.logo-squadra{
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  /* C/T (strettissima) */
+  #calendar-table th:nth-child(4),
+  #calendar-table td:nth-child(4){
+    width: 12% !important;
+    min-width: 38px;
+    text-align: center;
+  }
+  .icon-luogo{ width: 22px; height: 22px; }
+
+  /* RIS. (strettissima) */
+  #calendar-table th:nth-child(5),
+  #calendar-table td:nth-child(5){
+    width: 8% !important;
+    min-width: 28px;
+    text-align: center;
+  }
+
+  /* Header “G” in bianco (come chiedi) */
+  #calendar-table thead th:first-child{ color:#fff !important; }
+}
+
+
+
+
+
+
+
+/* ===== Calendario: controllo colonne via COLGROUP (≤ 600px) ===== */
+@media (max-width: 600px){
+
+  /* 0) neutralizza qualunque width precedente sui th/td */
+  #calendar-table th,
+  #calendar-table td { width: auto !important; }
+
+  /* 1) usa il colgroup per le larghezze */
+  #calendar-table{
+    width: 100% !important;
+    table-layout: fixed !important;          /* rispetta i <col> */
+    font-size: .82rem;
+  }
+
+  /* G / DATA / AVV / C-T / RIS (somma ≈100) */
+  #calendar-table col[data-col="g"]    { width: 10% !important; }
+  #calendar-table col[data-col="data"] { width: 28% !important; }
+  #calendar-table col[data-col="avv"]  { width: 44% !important; }  /* AVV grande */
+  #calendar-table col[data-col="ct"]   { width: 9%  !important; }
+  #calendar-table col[data-col="ris"]  { width: 9%  !important; }
+
+  /* celle più compatte */
+  #calendar-table th,
+  #calendar-table td { padding: 8px 6px; vertical-align: middle; }
+
+  /* DATA su due righe se nel JS metti \n prima di "ore" */
+  #calendar-table td.data-cell{
+    white-space: pre-line !important;
+    font-weight: 700;
+  }
+
+  /* AVV: logo sopra, nome sotto; niente “spazietto” verso C/T */
+  #calendar-table td.avversario-cell{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    text-align: center !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    white-space: normal !important;          /* consentire a capo del nome */
+  }
+  #calendar-table td.avversario-cell img.logo-squadra{
+    width: 40px; height: 40px; object-fit: contain;
+    margin: 0 !important;
+  }
+
+  /* C/T icona compatta */
+  #calendar-table td.luogo-cell .icon-luogo{ width: 18px; height: 18px; }
+
+  /* Header "G" in bianco (come richiesto) */
+  #calendar-table thead th:first-child{ color:#fff !important; }
+}
+
+
+
+
+/* --- Calendario: AVV occupa tutta la colonna --- */
+#calendar-table td.avversario-cell{
+  display: table-cell !important;   /* torna cella vera */
+  vertical-align: middle;
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* impila logo sopra e nome sotto senza flex sul <td> */
+#calendar-table td.avversario-cell img.logo-squadra{
+  display: block;
+  margin: 0 auto 6px;     /* centrato e con spazio sotto */
+  width: 40px;            /* regola misura mobile qui */
+  height: 40px;
+  object-fit: contain;
+}
+#calendar-table td.avversario-cell span{
+  display: block;         /* va a capo sotto al logo */
+  white-space: normal;    /* consenti il wrap del nome */
+}
+
+/* Mobile: distribuzione colonne semplice e stabile */
+@media (max-width:600px){
+  #calendar-table{ table-layout: fixed; }
+  #calendar-table th, #calendar-table td{ padding:8px 6px; }
+
+  /* G / DATA / AVV / C/T / RIS  (somma ≈ 100%) */
+  #calendar-table th:nth-child(1), #calendar-table td:nth-child(1){ width:10%; }
+  #calendar-table th:nth-child(2), #calendar-table td:nth-child(2){ width:28%; white-space:pre-line; font-weight:700; }
+  #calendar-table th:nth-child(3), #calendar-table td:nth-child(3){ width:44%; } /* AVV largo */
+  #calendar-table th:nth-child(4), #calendar-table td:nth-child(4){ width:9%;  text-align:center; }
+  #calendar-table th:nth-child(5), #calendar-table td:nth-child(5){ width:9%;  text-align:center; }
+}
+
+
+
+/* --- AVV: logo centrato e nome sotto --- */
+#calendar-table td.avversario-cell {
+  padding: 4px;
+  text-align: center;
+}
+#calendar-table td.avversario-cell .avv-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+}
+#calendar-table td.avversario-cell img.logo-squadra {
+  width: 65px;
+  height: 50px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+#calendar-table td.avversario-cell span {
+  display: block;
+   /* più piccolo per i nomi lunghi */
+  line-height: 1.2;
+  white-space: normal;
+}
+
+/* --- DATA: font più piccolo e centrato --- */
+#calendar-table td.data-cell {
+  white-space: pre-line;   /* consente "data\nora" */
+  font-size: 0.85rem;      /* più piccolo */
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Extra-compatto per smartphone molto piccoli */
+@media (max-width: 430px){
+  #calendar-table td.data-cell {
+    font-size: 0.75rem;   /* ancora più piccolo */
+  }
+  #calendar-table td.avversario-cell img.logo-squadra {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+
+.table td.squadra-cell span {
+  white-space: normal;       /* consente a capo solo su spazi */
+  word-break: keep-all;      /* evita spezzare parole a metà */
+  line-height: 1.2;
+}
+ /* Colonna squadra: spazio minimo */
+.table th:nth-child(2),
+.table td:nth-child(2) {
+  min-width: 160px;   /* aumenta se serve */
 }
