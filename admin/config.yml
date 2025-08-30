@@ -3,7 +3,7 @@ backend:
   repo: DaniAlcq/asd-volley-96
   branch: main
   base_url: https://volley96-auth-proxy.onrender.com   # <-- il TUO dominio del proxy
-  auth_endpoint: /auth
+  auth_endpoint: /auth/github
 
 
 media_folder: "img/uploads"
