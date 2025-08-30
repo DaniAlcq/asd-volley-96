@@ -1,11 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
   <head>
-    <meta charset="utf-8" />
-    <title>CMS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ASD Volley 96 — Admin</title>
+
+    <!-- Dì a Decap di NON auto-inizializzarsi prima che il DOM sia pronto -->
+    <script>window.CMS_MANUAL_INIT = true;</script>
+  </head>
+  <body>
+    <!-- Nodo esplicito dove montare l’app del CMS -->
+    <div id="nc-root"></div>
+
     <!-- Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  </head>
-  <body></body>
+
+    <!-- Inizializzazione esplicita -->
+    <script>
+      // Se vuoi, qui puoi fare CMS.registerWidget(...) ecc.
+      CMS.init(); // userà automaticamente admin/config.yml
+    </script>
+  </body>
 </html>
