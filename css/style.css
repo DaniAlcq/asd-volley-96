@@ -1473,3 +1473,60 @@ main {
 .news-detail .back-btn:hover {
   background: #e03891;     /* rosa un po’ più scuro */
 }
+
+
+/* ===== FIX CLASSIFICA: nome su una/due righe normali, logo più piccolo ===== */
+.table { table-layout: auto; }                         /* libera le colonne su desktop */
+.table td.team-cell .logo-squadra { width: 56px; height: 56px; }  /* meno ingombrante */
+.table td.team-cell .team-name {
+  white-space: normal;          /* consenti a capo normale tra parole */
+  word-break: normal;           /* NON spezzare nel mezzo delle parole */
+  overflow-wrap: anywhere;      /* solo se serve su spazi/lunghi */
+  line-height: 1.15;
+  font-size: 1rem;
+}
+
+/* mobile: mantieni leggibile ma compatto */
+@media (max-width: 600px){
+  .table { table-layout: fixed; }
+  .table td.team-cell .logo-squadra { width: 42px; height: 42px; }
+  .table td.team-cell .team-name { font-size: .8rem; }
+}
+
+/* ===== FIX CALENDARIO: header bianco, data più grande ma colonna stretta ===== */
+#calendar-table thead th { color: #fff !important; font-weight: 700; }
+#calendar-table thead th:first-child { color: #fff !important; }   /* "G" bianco */
+
+/* larghezze colonne (G, Data, Avv, C/T, Ris.) */
+#calendar-table th:nth-child(1), #calendar-table td:nth-child(1){ width: 64px; min-width: 64px; }
+#calendar-table th:nth-child(2), #calendar-table td:nth-child(2){ width: 120px; min-width: 120px; } /* Data più stretta */
+#calendar-table th:nth-child(4), #calendar-table td:nth-child(4){ width: 80px;  min-width: 80px; }  /* C/T */
+#calendar-table th:nth-child(5), #calendar-table td:nth-child(5){ width: 72px;  min-width: 72px; }  /* Ris. */
+
+/* Data: font un filo più grande */
+#calendar-table td:nth-child(2){ font-size: 1rem; }
+
+/* Avversario: logo più contenuto, testo centrato */
+#calendar-table td.avversario-cell { gap: 6px; }
+#calendar-table td.avversario-cell img.logo-squadra { width: 42px; height: 42px; }
+
+/* Icona casa/trasferta più piccola e centrata */
+#calendar-table td.luogo-cell .icon-luogo { width: 22px; height: 22px; display: inline-block; }
+
+/* Mobile: compattiamo ulteriormente */
+@media (max-width: 430px){
+  #calendar-table { table-layout: fixed; font-size: .7rem; }
+  #calendar-table th, #calendar-table td { padding: 6px 4px; }
+  #calendar-table th:nth-child(1), #calendar-table td:nth-child(1){ width: 48px; }
+  #calendar-table th:nth-child(2), #calendar-table td:nth-child(2){ width: 96px; }
+  #calendar-table td:nth-child(2){ font-size: .9rem; }
+  #calendar-table td.avversario-cell img.logo-squadra { width: 36px; height: 36px; }
+  #calendar-table td.luogo-cell .icon-luogo { width: 18px; height: 18px; }
+}
+
+/* ===== Bottoni filtro: niente grassetto, solo prima lettera maiuscola ===== */
+.filter-buttons button,
+.buttons-filter .filter-btn{
+  font-weight: 500;               /* non bold */
+  text-transform: capitalize;     /* solo iniziale maiuscola */
+}
