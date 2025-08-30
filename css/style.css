@@ -1430,3 +1430,46 @@ main {
 .filter-btn {
   font-weight: normal !important;
 }
+.news-detail {
+  max-width: 800px;        /* larghezza massima leggibile */
+  margin: 0 auto;          /* centra orizzontalmente */
+  padding: 20px;           /* un po’ di respiro ai lati */
+  text-align: left;        /* mantiene testo allineato a sinistra all’interno */
+}
+
+.news-detail h2 {
+  text-align: center;      /* il titolo resta centrato */
+  margin-bottom: 20px;
+}
+
+.news-detail img {
+  display: block;
+  margin: 0 auto 20px;     /* immagine centrata con spazio sotto */
+  max-width: 100%;
+  height: auto;
+}
+
+.news-detail .news-body {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.news-detail .news-body p {
+  margin-bottom: 1rem;
+}
+
+.news-detail .back-btn {
+  display: block;
+  margin: 2rem auto 0;     /* centrato anche il bottone */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: var(--pink);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.news-detail .back-btn:hover {
+  background: #e03891;     /* rosa un po’ più scuro */
+}
