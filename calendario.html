@@ -3,102 +3,98 @@
 <head>
   <meta name="theme-color" content="#121212">
   <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Calendario ASD Volley 96</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header class="header-tot">
-        <img class="brand-logo" src="img/logonuovobianco.png" alt="Logo">
-        <button class="hamburger" id="hamburger" aria-label="Apri menu">
-          &#9776; <!-- simbolo ☰ -->
-        </button>
-        <nav id="navbar">
-          <a href="index.html" data-url="index.html">Home</a>
-          <a href="squadre.html" data-url="squadre.html">Squadre</a>
-          <a href="calendario.html" data-url="calendario.html">Calendario e Risultati</a>
-          <a href="classifiche.html" data-url="classifiche.html">Classifiche</a>
-          <a href="contatti.html" data-url="contatti.html">Contatti</a>
-        </nav>
-        <a href="https://www.instagram.com/a.s.d.volley96/" target="_blank" rel="noopener noreferrer">
-          <img class="social-logo" src="img/instagram.png" alt="Instagram">
-        </a>
-      </header>
+  <header class="header-tot">
+    <img class="brand-logo" src="img/logonuovobianco.png" alt="Logo">
+    <button class="hamburger" id="hamburger" aria-label="Apri menu">&#9776;</button>
+    <nav id="navbar">
+      <a href="index.html" data-url="index.html">Home</a>
+      <a href="squadre.html" data-url="squadre.html">Squadre</a>
+      <a href="calendario.html" data-url="calendario.html">Calendario e Risultati</a>
+      <a href="classifiche.html" data-url="classifiche.html">Classifiche</a>
+      <a href="contatti.html" data-url="contatti.html">Contatti</a>
+    </nav>
+    <a href="https://www.instagram.com/a.s.d.volley96/" target="_blank" rel="noopener noreferrer">
+      <img class="social-logo" src="img/instagram.png" alt="Instagram">
+    </a>
+  </header>
 
   <main>
-  
-        <h1>Calendario Partite</h1>
+    <h1>Calendario Partite</h1>
 
-        <div class="filter-buttons">
-          <button id="btn-femminile">Femminile</button>
-          <button id="btn-maschile">Maschile</button>
-        </div>
-    
-        <div class="calendar-wrapper">
-          <table id="calendar-table" class="rounded">
-          <thead>
-            <tr>
-              <th>G</th>
-              <th>Data</th>
-              <th>Avv</th>
-              <th>C/T</th>
-              <th>Ris.</th>
-            </tr>
-          </thead>
-          <tbody id="calendar-body"></tbody>
-        </table>
+    <div class="filter-buttons">
+      <button id="btn-femminile" class="filter-btn">Femminile</button>
+      <button id="btn-maschile"  class="filter-btn">Maschile</button>
     </div>
+
+    <div class="calendar-wrapper">
+      <table id="calendar-table" class="rounded">
+        <thead>
+          <tr>
+            <th>G</th>
+            <th>Data</th>
+            <th>Avv</th>
+            <th>C/T</th>
+            <th>Ris.</th>
+          </tr>
+        </thead>
+        <tbody id="calendar-body"></tbody>
+      </table>
+    </div>
+
     <script src="js/fade.js"></script>
   </main>
 
   <footer class="site-footer">
     <p>© <span id="year"></span> ASD VOLLEY 96 — Tutti i diritti riservati</p>
-    <p>
-      Sito realizzato da 
-      <a href="mailto:danilo.alacqua@example.com">Danilo Alacqua</a>
-    </p>
+    <p>Sito realizzato da <a href="mailto:danilo.alacqua@example.com">Danilo Alacqua</a></p>
   </footer>
-  
+
   <script>
+    // anno footer
     document.addEventListener('DOMContentLoaded', () => {
       const y = document.getElementById('year');
       if (y) y.textContent = new Date().getFullYear();
     });
   </script>
 
-  
-
   <script src="js/menu.js" defer></script>
+
   <script>
     // ======= Google Sheets via Opensheet =======
     const SHEET_ID = "1ucM1JY5MXHF7-9mpjp2mfB41TvoA1ziMUGGz86woQXA"; // <-- sostituisci con l'ID del tuo foglio
     const GS = (tab) => `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(tab)}`;
-  
+
     async function fetchSheet(tab) {
       const res = await fetch(GS(tab), { cache: "no-store" });
       if (!res.ok) throw new Error(`Fetch fallito: ${tab} (${res.status})`);
       return res.json();
     }
-  
+
     // Utils
     const tidy = (s) => (typeof s === "string" ? s.trim() : s);
     const num = (s) => {
       const n = parseInt(String(s || "").replace(/\D/g, ""), 10);
       return Number.isFinite(n) ? n : null;
     };
-  
+
     document.addEventListener("DOMContentLoaded", () => {
       const btnFem = document.getElementById("btn-femminile");
       const btnMas = document.getElementById("btn-maschile");
       const tbody  = document.getElementById("calendar-body");
-  
+
+      // Nomi dei fogli (tab) su Google Sheets
       const TABS = {
-        femminile: "Calendario Femminile",
-        maschile:  "Calendario Maschile",
+        femminile: "Calendario_Femminile",
+        maschile:  "Calendario_Maschile",
       };
-  
+
       function rowHTML(r) {
         const giornata   = tidy(r.giornata) ?? "-";
         const data       = tidy(r.data) ?? "-";
@@ -106,7 +102,7 @@
         const logo       = tidy(r.logo) || "";
         const luogo      = tidy(r.luogo) || "";   // immagine (casa/bus)
         const risultato  = tidy(r.risultato) ?? "-";
-  
+
         return `
           <tr>
             <td>${giornata || "-"}</td>
@@ -122,12 +118,12 @@
           </tr>
         `;
       }
-  
+
       function render(rows) {
         if (!tbody) return;
         tbody.innerHTML = rows.map(rowHTML).join("");
       }
-  
+
       async function loadCalendar(tabName, activeBtn) {
         try {
           const rowsRaw = await fetchSheet(tabName);
@@ -141,9 +137,10 @@
               if (gb === null) return -1;
               return ga - gb;
             });
-  
+
           render(rows);
-  
+
+          // stato attivo pulsanti
           [btnFem, btnMas].filter(Boolean).forEach(b => b.classList.remove("active"));
           if (activeBtn) activeBtn.classList.add("active");
         } catch (e) {
@@ -151,11 +148,11 @@
           if (tbody) tbody.innerHTML = `<tr><td colspan="5">Impossibile caricare il calendario.</td></tr>`;
         }
       }
-  
+
       // Click handler
       if (btnFem) btnFem.addEventListener("click", () => loadCalendar(TABS.femminile, btnFem));
       if (btnMas) btnMas.addEventListener("click", () => loadCalendar(TABS.maschile,  btnMas));
-  
+
       // Iniziale (supporta ?cat=Femminile|Maschile)
       (function init() {
         const params = new URLSearchParams(location.search);
@@ -166,10 +163,13 @@
           loadCalendar(TABS.femminile, btnFem);
         }
       })();
+
+      // Evidenzia link di menu attivo
+      const current = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('nav a').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === current);
+      });
     });
   </script>
-  
-  
-
 </body>
 </html>
