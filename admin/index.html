@@ -4,59 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>ASD Volley 96 — Admin</title>
-
-    <!-- Evita che Decap si auto-inizializzi troppo presto -->
     <script>window.CMS_MANUAL_INIT = true;</script>
-
     <style>
-      /* Pulsante per cancellare cache login (utile per test/debug) */
-      .reset-login {
-        position: fixed;
-        right: 12px;
-        top: 12px;
-        z-index: 9999;
-        padding: 6px 10px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        background: #fff;
-        cursor: pointer;
-        font: 12px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      .reset-login{
+        position:fixed;right:12px;top:12px;z-index:9999;
+        padding:6px 10px;border:1px solid #ccc;border-radius:6px;background:#fff;cursor:pointer;
+        font:12px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       }
     </style>
   </head>
   <body>
-    <!-- Radice dove Decap monta l’app React -->
     <div id="nc-root"></div>
+    <button class="reset-login" onclick="
+      try{
+        localStorage.removeItem('netlify-cms-user');
+        sessionStorage.clear();
+        alert('Cache Decap pulita. Ricarico…');
+        location.reload(true);
+      }catch(e){console.error(e)}
+    ">Reset login</button>
 
-    <!-- Pulsante reset per svuotare local/sessionStorage -->
-    <button
-      class="reset-login"
-      onclick="
-        try {
-          localStorage.removeItem('netlify-cms-user');
-          sessionStorage.clear();
-          alert('Cache Decap pulita. Ricarico…');
-          location.reload();
-        } catch(e){ console.error(e) }
-      "
-    >
-      Reset login
-    </button>
-
-    <!-- Carica Decap CMS (solo una volta) -->
+    <!-- Carica UNA SOLA volta Decap CMS (pinnato) -->
     <script
-      src="https://unpkg.com/decap-cms@^3.8.0/dist/decap-cms.js"
+      src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"
       crossorigin="anonymous"
-      onload="
-        try {
-          // Se vuoi: CMS.registerWidget(...) o CMS.registerPreviewTemplate(...)
-
-          // Inizializza CMS (legge admin/config.yml)
-          window.CMS.init();
-        } catch(e) {
-          console.error('Decap init failed:', e);
-        }
-      "
+      onload="window.CMS && window.CMS.init();"
     ></script>
   </body>
 </html>
