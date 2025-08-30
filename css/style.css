@@ -1212,8 +1212,8 @@ main {
 }
 
 #calendar-table td.avversario-cell img.logo-squadra {
-  width: 50px;   /* regola come preferisci */
-  height: 40px;
+  width: 80px;   /* regola come preferisci */
+  
   object-fit: contain;
 }
 
@@ -1376,4 +1376,57 @@ main {
 
 .icon-luogo {
   filter: invert(30%) sepia(100%) saturate(700%) hue-rotate(290deg);
+}
+
+
+
+
+
+/* === Calendario: tweak richiesti === */
+
+/* 1) Header "G" (Giornata) in bianco (forza il colore) */
+#calendar-table thead th:first-child {
+  color: #fff !important;
+}
+
+/* 2) Bottoni con solo la prima lettera maiuscola */
+.filter-buttons button,
+.filter-btn {
+  text-transform: lowercase;              /* tutto minuscolo... */
+}
+.filter-buttons button::first-letter,
+.filter-btn::first-letter {
+  text-transform: uppercase;              /* ...tranne la prima lettera */
+}
+
+/* 3) Colonna "Data": font più grande ma colonna più stretta */
+#calendar-table th:nth-child(2),
+#calendar-table td:nth-child(2) {
+  font-size: 1rem;                        /* più grande del resto */
+  width: 110px;                           /* più stretta */
+  min-width: 90px;
+  white-space: nowrap;                    /* non andare a capo */
+}
+
+/* Mobile: mantieni la colonna Data compatta ma leggibile */
+@media (max-width: 600px) {
+  #calendar-table th:nth-child(2),
+  #calendar-table td:nth-child(2) {
+    font-size: 0.85rem;
+    width: 90px;
+    min-width: 80px;
+  }
+}
+
+/* Se avevi regole precedenti che allargavano la colonna Data su mobile,
+   questa le override-a esplicitamente */
+@media (max-width: 430px) {
+  #calendar-table th:nth-child(2),
+  #calendar-table td:nth-child(2) {
+    width: 90px !important;
+  }
+}
+.filter-buttons button,
+.filter-btn {
+  font-weight: normal !important;
 }
