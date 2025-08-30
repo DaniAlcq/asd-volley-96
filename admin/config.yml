@@ -5,202 +5,120 @@ backend:
   base_url: https://volley96-auth-proxy.onrender.com
   auth_endpoint: /auth
 
-
 publish_mode: editorial_workflow
 
-# Dove caricare i media nel repo
 media_folder: "img/uploads"
-# Percorso pubblico su GitHub Pages (sito in sottocartella)
 public_folder: "/asd-volley-96/img/uploads"
 
 collections:
-  # NEWS (singolo file JSON con lista "items")
   - name: "news"
     label: "News"
     format: "json"
-    files:
-      - label: "News JSON"
-        name: "news"
-        file: "data/news.json"
+    file: "data/news.json"
+    fields:
+      - label: "News"
+        name: "items"
+        widget: "list"
+        summary: "{{fields.titolo}}"
         fields:
-          - label: "News"
-            name: "items"
-            widget: "list"
-            summary: "{{fields.titolo}}"
-            fields:
-              - { label: "ID", name: "id", widget: "string" }
-              - { label: "Titolo", name: "titolo", widget: "string" }
-              - { label: "Immagine", name: "immagine", widget: "image" }
-              - { label: "Contenuto", name: "contenuto", widget: "text" }
+          - { label: "ID", name: "id", widget: "string" }
+          - { label: "Titolo", name: "titolo", widget: "string" }
+          - { label: "Immagine", name: "immagine", widget: "image" }
+          - { label: "Contenuto", name: "contenuto", widget: "text" }
 
-  # CAROSELLO (slides → items[])
   - name: "carosello"
     label: "Carosello"
     format: "json"
-    files:
-      - label: "Carosello JSON"
-        name: "carosello"
-        file: "data/carosello.json"
+    file: "data/carosello.json"
+    fields:
+      - label: "Slide"
+        name: "items"
+        widget: "list"
+        summary: "{{fields.caption}}"
         fields:
-          - label: "Slide"
-            name: "items"
-            widget: "list"
-            summary: "{{fields.caption}}"
-            fields:
-              - { label: "Immagine", name: "immagine", widget: "image" }
-              - { label: "Caption", name: "caption", widget: "string" }
-              - { label: "Descrizione", name: "descrizione", widget: "text", required: false }
+          - { label: "Immagine", name: "immagine", widget: "image" }
+          - { label: "Caption", name: "caption", widget: "string" }
+          - { label: "Descrizione", name: "descrizione", widget: "text", required: false }
 
-  # CALENDARIO (partite → items[])
   - name: "calendario"
     label: "Calendario"
     format: "json"
-    files:
-      - label: "Calendario JSON"
-        name: "calendario"
-        file: "data/calendario.json"
+    file: "data/calendario.json"
+    fields:
+      - label: "Partite"
+        name: "items"
+        widget: "list"
+        summary: "Giornata {{fields.giornata}} — {{fields.avversario}}"
         fields:
-          - label: "Partite"
-            name: "items"
-            widget: "list"
-            summary: "Giornata {{fields.giornata}} — {{fields.avversario}}"
-            fields:
-              - { label: "Categoria", name: "categoria", widget: "select", options: ["Femminile", "Maschile"] }
-              - { label: "Giornata", name: "giornata", widget: "string" }
-              - { label: "Data", name: "data", widget: "string" }
-              - { label: "Avversario", name: "avversario", widget: "string" }
-              - { label: "Logo Avversario", name: "logo", widget: "image" }
-              - { label: "Luogo (icona immagine)", name: "luogo", widget: "image", required: false }
-              - { label: "Ora", name: "ora", widget: "string", required: false }
-              - { label: "Risultato", name: "risultato", widget: "string", required: false }
+          - { label: "Categoria", name: "categoria", widget: "select", options: ["Femminile", "Maschile"] }
+          - { label: "Giornata", name: "giornata", widget: "string" }
+          - { label: "Data", name: "data", widget: "string" }
+          - { label: "Avversario", name: "avversario", widget: "string" }
+          - { label: "Logo Avversario", name: "logo", widget: "image" }
+          - { label: "Luogo (immagine)", name: "luogo", widget: "image", required: false }
+          - { label: "Ora", name: "ora", widget: "string", required: false }
+          - { label: "Risultato", name: "risultato", widget: "string", required: false }
 
-  # RISULTATI (cards → items[])
   - name: "results"
     label: "Risultati"
     format: "json"
-    files:
-      - label: "Risultati JSON"
-        name: "results"
-        file: "data/results.json"
+    file: "data/results.json"
+    fields:
+      - label: "Risultati"
+        name: "items"
+        widget: "list"
+        summary: "{{fields.categoria}} — {{fields.giorno}}"
         fields:
-          - label: "Risultati"
-            name: "items"
-            widget: "list"
-            summary: "{{fields.categoria}} — {{fields.giorno}}"
+          - { label: "Categoria", name: "categoria", widget: "select", options: ["Femminile", "Maschile"] }
+          - { label: "Giorno", name: "giorno", widget: "string" }
+          - label: "Squadra Casa"
+            name: "squadraCasa"
+            widget: "object"
             fields:
-              - { label: "Categoria", name: "categoria", widget: "select", options: ["Femminile", "Maschile"] }
-              - { label: "Giorno", name: "giorno", widget: "string" }
-              - label: "Squadra Casa"
-                name: "squadraCasa"
-                widget: "object"
-                fields:
-                  - { label: "Nome", name: "nome", widget: "string" }
-                  - { label: "Logo", name: "logo", widget: "image" }
-              - label: "Squadra Ospite"
-                name: "squadraOspite"
-                widget: "object"
-                fields:
-                  - { label: "Nome", name: "nome", widget: "string" }
-                  - { label: "Logo", name: "logo", widget: "image" }
-              - { label: "Punti Casa", name: "risultatoCasa", widget: "string" }
-              - { label: "Punti Ospite", name: "risultatoOspite", widget: "string" }
-              - label: "Set"
-                name: "sets"
-                widget: "list"
-                field: { label: "Set", name: "set", widget: "string" }
+              - { label: "Nome", name: "nome", widget: "string" }
+              - { label: "Logo", name: "logo", widget: "image" }
+          - label: "Squadra Ospite"
+            name: "squadraOspite"
+            widget: "object"
+            fields:
+              - { label: "Nome", name: "nome", widget: "string" }
+              - { label: "Logo", name: "logo", widget: "image" }
+          - { label: "Punti Casa", name: "risultatoCasa", widget: "string" }
+          - { label: "Punti Ospite", name: "risultatoOspite", widget: "string" }
+          - label: "Set"
+            name: "sets"
+            widget: "list"
+            field: { label: "Set", name: "set", widget: "string" }
 
-  # SCARABEI / MVP (items[])
   - name: "scarabei"
     label: "MVP / Scarabei"
     format: "json"
-    files:
-      - label: "Scarabei JSON"
-        name: "scarabei"
-        file: "data/scarabei.json"
+    file: "data/scarabei.json"
+    fields:
+      - label: "Giocatori"
+        name: "items"
+        widget: "list"
+        summary: "{{fields.nome}} — {{fields.categoria}}"
         fields:
-          - label: "Giocatori"
-            name: "items"
-            widget: "list"
-            summary: "{{fields.nome}} — {{fields.categoria}}"
-            fields:
-              - { label: "Nome", name: "nome", widget: "string" }
-              - { label: "Categoria", name: "categoria", widget: "string" }
-              - { label: "Prestazione", name: "prestazione", widget: "string", required: false }
-              - { label: "Immagine", name: "immagine", widget: "image" }
+          - { label: "Nome", name: "nome", widget: "string" }
+          - { label: "Categoria", name: "categoria", widget: "string" }
+          - { label: "Prestazione", name: "prestazione", widget: "string", required: false }
+          - { label: "Immagine", name: "immagine", widget: "image" }
 
-  # CLASSIFICHE (due file separati: femminile e maschile)
-  - name: "classifiche"
-    label: "Classifiche"
+  - name: "classifica"
+    label: "Classifica"
     format: "json"
-    files:
-      - label: "Classifica Femminile"
-        name: "classifica_femminile"
-        file: "data/classifica_femminile.json"
+    file: "data/classifica.json"
+    fields:
+      - label: "Squadre"
+        name: "items"
+        widget: "list"
+        summary: "#{{fields.posizione}} {{fields.nome}} ({{fields.punti}} p.)"
         fields:
-          - label: "Squadre (Femminile)"
-            name: "items"
-            widget: "list"
-            summary: "#{{fields.posizione}} {{fields.nome}} ({{fields.punti}} p.)"
-            fields:
-              - { label: "Posizione", name: "posizione", widget: "number" }
-              - { label: "Nome", name: "nome", widget: "string" }
-              - { label: "Logo", name: "logo", widget: "image", required: false }
-              - { label: "Punti", name: "punti", widget: "number" }
-              - { label: "PG", name: "partite_giocate", widget: "number" }
-              - { label: "Vittorie", name: "vittorie", widget: "number" }
-              - { label: "Sconfitte", name: "sconfitte", widget: "number" }
-      - label: "Classifica Maschile"
-        name: "classifica_maschile"
-        file: "data/classifica_maschile.json"
-        fields:
-          - label: "Squadre (Maschile)"
-            name: "items"
-            widget: "list"
-            summary: "#{{fields.posizione}} {{fields.nome}} ({{fields.punti}} p.)"
-            fields:
-              - { label: "Posizione", name: "posizione", widget: "number" }
-              - { label: "Nome", name: "nome", widget: "string" }
-              - { label: "Logo", name: "logo", widget: "image", required: false }
-              - { label: "Punti", name: "punti", widget: "number" }
-              - { label: "PG", name: "partite_giocate", widget: "number" }
-              - { label: "Vittorie", name: "vittorie", widget: "number" }
-              - { label: "Sconfitte", name: "sconfitte", widget: "number" }
-
-  # SQUADRA (un file con tre liste: femminile, maschile, staff)
-  - name: "squadra"
-    label: "Squadre & Staff"
-    format: "json"
-    files:
-      - label: "Squadra JSON"
-        name: "squadra"
-        file: "data/squadra.json"
-        fields:
-          - label: "Femminile"
-            name: "femminile"
-            widget: "list"
-            summary: "{{fields.nome}} (#{{fields.numero}}) — {{fields.ruolo}}"
-            fields:
-              - { label: "Nome", name: "nome", widget: "string" }
-              - { label: "Numero", name: "numero", widget: "number", required: false }
-              - { label: "Ruolo", name: "ruolo", widget: "string" }
-              - { label: "Categoria", name: "categoria", widget: "string", default: "Femminile" }
-              - { label: "Immagine", name: "immagine", widget: "image" }
-          - label: "Maschile"
-            name: "maschile"
-            widget: "list"
-            summary: "{{fields.nome}} (#{{fields.numero}}) — {{fields.ruolo}}"
-            fields:
-              - { label: "Nome", name: "nome", widget: "string" }
-              - { label: "Numero", name: "numero", widget: "number", required: false }
-              - { label: "Ruolo", name: "ruolo", widget: "string" }
-              - { label: "Categoria", name: "categoria", widget: "string", default: "Maschile" }
-              - { label: "Immagine", name: "immagine", widget: "image" }
-          - label: "Staff"
-            name: "staff"
-            widget: "list"
-            summary: "{{fields.nome}} — {{fields.ruolo}}"
-            fields:
-              - { label: "Nome", name: "nome", widget: "string" }
-              - { label: "Ruolo", name: "ruolo", widget: "string" }
-              - { label: "Categoria", name: "categoria", widget: "string", default: "Staff" }
-              - { label: "Immagine", name: "immagine", widget: "image" }
+          - { label: "Posizione", name: "posizione", widget: "number" }
+          - { label: "Nome", name: "nome", widget: "string" }
+          - { label: "Logo", name: "logo", widget: "image", required: false }
+          - { label: "Punti", name: "punti", widget: "number" }
+          - { label: "PG", name: "partite_giocate", widget: "number" }
+          - { label: "Vittorie", name: "vittorie", widget: "number" }
+          - { label: "Sconfitte", name: "sconfitte", widget: "number" }

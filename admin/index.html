@@ -1,27 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>ASD Volley 96 — Admin</title>
-
-    <!-- Evita che Decap auto-inizializzi prima del DOM -->
-    <script>window.CMS_MANUAL_INIT = true;</script>
-
-    <!-- Favicon per eliminare warning 404 -->
-    <link rel="icon" href="/asd-volley-96/img/favicon.ico" />
-  </head>
-  <body>
-    <!-- Nodo esplicito dove montare l’app del CMS -->
-    <div id="nc-root"></div>
-
-    <!-- Carica Decap CMS -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-
-    <!-- Inizializzazione esplicita -->
-    <script>
-      // Inizializza indicando il percorso della config (dato che il sito è in sottocartella)
-      CMS.init({ config: '/asd-volley-96/admin/config.yml' });
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ASD Volley 96 — Admin</title>
+  <script>window.CMS_MANUAL_INIT = true;</script>
+</head>
+<body>
+  <div id="nc-root"></div>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>CMS.init();</script>
+</body>
 </html>
