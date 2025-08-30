@@ -3,7 +3,7 @@ backend:
   repo: DaniAlcq/asd-volley-96
   branch: main
   base_url: https://volley96-auth-proxy.onrender.com
-  auth_endpoint: /auth/github
+  auth_endpoint: /auth   # <-- QUI
 
 publish_mode: editorial_workflow
 
