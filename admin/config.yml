@@ -2,16 +2,16 @@ backend:
   name: github
   repo: DaniAlcq/asd-volley-96
   branch: main
-  base_url: https://volley96-auth-proxy.onrender.com   # <-- il TUO dominio del proxy
+  base_url: https://volley96-auth-proxy.onrender.com
   auth_endpoint: /auth/github
-
-
-media_folder: "img/uploads"
-public_folder: "/img/uploads"
 
 publish_mode: editorial_workflow
 
+media_folder: "img/uploads"                 # dove i file vengono salvati nel repo
+public_folder: "/asd-volley-96/img/uploads" # come saranno raggiungibili su GitHub Pages
+
 collections:
+  # NEWS (singolo file JSON con items[])
   - name: "news"
     label: "News"
     format: "json"
@@ -27,6 +27,7 @@ collections:
           - { label: "Immagine", name: "immagine", widget: "image" }
           - { label: "Contenuto", name: "contenuto", widget: "text" }
 
+  # CAROSELLO (singolo file JSON con items[])
   - name: "carosello"
     label: "Carosello"
     format: "json"
@@ -41,6 +42,7 @@ collections:
           - { label: "Caption", name: "caption", widget: "string" }
           - { label: "Descrizione", name: "descrizione", widget: "text", required: false }
 
+  # CALENDARIO (singolo file JSON con items[])
   - name: "calendario"
     label: "Calendario"
     format: "json"
@@ -51,14 +53,16 @@ collections:
         widget: "list"
         summary: "Giornata {{fields.giornata}} — {{fields.avversario}}"
         fields:
-          - { label: "Giornata", name: "giornata", widget: "number" }
+          - { label: "Categoria", name: "categoria", widget: "select", options: ["Femminile", "Maschile"], required: false }
+          - { label: "Giornata", name: "giornata", widget: "string" }
           - { label: "Data", name: "data", widget: "string" }
           - { label: "Avversario", name: "avversario", widget: "string" }
           - { label: "Logo Avversario", name: "logo", widget: "image" }
-          - { label: "Luogo (immagine)", name: "luogo", widget: "image", required: false }
+          - { label: "Luogo (icona immagine)", name: "luogo", widget: "image", required: false }
           - { label: "Ora", name: "ora", widget: "string", required: false }
           - { label: "Risultato", name: "risultato", widget: "string", required: false }
 
+  # RISULTATI (singolo file JSON con items[])
   - name: "results"
     label: "Risultati"
     format: "json"
@@ -88,8 +92,9 @@ collections:
           - label: "Set"
             name: "sets"
             widget: "list"
-            field: { label: "Set", name: "set", widget: "string" }
+            field: { label: "Parziale", name: "set", widget: "string" }
 
+  # SCARABEI / MVP (singolo file JSON con items[])
   - name: "scarabei"
     label: "MVP / Scarabei"
     format: "json"
@@ -105,10 +110,11 @@ collections:
           - { label: "Prestazione", name: "prestazione", widget: "string", required: false }
           - { label: "Immagine", name: "immagine", widget: "image" }
 
-  - name: "classifica"
-    label: "Classifica"
+  # CLASSIFICA FEMMINILE (file separato, items[])
+  - name: "classifica_femminile"
+    label: "Classifica — Femminile"
     format: "json"
-    file: "data/classifica.json"
+    file: "data/classifica_femminile.json"
     fields:
       - label: "Squadre"
         name: "items"
@@ -122,3 +128,60 @@ collections:
           - { label: "PG", name: "partite_giocate", widget: "number" }
           - { label: "Vittorie", name: "vittorie", widget: "number" }
           - { label: "Sconfitte", name: "sconfitte", widget: "number" }
+
+  # CLASSIFICA MASCHILE (file separato, items[])
+  - name: "classifica_maschile"
+    label: "Classifica — Maschile"
+    format: "json"
+    file: "data/classifica_maschile.json"
+    fields:
+      - label: "Squadre"
+        name: "items"
+        widget: "list"
+        summary: "#{{fields.posizione}} {{fields.nome}} ({{fields.punti}} p.)"
+        fields:
+          - { label: "Posizione", name: "posizione", widget: "number" }
+          - { label: "Nome", name: "nome", widget: "string" }
+          - { label: "Logo", name: "logo", widget: "image", required: false }
+          - { label: "Punti", name: "punti", widget: "number" }
+          - { label: "PG", name: "partite_giocate", widget: "number" }
+          - { label: "Vittorie", name: "vittorie", widget: "number" }
+          - { label: "Sconfitte", name: "sconfitte", widget: "number" }
+
+  # SQUADRE (un file con tre liste: femminile, maschile, staff)
+  - name: "squadra"
+    label: "Squadre (Giocatori & Staff)"
+    format: "json"
+    file: "data/squadra.json"
+    fields:
+      - label: "Femminile"
+        name: "femminile"
+        widget: "list"
+        summary: "{{fields.nome}} (#{{fields.numero}}) — {{fields.ruolo}}"
+        fields:
+          - { label: "Nome", name: "nome", widget: "string" }
+          - { label: "Numero", name: "numero", widget: "number", required: false }
+          - { label: "Ruolo", name: "ruolo", widget: "string" }
+          - { label: "Categoria", name: "categoria", widget: "string", default: "Femminile" }
+          - { label: "Immagine", name: "immagine", widget: "image" }
+
+      - label: "Maschile"
+        name: "maschile"
+        widget: "list"
+        summary: "{{fields.nome}} (#{{fields.numero}}) — {{fields.ruolo}}"
+        fields:
+          - { label: "Nome", name: "nome", widget: "string" }
+          - { label: "Numero", name: "numero", widget: "number", required: false }
+          - { label: "Ruolo", name: "ruolo", widget: "string" }
+          - { label: "Categoria", name: "categoria", widget: "string", default: "Maschile" }
+          - { label: "Immagine", name: "immagine", widget: "image" }
+
+      - label: "Staff"
+        name: "staff"
+        widget: "list"
+        summary: "{{fields.nome}} — {{fields.ruolo}}"
+        fields:
+          - { label: "Nome", name: "nome", widget: "string" }
+          - { label: "Ruolo", name: "ruolo", widget: "string" }
+          - { label: "Categoria", name: "categoria", widget: "string", default: "Staff" }
+          - { label: "Immagine", name: "immagine", widget: "image" }

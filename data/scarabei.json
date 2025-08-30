@@ -1,9 +1,10 @@
-[
+{
+  "items": [
     {
       "nome": "Laura Tassone",
       "categoria": "🏐 Serie C femminile",
       "immagine": "img/azione.jpg",
-      "prestazione": "Presetazione: 10 punti, 3 muri"
+      "prestazione": "Prestazione: 10 punti, 3 muri"
     },
     {
       "nome": "Daniele Sottile",
@@ -12,4 +13,4 @@
       "prestazione": "Prestazione: 8 punti, 2 muri"
     }
   ]
-  
+}

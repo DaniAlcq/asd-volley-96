@@ -1,77 +1,79 @@
-[
-  {
-    "categoria": "Femminile",
-    "giorno": "Lunedì 4 Agosto",
-    "squadraCasa": {
-      "nome": "ASD VOLLEY 96",
-      "logo": "img/logosquadrarosacompleto.png"
+{
+  "items": [
+    {
+      "categoria": "Femminile",
+      "giorno": "Lunedì 4 Agosto",
+      "squadraCasa": {
+        "nome": "ASD VOLLEY 96",
+        "logo": "img/logosquadrarosacompleto.png"
+      },
+      "squadraOspite": {
+        "nome": "MESSINA VOLLEY",
+        "logo": "img/messinavolley.png"
+      },
+      "risultatoCasa": "3",
+      "risultatoOspite": "2",
+      "sets": ["25-20", "22-25", "25-18", "25-22", "25-22"]
     },
-    "squadraOspite": {
-      "nome": "MESSINA VOLLEY",
-      "logo": "img/messinavolley.png"
+    {
+      "categoria": "Femminile",
+      "giorno": "Mercoledì 6 Agosto",
+      "squadraCasa": {
+        "nome": "ASD VOLLEY 96",
+        "logo": "img/logosquadrarosacompleto.png"
+      },
+      "squadraOspite": {
+        "nome": "POL. NINO ROMANO",
+        "logo": "img/ninoromano.jpeg"
+      },
+      "risultatoCasa": "3",
+      "risultatoOspite": "1",
+      "sets": ["25-18", "25-20", "20-25", "25-22"]
     },
-    "risultatoCasa": "3",
-    "risultatoOspite": "2",
-    "sets": ["25-20", "22-25", "25-18", "25-22", "25-22"]
-  },
-  {
-    "categoria": "Femminile",
-    "giorno": "Mercoledì 6 Agosto",
-    "squadraCasa": {
-      "nome": "ASD VOLLEY 96",
-      "logo": "img/logosquadrarosacompleto.png"
+    {
+      "categoria": "Maschile",
+      "giorno": "Martedì 5 Agosto",
+      "squadraCasa": {
+        "nome": "PLAY VOLLEY",
+        "logo": "img/barcellonavolley.jpeg"
+      },
+      "squadraOspite": {
+        "nome": "ASD VOLLEY 96",
+        "logo": "img/logosquadrarosacompleto.png"
+      },
+      "risultatoCasa": "3",
+      "risultatoOspite": "1",
+      "sets": ["20-25", "25-22", "22-25", "25-20", "12-15"]
     },
-    "squadraOspite": {
-      "nome": "POL. NINO ROMANO",
-      "logo": "img/ninoromano.jpeg"
+    {
+      "categoria": "Femminile",
+      "giorno": "Mercoledì 6 Agosto",
+      "squadraCasa": {
+        "nome": "ASD VOLLEY 96",
+        "logo": "img/logosquadrarosacompleto.png"
+      },
+      "squadraOspite": {
+        "nome": "POL. NINO ROMANO",
+        "logo": "img/ninoromano.jpeg"
+      },
+      "risultatoCasa": "3",
+      "risultatoOspite": "1",
+      "sets": ["25-18", "25-20", "25-22"]
     },
-    "risultatoCasa": "3",
-    "risultatoOspite": "1",
-    "sets": ["25-18", "25-20","20-25","25-22"]
-  },
-  {
-    "categoria": "Maschile",
-    "giorno": "Martedì 5 Agosto",
-    "squadraCasa": {
-      "nome": "PLAY VOLLEY",
-      "logo": "img/barcellonavolley.jpeg"
-    },
-    "squadraOspite": {
-      "nome": "ASD VOLLEY 96",
-      "logo": "img/logosquadrarosacompleto.png"
-    },
-    "risultatoCasa": "3",
-    "risultatoOspite": "1",
-    "sets": ["20-25", "25-22", "22-25", "25-20", "12-15"]
-  },
-  {
-    "categoria": "Femminile",
-    "giorno": "Mercoledì 6 Agosto",
-    "squadraCasa": {
-      "nome": "ASD VOLLEY 96",
-      "logo": "img/logosquadrarosacompleto.png"
-    },
-    "squadraOspite": {
-      "nome": "POL. NINO ROMANO",
-      "logo": "img/ninoromano.jpeg"
-    },
-    "risultatoCasa": "3",
-    "risultatoOspite": "1",
-    "sets": ["25-18", "25-20", "25-22"]
-  },
-  {
-    "categoria": "Maschile",
-    "giorno": "Mercoledì 8 Agosto",
-    "squadraCasa": {
-      "nome": "MESSINA VOLLEY",
-      "logo": "img/messinavolley.png"
-    },
-    "squadraOspite": {
-      "nome": "ASD VOLLEY 96",
-      "logo": "img/logosquadrarosacompleto.png"
-    },
-    "risultatoCasa": "3",
-    "risultatoOspite": "1",
-    "sets": ["25-18", "25-20", "25-22"]
-  }
-]
+    {
+      "categoria": "Maschile",
+      "giorno": "Mercoledì 8 Agosto",
+      "squadraCasa": {
+        "nome": "MESSINA VOLLEY",
+        "logo": "img/messinavolley.png"
+      },
+      "squadraOspite": {
+        "nome": "ASD VOLLEY 96",
+        "logo": "img/logosquadrarosacompleto.png"
+      },
+      "risultatoCasa": "3",
+      "risultatoOspite": "1",
+      "sets": ["25-18", "25-20", "25-22"]
+    }
+  ]
+}
