@@ -1,20 +1,3 @@
-// ======= Google Sheets via Opensheet: config + helper =======
-const SHEET_ID = "1ucM1JY5MXHF7-9mpjp2mfB41TvoA1ziMUGGz86woQXA"; // <-- metti qui l'ID
-const GS = (tab) => `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(tab)}`;
-
-async function fetchSheet(tab) {
-  const url = GS(tab);
-  const res = await fetch(url, { cache: "no-store" });
-  if (!res.ok) throw new Error(`Fetch fallito: ${tab} (${res.status})`);
-  return res.json(); // array di righe, con chiavi = intestazioni del foglio
-}
-
-// Utility: normalizza stringhe/immagini
-const tidy = (s) => (typeof s === "string" ? s.trim() : s);
-const fixImg = (s) => tidy(s); // qui potresti fare logiche extra se servono
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
   /* =============== Helper =============== */
   const $ = (sel, root = document) => root.querySelector(sel);
