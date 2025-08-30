@@ -75,11 +75,10 @@
   <script src="js/fade.js"></script>
   <script src="js/menu.js" defer></script>
   
-
   <script>
-    // ======= Google Sheets via Opensheet =======
-    const SHEET_ID = "1ucM1JY5MXHF7-9mpjp2mfB41TvoA1ziMUGGz86woQXA"; // <-- ID del tuo Google Sheet
-    const GS = (tab) => `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(tab)}`;
+    /* ====== Google Sheets via Opensheet ====== */
+    const SHEET_ID = "1ucM1JY5MXHF7-9mpjp2mfB41TvoA1ziMUGGz86woQXA"; // <-- metti il tuo ID
+    const GS = tab => `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(tab)}`;
     
     async function fetchSheet(tab) {
       const res = await fetch(GS(tab), { cache: "no-store" });
@@ -87,90 +86,87 @@
       return res.json();
     }
     
-    // ======= Helpers DOM =======
+    /* ====== Helpers DOM ====== */
     const $  = (sel, root = document) => root.querySelector(sel);
     const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
-    const tidy = (s) => (typeof s === "string" ? s.trim() : s);
+    const tidy = s => (typeof s === "string" ? s.trim() : s);
     
-    // ======= App =======
+    /* ====== App ====== */
     document.addEventListener("DOMContentLoaded", () => {
-      async function caricaClassificaFromSheet(tabName, bottoneAttivo) {
-        try {
-          const rows = await fetchSheet(tabName);
-          const tbody = $("#tabella-classifica");
-          if (!tbody) return;
+      const TABS = {
+        femminile: "Classifica_Femminile",
+        maschile:  "Classifica_Maschile"
+      };
     
+      const tbody     = $("#tabella-classifica");
+      const btnFem    = $("#btn-femminile");
+      const btnMas    = $("#btn-maschile");
+    
+      async function caricaClassifica(tabName, bottoneAttivo) {
+        try {
+          if (!tbody) return;
+          tbody.innerHTML = `<tr><td colspan="6">Caricamento…</td></tr>`;
+    
+          const rows = await fetchSheet(tabName);
           tbody.innerHTML = "";
     
-          rows.forEach((r) => {
-            const posizione         = tidy(r.posizione) ?? "-";
-            const nome              = tidy(r.nome) ?? "";
-            const logo              = tidy(r.logo) ?? "";
-            const punti             = tidy(r.punti) ?? "-";
-            const partite_giocate   = tidy(r.partite_giocate) ?? "-";
-            const vittorie          = tidy(r.vittorie) ?? "-";
-            const sconfitte         = tidy(r.sconfitte) ?? "-";
+          rows.forEach(r => {
+            const posizione = tidy(r.posizione) ?? "-";
+            const nome      = tidy(r.nome) ?? "";
+            const logo      = tidy(r.logo) ?? "";
+            const punti     = tidy(r.punti) ?? "-";
+            const pg        = tidy(r.partite_giocate) ?? "-";
+            const v         = tidy(r.vittorie) ?? "-";
+            const s         = tidy(r.sconfitte) ?? "-";
     
             const tr = document.createElement("tr");
             tr.innerHTML = `
               <td>${posizione}</td>
-              <td class="squadra-cell">
-                <img src="${logo}" alt="Logo ${nome}" class="logo-squadra">
+              <td class="squadra-cell team-cell">
+                ${logo ? `<img src="${logo}" alt="Logo ${nome}" class="logo-squadra">` : ""}
                 <span class="team-name">${nome}</span>
               </td>
               <td>${punti}</td>
-              <td>${partite_giocate}</td>
-              <td>${vittorie}</td>
-              <td>${sconfitte}</td>
+              <td>${pg}</td>
+              <td>${v}</td>
+              <td>${s}</td>
             `;
             tbody.appendChild(tr);
           });
     
-          // Stato 'active'
-          $$(".filter-buttons button").forEach((btn) => btn.classList.remove("active"));
+          // Stato 'active' sui bottoni
+          $$(".filter-buttons button").forEach(b => b.classList.remove("active"));
           if (bottoneAttivo) bottoneAttivo.classList.add("active");
         } catch (err) {
           console.error("Errore nel caricamento della classifica:", err);
-          const tbody = $("#tabella-classifica");
           if (tbody) tbody.innerHTML = `<tr><td colspan="6">Impossibile caricare la classifica.</td></tr>`;
         }
       }
     
-      // Bottoni
-      const btnFem = $("#btn-femminile");
-      const btnMas = $("#btn-maschile");
-    
-      if (btnFem) {
-        btnFem.addEventListener("click", function () {
-          caricaClassificaFromSheet("Classifica Femminile", this);
-        });
-      }
-      if (btnMas) {
-        btnMas.addEventListener("click", function () {
-          caricaClassificaFromSheet("Classifica Maschile", this);
-        });
-      }
+      // Click bottoni
+      if (btnFem) btnFem.addEventListener("click", function(){ caricaClassifica(TABS.femminile, this); });
+      if (btnMas) btnMas.addEventListener("click", function(){ caricaClassifica(TABS.maschile, this); });
     
       // Caricamento iniziale (?cat=Femminile|Maschile)
-      (function initClassifica() {
-        const params = new URLSearchParams(location.search);
-        const cat = (params.get("cat") || "Femminile").toLowerCase();
-        if (cat === "maschile" && btnMas) {
-          caricaClassificaFromSheet("Classifica Maschile", btnMas);
+      (function init() {
+        const catParam = (new URLSearchParams(location.search).get("cat") || "Femminile").toLowerCase();
+        if (catParam === "maschile" && btnMas) {
+          caricaClassifica(TABS.maschile, btnMas);
         } else if (btnFem) {
-          caricaClassificaFromSheet("Classifica Femminile", btnFem);
+          caricaClassifica(TABS.femminile, btnFem);
         }
       })();
     
-      // Evidenzia voce di menu attiva
+      // Evidenzia link di menu attivo
       const currentPage = window.location.pathname.split("/").pop() || "index.html";
-      $$("nav a").forEach((link) => {
+      $$("nav a").forEach(link => {
         const linkPage = link.getAttribute("href");
         if (linkPage === currentPage) link.classList.add("active");
         else link.classList.remove("active");
       });
     });
     </script>
+    
     
 </body>
 </html>
