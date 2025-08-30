@@ -1203,7 +1203,7 @@ main {
 }
 /* Colonna Avversario con logo sopra e nome sotto */
 #calendar-table td.avversario-cell {
-  display: flex;
+  
   flex-direction: column;  /* verticale */
   align-items: center;     /* centrato orizzontale */
   justify-content: center;
