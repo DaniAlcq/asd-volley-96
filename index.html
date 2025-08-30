@@ -133,19 +133,24 @@
   <script src="js/menu.js" defer></script>
   <script>
     // ======= Google Sheets via Opensheet: config + helper =======
-    const SHEET_ID = "1ucM1JY5MXHF7-9mpjp2mfB41TvoA1ziMUGGz86woQXA"; // <-- cambia con il tuo ID
+    const SHEET_ID = "1ucM1JY5MXHF7-9mpjp2mfB41TvoA1ziMUGGz86woQXA"; // <-- sostituisci con il tuo ID se cambia
     const GS = (tab) => `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(tab)}`;
     
     async function fetchSheet(tab) {
       const url = GS(tab);
       const res = await fetch(url, { cache: "no-store" });
       if (!res.ok) throw new Error(`Fetch fallito: ${tab} (${res.status})`);
-      return res.json(); // array di righe, con chiavi = intestazioni del foglio
+      return res.json(); // array di righe, chiavi = intestazioni del foglio
     }
     
-    // Utility: normalizza stringhe/immagini
-    const tidy  = (s) => (typeof s === "string" ? s.trim() : s);
+    // Utility
+    const tidy   = (s) => (typeof s === "string" ? s.trim() : s);
     const fixImg = (s) => tidy(s);
+    const parseSets = (str) =>
+      tidy(str || "")
+        ?.split(",")
+        .map(s => s.trim())
+        .filter(Boolean) || [];
     
     // ======================== App ========================
     document.addEventListener("DOMContentLoaded", () => {
@@ -153,7 +158,9 @@
       const $  = (sel, root = document) => root.querySelector(sel);
       const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
     
-      // ---------------- CAROSELLO NEWS ----------------
+      /* ========================
+         CAROSELLO NEWS (tab: Carosello)
+      ======================== */
       async function fetchCarosello() {
         try {
           const rows = await fetchSheet("Carosello");
@@ -176,7 +183,7 @@
               </div>
               <div class="slide-right">
                 <h3>${slide.caption}</h3>
-                <p>${slide.descrizione || ""}</p>
+                <p>${slide.descrizione}</p>
               </div>
             `;
             slidesContainer.appendChild(slideDiv);
@@ -222,7 +229,9 @@
     
       fetchCarosello();
     
-      // ---------------- NEWS GRID ----------------
+      /* ========================
+         NEWS GRID (tab: News)
+      ======================== */
       let newsData = [];
     
       async function fetchNews() {
@@ -267,9 +276,9 @@
     
         main.innerHTML = `
           <article class="news-detail">
-            <h2>${news.titolo || ""}</h2>
-            <img src="${news.immagine}" alt="${news.titolo || ""}">
-            <p>${news.contenuto || ""}</p>
+            <h2>${news.titolo}</h2>
+            <img src="${news.immagine}" alt="${news.titolo}">
+            <p>${news.contenuto}</p>
             <button class="back-btn" onclick="history.back()">⬅ Torna indietro</button>
           </article>
         `;
@@ -301,7 +310,9 @@
       }
       initNewsGrid();
     
-      // ---------------- SCARABEI DI GIORNATA ----------------
+      /* ========================
+         SCARABEI DI GIORNATA (tab: Scarabei)
+      ======================== */
       (async function loadScarabei(){
         try {
           const rows = await fetchSheet("Scarabei");
@@ -325,20 +336,18 @@
         }
       })();
     
-      // ---------------- ULTIMI RISULTATI ----------------
+      /* ========================
+         ULTIMI RISULTATI (tab: Risultati)
+      ======================== */
       const buttons = $$(".filter-btn");
       const resultsContainer = $("#results-container");
     
-      const parseSets = (str) =>
-        tidy(str || "")
-          ?.split(",")
-          .map(s => s.trim())
-          .filter(Boolean) || [];
-    
-      function renderResults(category, data) {
+      function renderResults(category, rows) {
         if (!resultsContainer) return;
         resultsContainer.innerHTML = "";
-        const filtered = data.filter((m) => (m.categoria || "").toLowerCase() === category.toLowerCase());
+        const filtered = rows.filter(
+          (m) => (m.categoria || "").toLowerCase() === category.toLowerCase()
+        );
     
         filtered.slice(0, 3).forEach((match) => {
           const card = document.createElement("div");
@@ -368,7 +377,6 @@
     
       (async () => {
         try {
-          // ora anche i risultati arrivano da Sheets
           const rows = await fetchSheet("Risultati");
           renderResults("Femminile", rows);
     
@@ -384,7 +392,9 @@
         }
       })();
     
-      // ---------------- MENU ATTIVO ----------------
+      /* ========================
+         MENU ATTIVO
+      ======================== */
       const navLinks = $$("nav a");
       const currentPage = window.location.pathname.split("/").pop() || "index.html";
       navLinks.forEach((link) => {
