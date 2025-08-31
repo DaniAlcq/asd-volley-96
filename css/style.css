@@ -2051,6 +2051,7 @@ main {
   display: block;
    /* più piccolo per i nomi lunghi */
   line-height: 1.2;
+  font-size: 12px;
   white-space: normal;
 }
 
