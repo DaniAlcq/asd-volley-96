@@ -1872,7 +1872,7 @@ main {
   /* DATA (compatta ma leggibile) */
   #calendar-table th:nth-child(2),
   #calendar-table td:nth-child(2){
-    width: 32% !important;
+    width: 20% !important;
     min-width: 110px;
     white-space: nowrap !important;   /* tutto su una riga */
     font-weight: 700;
@@ -1887,7 +1887,7 @@ main {
   /* AVV (logo sopra, nome sotto) → prende la fetta più grande */
   #calendar-table th:nth-child(3),
   #calendar-table td:nth-child(3){
-    width: 38% !important;            /* colonna ampia */
+    width: 32% !important;            /* colonna ampia */
   }
   #calendar-table td.avversario-cell{
     display: flex !important;
@@ -1918,7 +1918,7 @@ main {
   /* RIS. (strettissima) */
   #calendar-table th:nth-child(5),
   #calendar-table td:nth-child(5){
-    width: 8% !important;
+    width: 12% !important;
     min-width: 28px;
     text-align: center;
   }
@@ -1950,9 +1950,9 @@ main {
   /* G / DATA / AVV / C-T / RIS (somma ≈100) */
   #calendar-table col[data-col="g"]    { width: 10% !important; }
   #calendar-table col[data-col="data"] { width: 28% !important; }
-  #calendar-table col[data-col="avv"]  { width: 44% !important; }  /* AVV grande */
+  #calendar-table col[data-col="avv"]  { width: 41% !important; }  /* AVV grande */
   #calendar-table col[data-col="ct"]   { width: 9%  !important; }
-  #calendar-table col[data-col="ris"]  { width: 9%  !important; }
+  #calendar-table col[data-col="ris"]  { width: 12%  !important; }
 
   /* celle più compatte */
   #calendar-table th,
