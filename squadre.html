@@ -11,9 +11,7 @@
 </head>
 <body>
   <!-- Loader full-screen -->
-<div id="app-loader" aria-hidden="true">
-  <div class="spinner" aria-label="Caricamento in corso" role="status"></div>
-</div>
+
 
     <header class="header-tot">
         <img class="brand-logo" src="img/logonuovobianco.png" alt="Logo">
@@ -27,9 +25,15 @@
             <a href="classifiche.html" data-url="classifiche.html">Classifiche</a>
             <a href="contatti.html" data-url="contatti.html">Contatti</a>
           </nav>
-        <a href="https://www.instagram.com/a.s.d.volley96/" target="_blank" rel="noopener noreferrer">
-          <img class="social-logo" src="img/instagram.png" alt="Instagram">
-        </a>
+          <div class="social-icons">
+            <a href="https://www.instagram.com/a.s.d.volley96/" target="_blank" rel="noopener noreferrer">
+              <img class="social-logo-insta" src="img/instagram.png" alt="Instagram">
+            </a>
+          
+            <a href="https://www.facebook.com/asdvolley96" target="_blank" rel="noopener noreferrer">
+              <img class="social-logo-facebook" src="img/facebook.png" alt="Facebook">
+            </a>
+          </div>
       </header>
   <main>
     <h1>Le nostre squadre</h1>
@@ -46,11 +50,11 @@
   <footer class="site-footer">
     <p>© <span id="year"></span> ASD VOLLEY 96 — Tutti i diritti riservati</p>
     <p>
-      Sito realizzato da 
+      Web design & sviluppo © 2025 
       <a href="mailto:danilo.alacqua@example.com">Danilo Alacqua</a>
+
     </p>
   </footer>
-  
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const y = document.getElementById('year');
@@ -65,16 +69,12 @@
     const GS = (tab) => `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(tab)}`;
     
     async function fetchSheet(tab) {
-  try {
-    AppLoader.show();
-    const url = `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(tab)}`;
-    const res = await fetch(url, { cache: "no-store" });
-    if (!res.ok) throw new Error(`Fetch fallito: ${tab} (${res.status})`);
-    return await res.json();
-  } finally {
-    AppLoader.hide();
-  }
-}
+      const url = GS(tab);
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error(`Fetch fallito: ${tab} (${res.status})`);
+      return res.json(); // array di righe, chiavi = intestazioni del foglio
+    }
+    
     // Utility: normalizza stringhe/immagini
     const tidy  = (s) => (typeof s === "string" ? s.trim() : s);
     const fixImg = (s) => tidy(s);
@@ -116,18 +116,30 @@
         `;
       }
     
-      function displayPlayers(categoria) {
-        if (!teamList) return;
-        teamList.innerHTML = "";
-    
-        const list  = playersData[categoria] || [];
-        const staff = playersData.staff || [];
-    
-        // Mostra giocatori della categoria + staff
-        [...list, ...staff].forEach((p) => {
-          teamList.insertAdjacentHTML("beforeend", cardHTML(p));
-        });
-      }
+      async function displayPlayers(categoria) {
+  if (!teamList) return;
+
+  // Mostra messaggio di caricamento
+  teamList.innerHTML = `<p style="text-align:center; color:#fc43a3; font-weight:600;">Caricamento…</p>`;
+
+  // Aspetta un frame per far vedere subito il testo
+  await new Promise(r => setTimeout(r, 50));
+
+  const list  = playersData[categoria] || [];
+  const staff = playersData.staff || [];
+
+  if (list.length === 0 && staff.length === 0) {
+    teamList.innerHTML = `<p style="text-align:center; color:#fc43a3;">Nessun dato disponibile.</p>`;
+    return;
+  }
+
+  // Mostra giocatori della categoria + staff
+  teamList.innerHTML = "";
+  [...list, ...staff].forEach((p) => {
+    teamList.insertAdjacentHTML("beforeend", cardHTML(p));
+  });
+}
+
     
       /* ========= Caricamento dati da Google Sheets =========
          Tab atteso: "Squadre"
@@ -196,31 +208,7 @@
       });
     });
     </script>
-    <script>
-      /* ===== Loader API ===== */
-      (function () {
-        let pending = 0;
-        const el = document.getElementById('app-loader');
-      
-        function showLoader(){
-          pending++;
-          if(el) el.classList.remove('hidden');
-        }
-        function hideLoader(){
-          pending = Math.max(0, pending - 1);
-          if(el && pending === 0) el.classList.add('hidden');
-        }
-      
-        // Esponi globalmente
-        window.AppLoader = { show: showLoader, hide: hideLoader };
-      
-        // Spegni quando tutta la pagina (img/css/js) è pronta
-        window.addEventListener('load', () => {
-          // piccolo delay per evitare "flash"
-          setTimeout(() => { pending = 0; hideLoader(); }, 150);
-        });
-      })();
-      </script>
+  
       
 </body>
 </html>

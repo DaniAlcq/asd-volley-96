@@ -142,7 +142,7 @@ address { font-style: normal; }
 .hamburger{
   display: none;
   position: absolute;
-  right: 55px;
+  right: 95px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -2147,4 +2147,38 @@ main {
   box-shadow: 0 0 10px rgba(252,67,163,.5);
 }
 @keyframes spin{ to{ transform: rotate(360deg); } }
+
+/* Contenitore icone social */
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* spazio tra icone */
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Icone */
+.social-icons .social-logo-insta {
+  height: 33px;
+  filter: brightness(0) invert(1); /* bianco come Instagram */
+  opacity: 0.95;
+  transition: filter .2s ease, opacity .2s ease;
+}
+.social-icons .social-logo-facebook {
+  height: 25px;
+  filter: brightness(0) invert(1); /* bianco come Instagram */
+  opacity: 0.95;
+  transition: filter .2s ease, opacity .2s ease;
+}
+
+.social-icons .social-logo-insta:hover {
+  opacity: 1;
+  filter: brightness(0) invert(1) drop-shadow(0 0 3px var(--pink));
+}
+.social-icons .social-logo-facebook:hover {
+  opacity: 1;
+  filter: brightness(0) invert(1) drop-shadow(0 0 3px var(--pink));
+}
 
