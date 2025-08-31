@@ -2121,4 +2121,30 @@ main {
   .slide-left, .slide-right{ max-width: 100% !important; }
   .slide-left img{ width:100%; height:100%; object-fit: cover; }
 }
+/* ===== Loader overlay ===== */
+#app-loader{
+  position: fixed;
+  inset: 0;
+  background: rgba(18,18,18,.9); /* scuro trasparente */
+  display: grid;
+  place-items: center;
+  z-index: 99999;               /* sopra tutto */
+  transition: opacity .25s ease, visibility .25s ease;
+}
+#app-loader.hidden{
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* spinner */
+#app-loader .spinner{
+  width: 64px;
+  height: 64px;
+  border: 4px solid rgba(255,255,255,.25);
+  border-top-color: #fc43a3;    /* rosa brand */
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+  box-shadow: 0 0 10px rgba(252,67,163,.5);
+}
+@keyframes spin{ to{ transform: rotate(360deg); } }
 

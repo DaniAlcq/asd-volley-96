@@ -10,6 +10,11 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- Loader full-screen -->
+<div id="app-loader" aria-hidden="true">
+  <div class="spinner" aria-label="Caricamento in corso" role="status"></div>
+</div>
+
     <header class="header-tot">
         <img class="brand-logo" src="img/logonuovobianco.png" alt="Logo">
         <button class="hamburger" id="hamburger" aria-label="Apri menu">
@@ -60,12 +65,16 @@
     const GS = (tab) => `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(tab)}`;
     
     async function fetchSheet(tab) {
-      const url = GS(tab);
-      const res = await fetch(url, { cache: "no-store" });
-      if (!res.ok) throw new Error(`Fetch fallito: ${tab} (${res.status})`);
-      return res.json(); // array di righe, chiavi = intestazioni del foglio
-    }
-    
+  try {
+    AppLoader.show();
+    const url = `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(tab)}`;
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) throw new Error(`Fetch fallito: ${tab} (${res.status})`);
+    return await res.json();
+  } finally {
+    AppLoader.hide();
+  }
+}
     // Utility: normalizza stringhe/immagini
     const tidy  = (s) => (typeof s === "string" ? s.trim() : s);
     const fixImg = (s) => tidy(s);
@@ -187,6 +196,31 @@
       });
     });
     </script>
-    
+    <script>
+      /* ===== Loader API ===== */
+      (function () {
+        let pending = 0;
+        const el = document.getElementById('app-loader');
+      
+        function showLoader(){
+          pending++;
+          if(el) el.classList.remove('hidden');
+        }
+        function hideLoader(){
+          pending = Math.max(0, pending - 1);
+          if(el && pending === 0) el.classList.add('hidden');
+        }
+      
+        // Esponi globalmente
+        window.AppLoader = { show: showLoader, hide: hideLoader };
+      
+        // Spegni quando tutta la pagina (img/css/js) è pronta
+        window.addEventListener('load', () => {
+          // piccolo delay per evitare "flash"
+          setTimeout(() => { pending = 0; hideLoader(); }, 150);
+        });
+      })();
+      </script>
+      
 </body>
 </html>
