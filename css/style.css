@@ -2182,3 +2182,28 @@ main {
   filter: brightness(0) invert(1) drop-shadow(0 0 3px var(--pink));
 }
 
+/* Header "G" uguale agli altri */
+#calendar-table th:first-child {
+  font-size: 1rem;      /* stessa grandezza degli altri */
+  text-align: center;   /* centrato come le altre colonne */
+  min-width: 40px;      /* evita che sia troppo stretto */
+}
+
+/* Header "DATA" centrato */
+#calendar-table th:nth-child(2),
+#calendar-table td.data-cell {
+  text-align: center;
+}
+
+/* Header "Ris." ben visibile */
+#calendar-table th:last-child {
+  min-width: 55px;   /* allarga per contenere bene "Ris." */
+  text-align: center;
+}
+
+/* Risultato leggermente più grande */
+#calendar-table td:last-child {
+  font-size: 1.1rem;
+  font-weight: 600;  /* un po’ più marcato */
+  text-align: center;
+}
