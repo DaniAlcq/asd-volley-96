@@ -26,7 +26,8 @@
 <body>
   <header class="header-tot">
     <img class="brand-logo" src="img/bianco.png" alt="Logo">
-    <button class="hamburger" id="hamburger" aria-label="Apri menu">&#9776;</button>
+    <button class="hamburger" id="hamburger" aria-label="Apri menu" type="button">&#9776;</button>
+
     <nav id="navbar">
       <a href="index.html" data-url="index.html">Home</a>
       <a href="squadre.html" data-url="squadre.html">Squadre</a>
@@ -128,9 +129,9 @@
     const GS = (tab) => `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(tab)}`;
     const $  = (s, r=document) => r.querySelector(s);
     const $$ = (s, r=document) => [...r.querySelectorAll(s)];
-    const tidy = s => typeof s === 'string' ? s.trim() : s;
-    const fixImg = s => tidy(s);
-    const parseSets = str => (tidy(str||'')||'').split(',').map(x=>x.trim()).filter(Boolean);
+    const tidy = (s) => typeof s === 'string' ? s.trim() : s;
+    const fixImg = (s) => tidy(s);
+    const parseSets = (str) => (tidy(str || '') || '').split(',').map(x => x.trim()).filter(Boolean);
 
     async function fetchSheet(tab){
       const res = await fetch(GS(tab), { cache:'no-store' });
@@ -146,161 +147,245 @@
       setTimeout(() => el && el.remove(), 1000);
     }
 
-    function initYear(){ const y = $('#year'); if (y) y.textContent = new Date().getFullYear(); }
+    function initYear(){
+      const y = $('#year');
+      if (y) y.textContent = new Date().getFullYear();
+    }
 
     function initImageModal(){
-  const modal = $('#imgModal');
-  const imgEl = modal.querySelector('img');
+      const modal = $('#imgModal');
+      const imgEl = modal.querySelector('img');
 
-  // clic attivo SOLO sulle immagini del carosello
-  document.addEventListener('click', e => {
-    const img = e.target.closest('.news-carousel img');
-    if (!img) return;
-    imgEl.src = img.currentSrc || img.src;
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden','false');
-  });
+      // click solo sulle immagini del carosello
+      document.addEventListener('click', (e) => {
+        const img = e.target.closest('.news-carousel img');
+        if (!img) return;
+        imgEl.src = img.currentSrc || img.src;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden','false');
+      });
 
-  modal.addEventListener('click', () => {
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden','true');
-    imgEl.src = '';
-  });
+      modal.addEventListener('click', () => {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden','true');
+        imgEl.src = '';
+      });
 
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && modal.classList.contains('open')) modal.click();
-  });
-}
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) modal.click();
+      });
+    }
 
     async function initCarosello(){
       try{
         const rows = await fetchSheet('Carosello');
-        const slides = rows.map(r=>({ immagine:fixImg(r.immagine), caption:tidy(r.caption), descrizione:tidy(r.descrizione) }));
-        const wrap = $('.news-carousel .slides'); if(!wrap) return;
-        wrap.innerHTML='';
+        const slides = rows.map(r => ({
+          immagine: fixImg(r.immagine),
+          caption: tidy(r.caption),
+          descrizione: tidy(r.descrizione)
+        }));
+
+        const wrap = $('.news-carousel .slides');
+        if(!wrap) return;
+
+        wrap.innerHTML = '';
         for(const s of slides){
-          const d=document.createElement('div'); d.className='slide';
-          d.innerHTML=`<div class="slide-left"><img src="${s.immagine}" alt="${s.caption||''}"></div>
-                       <div class="slide-right"><h3>${s.caption||''}</h3><p>${s.descrizione||''}</p></div>`;
+          const d = document.createElement('div');
+          d.className = 'slide';
+          d.innerHTML = `
+            <div class="slide-left">
+              <img src="${s.immagine}" alt="${s.caption || ''}">
+            </div>
+            <div class="slide-right">
+              <h3>${s.caption || ''}</h3>
+              <p>${s.descrizione || ''}</p>
+            </div>`;
           wrap.appendChild(d);
         }
-        const prev=$('.news-carousel .prev'), next=$('.news-carousel .next'), items=$$('.news-carousel .slide');
-        if(!items.length||!prev||!next) return;
-        let i=0; const n=items.length; const upd=()=>{wrap.style.transform=`translateX(${-i*100}%)`;};
-        prev.addEventListener('click',()=>{i=(i-1+n)%n;upd();}); next.addEventListener('click',()=>{i=(i+1)%n;upd();});
-        document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')prev.click(); if(e.key==='ArrowRight')next.click();});
+
+        const prev = $('.news-carousel .prev');
+        const next = $('.news-carousel .next');
+        const items = $$('.news-carousel .slide');
+        if(!items.length || !prev || !next) return;
+
+        let i = 0;
+        const n = items.length;
+        const upd = () => { wrap.style.transform = `translateX(${-i*100}%)`; };
+
+        prev.addEventListener('click', () => { i = (i-1+n) % n; upd(); });
+        next.addEventListener('click', () => { i = (i+1) % n; upd(); });
+
+        document.addEventListener('keydown', (e) => {
+          if(e.key === 'ArrowLeft') prev.click();
+          if(e.key === 'ArrowRight') next.click();
+        });
+
         upd();
-      }catch(e){console.error('Carosello:',e);}
+      }catch(e){
+        console.error('Carosello:', e);
+      }
     }
 
-    let newsData=[];
+    let newsData = [];
     async function initNews(){
       try{
-        const rows=await fetchSheet('News');
-        newsData=rows.map(r=>({id:tidy(r.id),titolo:tidy(r.titolo),immagine:fixImg(r.immagine),contenuto:tidy(r.contenuto)}));
-        const grid=$('.news-grid'); if(!grid) return; grid.innerHTML='';
+        const rows = await fetchSheet('News');
+        newsData = rows.map(r => ({
+          id: tidy(r.id),
+          titolo: tidy(r.titolo),
+          immagine: fixImg(r.immagine),
+          contenuto: tidy(r.contenuto)
+        }));
+
+        const grid = $('.news-grid');
+        if(!grid) return;
+        grid.innerHTML = '';
+
         for(const n of newsData){
-          const f=document.createElement('figure'); f.className='news-card'; f.dataset.id=n.id;
-          f.innerHTML=`<img src="${n.immagine}" alt="${n.titolo}"><figcaption>${n.titolo}</figcaption>`;
+          const f = document.createElement('figure');
+          f.className = 'news-card';
+          f.dataset.id = n.id;
+          f.innerHTML = `
+            <img src="${n.immagine}" alt="${n.titolo}">
+            <figcaption>${n.titolo}</figcaption>`;
           grid.appendChild(f);
         }
-        document.addEventListener('click',e=>{const card=e.target.closest('.news-card'); if(!card)return; e.preventDefault(); showNews(card.dataset.id);});
-        const hid=location.hash.slice(1); if(hid) showNews(hid,true);
-        window.addEventListener('popstate',e=>{ if(e.state?.id) showNews(e.state.id,true); else location.reload(); });
-      }catch(e){console.error('News:',e);}
+
+        document.addEventListener('click', (e) => {
+          const card = e.target.closest('.news-card');
+          if(!card) return;
+          e.preventDefault();
+          showNews(card.dataset.id);
+        });
+
+        const hid = location.hash.slice(1);
+        if(hid) showNews(hid, true);
+
+        window.addEventListener('popstate', (e) => {
+          if(e.state && e.state.id) showNews(e.state.id, true);
+          else location.reload();
+        });
+      }catch(e){
+        console.error('News:', e);
+      }
     }
 
     function showNews(id, replace=false){
-      const main=document.querySelector('main'); if(!main) return;
-      const n=newsData.find(x=>String(x.id)===String(id)); if(!n){main.innerHTML='<p>News non trovata.</p>'; return;}
-      main.innerHTML=`<article class="news-detail">
-        <h2>${n.titolo}</h2><img src="${n.immagine}" alt="${n.titolo}"><p>${n.contenuto}</p>
-        <button class="back-btn" type="button" onclick="history.back()">⬅ Torna indietro</button></article>`;
-      window.scrollTo({top:0});
-      if(replace) history.replaceState({id},'',`#${id}`); else history.pushState({id},'',`#${id}`);
+      const main = document.querySelector('main');
+      if(!main) return;
+
+      const n = newsData.find(x => String(x.id) === String(id));
+      if(!n){
+        main.innerHTML = '<p>News non trovata.</p>';
+        return;
+      }
+
+      main.innerHTML = `
+        <article class="news-detail">
+          <h2>${n.titolo}</h2>
+          <img src="${n.immagine}" alt="${n.titolo}">
+          <p>${n.contenuto}</p>
+          <button class="back-btn" type="button" onclick="history.back()">⬅ Torna indietro</button>
+        </article>`;
+
+      window.scrollTo({ top: 0 });
+
+      if(replace) history.replaceState({ id }, '', `#${id}`);
+      else history.pushState({ id }, '', `#${id}`);
     }
 
     async function initScarabei(){
       try{
-        const rows=await fetchSheet('Scarabei');
-        const c=$('#scarabei-container'); if(!c) return; c.innerHTML='';
+        const rows = await fetchSheet('Scarabei');
+        const c = $('#scarabei-container');
+        if(!c) return;
+        c.innerHTML = '';
+
         for(const p of rows){
-          const d=document.createElement('div'); d.className='mvp-card';
-          d.innerHTML=`<img src="${fixImg(p.immagine)}" alt="${tidy(p.nome)||''}">
-                       <h3>${tidy(p.nome)||''}</h3><p>${tidy(p.categoria)||''}</p>
-                       ${p.prestazione?`<p><strong>Prestazione 🏐</strong><br>${tidy(p.prestazione)}</p>`:''}`;
+          const d = document.createElement('div');
+          d.className = 'mvp-card';
+          d.innerHTML = `
+            <img src="${fixImg(p.immagine)}" alt="${tidy(p.nome) || ''}">
+            <h3>${tidy(p.nome) || ''}</h3>
+            <p>${tidy(p.categoria) || ''}</p>
+            ${p.prestazione ? `<p><strong>Prestazione 🏐</strong><br>${tidy(p.prestazione)}</p>` : ''}`;
           c.appendChild(d);
         }
-      }catch(e){console.error('Scarabei:',e);}
+      }catch(e){
+        console.error('Scarabei:', e);
+      }
     }
 
     async function initRisultati(){
-      const btns=$$('.filter-btn'); const box=$('#results-container');
-      const render=(cat,rows)=>{
-        if(!box) return; box.innerHTML='';
-        const f=rows.filter(m=>(m.categoria||'').toLowerCase()===cat.toLowerCase()).slice(0,3);
+      const btns = $$('.filter-btn');
+      const box  = $('#results-container');
+
+      const render = (cat, rows) => {
+        if(!box) return;
+        box.innerHTML = '';
+
+        const f = rows
+          .filter(m => (m.categoria || '').toLowerCase() === cat.toLowerCase())
+          .slice(0, 3);
+
         for(const m of f){
-          const d=document.createElement('div'); d.className='result-card';
-          d.innerHTML=`<h4 class="result-day">${tidy(m.giorno)||''}</h4>
+          const d = document.createElement('div');
+          d.className = 'result-card';
+          d.innerHTML = `
+            <h4 class="result-day">${tidy(m.giorno) || ''}</h4>
             <div class="logos">
-              <div class="team"><img src="${fixImg(m.squadraCasa_logo)}" alt="${tidy(m.squadraCasa_nome)||''}"><span>${tidy(m.squadraCasa_nome)||''}</span></div>
-              <div class="resCasa">${tidy(m.risultatoCasa)??''}</div>
+              <div class="team">
+                <img src="${fixImg(m.squadraCasa_logo)}" alt="${tidy(m.squadraCasa_nome) || ''}">
+                <span>${tidy(m.squadraCasa_nome) || ''}</span>
+              </div>
+              <div class="resCasa">${tidy(m.risultatoCasa) ?? ''}</div>
               <div class="vs">-</div>
-              <div class="resOsp">${tidy(m.risultatoOspite)??''}</div>
-              <div class="team"><img src="${fixImg(m.squadraOspite_logo)}" alt="${tidy(m.squadraOspite_nome)||''}"><span>${tidy(m.squadraOspite_nome)||''}</span></div>
+              <div class="resOsp">${tidy(m.risultatoOspite) ?? ''}</div>
+              <div class="team">
+                <img src="${fixImg(m.squadraOspite_logo)}" alt="${tidy(m.squadraOspite_nome) || ''}">
+                <span>${tidy(m.squadraOspite_nome) || ''}</span>
+              </div>
             </div>
-            <ul class="result-sets">${parseSets(m.sets).map(s=>`<li>${s}</li>`).join('')}</ul>`;
+            <ul class="result-sets">
+              ${parseSets(m.sets).map(s => `<li>${s}</li>`).join('')}
+            </ul>`;
           box.appendChild(d);
         }
       };
+
       try{
-        const rows=await fetchSheet('Risultati'); render('Femminile',rows);
-        btns.forEach(b=>b.addEventListener('click',()=>{btns.forEach(x=>x.classList.remove('active')); b.classList.add('active'); render(b.dataset.cat,rows);}));
-      }catch(e){console.error('Risultati:',e);}
+        const rows = await fetchSheet('Risultati');
+        render('Femminile', rows);
+
+        btns.forEach((b) => {
+          b.addEventListener('click', () => {
+            btns.forEach(x => x.classList.remove('active'));
+            b.classList.add('active');
+            render(b.dataset.cat, rows);
+          });
+        });
+      }catch(e){
+        console.error('Risultati:', e);
+      }
     }
 
     function initMenuActive(){
-      const links=$$('#navbar a'); const cur=location.pathname.split('/').pop()||'index.html';
-      links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')===cur));
-    }
-
-    function playIntroOnce(){
-      const KEY='introPlayed';
-      const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const force=new URLSearchParams(location.search).get('intro')==='1';
-      const first=!localStorage.getItem(KEY)||force;
-      if(reduce||!first) return;
-      const IMG='img/volley-ball.png';
-      const css=`#intro-volley{position:fixed;inset:0;z-index:99998;background:radial-gradient(1200px 600px at 30% 30%, rgba(252,67,163,.15), rgba(0,0,0,.85));display:grid;place-items:center;pointer-events:none;opacity:0;transition:opacity .5s}
-      #intro-volley.show{opacity:1}#intro-volley.fade{opacity:0}
-      #intro-volley .ball-wrap{width:clamp(80px,18vw,140px);height:clamp(80px,18vw,140px);position:relative;filter:drop-shadow(0 12px 28px rgba(252,67,163,.45));animation:vp 1.9s ease-in-out forwards}
-      #intro-volley .ball-img{width:100%;height:100%;object-fit:contain;animation:vs 1.9s linear forwards}
-      #intro-volley .ball-wrap::before,#intro-volley .ball-wrap::after{content:"";position:absolute;inset:0;background:url("${IMG}") center/contain no-repeat;opacity:0;filter:blur(10px) saturate(1.2);transform:translate(-10px,6px) scale(.9);animation:vt 1.9s ease-out forwards;pointer-events:none}
-      #intro-volley .ball-wrap::after{filter:blur(16px) saturate(1.1);animation-delay:.07s}
-      @keyframes vp{0%{transform:translate(-45vw,18vh) scale(.9)}40%{transform:translate(6vw,-6vh) scale(1)}75%{transform:translate(0,0) scale(1)}100%{transform:translate(0,0) scale(1)}}
-      @keyframes vs{to{transform:rotate(540deg)}}@keyframes vt{0%{opacity:0;transform:translate(-10px,6px) scale(.85)}20%{opacity:.75}100%{opacity:0;transform:translate(-36px,16px) scale(1.12)}}`;
-      const s=document.createElement('style'); s.textContent=css; document.head.appendChild(s);
-      const o=document.createElement('div'); o.id='intro-volley'; o.innerHTML=`<div class="ball-wrap"><img src="${IMG}" alt="" class="ball-img"></div>`; document.body.appendChild(o);
-      requestAnimationFrame(()=>o.classList.add('show'));
-      const wrap=o.querySelector('.ball-wrap'); const end=()=>{o.classList.add('fade'); setTimeout(()=>o.remove(),450);};
-      const to=setTimeout(end,2300); wrap.addEventListener('animationend',e=>{ if(e.animationName==='vp'){clearTimeout(to); end();}}, {once:true});
-      localStorage.setItem(KEY,'1');
+      const links = $$('#navbar a');
+      const cur = location.pathname.split('/').pop() || 'index.html';
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === cur));
     }
 
     function boot(){
       initYear();
       initMenuActive();
       initImageModal();
-      playIntroOnce();
 
-      // Avvio asincroni senza bloccare il loader
       void initCarosello();
       void initNews();
       void initScarabei();
       void initRisultati();
 
-      // Nasconde sempre il loader
-      requestAnimationFrame(()=>requestAnimationFrame(hideLoader));
+      requestAnimationFrame(() => requestAnimationFrame(hideLoader));
       setTimeout(hideLoader, 3000);
     }
 
