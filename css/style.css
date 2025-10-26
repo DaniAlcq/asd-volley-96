@@ -1,13 +1,16 @@
 /* ==============================
    VARIABILI & RESET DI BASE
 ============================== */
+/* === Google Font globale === */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600;700;800&display=swap');
+
 :root {
-  --blue: #121212;
-  --pink: #fc43a3;              /* rosa brand */
-  --pink-strong: #fc43a3;
-  --text: #333;
-  --bg: #ffffff;
-  --shadow: 0 4px 8px rgba(0,0,0,0.1);
+  --blue:#121212;
+  --pink:#fc43a3;
+  --pink-strong:#fc43a3;
+  --text:#000000;   /* testo chiaro */
+  --bg:#1a1a1a;     /* sfondo nero */
+  --shadow:0 4px 8px rgba(0,0,0,0.1);
 
   /* nuovo gradiente: dal nero/graphite al rosa */
   --gradient: linear-gradient(-135deg, #fc43a3 0%,#1a1a1a 20%, #1a1a1a 70%, #fc43a3 100%);
@@ -34,9 +37,9 @@ img { max-width: 100%; height: auto; display: block; }
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Gill Sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: 'Oswald',system-ui, sans-serif;
   line-height: 1.5;
-  background-color: var(--bg);
+  background-color:var(--bg); color:var(--text); 
   color: var(--text);
   overflow-x: hidden;
   /* effetti fade-in */
@@ -49,6 +52,9 @@ body {
     filter 0.0s ease,
     background-color 0.0s ease;
 }
+
+body.loaded{ background-color:var(--bg); }   /* era #fff */
+
 body.fade-out {
   opacity: 0;
   transform: scale(0.95);
@@ -59,7 +65,7 @@ body.loaded {
   opacity: 1;
   transform: scale(1);
   filter: blur(0);
-  background-color: #fff;
+  background-color: var(--bg);
 }
 
 /* Utili */
@@ -118,6 +124,7 @@ address { font-style: normal; }
   font-size: 20px;
   font-weight: 700;
   padding: 8px 12px;
+  font-family: 'Oswald';
   transition: color .3s ease;
 }
 #navbar a::after{
@@ -215,6 +222,13 @@ main{ padding-top: 90px; }
   padding: 0;
   overflow: hidden;
 }
+/* Mostra il cursore "zoom in" sulle immagini cliccabili */
+.slide-left img,
+.news-card img,
+.news-detail img {
+  cursor:pointer;
+}
+
 .news-title{
   text-align: center;
   font-size: 2rem;
@@ -256,7 +270,7 @@ main{ padding-top: 90px; }
 .slide-left img{
   width: 100%;
   height: auto;
-  object-fit: contain;
+  object-fit: cover;
   background-color: transparent;
   flex-shrink: 0;
 }
@@ -318,7 +332,7 @@ main{ padding-top: 90px; }
   .slide-left img{
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
   .slide-right{
     position: absolute;
@@ -427,7 +441,7 @@ main{ padding-top: 90px; }
   flex-wrap: wrap;
 }
 .mvp-card{
-  background: var(--blue);
+  background: var(--bg);
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 6px 12px rgba(0,0,0,.25);
@@ -491,7 +505,7 @@ main{ padding-top: 90px; }
   object-fit: cover;
 }
 .team-card h3{
-  background: var(--blue);
+  background: var(--bg);
   color: var(--pink-strong);
   margin: 0;
   padding: .8rem;
@@ -504,7 +518,7 @@ main{ padding-top: 90px; }
 .results-section{
   text-align: center;
   padding: 2rem;
-  background-color: #f9f9f9;
+  background-color: var(--bg);
 }
 .results-title{
   font-size: 1.8rem;
@@ -804,7 +818,7 @@ main{ padding-top: 90px; }
 .contatti p{ font-size: 1.1em; margin: 8px 0; }
 .mappa{ margin-top: 20px; }
 .mappa iframe,
-iframe{ width: 100%; height: 300px; border: 0; border-radius: 10px; }
+iframe{ width: 100%; height: 400px; border: 0; border-radius: 10px; }
 
 /* ==============================
    LINK INSTAGRAM INLINE
@@ -872,7 +886,8 @@ body.loaded {
 
 /* evita che il contenuto finisca sotto l’header */
 main {
-  padding-top: 90px !important; /* ~ altezza header */
+  padding-top: 90px !important; 
+  background-color: var(--bg);/* ~ altezza header */
 }
 
 /* menu mobile: si apre subito sotto l'header fisso */
@@ -915,8 +930,8 @@ main {
   background: var(--gradientCarosell) !important;
   color: #fff;                 /* testo bianco leggibile */
 }
-.slide-right h3,
-.slide-right p{ color: #fff; } /* forza bianco nel testo */
+.slide-right h3{ color: #fc43a3; font-size: 25px;}
+.slide-right p{ color: #fff;} /* forza bianco nel testo */
 
 /* Mobile: la .slide-right è overlay sull’immagine → usa il gradiente trasparente */
 @media (max-width: 900px){
@@ -2035,9 +2050,9 @@ main {
 }
 #calendar-table td.avversario-cell .avv-wrap {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 4px;
   width: 100%;
 }
@@ -2045,13 +2060,13 @@ main {
   width: 65px;
   height: 50px;
   object-fit: contain;
-  margin: 0 auto;
+  margin: 0px;
 }
 #calendar-table td.avversario-cell span {
   display: block;
    /* più piccolo per i nomi lunghi */
   line-height: 1.2;
-  font-size: 12px;
+  font-size: 20px;
   white-space: normal;
 }
 
@@ -2108,7 +2123,7 @@ main {
   width: 100%;
   height: auto;            /* ← fondamentale */
   display: block;
-  object-fit: contain;     /* niente tagli, niente bande forzate */
+  object-fit: cover;     /* niente tagli, niente bande forzate */
 }
 
 
@@ -2208,3 +2223,204 @@ main {
   font-weight: 600;  /* un po’ più marcato */
   text-align: center;
 }
+
+
+
+/* ===== Intro volley overlay ===== */
+#intro-volley{
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: radial-gradient(1200px 600px at 30% 30%, rgba(252,67,163,.15), rgba(0,0,0,.85));
+  display: none;                    /* default nascosto: lo attiva JS */
+  place-items: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+#intro-volley.show { display: grid; opacity: 1; }
+#intro-volley.fade { opacity: 0; }
+
+/* contenitore pallone + scia */
+#intro-volley .ball-wrap{
+  width: clamp(80px, 18vw, 140px);
+  height: clamp(80px, 18vw, 140px);
+  position: relative;
+  filter: drop-shadow(0 12px 28px rgba(252,67,163,.45));
+  animation: volley-path 1.9s ease-in-out forwards;
+}
+
+/* immagine del pallone che RUOTA */
+#intro-volley .ball-img{
+  width: 100%; height: 100%;
+  object-fit: contain;
+  animation: volley-spin 1.9s linear forwards;
+}
+
+/* due scie morbide (cloni sfocati) */
+#intro-volley .ball-wrap::before,
+#intro-volley .ball-wrap::after{
+  content: "";
+  position: absolute; inset: 0;
+  background: url("img/volley-ball.png") center/contain no-repeat;
+  opacity: 0;
+  filter: blur(10px) saturate(1.2);
+  transform: translate(-10px, 6px) scale(.9);
+  animation: volley-trail 1.9s ease-out forwards;
+  pointer-events: none;
+}
+#intro-volley .ball-wrap::after{
+  filter: blur(16px) saturate(1.1);
+  animation-delay: .07s;
+}
+
+/* Percorso: entra da sinistra, curva, si ferma a centro */
+@keyframes volley-path{
+  0%   { transform: translate(-45vw, 18vh) scale(.9); }
+  40%  { transform: translate(6vw, -6vh)  scale(1); }
+  75%  { transform: translate(0, 0)       scale(1); }
+  100% { transform: translate(0, 0)       scale(1); }
+}
+/* Rotazione del pallone */
+@keyframes volley-spin{
+  0%   { rotate: 0deg; }
+  100% { rotate: 540deg; } /* 1.5 giri */
+}
+/* Scia che segue e svanisce */
+@keyframes volley-trail{
+  0%   { opacity: 0; transform: translate(-10px, 6px)  scale(.85); }
+  20%  { opacity: .75; }
+  100% { opacity: 0; transform: translate(-36px, 16px) scale(1.12); }
+}
+
+/* Rispetto preferenze utente: niente animazioni */
+@media (prefers-reduced-motion: reduce){
+  #intro-volley .ball-wrap, #intro-volley .ball-img{
+    animation: none !important;
+  }
+}
+.modal-img-viewer{
+  position:fixed;
+  inset:0;
+  background:black;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
+}
+.modal-img-viewer.open{display:flex;}
+.modal-img-viewer img{
+  max-width:100%;
+  max-height:100%;
+}
+/* Carosello: immagine intera, niente tagli */
+.slide-left img{
+  width: 100%;
+  height: auto;
+  object-fit: contain !important; /* sovrascrive ogni cover */
+  display: block;
+  background: transparent;
+}
+
+/* --- Image viewer full-screen --- */
+.modal-img-viewer{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.95);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 100000;
+  cursor: zoom-out;
+}
+.modal-img-viewer.open{ display: flex; }
+.modal-img-viewer img{
+  max-width: 98vw;
+  max-height: 98vh;
+}
+.live-dot.on{opacity:1}
+.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;
+  background:#ff2a55;margin-left:6px;box-shadow:0 0 8px #ff2a55;opacity:0;transition:opacity .25s}
+  .live-dot.on{opacity:1}
+  /* pallino live */
+#nav-live .live-dot{
+  display:inline-block;width:10px;height:10px;margin-left:6px;
+  border-radius:50%;background:#ff2b2b;
+  box-shadow:0 0 0 0 rgba(255,43,43,.7);
+  opacity:0;transform:scale(.6);
+  transition:opacity .2s, transform .2s;
+}
+#nav-live.live-on .live-dot{
+  opacity:1;transform:scale(1);animation:livePulse 1.6s infinite;
+}
+@keyframes livePulse{to{box-shadow:0 0 0 10px rgba(255,43,43,0)}}
+/* pallino live */
+#nav-live .live-dot{
+  display:inline-block;width:10px;height:10px;margin-left:6px;
+  border-radius:50%;background:#ff2b2b;
+  box-shadow:0 0 0 0 rgba(255,43,43,.7);
+  opacity:0;transform:scale(.6);
+  transition:opacity .2s, transform .2s;
+}
+#nav-live.live-on .live-dot{
+  opacity:1;transform:scale(1);animation:livePulse 1.6s infinite;
+}
+@keyframes livePulse{to{box-shadow:0 0 0 10px rgba(255,43,43,0)}}
+/* Pallino LIVE */
+#nav-live .live-dot{
+  display:inline-block;width:10px;height:10px;margin-left:6px;
+  border-radius:50%;background:#ff2b2b;
+  box-shadow:0 0 0 0 rgba(255,43,43,.6);
+  opacity:0;transform:scale(.6);
+  transition:opacity .2s, transform .2s;
+}
+#nav-live.live-on .live-dot,
+#navbar a.live-on .live-dot{
+  opacity:1;transform:scale(1);animation:livePulse 1.6s infinite;
+}
+@keyframes livePulse{to{box-shadow:0 0 0 10px rgba(255,43,43,0)}}
+.live-toolbar{max-width:1200px;margin:0 auto 10px;padding:0 12px}
+.live-actions{display:none;gap:10px;justify-content:flex-end}
+.btn-live{border:2px solid #fc43a3;background:#0f0f0f;color:#fff;
+  padding:8px 14px;border-radius:10px;cursor:pointer}
+.btn-live.primary{background:#fc43a3;color:#fff}
+.live-box{max-width:1200px;margin:0 auto;padding:8px;min-height:60vh;
+  background:#0c0c0c;border:2px solid #fc43a3;border-radius:14px}
+
+/* mostra i controlli quando la diretta è ON */
+.live-on .live-actions{display:flex}
+/* nascondi finché JS non ha inizializzato */
+html:not(.hydrated) #live-player,
+html:not(.hydrated) .live-toolbar { visibility: hidden; }
+
+/* toolbar */
+.live-toolbar{display:flex;gap:.75rem;align-items:center;margin:12px 0}
+.live-toolbar #btn-refresh,
+.live-toolbar a#btn-fb{
+  padding:.55rem .9rem;border:2px solid #fc43a3;border-radius:10px;
+  background:#0c0c0c;color:#fff;text-decoration:none;cursor:pointer
+}
+.live-toolbar a#btn-fb{background:#fc43a3;color:#000;font-weight:700}
+
+/* stato live (pallino + testo) */
+.live-status{display:flex;align-items:center;gap:.45rem;color:#fff}
+.live-status .dot{width:10px;height:10px;border-radius:50%;background:#999}
+html.live-on .live-status .dot{background:#ff2d55;box-shadow:0 0 0 3px rgba(255,45,85,.25)}
+html.live-on .live-status .txt{color:#ff2d55}
+
+/* area player */
+#live-player{
+  min-height:60vh;background:#111;border:2px solid #fc43a3;border-radius:12px
+}
+.live-dot{
+  width:10px;
+  height:10px;
+  margin-right:6px;
+  border-radius:50%;
+  background:#ff2a55;
+  box-shadow:0 0 8px #ff2a55;
+  display:inline-block;
+}
+/* in style.css se non esiste già */
+#nav-live { align-items:center; gap:8px; }
+#nav-live .live-dot{ width:10px; height:10px; border-radius:50%; background:#ff2a55; box-shadow:0 0 8px #ff2a55; }

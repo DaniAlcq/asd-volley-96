@@ -10,6 +10,7 @@
   <title>ASD VOLLEY 96</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
   <header class="header-tot">
     <img class="brand-logo" src="img/bianco.png" alt="Logo">
@@ -25,6 +26,13 @@
       <a href="calendario.html" data-url="calendario.html">Calendario e Risultati</a>
       <a href="classifiche.html" data-url="classifiche.html">Classifiche</a>
       <a href="contatti.html" data-url="contatti.html">Contatti</a>
+      <a id="nav-live" href="#" style="display:none">
+        Diretta <span class="live-dot" aria-hidden="true"></span>
+      </a>
+      
+      
+      
+      
     </nav>
   
     <!-- Icona Instagram -->
@@ -137,9 +145,11 @@
     });
   </script>
   
-
+<script src="js/live.js" defer></script>
   <script src="js/script.js" defer></script>
   <script src="js/menu.js" defer></script>
+  
+
   <script>
     // ======= Google Sheets via Opensheet: config + helper =======
     const SHEET_ID = "1ucM1JY5MXHF7-9mpjp2mfB41TvoA1ziMUGGz86woQXA"; // <-- sostituisci con il tuo ID se cambia
@@ -308,7 +318,38 @@
             showNews(id);
           }
         });
-    
+    /* ===== Image viewer full-screen ===== */
+(function(){
+  // crea il modal una volta sola
+  let modal = document.createElement("div");
+  modal.className = "modal-img-viewer";
+  modal.id = "imgModal";
+  modal.setAttribute("aria-hidden", "true");
+  modal.innerHTML = `<img src="" alt="">`;
+  document.body.appendChild(modal);
+
+  const modalImg = modal.querySelector("img");
+
+  // delega: carosello, card news, dettaglio news
+  document.addEventListener("click",(e)=>{
+    const img = e.target.closest(".slide-left img, .news-card img, .news-detail img");
+    if(!img) return;
+    modalImg.src = img.currentSrc || img.src;
+    modal.classList.add("open");
+  });
+
+  // chiudi su click o ESC
+  modal.addEventListener("click", ()=>{
+    modal.classList.remove("open");
+    modalImg.src = "";
+  });
+  document.addEventListener("keydown",(e)=>{
+    if(e.key === "Escape" && modal.classList.contains("open")){
+      modal.click();
+    }
+  });
+})();
+
         window.addEventListener("popstate", (e) => {
           if (e.state?.id) showNews(e.state.id, true);
           else location.reload();
@@ -419,6 +460,92 @@
     });
     </script>
     
+<!-- Intro volley ball -->
+<!-- Intro Volley (mostrato solo alla prima visita) -->
+<div id="intro-volley" aria-hidden="true">
+  <div class="ball-wrap">
+    <img src="img/pallona.webp" alt="" class="ball-img" />
+  </div>
+</div>
+<script>
+  (function(){
+    // ----- CONFIG -----
+    const IMG_SRC = "img/volley-ball.png"; // <-- metti il percorso giusto della tua immagine
+    const KEY     = "introPlayed";
+  
+    // Se l'utente ha "riduci animazioni", non mostrare intro
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const params = new URLSearchParams(location.search);
+    const force  = params.get("intro") === "1"; // forza l'intro per test
+    const first  = !localStorage.getItem(KEY) || force;
+  
+    if (reduce || !first) return; // esci se non dobbiamo mostrarla
+  
+    // ----- CSS inline (iniettato) -----
+    const css = `
+    #intro-volley{position:fixed;inset:0;z-index:99999;background:radial-gradient(1200px 600px at 30% 30%, rgba(252,67,163,.15), rgba(0,0,0,.85));
+      display:grid;place-items:center;pointer-events:none;opacity:0;transition:opacity .5s ease}
+    #intro-volley.show{opacity:1}
+    #intro-volley.fade{opacity:0}
+    #intro-volley .ball-wrap{width:clamp(80px,18vw,140px);height:clamp(80px,18vw,140px);position:relative;
+      filter:drop-shadow(0 12px 28px rgba(252,67,163,.45));animation:volley-path 1.9s ease-in-out forwards}
+    #intro-volley .ball-img{width:100%;height:100%;object-fit:contain;animation:volley-spin 1.9s linear forwards}
+    #intro-volley .ball-wrap::before,#intro-volley .ball-wrap::after{content:"";position:absolute;inset:0;
+      background:url("${IMG_SRC}") center/contain no-repeat;opacity:0;filter:blur(10px) saturate(1.2);
+      transform:translate(-10px,6px) scale(.9);animation:volley-trail 1.9s ease-out forwards;pointer-events:none}
+    #intro-volley .ball-wrap::after{filter:blur(16px) saturate(1.1);animation-delay:.07s}
+    @keyframes volley-path{0%{transform:translate(-45vw,18vh) scale(.9)}40%{transform:translate(6vw,-6vh) scale(1)}
+      75%{transform:translate(0,0) scale(1)}100%{transform:translate(0,0) scale(1)}}
+    @keyframes volley-spin{0%{transform:rotate(0deg)}100%{transform:rotate(540deg)}}
+    @keyframes volley-trail{0%{opacity:0;transform:translate(-10px,6px) scale(.85)}20%{opacity:.75}
+      100%{opacity:0;transform:translate(-36px,16px) scale(1.12)}}`;
+    const style = document.createElement("style");
+    style.textContent = css;
+    document.head.appendChild(style);
+  
+    // ----- Overlay + immagine -----
+    const overlay = document.createElement("div");
+    overlay.id = "intro-volley";
+    overlay.innerHTML = `<div class="ball-wrap"><img src="${IMG_SRC}" alt="" class="ball-img"></div>`;
+    document.body.appendChild(overlay);
+  
+    // mostra
+    requestAnimationFrame(() => overlay.classList.add("show"));
+  
+    // chiudi a fine animazione (fallback 2.3s)
+    const wrap = overlay.querySelector(".ball-wrap");
+    const end  = () => {
+      overlay.classList.add("fade");
+      setTimeout(() => overlay.remove(), 450);
+    };
+    const fallback = setTimeout(end, 2300);
+    wrap.addEventListener("animationend", (e) => {
+      if (e.animationName === "volley-path"){ clearTimeout(fallback); end(); }
+    }, { once:true });
+  
+    // marca come visto
+    localStorage.setItem(KEY, "1");
+  })();
+  const modal = document.getElementById("imgModal");
+const modalImg = modal.querySelector("img");
 
+document.addEventListener("click", (e)=>{
+  const cardImg = e.target.closest(".news-card img");
+  if(!cardImg) return;
+  modalImg.src = cardImg.src;
+  modal.classList.add("open");
+});
+
+modal.addEventListener("click", ()=>{
+  modal.classList.remove("open");
+  modalImg.src = "";
+});
+
+  </script>
+  
+  <div class="modal-img-viewer" id="imgModal">
+    <img src="" alt="">
+  </div>
+  
 </body>
 </html>

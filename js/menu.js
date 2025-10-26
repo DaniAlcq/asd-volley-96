@@ -48,4 +48,35 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") close();
   });
+  // --- ACCENSIONE PALLINO LIVE DA GOOGLE SHEET ---
+(function(){
+  const SHEET_ID = "1ucM1JY5MXHF7-9mpjp2mfB41TvoA1ziMUGGz86woQXA";
+  const GS = (tab) => `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(tab)}`;
+
+  async function updateLiveDot(){
+    try{
+      const res = await fetch(GS("Diretta"), { cache: "no-store" });
+      if(!res.ok) throw new Error(res.status);
+      const rows = await res.json();
+      const r = rows?.[0] || {};
+      const isLive = String((r.live||"").trim().toLowerCase());
+      const dot = document.getElementById("liveDot");
+      if(!dot) return;
+      if(isLive === "si" || isLive === "1" || isLive === "true"){
+        dot.classList.add("on");
+      }else{
+        dot.classList.remove("on");
+      }
+    }catch(e){
+      // in errore, spegni il pallino
+      const dot = document.getElementById("liveDot");
+      if(dot) dot.classList.remove("on");
+    }
+  }
+
+  // al load e poi ogni 60s
+  document.addEventListener("DOMContentLoaded", updateLiveDot);
+  setInterval(updateLiveDot, 60000);
+})();
+
 });
