@@ -4,7 +4,7 @@
     const GS = t => `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(t)}`;
   
     // fallback se lo Sheet non fornisce l'URL della live
-    const FALLBACK_YT = "https://www.youtube.com/@ASD_VOLLEY96/live"; // <-- metti il tuo canale
+    const FALLBACK_YT = "https://www.youtube.com/@ASD_VOLLEY_96/live"; // <-- metti il tuo canale
   
     // override manuale: ?live=1 o ?live=0
     const qp = new URLSearchParams(location.search);
@@ -19,6 +19,7 @@
       nav.target = "_blank";
       nav.rel    = "noopener";
       nav.style.display = "inline-flex";
+      nav.style.justifyContent= "center"
       nav.classList.add("live-on");
     }
     function hide(){

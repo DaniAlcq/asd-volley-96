@@ -2,7 +2,7 @@
    VARIABILI & RESET DI BASE
 ============================== */
 /* === Google Font globale === */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700;800&display=swap');
 
 :root {
   --blue:#121212;
@@ -813,9 +813,15 @@ main{ padding-top: 90px; }
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  color: #ffffff;         /* colore del testo */
+  text-decoration: none;
 }
-.contatti-info p{ margin: .5rem 0; font-size: 1rem; }
-.contatti p{ font-size: 1.1em; margin: 8px 0; }
+.contatti-wrapper a:hover {
+  color: #ffffff;         /* esempio: bianco in hover */
+  text-decoration: underline; /* opzionale */
+}
+.contatti-info p{ margin: .5rem 0; font-size: 1rem; color: white ;}
+.contatti p{ font-size: 1.1em; margin: 8px 0;}
 .mappa{ margin-top: 20px; }
 .mappa iframe,
 iframe{ width: 100%; height: 400px; border: 0; border-radius: 10px; }
@@ -1441,10 +1447,7 @@ main {
     width: 90px !important;
   }
 }
-.filter-buttons button,
-.filter-btn {
-  font-weight: normal !important;
-}
+
 .news-detail {
   max-width: 800px;        /* larghezza massima leggibile */
   margin: 0 auto;          /* centra orizzontalmente */
@@ -2080,13 +2083,20 @@ main {
 }
 
 /* Extra-compatto per smartphone molto piccoli */
-@media (max-width: 430px){
+@media (max-width: 630px){
   #calendar-table td.data-cell {
     font-size: 0.75rem;   /* ancora più piccolo */
   }
   #calendar-table td.avversario-cell img.logo-squadra {
     width: 36px;
     height: 36px;
+  }
+  #calendar-table td.avversario-cell span {
+    display: block;
+     /* più piccolo per i nomi lunghi */
+    line-height: 1.2;
+    font-size: 12px;
+    white-space: normal;
   }
 }
 
@@ -2424,3 +2434,28 @@ html.live-on .live-status .txt{color:#ff2d55}
 /* in style.css se non esiste già */
 #nav-live { align-items:center; gap:8px; }
 #nav-live .live-dot{ width:10px; height:10px; border-radius:50%; background:#ff2a55; box-shadow:0 0 8px #ff2a55; }
+/* Link pagina Contatti */
+.contatti-wrapper a {
+  color: var(--pink);          /* rosa */
+  text-decoration: none;
+}
+.contatti-wrapper a:visited {
+  color: var(--pink);          /* evita il viola visitato */
+}
+.contatti-wrapper a:hover,
+.contatti-wrapper a:focus {
+  color: #ffffff;          /* bianco in hover/focus */
+  text-decoration: underline;
+}
+.buttons-filter .filter-btn,
+.filter-buttons button,
+.filter-btn{
+  font-family: 'Oswald', system-ui, sans-serif;
+  font-weight: 600;   /* usa 600 o 700, entrambi importati */
+}
+/* rimuovi il puntatore dalle news */
+.news-card img,
+.news-detail img { cursor: default; }
+
+/* mantieni zoom solo per il carosello */
+.news-carousel img { cursor: pointer; }
