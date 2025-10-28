@@ -432,7 +432,7 @@ main{ padding-top: 90px; }
   display:flex;
   justify-content: center;
   gap: 2.5rem;
-  flex-wrap:nowrap;
+  flex-wrap:wrap;
 }
 .mvp-card{
   background: var(--bg);
