@@ -267,13 +267,7 @@ main{ padding-top: 90px; }
   flex-direction: column;
   overflow: hidden;
 }
-.slide-left img{
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  background-color: transparent;
-  flex-shrink: 0;
-}
+
 
 /* Testo a destra */
 .slide-right{
@@ -2129,12 +2123,7 @@ main {
   border: 2px solid var(--pink-strong);
   background: var(--blue);
 }
-.slide-left img{
-  width: 100%;
-  height: auto;            /* ← fondamentale */
-  display: block;
-  object-fit: cover;     /* niente tagli, niente bande forzate */
-}
+
 
 
 
@@ -2327,7 +2316,7 @@ main {
 .slide-left img{
   width: 100%;
   height: auto;
-  object-fit: contain !important; /* sovrascrive ogni cover */
+  object-fit: inherit !important; /* sovrascrive ogni cover */
   display: block;
   background: transparent;
 }
