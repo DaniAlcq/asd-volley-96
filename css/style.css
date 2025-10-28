@@ -566,7 +566,7 @@ main{ padding-top: 90px; }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 320px;
+  height: 350px;
   overflow: hidden;
   color: var(--blue);
 }
