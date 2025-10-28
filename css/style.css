@@ -435,10 +435,10 @@ main{ padding-top: 90px; }
   margin-bottom: 2rem;
 }
 .mvp-grid{
-  display: flex;
+  display:inline-flex;
   justify-content: center;
   gap: 2.5rem;
-  flex-wrap: wrap;
+  flex-wrap:nowrap;
 }
 .mvp-card{
   background: var(--bg);
@@ -446,8 +446,8 @@ main{ padding-top: 90px; }
   overflow: hidden;
   box-shadow: 0 6px 12px rgba(0,0,0,.25);
   transition: transform .3s ease;
-  width: 260px;
-  height: 420px;
+  width: 30%;
+  height: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -456,8 +456,8 @@ main{ padding-top: 90px; }
 .mvp-card:hover{ transform: scale(1.07); }
 .mvp-card img{
   width: 100%;
-  height: 260px;
-  object-fit: cover;
+  height: 360px;
+  object-fit:fill;
 }
 .mvp-card h3{
   margin: .8rem 0 .3rem;
@@ -466,7 +466,7 @@ main{ padding-top: 90px; }
 }
 .mvp-card p{
   color: var(--pink-strong);
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   margin-bottom: 1rem;
 }
 
@@ -583,7 +583,7 @@ main{ padding-top: 90px; }
 }
 .result-card .team{ display: flex; flex-direction: column; align-items: center; flex: 1; }
 .result-card .team img{
-  height: 80px; width: auto; object-fit: contain; max-width: 100%;
+  height: 120px; width: auto; object-fit: contain; max-width: 100%;
 }
 .result-card .vs{
   font-weight: 700; color: var(--blue); font-size: 2rem;

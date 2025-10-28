@@ -271,28 +271,32 @@
     }
 
     function showNews(id, replace=false){
-      const main = document.querySelector('main');
-      if(!main) return;
+  const main=document.querySelector('main');
+  if(!main) return;
+  const n=newsData.find(x=>String(x.id)===String(id));
+  if(!n){main.innerHTML='<p>News non trovata.</p>'; return;}
 
-      const n = newsData.find(x => String(x.id) === String(id));
-      if(!n){
-        main.innerHTML = '<p>News non trovata.</p>';
-        return;
-      }
+  const format = (txt) => {
+    if(!txt) return '';
+    return txt
+      .replace(/\*\s*(.*?)\s*\*/g, '<strong>$1</strong>')
+      .split(/\n\s*\n/).map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+  };
 
-      main.innerHTML = `
-        <article class="news-detail">
-          <h2>${n.titolo}</h2>
-          <img src="${n.immagine}" alt="${n.titolo}">
-          <p>${n.contenuto}</p>
-          <button class="back-btn" type="button" onclick="history.back()">⬅ Torna indietro</button>
-        </article>`;
+  main.innerHTML = `
+    <article class="news-detail">
+      <h2>${n.titolo}</h2>
+      <img src="${n.immagine}" alt="${n.titolo}">
+      ${format(n.contenuto)}
+      <button class="back-btn" type="button" onclick="history.back()">⬅ Torna indietro</button>
+    </article>
+  `;
 
-      window.scrollTo({ top: 0 });
+  window.scrollTo({top:0});
+  if(replace) history.replaceState({id},'',`#${id}`);
+  else history.pushState({id},'',`#${id}`);
+}
 
-      if(replace) history.replaceState({ id }, '', `#${id}`);
-      else history.pushState({ id }, '', `#${id}`);
-    }
 
     async function initScarabei(){
       try{
