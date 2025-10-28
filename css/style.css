@@ -941,7 +941,7 @@ main {
   }
 }
 .result-card {
-  background: #ffe6f7;
+  background: #ffffff;
   border: 2px solid #ff0bd3;
   color: #121212;  /* testo scuro per leggibilità */
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
@@ -2448,3 +2448,5 @@ html.live-on .live-status .txt{color:#ff2d55}
 
 /* mantieni zoom solo per il carosello */
 .news-carousel img { cursor: pointer; }
+/* vale per calendario + classifica */
+
