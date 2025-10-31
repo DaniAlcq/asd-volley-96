@@ -244,7 +244,7 @@ main{ padding-top: 90px; }
   width: 100vw;
   overflow: hidden;
   background: transparent;
-  max-height:max-content;
+  max-height:fit-content;
 }
 .news-carousel .slides{
   display: flex;
@@ -497,7 +497,7 @@ main{ padding-top: 90px; }
 .team-card img{
   width: 100%;
   height: 180px;
-  object-fit: cover;
+  object-fit: contain;
 }
 .team-card h3{
   background: var(--bg);
@@ -2135,7 +2135,7 @@ main {
     border: 2px solid var(--pink-strong);
   }
   .slide-left, .slide-right{ max-width: 100% !important; }
-  .slide-left img{ width:100%; height:100%; object-fit: cover; }
+  .slide-left img{ width:100%; height:100%; object-fit: contain; }
 }
 /* ===== Loader overlay ===== */
 #app-loader{
@@ -2473,208 +2473,115 @@ html.live-on .live-status .txt{color:#ff2d55}
 /* C: overlay sul carosello */
 .live-overlay{ position:absolute; right:18px; top:18px; z-index:20; }
 .news-wrapper{ position:relative; }
-/* === Carosello: dimensioni massime + immagini sempre centrate === */
-:root{
-  --carousel-w: 1200px;   /* larghezza max */
-  --carousel-h: 440px;    /* altezza max desktop */
-  --carousel-h-m: 58vh;   /* altezza max mobile */
-}
 
-.news-carousel{
-  width: 100%;
 
-  margin: 0 auto;                 /* centra il blocco */
-  overflow: hidden;
-}
 
-.news-carousel .slides{
-  display: flex;
-  transition: transform .5s ease-in-out;
-  height: var(--carousel-h);
-}
 
-.news-carousel .slide{
-  flex: 0 0 100%;
-  height: var(--carousel-h);
-  display: flex;
-  overflow: hidden;
-}
-
-/* colonna immagine: centro assoluto, nessuno stretch */
-.slide-left{
-  flex: 0 0 60%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--blue);
-  border: 2px solid var(--pink-strong);
-}
-.slide-left img{
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;          /* evita stretch orizzontale */
-  height: 100%;         /* evita stretch verticale */
-  object-fit: contain;  /* sempre tutto visibile */
-  object-position: center center;
-}
-
-/* colonna testo: scorrimento se eccede l’altezza */
-.slide-right{
-  flex: 0 0 40%;
-  max-height: var(--carousel-h);
-  overflow: auto;       /* evita che il testo “spinga” l’altezza */
-}
-
-/* Mobile: altezza fluida ma centrata, testo overlay */
+/* === Carosello: layout mobile senza sovrapposizioni === */
 @media (max-width: 900px){
-  .news-carousel .slides,
+  .news-carousel{ width:100%; overflow:hidden; }
+  .news-carousel .slides{ max-height:none; }
+
   .news-carousel .slide{
-    height: var(--carousel-h-m);
-  }
-  .news-carousel .slide{
-    position: relative;
-    border: 2px solid var(--pink-strong);
-  }
-  .slide-left,
-  .slide-right{ flex: none; max-width: 100%; }
-  .slide-left{ height: 100%; }
-  .slide-right{
-    position: absolute; left: 0; right: 0; bottom: 0;
-   
-    background: rgba(0,0,0,.78);
-    color: #fff;
-    padding: 12px 14px;
-    overflow: hidden;   /* niente scrollbar su mobile */
-  }
-}
-
-/* Rimuovi vincoli vecchi che forzano 435px */
-.news-carousel .slides,
-.news-carousel .slide{ max-height: none !important; }
-/* === Carosello: responsivo tipografia + spazi e colonna destra === */
-
-/* base desktop */
-.slide-right{
-  flex: 0 0 40%;
-  padding: 0 48px 0 24px;
-  font-size: 1.02rem;
-  line-height: 1.45;
-}
-.slide-right h3{
-  margin: 0 0 10px;
-  font-size: 1.45rem;
-  line-height: 1.25;
-}
-
-/* ≤ 1200px */
-@media (max-width: 1200px){
-  .slide-right{ flex-basis: 38%; padding: 0 36px 0 20px; font-size: .96rem; line-height: 1.35; }
-  .slide-right h3{ font-size: 1.3rem; line-height: 1.2; }
-}
-
-/* ≤ 1024px */
-@media (max-width: 1024px){
-  .slide-right{ flex-basis: 36%; padding: 0 28px 0 18px; font-size: .92rem; line-height: 1.28; }
-  .slide-right h3{ font-size: 1.2rem; }
-}
-
-/* overlay mobile già attivo a ≤ 900px, qui riduco testo e spazi */
-@media (max-width: 900px){
-  .slide-right{
-    padding: 10px 14px;
-    font-size: clamp(.88rem, 2.2vw, .98rem);
-    line-height: 1.22;          /* interlinea più stretta */
-  }
-  .slide-right h3{
-    font-size: clamp(1.02rem, 3.2vw, 1.2rem);
-    margin: 0 0 6px;
-    line-height: 1.15;
-  }
-  .slide-right p{ margin: 0; }   /* niente margini verticali extra */
-}
-
-/* telefoni piccoli ≤ 600px */
-@media (max-width: 600px){
-  .slide-right{
-    padding: 8px 12px;
-    font-size: .86rem;
-    line-height: 1.18;
-  }
-  .slide-right h3{
-    font-size: 1.05rem;
-    line-height: 1.12;
-  }
-}
-
-/* micro-schermi ≤ 380px */
-@media (max-width: 380px){
-  .slide-right{ font-size: .82rem; line-height: 1.14; }
-  .slide-right h3{ font-size: .98rem; }
-}
-/* default: mostra tutta la foto ma centrata */
-.slide-left img{
-  object-fit: contain;
-  object-position: center center;   /* poi la sposto sui breakpoint */
-  transition: object-position .2s ease, transform .2s ease;
-}
-
-/* medium: spingi la foto verso l’alto */
-@media (max-width: 1100px){
-  .slide-left img{ object-position: center top; }
-}
-
-/* small: ancora più su e testo più compatto a destra */
-@media (max-width: 600px){
-  .slide-left img{ object-position: center 0%; }  /* top + un filo di margine */
-  .slide-right{ font-size: .86rem; line-height: 1.18; }
-}
-
-/* opzionale: classe per “forzare” una foto specifica sempre in alto */
-.slide-left img.img-top{
-  object-position: center top !important;
-}
-/* === Carosello "alto" SOLO su mobile === */
-@media (max-width: 900px){
-  .news-carousel .slides,
-  .news-carousel .slide{ height: auto !important; }
-
-  /* aumenta l’altezza totale solo su mobile */
-  .news-carousel .slide{
-    min-height: clamp(520px, 80vh, 1200px);   /* più alto se serve */
-    position: relative;                        /* per il pannello testo */
-    border: 2px solid var(--pink-strong);
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    width:100%;
+    min-height:auto;
+    height:auto;
+    margin:0;
+    border:2px solid var(--pink-strong);
+    overflow:hidden;
   }
 
-  /* foto sempre visibile e spinta in alto */
-  .slide-left{ height: 100%; }
+  .slide-left{
+    flex:0 0 auto;
+    max-width:100% !important;
+    border:none !important;
+  }
   .slide-left img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
+    display:block;
+    width:100%;
+    height:auto;            /* niente altezza forzata */
+    object-fit:contain !important;
   }
 
-  /* testo in overlay con scroll se lungo */
   .slide-right{
-    position: absolute;
-    left: 0; right: 0; bottom: 0;
-    max-height: 46vh;           /* alza se vuoi più spazio al testo */
-    overflow: auto;
-    padding: 12px 14px;
-    font-size: clamp(.86rem, 2.6vw, 1rem);
-    line-height: 1.18;
-  }
-  .slide-right h3{
-    font-size: clamp(1.5rem, 3.4vw, 1.5rem);
-    margin: 0 0 6px;
-    line-height: 1.14;
+    position:static !important;  /* rimuove overlay */
+    flex:0 0 auto;
+    width:100%;
+    max-width:100% !important;
+    padding:12px 16px;
+    margin:0;
+    text-align:center;
+    background: var(--blue);      /* o il tuo gradiente */
+    color:#fff;
+    z-index:auto;
   }
 
-  /* variante ancora più alta solo se necessario */
-  .news-carousel .slide.slide--tall{
-    min-height: clamp(620px, 88vh, 1400px);
+  /* frecce sempre sopra */
+  .news-carousel .prev,
+  .news-carousel .next{ z-index:20; }
+}
+/* Mobile: elimina lo spazio nero sotto la foto nel carosello */
+@media (max-width: 900px){
+  .news-carousel{ height:auto !important; }
+  .news-carousel .slides{ max-height:min-content !important; }
+  .news-carousel .slide{
+    min-height:auto !important;
+    height:min-content !important;
+    overflow: visible !important;
   }
-  .news-carousel .slide.slide--tall .slide-right{
-    max-height: 52vh;
+
+  /* il contenitore non deve avere un fondo visibile */
+  .slide-left{
+    background: transparent !important;
+    border: 0 !important;
+  }
+
+  /* l'immagine detta l'altezza: niente 100% */
+  .slide-left img{
+    width:100%;
+    height:auto !important;
+    object-fit: contain !important;
+    max-height: 295px;
+    display:block;
+  }
+
+  /* blocco testo sotto, non overlay */
+  .slide-right{
+    position: static !important;
+    width:100%;
+    max-width:100% !important;
+    margin:0; padding:12px 16px;
   }
 }
+/* MENU MOBILE: pannello a DESTRA sotto l'header */
+@media (max-width: 768px){
+  #navbar{
+    position: fixed !important;
+    top: 70px !important;   /* = altezza header */
+    right: 0 !important;
+    left: auto !important;
+
+    width: min(86vw, 360px);
+    height: auto;
+    box-sizing: border-box;
+
+    display: none;                  /* mostrato da .active */
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+
+    margin: 0 !important;           /* annulla margini desktop */
+    padding: 8px 0;
+    background: var(--blue);
+    border-left: 1px solid #333;
+    border-radius: 8px 0 0 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.35);
+    z-index: 10000;
+  }
+  #navbar a{ padding: 12px 16px; }
+  #navbar.active{ display: flex !important; }
+}
+
