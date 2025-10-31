@@ -6,22 +6,22 @@
 
 :root {
   --blue:#121212;
-  --pink:#fc43a3;
-  --pink-strong:#fc43a3;
+  --pink:#ff0084;
+  --pink-strong:#ff0084;
   --text:#000000;   /* testo chiaro */
   --bg:#1a1a1a;     /* sfondo nero */
   --shadow:0 4px 8px rgba(0,0,0,0.1);
 
   /* nuovo gradiente: dal nero/graphite al rosa */
-  --gradient: linear-gradient(-135deg, #fc43a3 0%,#1a1a1a 20%, #1a1a1a 70%, #fc43a3 100%);
+  --gradient: linear-gradient(-135deg, #ff0084 0%,#1a1a1a 20%, #1a1a1a 70%, #ff0084 100%);
   --gradient-transparent: linear-gradient(
     135deg,
     rgba(18,18,18,0.85) 0%,
     rgba(26,26,26,0.85) 30%,
-    #fc43a3 100%
+    #ff0084 100%
   );
-  --gradientCarosell: linear-gradient(-135deg, #fc43a3 0%,#1a1a1a 19%, #1a1a1a 80%, #fc43a3 100%);
-  --gradientResult: linear-gradient(135deg, #fc43a3 0%, white 15%, white 85%, #fc43a3 100%);
+  --gradientCarosell: linear-gradient(-135deg, #ff0084 0%,#1a1a1a 19%, #1a1a1a 80%, #ff0084 100%);
+  --gradientResult: linear-gradient(135deg, #ff0084 0%, white 15%, white 85%, #ff0084 100%);
 
 }
 
@@ -110,14 +110,15 @@ address { font-style: normal; }
 /* NAV DESKTOP */
 #navbar{
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   gap: 1.5rem;
-  margin-right: 300px;      
-  margin-left: 150px;        /* centrato */
+  margin: 0 auto;
   padding: 0;
+  width: fit-content;
   max-width: 100%;
 }
+
 #navbar a{
   position: relative;
   text-decoration: none;
@@ -241,19 +242,22 @@ main{ padding-top: 90px; }
 /* Carosello full width */
 .news-carousel{
   position: relative;
-  width: 100vw;
+  width: 100%;
   overflow: hidden;
   background: transparent;
   max-height:fit-content;
 }
+
+
 .news-carousel .slides{
   display: flex;
   transition: transform .5s ease-in-out;
   width: 100%;
   max-height: 435px;
+  height: max-content;
 }
 .news-carousel .slide{
-  flex: 0 0 100vw;
+  flex: 0 0 100%;
   display: flex;
   min-height: 435px;
   overflow: hidden;
@@ -261,7 +265,7 @@ main{ padding-top: 90px; }
 
 /* Immagine a sinistra */
 .slide-left{
-  flex: 0 0 60%;
+  flex: 0 0 45%;
   border: 2px solid var(--pink-strong);
   background-color: var(--blue);
   display: flex;
@@ -272,7 +276,7 @@ main{ padding-top: 90px; }
 
 /* Testo a destra */
 .slide-right{
-  flex: 0 0 40%;
+  flex: 0 0 55%;
   padding: 0 60px 0 30px;
   background-color: var(--blue);
   color: var(--pink-strong);
@@ -282,7 +286,7 @@ main{ padding-top: 90px; }
   overflow-wrap: break-word;
   text-align: left;
   box-sizing: border-box;
-  max-width: 40%;
+  max-width: 55%;
   z-index: 15;
 }
 .slide-right p{ color: #fff; }
@@ -359,7 +363,7 @@ main{ padding-top: 90px; }
   width: 100%;
   max-width: 300px;
   height: 250px;
-  max-height: 300px;
+  max-height:200px;
   overflow: hidden;
   border-radius: 10px;
   border: 2px solid var(--pink-strong);
@@ -374,7 +378,7 @@ main{ padding-top: 90px; }
 .news-card{ margin: 0; }
 .news-card img{
   width: 100%;
-  object-fit: contain;
+  object-fit: fill;
   border-radius: 6px;
   background-color: var(--blue);
 }
@@ -385,13 +389,13 @@ main{ padding-top: 90px; }
   background: rgba(0,0,0,.8);
   color: var(--pink-strong);
   padding: 10px;
-  font-size: 1.1rem;
+  font-size: .8rem;
   text-align: center;
   transition: opacity .3s ease;
 }
 .news-card:hover img{ transform: scale(1.05); }
 @media (max-width: 600px){
-  .news-card figcaption{ font-size: .85rem; padding: .4rem; }
+  .news-card figcaption{ font-size: .75rem; padding: .4rem; }
 }
 
 /* ==============================
@@ -497,7 +501,7 @@ main{ padding-top: 90px; }
 .team-card img{
   width: 100%;
   height: 180px;
-  object-fit: contain;
+  object-fit: cover;
 }
 .team-card h3{
   background: var(--bg);
@@ -931,7 +935,7 @@ main {
   background: var(--gradientCarosell) !important;
   color: #fff;                 /* testo bianco leggibile */
 }
-.slide-right h3{ color: #fc43a3; font-size: 25px;}
+.slide-right h3{ color: #ff0084; font-size: 25px;}
 .slide-right p{ color: #fff;} /* forza bianco nel testo */
 
 /* Mobile: la .slide-right è overlay sull’immagine → usa il gradiente trasparente */
@@ -943,7 +947,7 @@ main {
 }
 .result-card {
   background: #ffffff;
-  border: 2px solid #ff0bd3;
+  border: 2px solid #ff0084;
   color: #121212;  /* testo scuro per leggibilità */
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   transition: transform .3s ease, box-shadow .3s ease;
@@ -1484,7 +1488,7 @@ main {
   cursor: pointer;
 }
 .news-detail .back-btn:hover {
-  background: #e03891;     /* rosa un po’ più scuro */
+  background: #ff0084;     /* rosa un po’ più scuro */
 }
 
 
@@ -2157,7 +2161,7 @@ main {
   width: 64px;
   height: 64px;
   border: 4px solid rgba(255,255,255,.25);
-  border-top-color: #fc43a3;    /* rosa brand */
+  border-top-color: #ff0084;    /* rosa brand */
   border-radius: 50%;
   animation: spin 0.9s linear infinite;
   box-shadow: 0 0 10px rgba(252,67,163,.5);
@@ -2317,7 +2321,7 @@ main {
 .slide-left img{
   width: 100%;
   height: 100%;
-  object-fit: contain !important; /* sovrascrive ogni cover */
+  object-fit: cover !important; /* sovrascrive ogni cover */
   display: block;
   background: transparent;
 }
@@ -2381,11 +2385,11 @@ main {
 @keyframes livePulse{to{box-shadow:0 0 0 10px rgba(255,43,43,0)}}
 .live-toolbar{max-width:1200px;margin:0 auto 10px;padding:0 12px}
 .live-actions{display:none;gap:10px;justify-content:flex-end}
-.btn-live{border:2px solid #fc43a3;background:#0f0f0f;color:#fff;
+.btn-live{border:2px solid #ff0084;background:#0f0f0f;color:#fff;
   padding:8px 14px;border-radius:10px;cursor:pointer}
-.btn-live.primary{background:#fc43a3;color:#fff}
+.btn-live.primary{background:#ff0084;color:#fff}
 .live-box{max-width:1200px;margin:0 auto;padding:8px;min-height:60vh;
-  background:#0c0c0c;border:2px solid #fc43a3;border-radius:14px}
+  background:#0c0c0c;border:2px solid #ff0084;border-radius:14px}
 
 /* mostra i controlli quando la diretta è ON */
 .live-on .live-actions{display:flex}
@@ -2397,10 +2401,10 @@ html:not(.hydrated) .live-toolbar { visibility: hidden; }
 .live-toolbar{display:flex;gap:.75rem;align-items:center;margin:12px 0}
 .live-toolbar #btn-refresh,
 .live-toolbar a#btn-fb{
-  padding:.55rem .9rem;border:2px solid #fc43a3;border-radius:10px;
+  padding:.55rem .9rem;border:2px solid #ff0084;border-radius:10px;
   background:#0c0c0c;color:#fff;text-decoration:none;cursor:pointer
 }
-.live-toolbar a#btn-fb{background:#fc43a3;color:#000;font-weight:700}
+.live-toolbar a#btn-fb{background:#ff0084;color:#000;font-weight:700}
 
 /* stato live (pallino + testo) */
 .live-status{display:flex;align-items:center;gap:.45rem;color:#fff}
@@ -2410,7 +2414,7 @@ html.live-on .live-status .txt{color:#ff2d55}
 
 /* area player */
 #live-player{
-  min-height:60vh;background:#111;border:2px solid #fc43a3;border-radius:12px
+  min-height:60vh;background:#111;border:2px solid #ff0084;border-radius:12px
 }
 .live-dot{
   width:10px;
@@ -2585,3 +2589,49 @@ html.live-on .live-status .txt{color:#ff2d55}
   #navbar.active{ display: flex !important; }
 }
 
+
+/* mostralo se uno qualunque dei marker è attivo */
+html.live-on #live-button,
+body.live-on #live-button,
+#live-button.live-on,
+#live-button[data-live="on"],
+#live-button[data-live="true"]{
+  display:inline-flex !important;
+}
+/* di default invisibile */
+.live-fab {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+
+/* quando JS attiva la diretta */
+html.live-on .live-fab {
+  opacity: 1;
+  pointer-events: auto;
+}
+/* Nascosto finché ha la classe live-hidden */
+.live-fab.live-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+
+/* Mostrato quando live-hidden non è presente */
+.live-fab {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity .25s ease;
+}
+/* invisibile finché JS non lo attiva */
+.live-fab {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+
+/* visibile solo quando JS rimuove la classe live-hidden */
+.live-fab:not(.live-hidden) {
+  opacity: 1;
+  pointer-events: auto;
+}

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
   <head>
+    
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-35L1FT2V6S"></script>
 <script>
@@ -32,10 +33,10 @@
         display:flex;justify-content:center;gap:14px;margin:8px 0 28px
       }
       .filter-buttons button{
-        border:2px solid #fc43a3;background:#f9f9f9;color:#fc43a3;border-radius:999px;
+        border:2px solid #ff0084;background:#f9f9f9;color:#ff0084;border-radius:999px;
         padding:10px 18px;cursor:pointer
       }
-      .filter-buttons button.active{background:#fc43a3;color:#fff}
+      .filter-buttons button.active{background:#ff0084;color:#fff}
 
       .role-section{margin:36px 0 48px}
       .role-title{
@@ -70,7 +71,7 @@
       .player-num{
         margin:0;font-family:"Oswald",system-ui,sans-serif;
         font-weight:800;font-size:clamp(80px,5.2vw,88px);
-        color:#fc43a3;line-height:1;opacity:.98;text-shadow:0 1px 2px rgba(0,0,0,.35)
+        color:#ff0084;line-height:1;opacity:.98;text-shadow:0 1px 2px rgba(0,0,0,.35)
       }
       .name-block{display:flex;flex-direction:column;justify-content:flex-end;min-width:0}
       .player-first,.player-last{
@@ -118,17 +119,21 @@
   <main class="roster-page">
     <h1>Le nostre squadre</h1>
     <div class="filter-buttons">
-      <button id="btn-femminile">Femminile</button>
-      <button id="btn-maschile">Maschile</button>
+      <button id="btn-femminile">Serie C Femminile</button>
+      <button id="btn-maschile">Serie C Maschile</button>
     </div>
 
     <section id="giocatori-list"></section>
     <script src="js/fade.js"></script>
+    <a id="live-button" class="live-fab live-hidden" href="#" target="_blank" rel="noopener">
+      <span class="dot"></span> Guarda la diretta
+    </a>
+    
   </main>
 
   <footer class="site-footer">
     <p>© <span id="year"></span> ASD VOLLEY 96 — Tutti i diritti riservati</p>
-    <p>Web design & sviluppo © 2025 <a href="mailto:danilo.alacqua@example.com">Danilo Alacqua</a></p>
+    <p>Web design & sviluppo © 2025 <a href="mailto:danilo.lcq@gmail.com">Danilo Alacqua</a></p>
   </footer>
 
   <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
@@ -146,6 +151,7 @@
       if (!res.ok) throw new Error(`Fetch fallito: ${tab} (${res.status})`);
       return res.json();
     }
+    
 
     // Utils
     const tidy = s => typeof s === "string" ? s.trim() : s;
@@ -279,7 +285,7 @@
     let DATA = { femminile:[], maschile:[], staff:[] };
 
     async function load(){
-      container.innerHTML = `<p style="text-align:center;color:#fc43a3;font-weight:800">Caricamento…</p>`;
+      container.innerHTML = `<p style="text-align:center;color:#ff0084;font-weight:800">Caricamento…</p>`;
       const rows = await fetchSheet("Squadre");
 
       const fem=[], mas=[], stf=[];

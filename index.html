@@ -28,7 +28,6 @@
   <header class="header-tot">
     <img class="brand-logo" src="img/bianco.png" alt="Logo">
     <button class="hamburger" id="hamburger" aria-label="Apri menu" type="button">&#9776;</button>
-
     <nav id="navbar">
       <a href="index.html" data-url="index.html">Home</a>
       <a href="squadre.html" data-url="squadre.html">Squadre</a>
@@ -102,15 +101,16 @@
         </a>
       </div>
     </section>
-    <a id="live-button" class="live-fab" href="#" target="_blank" rel="noopener">
+    <a id="live-button" class="live-fab live-hidden" href="#" target="_blank" rel="noopener">
       <span class="dot"></span> Guarda la diretta
     </a>
+    
     
   </main>
 
   <footer class="site-footer">
     <p>© <span id="year"></span> ASD VOLLEY 96 — Tutti i diritti riservati</p>
-    <p>Web design &amp; sviluppo © 2025 <a href="mailto:danilo.alacqua@example.com">Danilo Alacqua</a></p>
+    <p>Web design &amp; sviluppo © 2025 <a href="mailto:danilo.lcq@gmail.com">Danilo Alacqua</a></p>
   </footer>
 
   <!-- Modal unico -->
@@ -145,12 +145,17 @@
     }
 
     function hideLoader() {
-      const el = document.getElementById('app-loader');
-      if (!el) return;
-      el.classList.add('hidden');
-      el.addEventListener('transitionend', () => el.remove(), { once:true });
-      setTimeout(() => el && el.remove(), 1000);
-    }
+  const el = document.getElementById('app-loader');
+  if (!el) return;
+  el.classList.add('hidden');
+  el.addEventListener('transitionend', () => el.remove(), { once:true });
+
+  // pagina pronta → mostra footer
+  document.documentElement.classList.add('ready');
+
+  setTimeout(() => el && el.remove(), 1000);
+}
+
 
     function initYear(){
       const y = $('#year');
