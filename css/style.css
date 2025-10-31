@@ -289,7 +289,7 @@ main{ padding-top: 90px; }
   max-width: 55%;
   z-index: 15;
 }
-.slide-right p{ color: #fff; }
+.slide-right p{ color: #fff; margin: 40px;}
 
 /* Frecce */
 .news-carousel .prev,
@@ -297,7 +297,7 @@ main{ padding-top: 90px; }
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,.6);
+  background: rgba(0,0,0,.1);
   color: white;
   border: none;
   font-size: 2rem;
@@ -936,7 +936,7 @@ main {
   color: #fff;                 /* testo bianco leggibile */
 }
 .slide-right h3{ color: #ff0084; font-size: 25px;}
-.slide-right p{ color: #fff;} /* forza bianco nel testo */
+.slide-right p{ color: #fff; margin: 40px;} /* forza bianco nel testo */
 
 /* Mobile: la .slide-right è overlay sull’immagine → usa il gradiente trasparente */
 @media (max-width: 900px){
