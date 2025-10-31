@@ -295,7 +295,7 @@ main{ padding-top: 90px; }
 .news-carousel .prev,
 .news-carousel .next{
   position: absolute;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
   background: rgba(0,0,0,.1);
   color: white;
@@ -935,7 +935,12 @@ main {
   background: var(--gradientCarosell) !important;
   color: #fff;                 /* testo bianco leggibile */
 }
-.slide-right h3{ color: #ff0084; font-size: 25px; margin: 20px;} 
+.slide-right h3 {
+  color: #ff0084;
+  font-size: 25px;
+  text-align: center;
+}
+
 .slide-right p{ color: #fff; margin: 40px;} /* forza bianco nel testo */
 
 /* Mobile: la .slide-right è overlay sull’immagine → usa il gradiente trasparente */
