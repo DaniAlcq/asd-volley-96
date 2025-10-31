@@ -113,7 +113,8 @@ address { font-style: normal; }
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  margin: 0 auto;              /* centrato */
+  margin-right: 300px;      
+  margin-left: 150px;        /* centrato */
   padding: 0;
   max-width: 100%;
 }
@@ -2315,8 +2316,8 @@ main {
 /* Carosello: immagine intera, niente tagli */
 .slide-left img{
   width: 100%;
-  height: auto;
-  object-fit: inherit !important; /* sovrascrive ogni cover */
+  height: 100%;
+  object-fit: cover !important; /* sovrascrive ogni cover */
   display: block;
   background: transparent;
 }
@@ -2450,3 +2451,25 @@ html.live-on .live-status .txt{color:#ff2d55}
 .news-carousel img { cursor: pointer; }
 /* vale per calendario + classifica */
 
+/* base */
+.live-btn,.live-fab,.live-overlay{
+  display:inline-flex; align-items:center; gap:10px;
+  background:#ff2a55; color:#fff; font-weight:700;
+  padding:12px 22px; border-radius:999px; text-decoration:none;
+  box-shadow:0 6px 16px rgba(0,0,0,.25); transition:transform .15s ease,opacity .2s;
+}
+.live-btn:hover,.live-fab:hover,.live-overlay:hover{ transform:translateY(-2px); }
+.live-hidden{ display:none !important; }
+.dot{ width:12px; height:12px; border-radius:50%; background:#fff;
+      box-shadow:0 0 0 0 rgba(255,255,255,.6); animation:livePulse 1.6s infinite; }
+@keyframes livePulse{ to{ box-shadow:0 0 0 12px rgba(255,255,255,0); } }
+
+/* A: sezione centrata */
+.live-section{ text-align:center; margin:16px 0 0; }
+
+/* B: floating action button */
+.live-fab{ position:fixed; right:16px; bottom:16px; z-index:10000; }
+
+/* C: overlay sul carosello */
+.live-overlay{ position:absolute; right:18px; top:18px; z-index:20; }
+.news-wrapper{ position:relative; }
