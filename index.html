@@ -276,17 +276,41 @@
     }
 
     function showNews(id, replace=false){
-  const main=document.querySelector('main');
-  if(!main) return;
-  const n=newsData.find(x=>String(x.id)===String(id));
-  if(!n){main.innerHTML='<p>News non trovata.</p>'; return;}
+  const main = document.querySelector('main');
+  if (!main) return;
 
-  const format = (txt) => {
-    if(!txt) return '';
-    return txt
-      .replace(/\*\s*(.*?)\s*\*/g, '<strong>$1</strong>')
-      .split(/\n\s*\n/).map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
-  };
+  const n = newsData.find(x => String(x.id) === String(id));
+  if (!n){ main.innerHTML = '<p>News non trovata.</p>'; return; }
+
+// === Formattazione testo News (funziona con paragrafi e righe singole) ===
+const format = (txt) => {
+  if (!txt) return '';
+  let s = String(txt).trim();
+
+  // 1️⃣ Rimuove virgolette doppie tipiche dei CSV esportati
+  if (s.startsWith('"') && s.endsWith('"')) {
+    s = s.slice(1, -1).replace(/""/g, '"');
+  }
+
+  // 2️⃣ Normalizza ogni tipo di "a capo" (inclusi HTML codificati)
+  s = s
+  .replace(/&#10;|&#13;|\\r\\n|\\r|\\n|\r\n|\r|\n|\u000A|\u000D|\u2028|\u2029/g, '\n')
+
+    .replace(/<br\s*\/?>/gi, '\n');
+
+  // 3️⃣ Evidenziazione: *testo* → <strong>testo</strong>
+  s = s.replace(/\*\s*(.*?)\s*\*/g, '<strong>$1</strong>');
+
+  // 4️⃣ Paragrafi: due o più newline = nuovo paragrafo
+  //     Singolo newline = <br> (utile per elenchi o righe emoji)
+  return s
+    .split(/\n{2,}/)
+    .map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`)
+    .join('');
+};
+
+
+
 
   main.innerHTML = `
     <article class="news-detail">
@@ -297,10 +321,12 @@
     </article>
   `;
 
-  window.scrollTo({top:0});
-  if(replace) history.replaceState({id},'',`#${id}`);
-  else history.pushState({id},'',`#${id}`);
+  window.scrollTo({ top: 0 });
+  if (replace) history.replaceState({ id }, '', `#${id}`);
+  else history.pushState({ id }, '', `#${id}`);
 }
+
+
 
 
     async function initScarabei(){
