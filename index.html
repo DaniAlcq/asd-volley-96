@@ -135,7 +135,50 @@
     const $  = (s, r=document) => r.querySelector(s);
     const $$ = (s, r=document) => [...r.querySelectorAll(s)];
     const tidy = (s) => typeof s === 'string' ? s.trim() : s;
-    const fixImg = (s) => tidy(s);
+    function driveIdFrom(urlOrId){
+  if(!urlOrId) return '';
+  const s = String(urlOrId).trim()
+    .replace(/^"|"$/g,'')        // toglie doppi apici del CSV
+    .replace(/""/g,'"');         // normalizza apici interni
+
+  // /file/d/ID/...
+  const m1 = s.match(/\/d\/([a-zA-Z0-9_-]{10,})/);
+  // ?id=ID
+  const m2 = s.match(/[?&]id=([a-zA-Z0-9_-]{10,})/);
+  // uc?export=view&id=ID  oppure uc?id=ID
+  const m3 = s.match(/uc\?(?:export=\w+&)?id=([a-zA-Z0-9_-]{10,})/);
+  // solo ID
+  const m4 = s.match(/^[a-zA-Z0-9_-]{10,}$/);
+
+  return (m1&&m1[1]) || (m2&&m2[1]) || (m3&&m3[1]) || (m4&&m4[0]) || '';
+}
+
+function fixImg(s){
+  if(!s) return '';
+  const id = driveIdFrom(s);
+  if (id){
+    // opzione 1: viewer diretto
+    // return `https://drive.google.com/uc?export=view&id=${id}`;
+
+    // opzione 2: thumbnail stabile (consigliato)
+    return `https://drive.google.com/thumbnail?id=${id}&sz=w2000`;
+  }
+  return String(s).trim();
+}
+
+window.__testDriveFix = (raw) => {
+  const out = fixImg(raw);
+  console.log('[fixImg]', { raw, out });
+  const t = document.createElement('img');
+  t.src = out;
+  t.alt = 'test';
+  t.style.maxWidth = '240px';
+  t.style.border = '2px solid #0f0';
+  t.onerror = () => console.warn('IMG ERROR for', out);
+  document.body.appendChild(t);
+};
+
+
     const parseSets = (str) => (tidy(str || '') || '').split(',').map(x => x.trim()).filter(Boolean);
 
     async function fetchSheet(tab){
@@ -214,16 +257,21 @@
         }
 
         const prev = $('.news-carousel .prev');
-        const next = $('.news-carousel .next');
-        const items = $$('.news-carousel .slide');
-        if(!items.length || !prev || !next) return;
+const next = $('.news-carousel .next');
+const items = $$('.news-carousel .slide');
+let i = 0;
 
-        let i = 0;
-        const n = items.length;
-        const upd = () => { wrap.style.transform = `translateX(${-i*100}%)`; };
+function upd(){
+  if(!items.length) return;
+  const w = items[0].getBoundingClientRect().width;
+  $('.news-carousel .slides').style.transform = `translateX(${-i*w}px)`;
+}
 
-        prev.addEventListener('click', () => { i = (i-1+n) % n; upd(); });
-        next.addEventListener('click', () => { i = (i+1) % n; upd(); });
+prev.addEventListener('click', ()=>{ i = (i-1+items.length)%items.length; upd(); });
+next.addEventListener('click', ()=>{ i = (i+1)%items.length; upd(); });
+window.addEventListener('resize', upd);
+upd();
+
 
         document.addEventListener('keydown', (e) => {
           if(e.key === 'ArrowLeft') prev.click();
