@@ -229,60 +229,74 @@ window.__testDriveFix = (raw) => {
       });
     }
 
-    async function initCarosello(){
-      try{
-        const rows = await fetchSheet('Carosello');
-        const slides = rows.map(r => ({
-          immagine: fixImg(r.immagine),
-          caption: tidy(r.caption),
-          descrizione: tidy(r.descrizione)
-        }));
+    async function initCarosello() {
+  try {
+    const rows = await fetchSheet('Carosello');
+    const slides = rows.map(r => ({
+      immagine: fixImg(r.immagine),
+      caption: tidy(r.caption),
+      descrizione: tidy(r.descrizione)
+    }));
 
-        const wrap = $('.news-carousel .slides');
-        if(!wrap) return;
+    const wrap = $('.news-carousel .slides');
+    if (!wrap) return;
 
-        wrap.innerHTML = '';
-        for(const s of slides){
-          const d = document.createElement('div');
-          d.className = 'slide';
-          d.innerHTML = `
-            <div class="slide-left">
-              <img src="${s.immagine}" alt="${s.caption || ''}">
-            </div>
-            <div class="slide-right">
-              <h3>${s.caption || ''}</h3>
-              <p>${s.descrizione || ''}</p>
-            </div>`;
-          wrap.appendChild(d);
-        }
+    wrap.innerHTML = '';
+    for (const s of slides) {
+      const d = document.createElement('div');
+      d.className = 'slide';
+      d.innerHTML = `
+        <div class="slide-left">
+          <img src="${s.immagine}" alt="${s.caption || ''}">
+        </div>
+        <div class="slide-right">
+          <h3>${s.caption || ''}</h3>
+          <p>${s.descrizione || ''}</p>
+        </div>`;
+      wrap.appendChild(d);
+    }
 
-        const prev = $('.news-carousel .prev');
-const next = $('.news-carousel .next');
-const items = $$('.news-carousel .slide');
-let i = 0;
+    const prev = $('.news-carousel .prev');
+    const next = $('.news-carousel .next');
+    const items = $$('.news-carousel .slide');
+    if (!items.length || !prev || !next) return;
 
-function upd(){
-  if(!items.length) return;
-  const w = items[0].getBoundingClientRect().width;
-  $('.news-carousel .slides').style.transform = `translateX(${-i*w}px)`;
+    let i = 0;
+    const n = items.length;
+    const upd = () => { wrap.style.transform = `translateX(${-i * 100}%)`; };
+
+    // === Funzione autoplay con reset ===
+    let timer;
+    function startAutoPlay() {
+      clearInterval(timer);
+      timer = setInterval(() => {
+        i = (i + 1) % n;
+        upd();
+      }, 7000); // 5 secondi
+    }
+
+    prev.addEventListener('click', () => {
+      i = (i - 1 + n) % n;
+      upd();
+      startAutoPlay(); // reset timer
+    });
+
+    next.addEventListener('click', () => {
+      i = (i + 1) % n;
+      upd();
+      startAutoPlay(); // reset timer
+    });
+
+    window.addEventListener('resize', upd);
+
+    upd();
+    startAutoPlay(); // avvia timer all’inizio
+  } catch (e) {
+    console.error('Carosello:', e);
+  }
 }
 
-prev.addEventListener('click', ()=>{ i = (i-1+items.length)%items.length; upd(); });
-next.addEventListener('click', ()=>{ i = (i+1)%items.length; upd(); });
-window.addEventListener('resize', upd);
-upd();
 
-
-        document.addEventListener('keydown', (e) => {
-          if(e.key === 'ArrowLeft') prev.click();
-          if(e.key === 'ArrowRight') next.click();
-        });
-
-        upd();
-      }catch(e){
-        console.error('Carosello:', e);
-      }
-    }
 
     let newsData = [];
     async function initNews(){

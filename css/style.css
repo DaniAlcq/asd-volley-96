@@ -457,7 +457,8 @@ main{ padding-top: 90px; }
 .mvp-card img{
   width: 100%;
   height: 360px;
-  object-fit:contain;
+  object-fit:fill;
+  border-radius: 14px;
 }
 .mvp-card h3{
   margin: .8rem 0 .3rem;
