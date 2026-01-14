@@ -69,13 +69,13 @@
       }
       /* Testi leggermente ridotti */
       .player-num{
-        margin:0;font-family:"Oswald",system-ui,sans-serif;
+        margin:0;font-family:"Faculty",system-ui,sans-serif;
         font-weight:800;font-size:clamp(80px,5.2vw,88px);
         color:#ff03bc;line-height:1;opacity:.98;text-shadow:0 1px 2px rgba(0,0,0,.35)
       }
       .name-block{display:flex;flex-direction:column;justify-content:flex-end;min-width:0}
       .player-first,.player-last{
-        margin:0;font-family:"Oswald",system-ui,sans-serif;text-transform:uppercase;color:#fff;line-height:1;white-space:nowrap
+        margin:0;font-family:"Faculty",system-ui,sans-serif;text-transform:uppercase;color:#fff;line-height:1;white-space:nowrap
       }
       .player-first{font-weight:600;font-size:clamp(24px,2.1vw,24px);opacity:.95}
       .player-last{font-weight:800;font-size:clamp(44px,3.6vw,46px);opacity:1}
@@ -172,7 +172,7 @@
 
     // ===== RUOLI con genere dinamico =====
     function normalizeBaseRole(s){
-      if(!nonEmpty(s)) return "staff";
+      if(!nonEmpty(s)) return "allenatore-giocatore";
       const x = String(s).toLowerCase().trim();
       if (x.startsWith("centr")) return "centrale";
       if (x.startsWith("pall")) return "palleggiatore";
@@ -183,7 +183,8 @@
       if (x.includes("allen"))   return "allenatore";
       if (x.includes("dirig"))   return "dirigente";
       if (x.includes("prepar"))  return "preparatore";
-      return "staff";
+      
+      return "allenatore-giocatore";
     }
 
     function inflectRole(baseKey, categoria){
@@ -198,13 +199,14 @@
         case "allenatore":    return "Allenatore";
         case "dirigente":     return "Dirigenti";
         case "preparatore":   return "Preparatore";
-        default:              return "Staff";
+        
+        default:              return "Allenatore - Giocatore";
       }
     }
 
     const ROLE_ORDER_BASE = [
       "centrale","palleggiatore","opposto","schiacciatore","libero","ala",
-      "allenatore","dirigente","preparatore","staff"
+      "allenatore","dirigente","preparatore"
     ];
     function byBaseOrder(a,b){
       const ia = ROLE_ORDER_BASE.indexOf(a), ib = ROLE_ORDER_BASE.indexOf(b);

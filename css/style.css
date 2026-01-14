@@ -2,6 +2,20 @@
    VARIABILI & RESET DI BASE
 ============================== */
 /* === Google Font globale === */
+@font-face {
+  font-family: 'SS Nickson';
+  src: url('../fonts/SS-Nickson-One.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Faculty';
+  src: url('../fonts/FacultyGlyphic-Regular.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700;800&display=swap');
 
 :root {
@@ -37,7 +51,7 @@ img { max-width: 100%; height: auto; display: block; }
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Oswald',system-ui, sans-serif;
+  font-family: 'Faculty', 'Oswald', system-ui, sans-serif;
   line-height: 1.5;
   background-color:var(--bg); color:var(--text); 
   color: var(--text);
@@ -126,7 +140,7 @@ address { font-style: normal; }
   font-size: 20px;
   font-weight: 700;
   padding: 8px 12px;
-  font-family: 'Oswald';
+  font-family: 'Faculty';
   transition: color .3s ease;
 }
 #navbar a::after{
@@ -2446,7 +2460,7 @@ html.live-on .live-status .txt{color:#ff2d55}
 .buttons-filter .filter-btn,
 .filter-buttons button,
 .filter-btn{
-  font-family: 'Oswald', system-ui, sans-serif;
+  font-family: 'Faculty', system-ui, sans-serif;
   font-weight: 600;   /* usa 600 o 700, entrambi importati */
 }
 /* rimuovi il puntatore dalle news */
