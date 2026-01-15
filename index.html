@@ -231,7 +231,7 @@ window.__testDriveFix = (raw) => {
       });
     }
 
-    async function initCarosello() {
+   async function initCarosello() {
   try {
     const rows = await fetchSheet('Carosello');
     const slides = rows.map(r => ({
@@ -240,63 +240,65 @@ window.__testDriveFix = (raw) => {
       descrizione: tidy(r.descrizione)
     }));
 
-    const wrap = $('.news-carousel .slides');
+    const wrap = document.querySelector('.news-carousel .slides');
     if (!wrap) return;
 
     wrap.innerHTML = '';
-    for (const s of slides) {
+
+    slides.forEach(s => {
       const d = document.createElement('div');
       d.className = 'slide';
       d.innerHTML = `
         <div class="slide-left">
-          <img src="${s.immagine}" alt="${s.caption || ''}">
+          <img src="${s.immagine}" alt="">
         </div>
         <div class="slide-right">
           <h3>${s.caption || ''}</h3>
           <p>${s.descrizione || ''}</p>
         </div>`;
       wrap.appendChild(d);
-    }
+    });
 
-    const prev = $('.news-carousel .prev');
-    const next = $('.news-carousel .next');
-    const items = $$('.news-carousel .slide');
-    if (!items.length || !prev || !next) return;
+    const prev = document.querySelector('.news-carousel .prev');
+    const next = document.querySelector('.news-carousel .next');
+    const items = document.querySelectorAll('.news-carousel .slide');
 
     let i = 0;
     const n = items.length;
-    const upd = () => { wrap.style.transform = `translateX(${-i * 100}%)`; };
 
-    // === Funzione autoplay con reset ===
+    const upd = () => {
+      wrap.style.transform = `translateX(${-i * 100}%)`;
+    };
+
     let timer;
     function startAutoPlay() {
       clearInterval(timer);
       timer = setInterval(() => {
         i = (i + 1) % n;
         upd();
-      }, 7000); // 5 secondi
+      }, 7000);
     }
 
     prev.addEventListener('click', () => {
       i = (i - 1 + n) % n;
       upd();
-      startAutoPlay(); // reset timer
+      startAutoPlay();
     });
 
     next.addEventListener('click', () => {
       i = (i + 1) % n;
       upd();
-      startAutoPlay(); // reset timer
+      startAutoPlay();
     });
 
-    window.addEventListener('resize', upd);
-
     upd();
-    startAutoPlay(); // avvia timer all’inizio
+    startAutoPlay();
   } catch (e) {
     console.error('Carosello:', e);
   }
 }
+
+
 
 
 

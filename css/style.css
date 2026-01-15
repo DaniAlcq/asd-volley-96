@@ -1335,3 +1335,196 @@ main > h1 {
 .calendar-wrapper {
   min-height: 400px;
 }
+/* === FIX SOLO MOBILE: spazio vuoto sotto carosello === */
+@media (max-width: 900px) {
+  .news-carousel,
+  .news-carousel .slides,
+  .news-carousel .slide {
+    height: auto !important;
+    min-height: unset !important;
+  }
+
+  .news-carousel .slide {
+    flex-direction: column;
+  }
+
+  .slide-left,
+  .slide-right {
+    width: 100%;
+    height: auto !important;
+  }
+
+  .slide-left img {
+    width: 100%;
+    height: auto !important;
+    object-fit: cover;
+    display: block;
+  }
+
+  .news-wrapper {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+/* ==============================
+   FIX DEFINITIVO CAROSELLO
+   Altezza dinamica reale
+============================== */
+
+.news-wrapper {
+  overflow: visible;
+  height: auto;
+}
+
+.news-carousel {
+  overflow: visible;
+  height: auto;
+  align-items: stretch;
+}
+
+.news-carousel .slides {
+  display: flex;
+  align-items: stretch;
+  height: auto;
+}
+
+.news-carousel .slide {
+  display: flex;
+  align-items: stretch;
+  height: auto;
+  min-height: unset;
+}
+
+.slide-left,
+.slide-right {
+  height: auto;
+}
+
+.slide-left img {
+  display: block;
+  height: auto;
+  max-height: none;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .news-carousel,
+  .news-carousel .slides,
+  .news-carousel .slide {
+    height: auto !important;
+    min-height: unset !important;
+  }
+
+  .news-carousel .slide {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .slide-left,
+  .slide-right {
+    height: auto !important;
+  }
+
+  .slide-left img {
+    width: 100%;
+    height: auto !important;
+    object-fit: contain;
+  }
+
+  .news-wrapper {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+.news-carousel {
+  height: auto;
+  transition: height 0.3s ease;
+}
+
+.news-carousel .slides {
+  align-items: stretch;
+}
+
+.news-carousel .slide {
+  height: auto;
+}
+/* ==============================
+   CAROSELLO — FIX DEFINITIVO
+============================== */
+
+.news-wrapper {
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.news-carousel {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.news-carousel .slides {
+  display: flex;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.news-carousel .slide {
+  flex: 0 0 100%;
+  display: flex;
+  align-items: stretch;
+  height: auto;
+}
+
+/* Colonne */
+.slide-left {
+  flex: 0 0 60%;
+}
+
+.slide-left img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.slide-right {
+  flex: 0 0 40%;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* FRECCE */
+.news-carousel .prev,
+.news-carousel .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 900px) {
+  .news-carousel .slide {
+    flex-direction: column;
+  }
+
+  .slide-left,
+  .slide-right {
+    width: 100%;
+  }
+
+  .slide-left img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
