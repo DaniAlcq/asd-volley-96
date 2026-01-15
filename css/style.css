@@ -1,7 +1,8 @@
 /* ==============================
-   VARIABILI & RESET DI BASE
+   BASE + RESET + VARIABILI
 ============================== */
-/* === Google Font globale === */
+
+/* === Font === */
 @font-face {
   font-family: 'SS Nickson';
   src: url('../fonts/SS-Nickson-One.otf') format('opentype');
@@ -22,11 +23,10 @@
   --blue:#121212;
   --pink:#ff03bc;
   --pink-strong:#ff03bc;
-  --text:#000000;   /* testo chiaro */
-  --bg:#1a1a1a;     /* sfondo nero */
-  --shadow:0 4px 8px rgba(0,0,0,0.1);
+  --text:#ffffff;
+  --bg:#1a1a1a;
+  --shadow:0 4px 8px rgba(0,0,0,0.2);
 
-  /* nuovo gradiente: dal nero/graphite al rosa */
   --gradient: linear-gradient(-135deg, #ff03bc 0%,#1a1a1a 20%, #1a1a1a 70%, #ff03bc 100%);
   --gradient-transparent: linear-gradient(
     135deg,
@@ -35,93 +35,71 @@
     #ff03bc 100%
   );
   --gradientCarosell: linear-gradient(-135deg, #ff03bc 0%,#1a1a1a 19%, #1a1a1a 80%, #ff03bc 100%);
-  --gradientResult: linear-gradient(135deg, #ff03bc 0%, white 15%, white 85%, #ff03bc 100%);
-
 }
 
-
+/* Reset */
 *,
 *::before,
-*::after { box-sizing: border-box; }
+*::after {
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
-
-img { max-width: 100%; height: auto; display: block; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Faculty', 'Oswald', system-ui, sans-serif;
   line-height: 1.5;
-  background-color:var(--bg); color:var(--text); 
+  background-color: var(--bg);
   color: var(--text);
   overflow-x: hidden;
-  /* effetti fade-in */
-  opacity: 0;
-  transform: scale(1);
-  filter: blur(0);
-  transition:
-    opacity 0.0s ease,
-    transform 0.0s ease,
-    filter 0.0s ease,
-    background-color 0.0s ease;
 }
 
-body.loaded{ background-color:var(--bg); }   /* era #fff */
-
-body.fade-out {
-  opacity: 0;
-  transform: scale(0.95);
-  filter: blur(4px);
-  background-color: #f5f5f5;
-}
-body.loaded {
-  opacity: 1;
-  transform: scale(1);
-  filter: blur(0);
-  background-color: var(--bg);
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-/* Utili */
-h1 { text-align: center; color: var(--pink); }
-p  { color: var(--pink-strong); }
-address { font-style: normal; }
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+}
 
 /* ==============================
-   HEADER / NAVBAR FISSA
+   HEADER
 ============================== */
 .header-tot{
-  position: fixed;             /* sempre visibile */
+  position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 1000;
+  z-index: 9999;
   width: 100%;
   height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;             /* spazio ai lati */
-  background-color: var(--blue);
+  padding: 0 20px;
+  background: rgba(18,18,18,0.9);
+  backdrop-filter: blur(6px);
   color: var(--pink-strong);
   box-shadow: 0 2px 6px rgba(0,0,0,.15);
 }
 
-/* Logo a sinistra */
 .brand-logo{
-  height: 80px;
+  height: 60px;
   width: auto;
-  margin-left: 5px;
 }
 
-/* Icona Instagram a destra (desktop & mobile) */
-.social-logo{
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 30px;
-}
-
-/* NAV DESKTOP */
+/* ==============================
+   NAVBAR DESKTOP
+============================== */
 #navbar{
   display: flex;
   justify-content: center;
@@ -143,29 +121,35 @@ address { font-style: normal; }
   font-family: 'Faculty';
   transition: color .3s ease;
 }
+
 #navbar a::after{
   content: "";
   position: absolute;
-  width: 0; height: 2px;
-  bottom: 0; left: 50%;
+  width: 0; 
+  height: 2px;
+  bottom: 0; 
+  left: 50%;
   background-color: var(--pink);
   transform: translateX(-50%);
   transition: width .3s ease;
 }
+
 #navbar a:hover{ color: #fff; }
 #navbar a:hover::after{ width: 100%; }
+
 #navbar a.active{
   color: var(--pink);
   border-bottom: 2px solid var(--pink);
   pointer-events: none;
 }
-#navbar a.active:hover{ color: inherit; text-decoration: none; }
 
-/* HAMBURGER (desktop nascosto) */
+/* ==============================
+   HAMBURGER
+============================== */
 .hamburger{
   display: none;
   position: absolute;
-  right: 95px;
+  right: 90px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -173,12 +157,34 @@ address { font-style: normal; }
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  margin-left: 20px;
-  border-radius: 10px;
 }
 
-/* SPAZIO SOTTO L’HEADER FISSO */
-main{ padding-top: 90px; }
+/* ==============================
+   SOCIAL ICONS
+============================== */
+.social-icons{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-icons img{
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
+  transition: opacity .2s ease, filter .2s ease;
+}
+
+.social-icons img:hover{
+  opacity: 1;
+  filter: brightness(0) invert(1) drop-shadow(0 0 3px var(--pink));
+}
+
+/* ==============================
+   SPAZIO SOTTO HEADER
+============================== */
+main{
+  padding-top: 90px;
+}
 
 /* ==============================
    MENU MOBILE
@@ -186,33 +192,239 @@ main{ padding-top: 90px; }
 @media (max-width: 768px){
   .hamburger{ display: block; }
 
-  /* nascondo la nav di base e la trasformo in menu a tendina */
   #navbar{
     display: none;
     flex-direction: column;
-    position: absolute;
-    top: 70px;                 /* esattamente l’altezza dell’header */
+    position: fixed;
+    top: 70px;
     right: 0;
-    width: 220px;
+    width: min(86vw, 360px);
     background: var(--blue);
-    border-left: 1px solid #ccc;
-    text-align: center;
+    border-left: 1px solid #333;
+    text-align: left;
     padding: 8px 0;
     box-shadow: var(--shadow);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-radius: 8px 0 0 8px;
+    z-index: 10000;
   }
+
   #navbar.active{ display: flex; }
 
   #navbar a{
     width: 100%;
     font-size: 18px;
-    padding: 10px 14px;
+    padding: 12px 16px;
   }
+}
+/* ==============================
+   CAROSELLO PRINCIPALE — FIXATO
+   Altezza dinamica, niente spazi neri
+============================== */
 
-  .social-logo{ right: 16px; }
+.news-wrapper{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
+.news-carousel{
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.news-carousel .slides{
+  display: flex;
+  transition: transform .5s ease-in-out;
+  width: 100%;
+}
+
+.news-carousel .slide{
+  flex: 0 0 100%;
+  display: flex;
+  align-items: stretch;
+  height: auto;
+  min-height: auto;
+  overflow: hidden;
+}
+
+/* Colonna immagine */
+.slide-left{
+  flex: 0 0 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.slide-left img{
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Colonna testo */
+.slide-right{
+  flex: 0 0 40%;
+  padding: 20px 30px;
+  background: var(--gradientCarosell);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: static;
+  text-align: left;
+}
+
+.slide-right h3{
+  color: var(--pink-strong);
+  font-size: 1.6rem;
+}
+
+.slide-right p{
+  color: #fff;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+/* Frecce */
+.news-carousel .prev,
+.news-carousel .next{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,.5);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 10%;
+  z-index: 10;
+}
+
+.news-carousel .prev{ left: 10px; }
+.news-carousel .next{ right: 10px; }
+
+/* ==============================
+   CAROSELLO MOBILE
+============================== */
+@media (max-width: 900px){
+  .news-carousel .slide{
+    flex-direction: column;
+  }
+
+  .slide-left,
+  .slide-right{
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .slide-left img{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .slide-right{
+    text-align: center;
+    padding: 12px 16px;
+    background: var(--gradient);
+  }
+}
+
+/* ==============================
+   NEWS GRID
+============================== */
+.news-grid{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 10px;
+  max-width: 1200px;
+  margin: 1.5rem auto;
+}
+
+.news-card{
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  height: 230px;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 2px solid var(--pink-strong);
+  cursor: pointer;
+  background: rgba(0,0,0,.8);
+  box-shadow: 0 4px 8px rgba(0,0,0,.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.news-card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-card figcaption{
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,.8);
+  color: var(--pink-strong);
+  padding: 10px;
+  font-size: .85rem;
+  text-align: center;
+}
+
+/* ==============================
+   NEWS DETAIL
+============================== */
+.news-detail{
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: left;
+}
+
+.news-detail h2{
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--pink-strong);
+}
+
+.news-detail img{
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin: 0 auto 20px;
+  border-radius: 10px;
+  border: 2px solid var(--pink-strong);
+  background-color: var(--blue);
+  display: block;
+}
+
+.news-detail p{
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.news-detail .back-btn{
+  display: block;
+  margin: 2rem auto 0;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: var(--pink);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
 /* ==============================
    SPONSOR BANNER
 ============================== */
@@ -225,235 +437,153 @@ main{ padding-top: 90px; }
   margin-bottom: 1rem;
   border: 2px solid var(--pink-strong);
 }
-.sponsor-banner img{ max-width: 100%; display: block; }
-.sponsor-logo{ max-height: 180px; width: auto; object-fit: contain; }
+
+.sponsor-logo{
+  max-height: 180px;
+  width: auto;
+  object-fit: contain;
+}
 
 /* ==============================
-   NEWS – CAROSELLO PRINCIPALE
+   RISULTATI
 ============================== */
-.news-wrapper{
-  position: relative;
-  width: 100%;
-  margin-top: -20px;
-  padding: 0;
-  overflow: hidden;
-}
-/* Mostra il cursore "zoom in" sulle immagini cliccabili */
-.slide-left img,
-.news-card img,
-.news-detail img {
-  cursor:pointer;
-}
-
-.news-title{
+.results-section{
   text-align: center;
-  font-size: 2rem;
-  color: var(--pink-strong);
+  padding: 2rem 1rem;
+  background-color: var(--bg);
+}
+
+.results-title{
+  font-size: 1.8rem;
   font-weight: 700;
-  margin: 20px 0;
+  color: var(--pink);
+  margin-bottom: 1.5rem;
 }
 
-/* Carosello full width */
-.news-carousel{
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  background: transparent;
-  max-height:none; 
-}
-
-
-.news-carousel .slides{
+.buttons-filter{
   display: flex;
-  transition: transform .5s ease-in-out;
-  width: 100%;
-  max-height: fit-content;
-  height: fit-content;
-  
-}
-.news-carousel .slide{
-  flex: 0 0 100%;
-  display: flex;
-  min-height: 435px;
-  overflow: hidden;
-}
-
-/* Immagine a sinistra */
-.slide-left{
-  flex: 0 0 60%;
-  border: 2px solid var(--pink-strong);
-  background-color: var(--blue);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-
-/* Testo a destra */
-.slide-right{
-  flex: 0 0 40%;
-  padding: 0 60px 0 30px;
-  background-color: var(--blue);
-  color: var(--pink-strong);
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  overflow-wrap: break-word;
-  text-align: left;
-  box-sizing: border-box;
-  max-width: 55%;
-  z-index: 15;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
-.slide-right p{ color: #fff; margin: 40px;}
 
-/* Frecce */
-.news-carousel .prev,
-.news-carousel .next{
-  position: absolute;
-  top: 40%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,.1);
-  color: white;
-  border: none;
-  font-size: 2rem;
-  padding: 5px 10px;
+.filter-btn{
+  padding: .5rem 1rem;
+  border: 2px solid var(--pink);
+  background-color: #fff;
+  color: var(--pink);
+  font-weight: 700;
+  border-radius: 30px;
   cursor: pointer;
-  border-radius: 10%;
-  z-index: 10;
-  transition: .3s ease;
-}
-.news-carousel .prev{ left: 10px; }
-.news-carousel .next{ right: 10px; }
-.news-carousel .prev:hover,
-.news-carousel .next:hover{ background: rgba(0,0,0,.8); }
-
-/* Carosello responsive */
-@media (max-width: 900px){
-  .news-carousel .slide{
-    position: relative;
-    border: 2px solid var(--pink-strong);
-    box-sizing: border-box;
-    overflow: hidden;
-    width: 98vw;
-    margin: 0 auto;
-  }
-  .slide-left,
-  .slide-right{
-    border: none !important;
-    flex: none;
-    max-width: 100% !important;
-  }
-  .slide-left img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  .slide-right{
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    width: 100%;
-    background: rgba(0,0,0,.8);
-    color: #fff;
-    padding: 12px 15px;
-    margin: 0;
-    text-align: center;
-  }
-  h3{ color: var(--pink-strong); }
+  text-transform: capitalize;
+  font-size: .9rem;
+  transition: all .3s ease;
 }
 
-/* ==============================
-   NEWS – GRID CARDS
-============================== */
-.news-grid{
-  display: flex;
-  flex-wrap: wrap;
+.filter-btn.active,
+.filter-btn:hover{
+  background-color: var(--pink);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0,0,0,.1);
+}
+
+.results-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
   justify-content: center;
-  gap: 20px;
-  padding: 0 10px;
-  max-width: 1200px;
-  margin: 1rem auto;
+  margin-top: 1rem;
 }
-.news-card{
-  position: relative;
-  width: 100%;
-  max-width: 300px;
-  height: 250px;
-  max-height:200px;
-  overflow: hidden;
+
+.result-card{
+  background-color: #fff;
+  border: 2px solid var(--pink);
   border-radius: 10px;
-  border: 2px solid var(--pink-strong);
-  cursor: pointer;
-  background: rgba(0,0,0,.8);
-  box-shadow: 0 4px 8px rgba(0,0,0,.5);
+  padding: 1rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 340px;
+  color: var(--blue);
+}
+
+.result-card .logos{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.result-card .team{
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.news-card figure,
-.news-card{ margin: 0; }
-.news-card img{
-  width: 100%;
-  object-fit: fill;
-  border-radius: 6px;
-  background-color: var(--blue);
-}
-.news-card figcaption{
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  width: 100%;
-  background: rgba(0,0,0,.8);
-  color: var(--pink-strong);
-  padding: 10px;
-  font-size: .8rem;
-  text-align: center;
-  transition: opacity .3s ease;
-}
-.news-card:hover img{ transform: scale(1.05); }
-@media (max-width: 600px){
-  .news-card figcaption{ font-size: .75rem; padding: .4rem; }
+  flex: 1;
 }
 
-/* ==============================
-   DETTAGLIO NEWS
-============================== */
-.news-detail h2{
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 2rem;
+.result-card .team img{
+  height: 90px;
+  width: auto;
+  object-fit: contain;
+}
+
+.result-card .vs{
   font-weight: 700;
-  color: var(--pink-strong);
+  font-size: 2rem;
+  color: white;
 }
-.news-detail img{
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-  margin: 0 auto;
-  border-radius: 10px;
-  border: 2px solid var(--pink-strong);
+
+.result-card .resCasa,
+.result-card .resOsp{
+  color: var(--pink);
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+
+.result-card .result-sets{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: .3rem;
+}
+
+.result-card .result-sets li{
   background-color: var(--blue);
-  display: block;
+  color: #fff;
+  border-radius: 5px;
+  padding: .2rem .4rem;
+  min-width: 28px;
 }
 
 /* ==============================
-   MVP SECTION
+   MVP
 ============================== */
 .mvp-section{
   max-width: 1000px;
   margin: 2rem auto;
   text-align: center;
 }
+
 .mvp-title{
   font-size: 2.4rem;
   font-weight: 700;
   color: var(--pink-strong);
   margin-bottom: 2rem;
 }
+
 .mvp-grid{
-  display:flex;
+  display: flex;
   justify-content: center;
   gap: 2.5rem;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
 }
+
 .mvp-card{
   background: var(--bg);
   border-radius: 15px;
@@ -467,18 +597,21 @@ main{ padding-top: 90px; }
   align-items: center;
   border: 2px solid var(--pink-strong);
 }
-.mvp-card:hover{ transform: scale(1.07); }
+
+.mvp-card:hover{ transform: scale(1.05); }
+
 .mvp-card img{
   width: 100%;
   height: 360px;
-  object-fit:fill;
-  border-radius: 14px;
+  object-fit: cover;
 }
+
 .mvp-card h3{
   margin: .8rem 0 .3rem;
   color: #fff;
   font-size: 1.5rem;
 }
+
 .mvp-card p{
   color: var(--pink-strong);
   font-size: 0.9rem;
@@ -486,7 +619,7 @@ main{ padding-top: 90px; }
 }
 
 /* ==============================
-   TEAMS SECTION
+   SQUADRE
 ============================== */
 .teams-section{
   max-width: 1200px;
@@ -494,17 +627,20 @@ main{ padding-top: 90px; }
   padding: 0 1rem;
   text-align: center;
 }
+
 .teams-title{
   font-size: 2rem;
   font-weight: 700;
   color: var(--pink-strong);
   margin-bottom: 1.5rem;
 }
+
 .teams-grid{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.2rem;
 }
+
 .team-card{
   background: #f0f0f0;
   border-radius: 10px;
@@ -513,12 +649,15 @@ main{ padding-top: 90px; }
   box-shadow: 0 4px 8px rgba(0,0,0,.1);
   transition: transform .3s ease;
 }
+
 .team-card:hover{ transform: scale(1.05); }
+
 .team-card img{
   width: 100%;
   height: 180px;
   object-fit: cover;
 }
+
 .team-card h3{
   background: var(--bg);
   color: var(--pink-strong);
@@ -526,300 +665,175 @@ main{ padding-top: 90px; }
   padding: .8rem;
   font-size: 1.2rem;
 }
-
 /* ==============================
-   RESULTS SECTION
+   TABELLE GENERICHE
 ============================== */
-.results-section{
-  text-align: center;
-  padding: 2rem;
-  background-color: var(--bg);
-}
-.results-title{
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--pink);
-  margin-bottom: 1.5rem;
-}
-.buttons-filter{
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-.filter-btn{
-  padding: .5rem 1rem;
-  border: 2px solid var(--pink);
-  background-color: #fff;
-  color: var(--pink);
-  font-weight: 700;
-  border-radius: 30px;
-  cursor: pointer;
-  text-transform: uppercase;
-  font-size: .9rem;
-  letter-spacing: 1px;
-  transition: all .3s ease;
-}
-.filter-btn.active,
-.filter-btn:hover{
-  background-color: var(--pink);
-  color: #fff;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 6px rgba(0,0,0,.1);
-}
-
-/* Griglia risultati */
-.results-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  justify-content: center;
-  margin-top: 1rem;
-}
-.result-card{
-  background-color: #fff;
-  border: 2px solid var(--pink);
-  border-radius: 10px;
-  padding: 1rem;
-  text-align: center;
-  box-shadow: var(--shadow);
-  transition: transform .3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 350px;
-  overflow: hidden;
-  color: var(--blue);
-}
-.result-card:hover{ transform: translateY(-5px); }
-.result-card .logos{
-  display: flex; justify-content: center; align-items: center;
-  gap: 1rem; margin-bottom: 1rem; width: 100%;
-}
-.result-card .team{ display: flex; flex-direction: column; align-items: center; flex: 1; }
-.result-card .team img{
-  height: 120px; width: auto; object-fit: contain; max-width: 100%;
-}
-.result-card .vs{
-  font-weight: 700; color: var(--blue); font-size: 2rem;
-}
-.result-card .resCasa,
-.result-card .resOsp{
-  color: var(--pink);
-  font-weight: 700;
-  font-size: 2.5rem;
-}
-.result-card .result-score{
-  font-size: 2.6rem; font-weight: 700; color: var(--pink);
-  margin: .5rem 0; display: flex; justify-content: center; align-items: center; gap: .5rem;
-}
-.result-card .result-sets{
-  list-style: none; padding: 0; margin: 0;
-  font-size: 1rem; color: #fff;
-  display: flex; justify-content: center; gap: .2rem; width: 100%;
-}
-.result-card .result-sets li{
-  background-color: var(--blue);
-  border-radius: 5px;
-  padding: .2rem .2rem;
-  margin: 0 .3rem;
-  text-align: center;
-  min-width: 25px; max-width: 80px; flex-grow: 1;
-}
-.result-card .result-sets li::before{
-  content: attr(data-set);
-  font-weight: 700;
-  display: block;
-  margin-bottom: .2rem;
-  font-size: 1.1rem;
-}
-.result-card .result-sets li span{ font-size: 1.1rem; font-weight: 400; }
-
-/* ==============================
-   LISTA SQUADRE (pagina squadre)
-============================== */
-.filter-buttons{
-  display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem;
-}
-.filter-buttons button{
-  padding: 10px 20px;
-  background-color: #fff;
-  color: var(--pink);
-  border-radius: 30px;
-  font-size: 1rem;
-  border: 2px solid var(--pink);
-  cursor: pointer;
-  transition: background-color .3s;
-}
-.filter-buttons button.active,
-.filter-buttons button:hover{
-  background-color: var(--pink);
-  color: #fff;
-  border-color: #f1f0f1;
-}
-
-.team-list{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px; justify-content: center;
-}
-.team-cardList{
-  background-color: #fff;
-  border: 2px solid var(--pink-strong);
-  margin: 0;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,.1);
-  text-align: center;
-  overflow: hidden;
-  transition: transform .3s ease;
-  height: fit-content;
-}
-.team-cardList:hover{ transform: scale(1.05); }
-.team-cardList img{
-  width: 100%; max-width: 200px; height: 200px;
-  border-radius: 10px; object-fit: contain; margin: 0 auto;
-}
-.team-cardList h3{
-  background: var(--blue);
-  color: var(--pink-strong);
-  margin: 0; padding: .8rem; font-size: 1rem;
-  border-radius: 10px;
-}
-.team-info{ margin-top: 10px; }
-.team-info p{ margin: 5px 0; }
-@media (max-width: 600px){
-  .team-list{ grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .team-cardList{ padding: 10px; }
-  .team-cardList img{ height: 120px; }
-  .team-cardList h3{ font-size: .85rem; padding: .5rem; }
-  .team-info p{ font-size: .75rem; margin: 3px 0; }
-}
-
-/* ==============================
-   TABELLE (Calendario & generiche)
-============================== */
-#calendar-table{
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto 40px;
-  border-collapse: separate;
-  border-spacing: 0;
-  color: var(--blue);
-  background: #fff;
-  border-radius: 10px;
-  border: 2px solid var(--blue);
-  overflow: hidden;
-}
-#calendar-table th,
-#calendar-table td{
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  padding: 8px; text-align: center;
-}
-#calendar-table thead{
-  background-color: var(--blue);
-  color: var(--pink);
-  font-weight: 700;
-}
-#calendar-table tbody tr:hover{ background-color: #eef; }
-#calendar-table th:first-child,
-#calendar-table td:first-child{
-  width: 80px; font-weight: 700;
-}
-.logo-cell{ height: 30px; width: auto; vertical-align: middle; margin-right: 6px; }
-.logo-squadra{
-  width: 50px; height: 40px; border-radius: 40%;
-  margin-right: 8px; vertical-align: middle; object-fit: contain;
-}
-#calendar-table thead tr:first-child {
-  background: var(--gradient);
-  color: #fff;
-}
-
-/* classifica */
 .table-wrapper,
-.calendar-wrapper {
+.calendar-wrapper{
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   width: 100%;
   margin: 2rem 0;
 }
 
-/* Tabella principale */
-.table {
+.table{
   width: 90%;
   min-width: 600px;
   margin: 0 auto;
   border-collapse: collapse;
   border-radius: 12px;
   overflow: hidden;
+  background: #fff;
   box-shadow: 0 4px 12px rgba(0,0,0,.15);
   font-size: .95rem;
-  background: #fff;
+  color: var(--blue);
 }
 
-/* Header */
-.table thead {
+.table thead{
   background: var(--gradient);
   color: #fff;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.table thead th {
-  padding: 14px 16px;
-  font-size: 1rem;
 }
 
-/* Celle */
+.table thead th{
+  padding: 14px 16px;
+  white-space: nowrap;
+}
+
 .table th,
-.table td {
+.table td{
   padding: 12px 14px;
   border: 1px solid #e5e5e5;
-  vertical-align: middle;  /* centra verticalmente */
+  text-align: center;
+  vertical-align: middle;
 }
 
-/* Celle con logo + testo */
-.table td.team-cell {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;  /* logo a sinistra, testo accanto */
-  gap: 10px;
-}
+.table tbody tr:nth-child(even){ background-color: #fafafa; }
+.table tbody tr:nth-child(odd){ background-color: #fff; }
 
-/* Loghi più grandi */
-.table td.team-cell img.logo-squadra {
-  width: 65px;
-  height: 55px;
-  object-fit: contain;
-  border-radius: 8px;   /* opzionale */
-}
-
-/* Righe alternate */
-.table tbody tr:nth-child(even) { background-color: #fafafa; }
-.table tbody tr:nth-child(odd) { background-color: #fff; }
-
-/* Hover */
-.table tbody tr:hover {
+.table tbody tr:hover{
   background-color: rgba(255, 11, 211, 0.1);
   transition: background-color .25s ease;
 }
 
-/* Prima colonna */
-.table th:nth-child(1),
-.table td:nth-child(1) {
-  width: 50px;
-  max-width: 50px;
-  white-space: nowrap;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--blue);
+/* Colonna squadra */
+.table td.team-cell{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
 }
 
+.table td.team-cell img.logo-squadra{
+  width: 50px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.table td.team-cell .team-name{
+  font-weight: 600;
+  white-space: normal;
+  word-break: break-word;
+}
 
 /* ==============================
-   CONTATTI / MAPPA
+   CALENDARIO
+============================== */
+#calendar-table{
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  border-collapse: collapse;
+  color: var(--blue);
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid var(--blue);
+}
+
+#calendar-table thead{
+  background: var(--gradient);
+  color: #fff;
+  font-weight: 700;
+}
+
+#calendar-table th,
+#calendar-table td{
+  padding: 10px 8px;
+  text-align: center;
+  border: 1px solid #ddd;
+  font-size: .9rem;
+}
+
+#calendar-table tbody tr:hover{
+  background-color: #eef;
+}
+
+/* Avversario: logo sopra, nome sotto */
+#calendar-table td.avversario-cell{
+  text-align: center;
+}
+
+#calendar-table td.avversario-cell img.logo-squadra{
+  display: block;
+  margin: 0 auto 4px;
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+#calendar-table td.avversario-cell span{
+  display: block;
+  white-space: normal;
+  line-height: 1.2;
+}
+
+/* Data su due righe se serve */
+#calendar-table td.data-cell{
+  white-space: pre-line;
+  font-weight: 600;
+}
+
+/* ==============================
+   RESPONSIVE TABELLE
+============================== */
+@media (max-width: 600px){
+  .table{
+    width: 100%;
+    min-width: unset;
+    font-size: .8rem;
+  }
+
+  .table thead th,
+  .table td{
+    padding: 8px 6px;
+    font-size: .75rem;
+  }
+
+  .table td.team-cell img.logo-squadra{
+    width: 40px;
+    height: 32px;
+  }
+
+  #calendar-table{
+    width: 100%;
+    font-size: .8rem;
+  }
+
+  #calendar-table th,
+  #calendar-table td{
+    padding: 6px 4px;
+    font-size: .75rem;
+  }
+
+  #calendar-table td.avversario-cell img.logo-squadra{
+    width: 36px;
+    height: 36px;
+  }
+}
+/* ==============================
+   CONTATTI
 ============================== */
 .contatti-wrapper{
   max-width: 800px;
@@ -827,1522 +841,59 @@ main{ padding-top: 90px; }
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  color: #ffffff;         /* colore del testo */
+  gap: 1.5rem;
+  color: #fff;
+}
+
+.contatti-wrapper a{
+  color: var(--pink);
   text-decoration: none;
 }
-.contatti-wrapper a:hover {
-  color: #ffffff;         /* esempio: bianco in hover */
-  text-decoration: underline; /* opzionale */
+
+.contatti-wrapper a:hover{
+  color: #fff;
+  text-decoration: underline;
 }
-.contatti-info p{ margin: .5rem 0; font-size: 1rem; color: white ;}
-.contatti p{ font-size: 1.1em; margin: 8px 0;}
-.mappa{ margin-top: 20px; }
-.mappa iframe,
-iframe{ width: 100%; height: 400px; border: 0; border-radius: 10px; }
+
+.contatti-info p{
+  margin: .5rem 0;
+  font-size: 1rem;
+}
 
 /* ==============================
-   LINK INSTAGRAM INLINE
+   MAPPA
 ============================== */
-.insta-link{
-  display: inline-flex; align-items: center; gap: 5px;
-  text-decoration: none; color: #000; font-weight: 700;
-  transition: color .3s ease;
+.mappa iframe{
+  width: 100%;
+  height: 400px;
+  border: 0;
+  border-radius: 10px;
 }
-.insta-link:hover{ color: #e1306c; }
-.social-logo{ width: 32px; vertical-align: middle; }
-
-/* ==============================
-   BUTTONS GENERICI
-============================== */
-button.active{ background-color: var(--pink); color: #fff; }
-button:hover{ background-color: var(--pink); color: #f0f0f0; }
 
 /* ==============================
    FOOTER
 ============================== */
 .site-footer{
-  background: var(--blue);
-  color: #f2f2f2;
+  background: var(--gradient);
+  color: #fff;
   text-align: center;
   padding: 1.5rem 1rem;
   font-size: .95rem;
   margin-top: 3rem;
 }
+
 .site-footer a{
-  color: #f2f2f2;
-  text-decoration: none;
-  font-weight: 600;
-}
-.site-footer a:hover{ text-decoration: underline; }
-/* --- FIX NAVBAR FISSA CHE SCOMPARE --- */
-body {
-  /* annulla proprietà che rompono position: fixed */
-  transform: none !important;
-  filter: none !important;
-  /* semplifica la transition: niente transform/filter */
-  transition:
-    opacity 0.0s ease,
-    background-color 0.0s ease !important;
-}
-
-/* anche sugli stati usati dallo script di fade */
-body.fade-out,
-body.loaded {
-  transform: none !important;
-  filter: none !important;
-}
-
-/* assicurati che stia sopra a tutto */
-.header-tot {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 9999 !important;
-  background-color: var(--blue); /* solido per coprire il sotto */
-  height: 70px;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0px;
-  box-shadow: 0 2px 6px rgba(0,0,0,.15);
-}
-
-/* evita che il contenuto finisca sotto l’header */
-main {
-  padding-top: 90px !important; 
-  background-color: var(--bg);/* ~ altezza header */
-}
-
-/* menu mobile: si apre subito sotto l'header fisso */
-@media (max-width: 768px) {
-  #navbar {
-    top: 70px !important;
-  }
-}
-
-/* Footer trasparente */
-.site-footer{
-  background: var(--gradient) !important;
-  color: #fff;                 /* contrasto migliore */
-  backdrop-filter: blur(4px);  /* opzionale effetto vetro */
-}
-
-.header-tot{
-  background: var(--gradient) !important;
-            /* leggero effetto vetro */
-  background: rgba(18,18,18,0.9); /* nero 90% */
-  backdrop-filter: blur(6px);
-  
-}
-/* Instagram bianco sulla destra */
-.social-logo{
-  filter: brightness(0) invert(1);          /* rende l’icona bianca */
-  opacity: 0.95;
-  transition: filter .2s ease, opacity .2s ease;
-}
-
-.header-tot .social-logo:hover{
-  opacity: 1;
-  filter: brightness(0) invert(1) drop-shadow(0 0 3px var(--pink));
-}
-#navbar a.active{
-  color: var(--pink) !important;
-  border-bottom: 2px solid var(--pink) !important;
-}
-.slide-right{
-  background: var(--gradientCarosell) !important;
-  color: #fff;                 /* testo bianco leggibile */
-}
-.slide-right h3{ color: #ff03bc; font-size: 25px; justify-items: center;} 
-.slide-right p{ color: #fff; margin: 40px;} /* forza bianco nel testo */
-
-/* Mobile: la .slide-right è overlay sull’immagine → usa il gradiente trasparente */
-@media (max-width: 900px){
-  .slide-right{
-    background: var(--gradient) !important;
-    color: #fff;
-  }
-}
-.result-card {
-  background: #ffffff;
-  border: 2px solid #ff03bc;
-  color: #121212;  /* testo scuro per leggibilità */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  transition: transform .3s ease, box-shadow .3s ease;
-}
-
-.result-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(255,11,211,0.3);
-}
-/* ===== TABELL A CLASSIFICHE ===== */
-.table-wrapper {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  width: 100%;
-  margin: 2rem 0;
-}
-
-.table {
-  width: 70%;
-  min-width: 50px;
-  margin: 0 auto;
-  border-collapse: collapse;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,.15);
-  font-size: .95rem;
-}
-
-/* Header tabella */
-.table thead {
-  background: var(--gradient);   /* gradiente rosa/nero */
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-.table thead th {
-  padding: 14px 16px;
-  white-space: nowrap;
-}
-
-/* Celle base */
-.table th,
-.table td {
-  padding: 12px 14px;
-  border: 1px solid #e5e5e5;
-  text-align: center;
-  vertical-align: middle;
-  font-size: 20px;
-}
-
-/* Colonna posizione (#) */
-.table th:nth-child(1),
-.table td:nth-child(1) {
-  width: 60px;
-  max-width: 60px;
-  font-weight: 600;
-  color: var(--blue);
-}
-
-/* Colonna squadra */
-.table thead th.team-col { text-align: left; }
-.table td:nth-child(2) { text-align: left; font-size: 10px;}
-
-/* Logo + nome squadra */
-.table td.squadra-cell {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  height: 80px;
-}
-
-.table td.squadra-cell .logo-squadra {
-  flex-shrink: 0;
-  width: 90px;
-  height: 90px;
-  object-fit: contain;
-  display: block;
-}
-
-.table td.squadra-cell span {
-  flex: 1;
-  font-weight: 600;
-  font-size: 1rem;
-  color: #111;
-  white-space: normal;
-  word-break: break-word;
-}
-
-
-
-/* Righe alternate + hover */
-.table tbody tr:nth-child(even) { background-color: #fafafa; }
-.table tbody tr:nth-child(odd)  { background-color: #fff; }
-.table tbody tr:hover {
-  background-color: rgba(255, 11, 211, 0.10);
-  transition: background-color .25s ease;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .table { min-width: 640px; }
-  .table td.team-cell .logo-squadra { width: 70px; height: 56px; }
-  .table td.team-cell .team-name { max-width: 220px; }
-}
-@media (max-width: 600px) {
-  .table { min-width: 560px; }
-  .table td.squadra-cell .logo-squadra {
-    flex-shrink: 0;
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    display: block;
-  }
-  .table td.squadra-cell span {
-    flex: 1;
-    font-weight: 600;
-    font-size: 0.7rem;
-    color: #111;
-    white-space: normal;
-    word-break: break-word;
-  }
-  .table td.squadra-cell .team-name { max-width: 160px; }
-}
-@media (max-width: 400px) {
-  .table { min-width: 560px; }
-  .table td.squadra-cell .logo-squadra {
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    display: block;
-  }
-  .table td.squadra-cell span {
-    flex: 1;
-    font-weight: 600;
-    font-size: 0.6rem;
-    color: #111;
-    white-space: normal;
-    word-break: break-word;
-  }
-  .table td.squadra-cell .team-name { max-width: 160px; }
-}
-/* Cella squadra occupa tutta la larghezza disponibile */
-.table td.team-cell {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 20px;              /* spazio tra logo e testo */
-  width: 100%;            /* occupa tutta la cella */
-  padding: 12px 16px;
-  box-sizing: border-box;
-}
-
-/* Logo molto più grande */
-.table td.team-cell .logo-squadra {
-  flex-shrink: 0;         /* il logo non si riduce mai */
-  width: 120px;           /* più grande (puoi aumentare ancora se vuoi) */
-  height: 120px;
-  object-fit: contain;
-  display: block;
-}
-
-/* Nome squadra prende il resto della riga */
-.table td.team-cell .team-name {
-  flex: 1;                /* occupa lo spazio rimanente */
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: #222;
-  white-space: normal;    /* va a capo se troppo lungo */
-  word-break: break-word; /* spezza nomi lunghi */
-}
-/* Cella squadra: logo grande + nome allineati, usa tutta la larghezza */
-.table td.team-cell{
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 20px;
-  width: 100%;
-  padding: 12px 16px;
-  box-sizing: border-box;
-}
-
-/* Logo molto più grande */
-.table td.team-cell .logo-squadra{
-  flex-shrink: 0;
-  width: 120px;           /* aumenta/diminuisci a piacere */
-  height: 120px;
-  object-fit: contain;
-  display: block;
-}
-
-/* Nome squadra prende lo spazio restante */
-.table td.team-cell .team-name{
-  flex: 1;
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: #222;
-  white-space: normal;      /* può andare a capo */
-  word-break: break-word;
-}
-
-/* Responsive: su schermi stretti riduci un po' il logo */
-@media (max-width: 900px){
-  .table td.team-cell .logo-squadra{ width: 40px; height: 40px; }
-}
-@media (max-width: 600px){
-  .table td.team-cell{ gap: 12px; }
-  .table td.team-cell .logo-squadra{ width: 42px; height: 42px; }
-  .table td.team-cell .team-name{ font-size: 1.1rem; }
-}
-.teams-grid a {
-  text-decoration: none;   /* toglie underline a tutto il link */
-  color: inherit;          /* eredita il colore del contenuto */
-  display: block;          /* rende il link un blocco che avvolge la card */
-}
-@media (max-width: 600px) {
-  .table {
-    width: 100%;       /* occupa tutto lo schermo */
-    min-width: unset;  /* elimina larghezza minima */
-    font-size: 0.8rem; /* testo più piccolo */
-  }
-
-  .table thead th,
-  .table td {
-    padding: 6px 4px;  /* celle più compatte */
-    font-size: 0.75rem;
-  }
-
-  /* Logo squadra più piccolo */
-  .table td.team-cell img.logo-squadra {
-    width: 40px;
-    height: 32px;
-  }
-
-  /* Nome squadra più compatto */
-  .table td.team-cell {
-    gap: 6px;
-  }
-  .table td.team-cell .team-name {
-    font-size: 0.75rem;
-  }
-}
-@media (max-width: 600px) {
-  #calendar-table {
-    width: 100%;         /* si adatta allo schermo */
-    max-width: 100%;     /* niente limite fisso */
-    font-size: 0.75rem;  /* testo più piccolo */
-  }
-
-  #calendar-table th,
-  #calendar-table td {
-    padding: 6px 4px;    /* celle più compatte */
-    font-size: 0.7rem;
-    white-space: nowrap; /* impedisce che il testo vada a capo troppo presto */
-  }
-
-  /* prima colonna (giornata) più stretta */
-  #calendar-table th:first-child,
-  #calendar-table td:first-child {
-    width: 50px;
-    font-size: 0.7rem;
-  }
-
-  /* loghi più piccoli */
-  .logo-squadra {
-    width: 32px;
-    height: 28px;
-    margin-right: 4px;
-  }
-}
-/* Colonna Avversario con logo sopra e nome sotto */
-#calendar-table td.avversario-cell {
-  
-  flex-direction: column;  /* verticale */
-  align-items: center;     /* centrato orizzontale */
-  justify-content: center;
-  gap: 4px;                /* spazio tra logo e testo */
-  text-align: center;
-}
-
-#calendar-table td.avversario-cell img.logo-squadra {
-  width: 80px;   /* regola come preferisci */
-  
-  object-fit: contain;
-}
-
-
-
-
-
-
-
-
-/* ===== Calendario: fix overflow mobile ===== */
-@media (max-width: 400px){
-  #calendar-table{
-    width:100%;
-    max-width:100%;
-    table-layout: fixed;      /* stringe in orizzontale */
-    font-size:.50rem;
-  }
-
-  #calendar-table thead th,
-  #calendar-table td{
-    padding:8px 6px;
-    font-size:.78rem;
-    white-space: nowrap;      /* default: NON andare a capo */
-  }
-
-  /* Larghezze minime colonne strette */
-  #calendar-table th:nth-child(1), #calendar-table td:nth-child(1){ width:48px; }   /* Giornata */
-  #calendar-table th:nth-child(2), #calendar-table td:nth-child(2){ width:86px; }   /* Data */
-  #calendar-table th:nth-child(5), #calendar-table td:nth-child(5){ width:60px; }   /* Ora */
-  #calendar-table th:nth-child(6), #calendar-table td:nth-child(6){ width:60px; }   /* Risultato */
-
-  /* Avversario: layout verticale (logo sopra, nome sotto) e può andare a capo */
-  #calendar-table td.avversario-cell{
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    gap:4px; text-align:center; white-space: normal;
-  }
-  #calendar-table td.avversario-cell img.logo-squadra{
-    width:36px; height:30px; object-fit:contain;
-  }
-
-  /* **Luogo**: permetti il wrap per evitare overflow */
- 
-
-  /* Se vuoi tagliare su una riga sola invece di andare a capo:
-  #calendar-table td:nth-child(4){
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  } */
-}
-
-
-/* Prima colonna (Giornata) più larga */
-#calendar-table th:first-child,
-#calendar-table td:first-child {
-  width: 90px;       /* allarga la colonna */
-  min-width: 90px;   /* non scende sotto */
-  text-align: center;
-  font-weight: 700;
-}
-
-
-
-
-@media (max-width: 600px){
-  .table{
-    width:100%;
-    max-width:100%;
-    min-width:0;
-    table-layout: fixed;       /* fa stringere le colonne */
-    font-size:.8rem;
-  }
-
-  .table thead th{
-    padding:8px 6px;
-    font-size:.8rem;
-    white-space: nowrap;       /* NON andare a capo nei titoli */
-  }
-  .table td{
-    padding:8px 6px;
-    font-size:.8rem;
-    white-space: nowrap;       /* NO wrap di default nelle celle */
-  }
-
-  /* larghezze minime per evitare colonna “a spillo” */
-  .table th:nth-child(1), .table td:nth-child(1){ width:38px; }
-  .table th:nth-child(3), .table td:nth-child(3),
-  .table th:nth-child(4), .table td:nth-child(4),
-  .table th:nth-child(5), .table td:nth-child(5),
-  .table th:nth-child(6), .table td:nth-child(6){ width:52px; text-align:center; }
-
-  /* SOLO la cella squadra può andare a capo */
-  .table td.team-cell{
-    display:flex; align-items:center; gap:8px;
-    white-space: normal;       /* consenti a capo qui */
-  }
-  .table td.team-cell .logo-squadra{
-    width:44px; height:44px; object-fit:contain;
-  }
-  .table td.team-cell .team-name{
-    font-size:.8rem; line-height:1.2;
-    overflow:hidden; text-overflow:ellipsis;
-  }
-
-  
-}
-/* ---- Calendario: layout mobile super leggibile (≤ 430px) ---- */
-/* ===== Calendario: layout mobile forzato (≤ 430px) ===== */
-@media (max-width: 430px){
-  #calendar-table{
-    table-layout: fixed;
-    width: 100%;
-    max-width: 100%;
-    font-size: .7rem;
-  }
-
-  #calendar-table th,
-  #calendar-table td{
-    
-    font-size: .6rem;
-    vertical-align: middle;
-    white-space: wrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  /* Distribuzione più bilanciata */
-  #calendar-table th:nth-child(1), #calendar-table td:nth-child(1){ width:7%; }  /* G */
-  #calendar-table th:nth-child(2), #calendar-table td:nth-child(2){ width:22%; }  /* Data */
-
-  #calendar-table th:nth-child(4), #calendar-table td:nth-child(4){ width:25%; align-items: center; }  /* Luogo */
-    /* H */
-   /* Risultato */
-
-  /* Avversario: logo sopra, nome sotto */
-  #calendar-table td.avversario-cell{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-    line-height: 1.1;
-  }
-  #calendar-table td.avversario-cell img.logo-squadra{
-    width: 38px;
-    height: 38px;
-    object-fit: contain;
-  }
-}
-
-.luogo-cell {
-  text-align: center;
-}
-
-.icon-luogo {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-  display: inline-block;
-}
-
-.icon-luogo {
-  filter: invert(30%) sepia(100%) saturate(700%) hue-rotate(290deg);
-}
-
-
-
-
-
-/* === Calendario: tweak richiesti === */
-
-/* 1) Header "G" (Giornata) in bianco (forza il colore) */
-#calendar-table thead th:first-child {
-  color: #fff !important;
-}
-
-/* 2) Bottoni con solo la prima lettera maiuscola */
-.filter-buttons button,
-.filter-btn {
-  text-transform: lowercase;              /* tutto minuscolo... */
-}
-.filter-buttons button::first-letter,
-.filter-btn::first-letter {
-  text-transform: uppercase;              /* ...tranne la prima lettera */
-}
-
-/* 3) Colonna "Data": font più grande ma colonna più stretta */
-#calendar-table th:nth-child(2),
-#calendar-table td:nth-child(2) {
-  font-size: 1rem;                        /* più grande del resto */
-  width: 110px;                           /* più stretta */
-  min-width: 90px;
-  white-space: nowrap;                    /* non andare a capo */
-}
-
-/* Mobile: mantieni la colonna Data compatta ma leggibile */
-@media (max-width: 600px) {
-  #calendar-table th:nth-child(2),
-  #calendar-table td:nth-child(2) {
-    font-size: 0.85rem;
-    width: 90px;
-    min-width: 80px;
-  }
-}
-
-/* Se avevi regole precedenti che allargavano la colonna Data su mobile,
-   questa le override-a esplicitamente */
-@media (max-width: 430px) {
-  #calendar-table th:nth-child(2),
-  #calendar-table td:nth-child(2) {
-    width: 90px !important;
-  }
-}
-
-.news-detail {
-  max-width: 800px;        /* larghezza massima leggibile */
-  margin: 0 auto;          /* centra orizzontalmente */
-  padding: 20px;           /* un po’ di respiro ai lati */
-  text-align: left;        /* mantiene testo allineato a sinistra all’interno */
-}
-
-.news-detail h2 {
-  text-align: center;      /* il titolo resta centrato */
-  margin-bottom: 20px;
-}
-
-.news-detail img {
-  display: block;
-  margin: 0 auto 20px;     /* immagine centrata con spazio sotto */
-  max-width: 100%;
-  height: auto;
-}
-
-.news-detail .news-body {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #333;
-}
-
-.news-detail .news-body p {
-  margin-bottom: 1rem;
-}
-
-.news-detail .back-btn {
-  display: block;
-  margin: 2rem auto 0;     /* centrato anche il bottone */
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background: var(--pink);
   color: #fff;
   font-weight: 600;
-  cursor: pointer;
-}
-.news-detail .back-btn:hover {
-  background: #ff03bc;     /* rosa un po’ più scuro */
 }
 
-
-/* ===== FIX CLASSIFICA: nome su una/due righe normali, logo più piccolo ===== */
-.table { table-layout: auto; }                         /* libera le colonne su desktop */
-.table td.team-cell .logo-squadra { width: 56px; height: 56px; }  /* meno ingombrante */
-.table td.team-cell .team-name {
-  white-space: normal;          /* consenti a capo normale tra parole */
-  word-break: normal;           /* NON spezzare nel mezzo delle parole */
-  overflow-wrap: anywhere;      /* solo se serve su spazi/lunghi */
-  line-height: 1.15;
-  font-size: 1rem;
+.site-footer a:hover{
+  text-decoration: underline;
 }
 
-/* mobile: mantieni leggibile ma compatto */
-@media (max-width: 430px){
-  .table { table-layout: fixed; }
-  .table td.team-cell .logo-squadra { width: 42px; height: 42px; }
-  .table td.team-cell .team-name { font-size: px; }
-}
-
-/* ===== FIX CALENDARIO: header bianco, data più grande ma colonna stretta ===== */
-#calendar-table thead th { color: #fff !important; font-weight: 700; }
-#calendar-table thead th:first-child { color: #fff !important; }   /* "G" bianco */
-
-/* larghezze colonne (G, Data, Avv, C/T, Ris.) */
-#calendar-table th:nth-child(1), #calendar-table td:nth-child(1){ width: 64px; min-width: 64px; }
-#calendar-table th:nth-child(2), #calendar-table td:nth-child(2){ width: 120px; min-width: 120px; } /* Data più stretta */
-#calendar-table th:nth-child(4), #calendar-table td:nth-child(4){ width: 80px;  min-width: 80px; }  /* C/T */
-#calendar-table th:nth-child(5), #calendar-table td:nth-child(5){ width: 72px;  min-width: 72px; }  /* Ris. */
-
-/* Data: font un filo più grande */
-#calendar-table td:nth-child(2){ font-size: 1rem; }
-
-/* Avversario: logo più contenuto, testo centrato */
-#calendar-table td.avversario-cell { gap: 6px; }
-#calendar-table td.avversario-cell img.logo-squadra { width: 42px; height: 42px; }
-
-/* Icona casa/trasferta più piccola e centrata */
-#calendar-table td.luogo-cell .icon-luogo { width: 22px; height: 22px; display: inline-block; }
-
-/* Mobile: compattiamo ulteriormente */
-@media (max-width: 430px){
-  #calendar-table { table-layout: fixed; font-size: .5rem; }
-  #calendar-table th, #calendar-table td { padding: 6px 4px; }
-  #calendar-table th:nth-child(1), #calendar-table td:nth-child(1){ width: 48px; }
-  #calendar-table th:nth-child(2), #calendar-table td:nth-child(2){ width: 96px; }
-  #calendar-table td:nth-child(2){ font-size: .9rem; }
-  #calendar-table td.avversario-cell img.logo-squadra { width: 36px; height: 36px; }
-  #calendar-table td.luogo-cell .icon-luogo { width: 18px; height: 18px; }
-}
-
-/* ===== Bottoni filtro: niente grassetto, solo prima lettera maiuscola ===== */
-.filter-buttons button,
-.buttons-filter .filter-btn{
-  font-weight: 500;               /* non bold */
-  text-transform: capitalize;     /* solo iniziale maiuscola */
-}
-
-
-
-
-
-/* Avversario: logo sopra, nome sotto e centrato */
-#calendar-table td.avversario-cell {
-  display: flex;
-  flex-direction: column;  /* verticale */
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  text-align: center;
-}
-#calendar-table td.avversario-cell img.logo-squadra {
-  width: 46px;
-  height: 46px;
-  object-fit: contain;
-}
-
-/* Data e orario su due righe */
-#calendar-table td.data-cell {
-  white-space: pre-line;   /* rispetta \n nel testo */
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: center;
-}
-
-
-
-
-
-
-
-/* ===========================
-   MOBILE OVERRIDES (≤ 600px)
-   — Classifica + Calendario
-   — numeri/icone stretti, testo/logo largo
-=========================== */
-@media (max-width: 600px){
-
-  /* ---------- CLASSIFICA ---------- */
-  .table{
-    width: 100% !important;
-    table-layout: fixed !important;      /* distribuzione stabile su schermi piccoli */
-    font-size: .7rem !important;
-  }
-  .table thead th,
-  .table td{
-    padding: 6px 4px !important;
-  }
-
-  /* colonne numeriche strette (#, P, PG, V, S) */
-  .table thead th:nth-child(1),
-  .table td:nth-child(1){ width: 10% !important; max-width: 10% !important; }
-  .table thead th:nth-child(3),
-  .table td:nth-child(3),
-  .table thead th:nth-child(4),
-  .table td:nth-child(4),
-  .table thead th:nth-child(5),
-  .table td:nth-child(5),
-  .table thead th:nth-child(6),
-  .table td:nth-child(6){ width: 12% !important; max-width: 12% !important; }
-
-  /* SQUADRA prende lo spazio rimanente */
-  .table thead th:nth-child(2),
-  .table td:nth-child(2){ width: auto !important; }
-
-  /* cella squadra: logo piccolo + testo che va a capo */
-  .table td.squadra-cell{
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    white-space: normal !important;
-  }
-  .table td.squadra-cell .logo-squadra{
-    width: 38px !important;
-    height: 38px !important;
-    flex-shrink: 0 !important;
-    object-fit: contain !important;
-  }
-  .table td.squadra-cell .team-name{
-    font-size: .6rem !important;
-    line-height: 1.15 !important;
-    white-space: normal !important;
-    word-break: break-word !important;
-  }
-
-  /* ---------- CALENDARIO ---------- */
-  #calendar-table{
-    width: 100% !important;
-    table-layout: fixed !important;
-    font-size: .7rem !important;
-  }
-  #calendar-table th,
-  #calendar-table td{
-    padding: 6px 4px !important;
-  }
-
-  /* G, DATA, C/T, RIS. stretti — AVV largo */
-  #calendar-table th:nth-child(1),
-  #calendar-table td:nth-child(1){  /* G */
-    width: 10% !important; max-width: 10% !important; white-space: nowrap !important;
-  }
-  #calendar-table th:nth-child(2),
-  #calendar-table td:nth-child(2){  /* DATA */
-    width: 26% !important; max-width: 26% !important;
-    font-size: .7rem !important;
-    line-height: 1 !important;
-    white-space: normal !important;     /* consente andare a capo tra data e ora */
-  }
-  #calendar-table th:nth-child(4),
-  #calendar-table td:nth-child(4){  /* C/T */
-    width: 8% !important; max-width: 8% !important; text-align: center !important;
-  }
-  #calendar-table th:nth-child(5),
-  #calendar-table td:nth-child(5){  /* RIS. */
-    width: 12% !important; max-width: 12% !important; text-align: center !important;
-  }
-  /* AVV (3) prende lo spazio rimanente */
-  #calendar-table th:nth-child(3),
-  #calendar-table td:nth-child(3){ width: 100px !important; }
-
-  /* AVV: logo sopra, nome sotto, niente spazio extra verso C/T */
-  #calendar-table td.avversario-cell{
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 6px !important;
-    text-align: center !important;
-    padding-right: 4px !important;      /* chiude lo “spazietto” prima di C/T */
-  }
-  #calendar-table td.avversario-cell img.logo-squadra{
-    width: 70px !important;
-    height: 36px !important;
-    object-fit: contain !important;
-    margin: 0 !important;
-  }
-  #calendar-table td.luogo-cell{        /* C/T */
-    padding-left: 4px !important;
-  }
-  #calendar-table td.luogo-cell .icon-luogo{
-    width: 18px !important; height: 18px !important;
-  }
-}
-
-/* Extra compatto per schermi molto piccoli (≤ 430px) */
-@media (max-width: 430px){
-  .table td.squadra-cell .team-name{ font-size: .72rem !important; }
-  #calendar-table td:nth-child(2){ font-size: .85rem !important; }
-}
-
-
-
-
-
-/* ===== Calendario: layout mobile corretto (≤ 600px) ===== */
-@media (max-width: 600px){
-  #calendar-table{
-    width: 100% !important;
-    table-layout: fixed !important;     /* rispetta le % sotto */
-    font-size: .8rem !important;
-  }
-  #calendar-table th,
-  #calendar-table td{
-    padding: 8px 6px !important;
-  }
-
-  /* Distribuzione colonne (G / DATA / AVV / C/T / RIS.) */
-  #calendar-table th:nth-child(1),
-  #calendar-table td:nth-child(1){      /* G */
-    width: 10% !important; max-width: 10% !important;
-    white-space: nowrap !important;
-  }
-  #calendar-table th:nth-child(2),
-  #calendar-table td:nth-child(2){      /* DATA */
-    width: 28% !important; max-width: 28% !important;
-    font-size: .9rem !important;
-    line-height: 1.2 !important;
-    white-space: normal !important;     /* consenti “data\nore” */
-  }
-  #calendar-table th:nth-child(3),
-  #calendar-table td:nth-child(3){
-    width: auto !important;
-    min-width: 40% !important;
-  }
-  
-  #calendar-table th:nth-child(4),
-  #calendar-table td:nth-child(4){      /* C/T */
-    width: 10% !important; max-width: 10% !important;
-    text-align: center !important;
-  }
-  #calendar-table th:nth-child(5),
-  #calendar-table td:nth-child(5){      /* RIS. */
-    width: 10% !important; max-width: 10% !important;
-    text-align: center !important;
-  }
-
-  /* AVV: logo sopra, nome sotto, niente spazio extra verso C/T */
-  #calendar-table td.avversario-cell{
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 6px !important;
-    text-align: center !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;        /* elimina “fuga” di spazio */
-  }
-  #calendar-table td.avversario-cell img.logo-squadra{
-    width: 44px !important;
-    height: 44px !important;
-    object-fit: contain !important;
-    margin: 0 !important;
-  }
-
-  /* C/T icona compatta */
-  #calendar-table td.luogo-cell .icon-luogo{
-    width: 18px !important;
-    height: 18px !important;
-  }
-}
-
-/* extra-compatto per telefoni piccoli (≤ 430px) */
-@media (max-width: 430px){
-  #calendar-table td:nth-child(2){ font-size: .85rem !important; }
-  #calendar-table td.avversario-cell img.logo-squadra{ width: 38px !important; height: 38px !important; }
-}
-
-
-/* ===== Calendario: layout smartphone (≤600px) ===== */
-@media (max-width: 600px){
-  #calendar-table{
-    width: 100%;
-    max-width: 100%;
-    table-layout: auto !important;   /* lascia che le colonne si allarghino */
-    font-size: .8rem;
-  }
-
-  #calendar-table th,
-  #calendar-table td{
-    box-sizing: border-box;
-    padding: 6px 6px;
-    vertical-align: middle;
-  }
-
-  /* G (stretta) */
-  #calendar-table th:nth-child(1),
-  #calendar-table td:nth-child(1){
-    width: 10% !important;
-    min-width: 40px;
-    text-align: center;
-  }
-
-  /* DATA (più grande ma compatta su una riga) */
-  #calendar-table th:nth-child(2),
-  #calendar-table td:nth-child(2){
-    width: 25% !important;
-    min-width: 80px;
-    white-space: nowrap !important;
-    font-size: .9rem;
-    text-align: left;
-  }
-
-  /* AVV (prende quasi tutto lo spazio) */
-  #calendar-table th:nth-child(3),
-  #calendar-table td:nth-child(3){
-    width: 10% !important;          /* quota principale */
-    max-width: 9999px !important;   /* niente “tetto” */
-  }
-
-  /* C/T (strettissima) */
-  #calendar-table th:nth-child(4),
-  #calendar-table td:nth-child(4){
-    width: 6% !important;
-    min-width: 32px;
-    text-align: center;
-  }
-
-  /* RIS. (strettissima) */
-  #calendar-table th:nth-child(5),
-  #calendar-table td:nth-child(5){
-    width: 4% !important;
-    min-width: 28px;
-    text-align: center;
-  }
-
-  /* AVV: logo sopra, nome sotto, niente padding che ruba spazio */
-  #calendar-table td.avversario-cell{
-    
-   
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 6px !important;
-    text-align: center !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    white-space: normal !important;     /* consenti a capo del nome */
-    overflow: visible !important;
-  }
-  #calendar-table td.avversario-cell img.logo-squadra{
-    width: 38px;
-    height: 38px;
-    object-fit: contain;
-  }
-}
-
-
-
-
-
-/* ===== Calendario: layout smartphone (<= 600px) ===== */
-@media (max-width: 600px){
-
-  /* Lascia che le colonne rispettino le larghezze che forziamo */
-  #calendar-table{
-    width:100%;
-    max-width:100%;
-    table-layout: fixed !important;
-    font-size: .85rem;
-  }
-
-  #calendar-table th,
-  #calendar-table td{
-    padding: 8px 6px;
-    vertical-align: middle;
-    box-sizing: border-box;
-  }
-
-  /* LARGHEZZE COLONNE (somma ~100%) */
-  /* G */
-  #calendar-table th:nth-child(1),
-  #calendar-table td:nth-child(1){
-    width: 10% !important;
-    min-width: 44px;
-    text-align: center;
-  }
-
-  /* DATA (compatta ma leggibile) */
-  #calendar-table th:nth-child(2),
-  #calendar-table td:nth-child(2){
-    width: 20% !important;
-    min-width: 110px;
-    white-space: nowrap !important;   /* tutto su una riga */
-    font-weight: 700;
-    font-size: .95rem;
-    text-align: left;
-  }
-  /* “Data \n ore HH:MM” – rispetta l’andata a capo se usi \n */
-  #calendar-table td.data-cell{
-    white-space: pre-line !important;
-  }
-
-  /* AVV (logo sopra, nome sotto) → prende la fetta più grande */
-  #calendar-table th:nth-child(3),
-  #calendar-table td:nth-child(3){
-    width: 32% !important;            /* colonna ampia */
-  }
-  #calendar-table td.avversario-cell{
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 6px !important;
-    text-align: center !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;      /* niente spazio perso ai lati */
-    white-space: normal !important;    /* il nome può andare a capo */
-  }
-  #calendar-table td.avversario-cell img.logo-squadra{
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-  }
-
-  /* C/T (strettissima) */
-  #calendar-table th:nth-child(4),
-  #calendar-table td:nth-child(4){
-    width: 12% !important;
-    min-width: 38px;
-    text-align: center;
-  }
-  .icon-luogo{ width: 22px; height: 22px; }
-
-  /* RIS. (strettissima) */
-  #calendar-table th:nth-child(5),
-  #calendar-table td:nth-child(5){
-    width: 12% !important;
-    min-width: 28px;
-    text-align: center;
-  }
-
-  /* Header “G” in bianco (come chiedi) */
-  #calendar-table thead th:first-child{ color:#fff !important; }
-}
-
-
-
-
-
-
-
-/* ===== Calendario: controllo colonne via COLGROUP (≤ 600px) ===== */
-@media (max-width: 600px){
-
-  /* 0) neutralizza qualunque width precedente sui th/td */
-  #calendar-table th,
-  #calendar-table td { width: auto !important; }
-
-  /* 1) usa il colgroup per le larghezze */
-  #calendar-table{
-    width: 100% !important;
-    table-layout: fixed !important;          /* rispetta i <col> */
-    font-size: .82rem;
-  }
-
-  /* G / DATA / AVV / C-T / RIS (somma ≈100) */
-  #calendar-table col[data-col="g"]    { width: 10% !important; }
-  #calendar-table col[data-col="data"] { width: 28% !important; }
-  #calendar-table col[data-col="avv"]  { width: 41% !important; }  /* AVV grande */
-  #calendar-table col[data-col="ct"]   { width: 9%  !important; }
-  #calendar-table col[data-col="ris"]  { width: 12%  !important; }
-
-  /* celle più compatte */
-  #calendar-table th,
-  #calendar-table td { padding: 8px 6px; vertical-align: middle; }
-
-  /* DATA su due righe se nel JS metti \n prima di "ore" */
-  #calendar-table td.data-cell{
-    white-space: pre-line !important;
-    font-weight: 700;
-  }
-
-  /* AVV: logo sopra, nome sotto; niente “spazietto” verso C/T */
-  #calendar-table td.avversario-cell{
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 6px !important;
-    text-align: center !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    white-space: normal !important;          /* consentire a capo del nome */
-  }
-  #calendar-table td.avversario-cell img.logo-squadra{
-    width: 40px; height: 40px; object-fit: contain;
-    margin: 0 !important;
-  }
-
-  /* C/T icona compatta */
-  #calendar-table td.luogo-cell .icon-luogo{ width: 18px; height: 18px; }
-
-  /* Header "G" in bianco (come richiesto) */
-  #calendar-table thead th:first-child{ color:#fff !important; }
-}
-
-
-
-
-/* --- Calendario: AVV occupa tutta la colonna --- */
-#calendar-table td.avversario-cell{
-  display: table-cell !important;   /* torna cella vera */
-  vertical-align: middle;
-  text-align: center;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-/* impila logo sopra e nome sotto senza flex sul <td> */
-#calendar-table td.avversario-cell img.logo-squadra{
-  display: block;
-  margin: 0 auto 6px;     /* centrato e con spazio sotto */
-  width: 40px;            /* regola misura mobile qui */
-  height: 40px;
-  object-fit: contain;
-}
-#calendar-table td.avversario-cell span{
-  display: block;         /* va a capo sotto al logo */
-  white-space: normal;    /* consenti il wrap del nome */
-}
-
-/* Mobile: distribuzione colonne semplice e stabile */
-@media (max-width:600px){
-  #calendar-table{ table-layout: fixed; }
-  #calendar-table th, #calendar-table td{ padding:8px 6px; }
-
-  /* G / DATA / AVV / C/T / RIS  (somma ≈ 100%) */
-  #calendar-table th:nth-child(1), #calendar-table td:nth-child(1){ width:10%; }
-  #calendar-table th:nth-child(2), #calendar-table td:nth-child(2){ width:28%; white-space:pre-line; font-weight:700; }
-  #calendar-table th:nth-child(3), #calendar-table td:nth-child(3){ width:44%; } /* AVV largo */
-  #calendar-table th:nth-child(4), #calendar-table td:nth-child(4){ width:9%;  text-align:center; }
-  #calendar-table th:nth-child(5), #calendar-table td:nth-child(5){ width:9%;  text-align:center; }
-}
-
-
-
-/* --- AVV: logo centrato e nome sotto --- */
-#calendar-table td.avversario-cell {
-  padding: 4px;
-  text-align: center;
-}
-#calendar-table td.avversario-cell .avv-wrap {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 4px;
-  width: 100%;
-}
-#calendar-table td.avversario-cell img.logo-squadra {
-  width: 65px;
-  height: 50px;
-  object-fit: contain;
-  margin: 0px;
-}
-#calendar-table td.avversario-cell span {
-  display: block;
-   /* più piccolo per i nomi lunghi */
-  line-height: 1.2;
-  font-size: 20px;
-  white-space: normal;
-}
-
-/* --- DATA: font più piccolo e centrato --- */
-#calendar-table td.data-cell {
-  white-space: pre-line;   /* consente "data\nora" */
-  font-size: 0.85rem;      /* più piccolo */
-  font-weight: 600;
-  text-align: center;
-  line-height: 1.2;
-}
-
-/* Extra-compatto per smartphone molto piccoli */
-@media (max-width: 630px){
-  #calendar-table td.data-cell {
-    font-size: 0.75rem;   /* ancora più piccolo */
-  }
-  #calendar-table td.avversario-cell img.logo-squadra {
-    width: 36px;
-    height: 36px;
-  }
-  #calendar-table td.avversario-cell span {
-    display: block;
-     /* più piccolo per i nomi lunghi */
-    line-height: 1.2;
-    font-size: 12px;
-    white-space: normal;
-  }
-}
-
-
-.table td.squadra-cell span {
-  white-space: normal;       /* consente a capo solo su spazi */
-  word-break: keep-all;      /* evita spezzare parole a metà */
-  line-height: 1.2;
-}
- /* Colonna squadra: spazio minimo */
-.table th:nth-child(2),
-.table td:nth-child(2) {
-  min-width: 160px;   /* aumenta se serve */
-}
-
-
-
-
-/* --- Carosello: altezza auto sulla foto --- */
-.news-carousel { height: auto; }
-
-/* niente vincoli di altezza al wrapper */
-
-
-/* usa una griglia: la riga prende l’altezza dell’immagine */
-
-
-/* colonna immagine: l’immagine detta l’altezza */
-.slide-left{
-  border: 2px solid var(--pink-strong);
-  background: var(--blue);
-}
-
-
-
-
-/* mobile: mantieni il tuo overlay come già fai */
-@media (max-width: 900px){
-  .news-carousel .slide{
-    display: block;        /* torna allo stack mobile */
-    border: 2px solid var(--pink-strong);
-  }
-  .slide-left, .slide-right{ max-width: 100% !important; }
-  .slide-left img{ width:100%; height:100%; object-fit: contain; }
-}
-/* ===== Loader overlay ===== */
-#app-loader{
-  position: fixed;
-  inset: 0;
-  background: rgba(18,18,18,.9); /* scuro trasparente */
-  display: grid;
-  place-items: center;
-  z-index: 99999;               /* sopra tutto */
-  transition: opacity .25s ease, visibility .25s ease;
-}
-#app-loader.hidden{
-  opacity: 0;
-  visibility: hidden;
-}
-
-/* spinner */
-#app-loader .spinner{
-  width: 64px;
-  height: 64px;
-  border: 4px solid rgba(255,255,255,.25);
-  border-top-color: #ff03bc;    /* rosa brand */
-  border-radius: 50%;
-  animation: spin 0.9s linear infinite;
-  box-shadow: 0 0 10px rgba(252,67,163,.5);
-}
-@keyframes spin{ to{ transform: rotate(360deg); } }
-
-/* Contenitore icone social */
-.social-icons {
-  display: flex;
-  align-items: center;
-  gap: 12px; /* spazio tra icone */
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-/* Icone */
-.social-icons .social-logo-insta {
-  height: 33px;
-  filter: brightness(0) invert(1); /* bianco come Instagram */
-  opacity: 0.95;
-  transition: filter .2s ease, opacity .2s ease;
-}
-.social-icons .social-logo-facebook {
-  height: 25px;
-  filter: brightness(0) invert(1); /* bianco come Instagram */
-  opacity: 0.95;
-  transition: filter .2s ease, opacity .2s ease;
-}
-
-.social-icons .social-logo-insta:hover {
-  opacity: 1;
-  filter: brightness(0) invert(1) drop-shadow(0 0 3px var(--pink));
-}
-.social-icons .social-logo-facebook:hover {
-  opacity: 1;
-  filter: brightness(0) invert(1) drop-shadow(0 0 3px var(--pink));
-}
-
-/* Header "G" uguale agli altri */
-#calendar-table th:first-child {
-  font-size: 1rem;      /* stessa grandezza degli altri */
-  text-align: center;   /* centrato come le altre colonne */
-  min-width: 40px;      /* evita che sia troppo stretto */
-}
-
-/* Header "DATA" centrato */
-#calendar-table th:nth-child(2),
-#calendar-table td.data-cell {
-  text-align: center;
-}
-
-/* Header "Ris." ben visibile */
-#calendar-table th:last-child {
-  min-width: 55px;   /* allarga per contenere bene "Ris." */
-  text-align: center;
-}
-
-/* Risultato leggermente più grande */
-#calendar-table td:last-child {
-  font-size: 1.1rem;
-  font-weight: 600;  /* un po’ più marcato */
-  text-align: center;
-}
-
-
-
-/* ===== Intro volley overlay ===== */
-#intro-volley{
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  background: radial-gradient(1200px 600px at 30% 30%, rgba(252,67,163,.15), rgba(0,0,0,.85));
-  display: none;                    /* default nascosto: lo attiva JS */
-  place-items: center;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity .5s ease;
-}
-#intro-volley.show { display: grid; opacity: 1; }
-#intro-volley.fade { opacity: 0; }
-
-/* contenitore pallone + scia */
-#intro-volley .ball-wrap{
-  width: clamp(80px, 18vw, 140px);
-  height: clamp(80px, 18vw, 140px);
-  position: relative;
-  filter: drop-shadow(0 12px 28px rgba(252,67,163,.45));
-  animation: volley-path 1.9s ease-in-out forwards;
-}
-
-/* immagine del pallone che RUOTA */
-#intro-volley .ball-img{
-  width: 100%; height: 100%;
-  object-fit: contain;
-  animation: volley-spin 1.9s linear forwards;
-}
-
-/* due scie morbide (cloni sfocati) */
-#intro-volley .ball-wrap::before,
-#intro-volley .ball-wrap::after{
-  content: "";
-  position: absolute; inset: 0;
-  background: url("img/volley-ball.png") center/contain no-repeat;
-  opacity: 0;
-  filter: blur(10px) saturate(1.2);
-  transform: translate(-10px, 6px) scale(.9);
-  animation: volley-trail 1.9s ease-out forwards;
-  pointer-events: none;
-}
-#intro-volley .ball-wrap::after{
-  filter: blur(16px) saturate(1.1);
-  animation-delay: .07s;
-}
-
-/* Percorso: entra da sinistra, curva, si ferma a centro */
-@keyframes volley-path{
-  0%   { transform: translate(-45vw, 18vh) scale(.9); }
-  40%  { transform: translate(6vw, -6vh)  scale(1); }
-  75%  { transform: translate(0, 0)       scale(1); }
-  100% { transform: translate(0, 0)       scale(1); }
-}
-/* Rotazione del pallone */
-@keyframes volley-spin{
-  0%   { rotate: 0deg; }
-  100% { rotate: 540deg; } /* 1.5 giri */
-}
-/* Scia che segue e svanisce */
-@keyframes volley-trail{
-  0%   { opacity: 0; transform: translate(-10px, 6px)  scale(.85); }
-  20%  { opacity: .75; }
-  100% { opacity: 0; transform: translate(-36px, 16px) scale(1.12); }
-}
-
-/* Rispetto preferenze utente: niente animazioni */
-@media (prefers-reduced-motion: reduce){
-  #intro-volley .ball-wrap, #intro-volley .ball-img{
-    animation: none !important;
-  }
-}
-.modal-img-viewer{
-  position:fixed;
-  inset:0;
-  background:black;
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:99999;
-}
-.modal-img-viewer.open{display:flex;}
-.modal-img-viewer img{
-  max-width:100%;
-  max-height:100%;
-}
-/* Carosello: immagine intera, niente tagli */
-.slide-left img{
-  width: 100%;
-  height: 100%;
-  object-fit: contain !important; /* sovrascrive ogni cover */
-  display: block;
-  background: transparent;
-}
-
-/* --- Image viewer full-screen --- */
+/* ==============================
+   MODAL IMMAGINI
+============================== */
 .modal-img-viewer{
   position: fixed;
   inset: 0;
@@ -2353,301 +904,434 @@ main {
   z-index: 100000;
   cursor: zoom-out;
 }
-.modal-img-viewer.open{ display: flex; }
+
+.modal-img-viewer.open{
+  display: flex;
+}
+
 .modal-img-viewer img{
   max-width: 98vw;
   max-height: 98vh;
 }
-.live-dot.on{opacity:1}
-.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;
-  background:#ff2a55;margin-left:6px;box-shadow:0 0 8px #ff2a55;opacity:0;transition:opacity .25s}
-  .live-dot.on{opacity:1}
-  /* pallino live */
-#nav-live .live-dot{
-  display:inline-block;width:10px;height:10px;margin-left:6px;
-  border-radius:50%;background:#ff2b2b;
-  box-shadow:0 0 0 0 rgba(255,43,43,.7);
-  opacity:0;transform:scale(.6);
-  transition:opacity .2s, transform .2s;
-}
-#nav-live.live-on .live-dot{
-  opacity:1;transform:scale(1);animation:livePulse 1.6s infinite;
-}
-@keyframes livePulse{to{box-shadow:0 0 0 10px rgba(255,43,43,0)}}
-/* pallino live */
-#nav-live .live-dot{
-  display:inline-block;width:10px;height:10px;margin-left:6px;
-  border-radius:50%;background:#ff2b2b;
-  box-shadow:0 0 0 0 rgba(255,43,43,.7);
-  opacity:0;transform:scale(.6);
-  transition:opacity .2s, transform .2s;
-}
-#nav-live.live-on .live-dot{
-  opacity:1;transform:scale(1);animation:livePulse 1.6s infinite;
-}
-@keyframes livePulse{to{box-shadow:0 0 0 10px rgba(255,43,43,0)}}
-/* Pallino LIVE */
-#nav-live .live-dot{
-  display:inline-block;width:10px;height:10px;margin-left:6px;
-  border-radius:50%;background:#ff2b2b;
-  box-shadow:0 0 0 0 rgba(255,43,43,.6);
-  opacity:0;transform:scale(.6);
-  transition:opacity .2s, transform .2s;
-}
-#nav-live.live-on .live-dot,
-#navbar a.live-on .live-dot{
-  opacity:1;transform:scale(1);animation:livePulse 1.6s infinite;
-}
-@keyframes livePulse{to{box-shadow:0 0 0 10px rgba(255,43,43,0)}}
-.live-toolbar{max-width:1200px;margin:0 auto 10px;padding:0 12px}
-.live-actions{display:none;gap:10px;justify-content:flex-end}
-.btn-live{border:2px solid #ff0084;background:#0f0f0f;color:#fff;
-  padding:8px 14px;border-radius:10px;cursor:pointer}
-.btn-live.primary{background:#ff0084;color:#fff}
-.live-box{max-width:1200px;margin:0 auto;padding:8px;min-height:60vh;
-  background:#0c0c0c;border:2px solid #ff0084;border-radius:14px}
 
-/* mostra i controlli quando la diretta è ON */
-.live-on .live-actions{display:flex}
-/* nascondi finché JS non ha inizializzato */
-html:not(.hydrated) #live-player,
-html:not(.hydrated) .live-toolbar { visibility: hidden; }
+/* ==============================
+   LOADER
+============================== */
+#app-loader{
+  position: fixed;
+  inset: 0;
+  background: rgba(18,18,18,.9);
+  display: grid;
+  place-items: center;
+  z-index: 99999;
+  transition: opacity .25s ease, visibility .25s ease;
+}
 
-/* toolbar */
-.live-toolbar{display:flex;gap:.75rem;align-items:center;margin:12px 0}
-.live-toolbar #btn-refresh,
-.live-toolbar a#btn-fb{
-  padding:.55rem .9rem;border:2px solid #ff0084;border-radius:10px;
-  background:#0c0c0c;color:#fff;text-decoration:none;cursor:pointer
+#app-loader.hidden{
+  opacity: 0;
+  visibility: hidden;
 }
-.live-toolbar a#btn-fb{background:#ff0084;color:#000;font-weight:700}
 
-/* stato live (pallino + testo) */
-.live-status{display:flex;align-items:center;gap:.45rem;color:#fff}
-.live-status .dot{width:10px;height:10px;border-radius:50%;background:#999}
-html.live-on .live-status .dot{background:#ff2d55;box-shadow:0 0 0 3px rgba(255,45,85,.25)}
-html.live-on .live-status .txt{color:#ff2d55}
+#app-loader .spinner{
+  width: 64px;
+  height: 64px;
+  border: 4px solid rgba(255,255,255,.25);
+  border-top-color: var(--pink);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
 
-/* area player */
-#live-player{
-  min-height:60vh;background:#111;border:2px solid #ff0084;border-radius:12px
+@keyframes spin{
+  to{ transform: rotate(360deg); }
 }
-.live-dot{
-  width:10px;
-  height:10px;
-  margin-right:6px;
-  border-radius:50%;
-  background:#ff2a55;
-  box-shadow:0 0 8px #ff2a55;
-  display:inline-block;
+
+/* ==============================
+   LIVE BUTTON
+============================== */
+.live-fab{
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10000;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #ff2a55;
+  color: #fff;
+  font-weight: 700;
+  padding: 12px 22px;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.25);
+  transition: transform .15s ease, opacity .2s;
 }
-/* in style.css se non esiste già */
-#nav-live { align-items:center; gap:8px; }
-#nav-live .live-dot{ width:10px; height:10px; border-radius:50%; background:#ff2a55; box-shadow:0 0 8px #ff2a55; }
-/* Link pagina Contatti */
-.contatti-wrapper a {
-  color: var(--pink);          /* rosa */
-  text-decoration: none;
+
+.live-fab:hover{
+  transform: translateY(-2px);
 }
-.contatti-wrapper a:visited {
-  color: var(--pink);          /* evita il viola visitato */
+
+.live-hidden{
+  display: none !important;
 }
-.contatti-wrapper a:hover,
-.contatti-wrapper a:focus {
-  color: #ffffff;          /* bianco in hover/focus */
-  text-decoration: underline;
+
+.dot{
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  animation: livePulse 1.6s infinite;
 }
-.buttons-filter .filter-btn,
+
+@keyframes livePulse{
+  to{ box-shadow: 0 0 0 12px rgba(255,255,255,0); }
+}
+
+/* ==============================
+   MEDIA QUERY FINALI
+============================== */
+@media (max-width: 600px){
+  .site-footer{
+    font-size: .85rem;
+  }
+
+  .mappa iframe{
+    height: 300px;
+  }
+
+  .contatti-wrapper{
+    padding: .5rem;
+  }
+}
+/* === SOCIAL ICONS HEADER FIX === */
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.social-icons img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Se vuoi Instagram leggermente più grande */
+.social-icons .social-logo-insta {
+  width: 28px;
+  height: 28px;
+}
+
+/* Facebook un filo più piccolo */
+.social-icons .social-logo-facebook {
+  width: 24px;
+  height: 24px;
+}
+
+/* ==============================
+   FIX TABELLA CALENDARIO
+============================== */
+
+#calendar-table {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto 40px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 2px solid var(--pink);
+  table-layout: fixed;
+}
+
+/* Celle */
+#calendar-table th,
+#calendar-table td {
+  padding: 12px 10px;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  font-size: 0.95rem;
+}
+
+/* Header */
+#calendar-table thead {
+  background: var(--gradient);
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Colonne: bilanciamento */
+#calendar-table th:nth-child(1),
+#calendar-table td:nth-child(1) { width: 8%; }
+
+#calendar-table th:nth-child(2),
+#calendar-table td:nth-child(2) { width: 20%; }
+
+#calendar-table th:nth-child(3),
+#calendar-table td:nth-child(3) { width: 40%; }
+
+#calendar-table th:nth-child(4),
+#calendar-table td:nth-child(4) { width: 12%; }
+
+#calendar-table th:nth-child(5),
+#calendar-table td:nth-child(5) { width: 10%; }
+
+/* ==============================
+   AVVERSARIO
+============================== */
+#calendar-table td.avversario-cell {
+  
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+}
+
+#calendar-table td.avversario-cell img.logo-squadra {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+/* ==============================
+   ICONA CASA / TRASFERTA
+============================== */
+#calendar-table td.luogo-cell {
+  text-align: center;
+}
+
+#calendar-table td.luogo-cell .icon-luogo {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  display: inline-block;
+}
+
+/* ==============================
+   RISULTATO
+============================== */
+#calendar-table td:last-child {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--pink);
+}
+
+/* ==============================
+   MOBILE
+============================== */
+@media (max-width: 600px) {
+  #calendar-table {
+    font-size: 0.8rem;
+  }
+
+  #calendar-table th,
+  #calendar-table td {
+    padding: 8px 6px;
+  }
+
+  #calendar-table td.avversario-cell img.logo-squadra {
+    width: 34px;
+    height: 34px;
+  }
+
+  #calendar-table td.luogo-cell .icon-luogo {
+    width: 20px;
+    height: 20px;
+  }
+}
+/* Centro titolo e bottoni calendario */
+.calendar-title,
+.calendar-header,
+.calendar-controls,
+.calendar-page h1 {
+  text-align: center;
+}
+
+.buttons-filter,
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0 2rem;
+}
+#calendar-table td.avversario-cell {
+  text-align: center;
+  vertical-align: middle;
+}
+
+#calendar-table td.avversario-cell .avv-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+#calendar-table td.avversario-cell img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+/* CENTRARE TITOLO E BOTTONI */
+main > h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+/* AVVERSARIO CENTRATO E COMPATTO */
+#calendar-table td.avversario-cell {
+  text-align: center;
+  vertical-align: middle;
+}
+
+#calendar-table .avv-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+#calendar-table .avv-wrap img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+/* PROPORZIONI COLONNE */
+#calendar-table {
+  table-layout: fixed;
+}
+
+#calendar-table th:nth-child(1),
+#calendar-table td:nth-child(1) { width: 6%; }
+
+#calendar-table th:nth-child(2),
+#calendar-table td:nth-child(2) { width: 18%; }
+
+#calendar-table th:nth-child(3),
+#calendar-table td:nth-child(3) { width: 42%; }
+
+#calendar-table th:nth-child(4),
+#calendar-table td:nth-child(4) { width: 12%; }
+
+#calendar-table th:nth-child(5),
+#calendar-table td:nth-child(5) { width: 10%; }
+/* === FIX DEFINITIVO COLONNA AVVERSARIO === */
+#calendar-table {
+  table-layout: fixed;
+}
+
+#calendar-table th:nth-child(3),
+#calendar-table td:nth-child(3) {
+  width: 32% !important;   /* era troppo grande */
+}
+
+/* Centro vero del contenuto */
+#calendar-table td.avversario-cell {
+  text-align: center;
+  vertical-align: middle;
+  padding: 12px 6px;
+}
+
+#calendar-table .avv-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;              /* prende tutta la cella */
+  margin: 0 auto;          /* centrato */
+  text-align: center;
+}
+
+/* Logo */
+#calendar-table .avv-wrap img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/* Nome squadra */
+#calendar-table .avv-wrap span {
+  display: block;
+  max-width: 90%;
+  text-align: center;
+  word-wrap: break-word;
+}
+/* ===== BOTTONI FILTRO UNIFICATI ===== */
 .filter-buttons button,
-.filter-btn{
-  font-family: 'Faculty', system-ui, sans-serif;
-  font-weight: 600;   /* usa 600 o 700, entrambi importati */
-}
-/* rimuovi il puntatore dalle news */
-.news-card img,
-.news-detail img { cursor: default; }
-
-/* mantieni zoom solo per il carosello */
-.news-carousel img { cursor: pointer; }
-/* vale per calendario + classifica */
-
-/* base */
-.live-btn,.live-fab,.live-overlay{
-  display:inline-flex; align-items:center; gap:10px;
-  background:#ff2a55; color:#fff; font-weight:700;
-  padding:12px 22px; border-radius:999px; text-decoration:none;
-  box-shadow:0 6px 16px rgba(0,0,0,.25); transition:transform .15s ease,opacity .2s;
-}
-.live-btn:hover,.live-fab:hover,.live-overlay:hover{ transform:translateY(-2px); }
-.live-hidden{ display:none !important; }
-.dot{ width:12px; height:12px; border-radius:50%; background:#fff;
-      box-shadow:0 0 0 0 rgba(255,255,255,.6); animation:livePulse 1.6s infinite; }
-@keyframes livePulse{ to{ box-shadow:0 0 0 12px rgba(255,255,255,0); } }
-
-/* A: sezione centrata */
-.live-section{ text-align:center; margin:16px 0 0; }
-
-/* B: floating action button */
-.live-fab{ position:fixed; right:16px; bottom:16px; z-index:10000; }
-
-/* C: overlay sul carosello */
-.live-overlay{ position:absolute; right:18px; top:18px; z-index:20; }
-.news-wrapper{ position:relative; }
-
-
-
-
-/* === Carosello: layout mobile senza sovrapposizioni === */
-@media (max-width: 900px){
-  .news-carousel{ width:100%; overflow:hidden; }
-  .news-carousel .slides{ max-height:none; }
-
-  .news-carousel .slide{
-    display:flex;
-    flex-direction:column;
-    align-items:stretch;
-    width:100%;
-    min-height:auto;
-    height:auto;
-    margin:0;
-    border:2px solid var(--pink-strong);
-    overflow:hidden;
-  }
-
-  .slide-left{
-    flex:0 0 auto;
-    max-width:100% !important;
-    border:none !important;
-  }
-  .slide-left img{
-    display:block;
-    width:100%;
-    height:auto;            /* niente altezza forzata */
-    object-fit:contain !important;
-  }
-
-  .slide-right{
-    position:static !important;  /* rimuove overlay */
-    flex:0 0 auto;
-    width:100%;
-    max-width:100% !important;
-    padding:12px 16px;
-    margin:0;
-    text-align:center;
-    background: var(--blue);      /* o il tuo gradiente */
-    color:#fff;
-    z-index:auto;
-  }
-
-  /* frecce sempre sopra */
-  .news-carousel .prev,
-  .news-carousel .next{ z-index:20; }
-}
-/* Mobile: elimina lo spazio nero sotto la foto nel carosello */
-@media (max-width: 900px){
-  .news-carousel{ height:auto !important; }
-  .news-carousel .slides{ max-height:min-content !important; }
-  .news-carousel .slide{
-    min-height:auto !important;
-    height:min-content !important;
-    overflow: visible !important;
-  }
-
-  /* il contenitore non deve avere un fondo visibile */
-  .slide-left{
-    background: transparent !important;
-    border: 0 !important;
-  }
-
-  /* l'immagine detta l'altezza: niente 100% */
-  .slide-left img{
-    width:100%;
-    height:auto !important;
-    object-fit: contain !important;
-    max-height: 295px;
-    display:block;
-  }
-
-  /* blocco testo sotto, non overlay */
-  .slide-right{
-    position: static !important;
-    width:100%;
-    max-width:100% !important;
-    margin:0; padding:12px 16px;
-  }
-}
-/* MENU MOBILE: pannello a DESTRA sotto l'header */
-@media (max-width: 768px){
-  #navbar{
-    position: fixed !important;
-    top: 70px !important;   /* = altezza header */
-    right: 0 !important;
-    left: auto !important;
-
-    width: min(86vw, 360px);
-    height: auto;
-    box-sizing: border-box;
-
-    display: none;                  /* mostrato da .active */
-    flex-direction: column;
-    align-items: stretch;
-    text-align: left;
-
-    margin: 0 !important;           /* annulla margini desktop */
-    padding: 8px 0;
-    background: var(--blue);
-    border-left: 1px solid #333;
-    border-radius: 8px 0 0 8px;
-    box-shadow: 0 8px 24px rgba(0,0,0,.35);
-    z-index: 10000;
-  }
-  #navbar a{ padding: 12px 16px; }
-  #navbar.active{ display: flex !important; }
+.buttons-filter button {
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 2px solid var(--pink);
+  
+  color: var(--pink);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all .25s ease;
 }
 
-
-/* mostralo se uno qualunque dei marker è attivo */
-html.live-on #live-button,
-body.live-on #live-button,
-#live-button.live-on,
-#live-button[data-live="on"],
-#live-button[data-live="true"]{
-  display:inline-flex !important;
-}
-/* di default invisibile */
-.live-fab {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .25s ease;
+/* Hover */
+.filter-buttons button:hover,
+.buttons-filter button:hover {
+  background: var(--pink);
+  color: #fff;
+  transform: translateY(-1px);
 }
 
-/* quando JS attiva la diretta */
-html.live-on .live-fab {
-  opacity: 1;
-  pointer-events: auto;
+/* Stato attivo */
+.filter-buttons button.active,
+.buttons-filter button.active {
+  background: var(--pink);
+  color: #fff;
+  box-shadow: 0 0 0 2px rgba(255, 3, 188, 0.25);
 }
-/* Nascosto finché ha la classe live-hidden */
-.live-fab.live-hidden {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .25s ease;
-}
-
-/* Mostrato quando live-hidden non è presente */
-.live-fab {
-  opacity: 1;
-  pointer-events: auto;
-  transition: opacity .25s ease;
-}
-/* invisibile finché JS non lo attiva */
-.live-fab {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .25s ease;
+/* ===== FIX DEFINITIVO BOTTONI ===== */
+.filter-btn,
+.filter-buttons button,
+.buttons-filter button {
+  background: transparent !important;
+  color: var(--pink);
+  border: 2px solid var(--pink);
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all .25s ease;
 }
 
-/* visibile solo quando JS rimuove la classe live-hidden */
-.live-fab:not(.live-hidden) {
-  opacity: 1;
-  pointer-events: auto;
+/* Hover */
+.filter-btn:hover,
+.filter-buttons button:hover,
+.buttons-filter button:hover {
+  background: var(--pink) !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+
+/* Stato attivo */
+.filter-btn.active,
+.filter-buttons button.active,
+.buttons-filter button.active {
+  background: var(--pink) !important;
+  color: #fff !important;
+  box-shadow: 0 0 0 2px rgba(255, 3, 188, 0.25);
+}
+.calendar-wrapper {
+  min-height: 400px;
 }

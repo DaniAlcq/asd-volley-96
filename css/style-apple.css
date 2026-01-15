@@ -1,0 +1,566 @@
+/* =========================================
+   APPLE DARK — SPORTIVO ELEGANTE (v1)
+   Overlay estetico (non rompe layout)
+========================================= */
+
+/* ---------- Superfici & glass ---------- */
+:root{
+  --glass-bg: rgba(18,18,18,.55);
+  --glass-brd: rgba(255,255,255,.08);
+  --soft-brd: rgba(255,255,255,.06);
+  --soft-shadow: 0 20px 40px rgba(0,0,0,.45);
+  --hover-row: rgba(255,255,255,.03);
+}
+
+/* Header: vetro, più premium */
+.header-tot{
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border-bottom: 1px solid var(--glass-brd);
+  box-shadow: var(--soft-shadow);
+}
+
+/* Nav più pulita */
+#navbar a{
+  opacity: .85;
+  letter-spacing: .2px;
+}
+#navbar a:hover{ opacity: 1; }
+
+/* ---------- Bottoni (iOS-like) ---------- */
+.filter-btn,
+.filter-buttons button,
+.buttons-filter button{
+  background: rgba(255,255,255,.04) !important;
+  border: 1px solid rgba(255,3,188,.55) !important;
+  color: var(--pink) !important;
+  border-radius: 999px;
+  padding: 10px 22px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 8px 26px rgba(255,3,188,.18);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.filter-btn:hover,
+.filter-buttons button:hover,
+.buttons-filter button:hover{
+  background: rgba(255,3,188,.18) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 34px rgba(255,3,188,.35);
+}
+
+.filter-btn.active,
+.filter-buttons button.active,
+.buttons-filter button.active{
+  background: var(--pink) !important;
+  color: #fff !important;
+  box-shadow: 0 16px 44px rgba(255,3,188,.55);
+}
+
+/* ---------- Tabelle (pulite, aria) ---------- */
+.table,
+#calendar-table{
+  border-radius: 16px;
+  border: 1px solid var(--soft-brd);
+  box-shadow: var(--soft-shadow);
+  overflow: hidden;
+}
+
+.table thead,
+#calendar-table thead{
+  background: linear-gradient(180deg, rgba(255,3,188,.28), rgba(255,3,188,.06));
+  text-transform: none;
+  letter-spacing: .4px;
+}
+
+.table th, .table td,
+#calendar-table th, #calendar-table td{
+  border-color: rgba(255,255,255,.06);
+}
+
+.table tbody tr:hover,
+#calendar-table tbody tr:hover{
+  background: var(--hover-row);
+}
+
+/* ---------- Titoli ---------- */
+h1,h2,h3{
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+/* ---------- Cards (news, risultati, squadre, mvp) ---------- */
+.news-card,
+.result-card,
+.mvp-card,
+.team-card{
+  border: 1px solid var(--soft-brd);
+  box-shadow: var(--soft-shadow);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.news-card:hover,
+.result-card:hover,
+.mvp-card:hover,
+.team-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px rgba(0,0,0,.55);
+}
+
+/* ---------- Scrollbar (mac-like) ---------- */
+::-webkit-scrollbar{ width: 10px; }
+::-webkit-scrollbar-track{ background:#0f0f0f; }
+::-webkit-scrollbar-thumb{
+  background: rgba(255,3,188,.45);
+  border-radius: 20px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background: rgba(255,3,188,.7);
+}
+
+/* ---------- Micro-aria ---------- */
+main > h1{ margin-bottom: 1.2rem; }
+.table th, .table td,
+#calendar-table th, #calendar-table td{ padding: 14px 12px; }
+/* ===== FIX VISIBILITÀ HEADER TABELLA ===== */
+#calendar-table thead,
+.table thead {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 3, 188, 0.55),
+    rgba(255, 3, 188, 0.15)
+  ) !important;
+}
+
+#calendar-table thead th,
+.table thead th {
+  color: #fff !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+/* ===== HEADER TABELLA — DARK APPLE FIX ===== */
+#calendar-table thead,
+.table thead {
+  background: linear-gradient(
+    180deg,
+    rgba(207, 2, 152, 0.95),
+    rgba(0, 0, 0, 0.85)
+  ) !important;
+}
+
+#calendar-table thead th,
+.table thead th {
+  color: white !important;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+  border-bottom: 1px solid rgba(255, 3, 188, 0.35);
+}
+/* ===============================
+   APPLE DARK V2 — UI REFINEMENT
+=============================== */
+
+/* ---- Hero / Titoli ---- */
+main > h1 {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  letter-spacing: -0.03em;
+  margin-bottom: 1.2rem;
+  text-shadow: 0 2px 20px rgba(0,0,0,.4);
+}
+
+main {
+  padding-top: 110px;
+}
+
+/* ---- Carosello ---- */
+.news-carousel {
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,.5);
+}
+
+.slide-right {
+  background: linear-gradient(
+    180deg,
+    rgba(18,18,18,.92),
+    rgba(18,18,18,.75)
+  ) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.slide-right h3 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* ---- Cards ---- */
+.news-card,
+.result-card,
+.mvp-card,
+.team-card {
+  border-radius: 18px;
+  background: linear-gradient(
+    180deg,
+    rgba(20,20,20,.9),
+    rgba(10,10,10,.9)
+  );
+}
+
+.news-card figcaption {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ---- Tabelle: più aria ---- */
+#calendar-table th,
+#calendar-table td,
+.table th,
+.table td {
+  padding: 16px 14px;
+}
+
+/* ---- Footer ---- */
+.site-footer {
+  background: linear-gradient(
+    180deg,
+    rgba(10,10,10,.9),
+    rgba(5,5,5,.95)
+  );
+  border-top: 1px solid rgba(255,255,255,.06);
+  box-shadow: 0 -20px 40px rgba(0,0,0,.5);
+}
+
+/* ---- Scroll inertia feel ---- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---- Soft glow accento ---- */
+.filter-btn.active,
+.filter-buttons button.active {
+  filter: drop-shadow(0 0 10px rgba(255,3,188,.5));
+}
+/* ===============================
+   APPLE DARK V3 — HEADER, NAV, MICRO-UX
+=============================== */
+
+/* ---- Header più iOS/macOS ---- */
+.header-tot{
+  height: 76px;
+  padding: 0 24px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+/* Brand più pulito */
+.brand-logo{
+  height: 82px;
+  opacity: .95;
+}
+
+/* Nav: più aria, underline soft */
+#navbar a{
+  font-size: 18px;
+  padding: 10px 14px;
+}
+#navbar a::after{
+  height: 2px;
+  border-radius: 2px;
+  opacity: .9;
+}
+
+/* ---- Micro-animazioni ---- */
+*{
+  transition-timing-function: cubic-bezier(.2,.8,.2,1);
+}
+
+/* ---- Hover su righe: più fluido ---- */
+#calendar-table tbody tr,
+.table tbody tr{
+  transition: background .2s ease, transform .2s ease;
+}
+#calendar-table tbody tr:hover,
+.table tbody tr:hover{
+  transform: translateY(-1px);
+}
+
+/* ---- Avversario: più centrato visivamente ---- */
+#calendar-table .avv-wrap span{
+  font-weight: 600;
+  letter-spacing: .1px;
+}
+
+/* ---- Icone C/T più soft ---- */
+#calendar-table td.luogo-cell .icon-luogo{
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.25));
+  opacity: .9;
+}
+
+/* ---- Risultato più sportivo ---- */
+#calendar-table td:last-child{
+  font-size: 1.2rem;
+  letter-spacing: .5px;
+}
+
+/* ---- Cards: depth migliore ---- */
+.news-card,
+.result-card,
+.mvp-card,
+.team-card{
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ---- News grid: più aria ---- */
+.news-grid{
+  gap: 28px;
+}
+
+/* ---- Result card: punteggi più “scoreboard” ---- */
+.result-card .resCasa,
+.result-card .resOsp{
+  font-size: 2.8rem;
+  letter-spacing: .5px;
+}
+
+/* ---- Footer: link più eleganti ---- */
+.site-footer a{
+  opacity: .85;
+}
+.site-footer a:hover{
+  opacity: 1;
+  text-decoration: none;
+}
+
+/* ---- Scrollbar più sottile ---- */
+::-webkit-scrollbar{
+  width: 8px;
+}
+/* ===============================
+   APPLE DARK V4 — MOBILE, CAROUSEL, CTA, RHYTHM
+=============================== */
+
+/* ---- Navbar mobile: glass panel ---- */
+@media (max-width: 768px){
+  #navbar{
+    background: rgba(14,14,14,.85) !important;
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border-left: 1px solid rgba(255,255,255,.06);
+    box-shadow: 0 20px 40px rgba(0,0,0,.6);
+  }
+  #navbar a{
+    border-bottom: 1px solid rgba(255,255,255,.04);
+  }
+}
+
+/* ---- Hamburger: più iOS ---- */
+.hamburger{
+  font-size: 1.9rem;
+  opacity: .9;
+}
+.hamburger:hover{ opacity: 1; }
+
+/* ---- Carousel: più “app” ---- */
+.news-carousel .prev,
+.news-carousel .next{
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.news-carousel .prev:hover,
+.news-carousel .next:hover{
+  transform: translateY(-20px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.6);
+}
+
+/* ---- Spaziature sistemiche ---- */
+.news-wrapper{ margin-bottom: 3rem; }
+.results-section{ padding: 3rem 1.2rem; }
+.teams-section{ margin: 3rem auto; }
+.mvp-section{ margin: 3.5rem auto; }
+
+/* ---- Tabelle classifiche: più premium ---- */
+.table thead th{
+  font-weight: 600;
+}
+.table td.team-cell .team-name{
+  font-weight: 600;
+}
+
+/* ---- CTA Live: iOS-style ---- */
+.live-fab{
+  background: linear-gradient(180deg, rgba(255,3,188,1), rgba(200,0,150,1));
+  box-shadow: 0 16px 40px rgba(255,3,188,.45);
+  border: 1px solid rgba(255,255,255,.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.live-fab:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 22px 60px rgba(255,3,188,.6);
+}
+
+/* ---- Focus states (accessibilità, Apple-like) ---- */
+a:focus-visible,
+button:focus-visible{
+  outline: 2px solid rgba(255,3,188,.8);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+/* ===============================
+   APPLE DARK V5 — FINAL POLISH
+=============================== */
+
+/* ---- Hero iOS-style (spotlight + depth) ---- */
+main > h1{
+  position: relative;
+}
+main > h1::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:120%;
+  transform:translateX(-50%);
+  width:140px;
+  height:4px;
+  border-radius:999px;
+  filter: blur(2px);
+}
+
+/* ---- Header: separatore luminoso ---- */
+.header-tot::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:-1px;
+  height:1px;
+  background: linear-gradient(90deg, transparent, rgba(255,3,188,.7), transparent);
+  opacity:.7;
+}
+
+/* ---- News: card stack ---- */
+.news-grid{
+  perspective: 1200px;
+}
+.news-card{
+  transform-style: preserve-3d;
+}
+.news-card:hover{
+  transform: translateY(-6px) rotateX(1deg);
+}
+
+/* ---- Tabelle: header sticky (classifiche) ---- */
+.table thead{
+  position: sticky;
+  top: 76px; /* sotto header */
+  z-index: 2;
+}
+
+/* ---- Righe soft + focus squadra ---- */
+.table tbody tr{
+  transition: background .2s ease, box-shadow .2s ease;
+}
+.table tbody tr:hover{
+  box-shadow: inset 0 0 0 1px rgba(255,3,188,.2);
+}
+
+/* ---- Avversario: badge look ---- */
+#calendar-table .avv-wrap img{
+  border-radius: 50%;
+  background: rgba(255,255,255,.05);
+  padding: 4px;
+}
+
+/* ---- Micro-animazioni su scroll (progressive reveal) ---- */
+@media (prefers-reduced-motion: no-preference){
+  .news-card,
+  .result-card,
+  .mvp-card,
+  .team-card,
+  .table,
+  #calendar-table{
+    animation: reveal .6s ease both;
+  }
+}
+@keyframes reveal{
+  from{ opacity:0; transform: translateY(8px); }
+  to{ opacity:1; transform: none; }
+}
+
+/* ---- Footer definitivo ---- */
+.site-footer{
+  padding: 2rem 1rem 2.4rem;
+}
+.site-footer p{
+  opacity: .9;
+}
+
+/* ---- Accenti glow soft ---- */
+#navbar a.active{
+  filter: drop-shadow(0 0 6px rgba(255,3,188,.4));
+}
+
+/* ---- Mobile: tabelle più leggibili ---- */
+@media (max-width:600px){
+  .table thead th,
+  #calendar-table thead th{
+    font-size:.8rem;
+  }
+}
+/* Rimuove glow tra i bottoni */
+.filter-buttons button,
+.buttons-filter button {
+  box-shadow: none !important;
+}
+
+.filter-buttons button.active,
+.buttons-filter button.active {
+  box-shadow: none !important;
+}
+/* FIX header tabella che rompe la prima riga */
+.table thead {
+  position: static !important;
+}
+
+#calendar-table thead {
+  position: static !important;
+}
+/* Impedisce collasso tabella durante il reload */
+.calendar-wrapper {
+  min-height: 400px;
+}
+/* ===== GLOW PULSANTI — CONTORNO, NON DIETRO ===== */
+.filter-btn,
+.filter-buttons button,
+.buttons-filter button {
+  box-shadow: none !important;
+}
+
+.filter-btn:hover,
+.filter-buttons button:hover,
+.buttons-filter button:hover {
+  box-shadow:
+    0 0 0 1px rgba(255,3,188,.45),
+    0 0 10px rgba(255,3,188,.35) !important;
+}
+
+.filter-btn.active,
+.filter-buttons button.active,
+.buttons-filter button.active {
+  box-shadow:
+    0 0 0 1px rgba(255,3,188,.7),
+    0 0 14px rgba(255,3,188,.55) !important;
+}
+/* === ALLINEAMENTO FONT CON RESTO DEL SITO === */
+body,
+h1, h2, h3,
+#navbar a,
+.filter-btn,
+.filter-buttons button {
+  font-family: 'Faculty', system-ui, sans-serif !important;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+}
