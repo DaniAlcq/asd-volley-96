@@ -422,58 +422,79 @@ const format = (txt) => {
       }
     }
 
-    async function initRisultati(){
-      const btns = $$('.filter-btn');
-      const box  = $('#results-container');
+  async function initRisultati(){
+  const btns = $$('.filter-btn');
+  const box  = $('#results-container');
 
-      const render = (cat, rows) => {
-        if(!box) return;
-        box.innerHTML = '';
+  const render = (cat, rows) => {
+    if(!box) return;
+    box.innerHTML = '';
 
-        const f = rows
-          .filter(m => (m.categoria || '').toLowerCase() === cat.toLowerCase())
-          .slice(0, 3);
+    const f = rows
+      .filter(m => (m.categoria || '').toLowerCase() === cat.toLowerCase())
+      .slice(0, 3);
 
-        for(const m of f){
-          const d = document.createElement('div');
-          d.className = 'result-card';
-          d.innerHTML = `
-            <h4 class="result-day">${tidy(m.giorno) || ''}</h4>
-            <div class="logos">
-              <div class="team">
-                <img src="${fixImg(m.squadraCasa_logo)}" alt="${tidy(m.squadraCasa_nome) || ''}">
-                <span>${tidy(m.squadraCasa_nome) || ''}</span>
-              </div>
-              <div class="resCasa">${tidy(m.risultatoCasa) ?? ''}</div>
-              <div class="vs">-</div>
-              <div class="resOsp">${tidy(m.risultatoOspite) ?? ''}</div>
-              <div class="team">
-                <img src="${fixImg(m.squadraOspite_logo)}" alt="${tidy(m.squadraOspite_nome) || ''}">
-                <span>${tidy(m.squadraOspite_nome) || ''}</span>
-              </div>
-            </div>
-            <ul class="result-sets">
-              ${parseSets(m.sets).map(s => `<li>${s}</li>`).join('')}
-            </ul>`;
-          box.appendChild(d);
-        }
-      };
+    for(const m of f){
+      const d = document.createElement('div');
+      d.className = 'result-card';
 
-      try{
-        const rows = await fetchSheet('Risultati');
-        render('Femminile', rows);
+      const casa = tidy(m.risultatoCasa);
+      const osp  = tidy(m.risultatoOspite);
+      const hasScore = casa && osp;
+      const sets = parseSets(m.sets);
 
-        btns.forEach((b) => {
-          b.addEventListener('click', () => {
-            btns.forEach(x => x.classList.remove('active'));
-            b.classList.add('active');
-            render(b.dataset.cat, rows);
-          });
-        });
-      }catch(e){
-        console.error('Risultati:', e);
-      }
+      d.innerHTML = `
+        <h4 class="result-day">${tidy(m.giorno) || ''}</h4>
+
+        <div class="logos">
+          <div class="team">
+            <img src="${fixImg(m.squadraCasa_logo)}" alt="">
+          </div>
+
+          <div class="score-block">
+            ${hasScore 
+              ? `<div class="score">${casa} - ${osp}</div>` 
+              : `<div class="score pending">VS</div>`}
+
+            ${sets.length ? `
+              <ul class="result-sets">
+                ${sets.map(s => `<li>${s}</li>`).join('')}
+              </ul>
+            ` : ''}
+          </div>
+
+          <div class="team">
+            <img src="${fixImg(m.squadraOspite_logo)}" alt="">
+          </div>
+        </div>
+
+        <div class="team-names-line">
+          <div class="team-name left">${tidy(m.squadraCasa_nome) || ''}</div>
+          <div class="vs-text">vs</div>
+          <div class="team-name right">${tidy(m.squadraOspite_nome) || ''}</div>
+        </div>
+      `;
+
+      box.appendChild(d);
     }
+  };
+
+  try{
+    const rows = await fetchSheet('Risultati');
+    render('Femminile', rows);
+
+    btns.forEach((b) => {
+      b.addEventListener('click', () => {
+        btns.forEach(x => x.classList.remove('active'));
+        b.classList.add('active');
+        render(b.dataset.cat, rows);
+      });
+    });
+  }catch(e){
+    console.error('Risultati:', e);
+  }
+}
+
 
     function initMenuActive(){
       const links = $$('#navbar a');

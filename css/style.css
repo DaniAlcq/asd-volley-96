@@ -505,10 +505,11 @@ main{
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   height: 340px;
-  color: var(--blue);
+  
 }
+
 
 .result-card .logos{
   display: flex;
@@ -529,7 +530,10 @@ main{
   height: 90px;
   width: auto;
   object-fit: contain;
+  display: block;
+  margin: 0 auto;
 }
+
 
 .result-card .vs{
   font-weight: 700;
@@ -1527,4 +1531,70 @@ main > h1 {
     height: auto;
     object-fit: contain;
   }
+}/* ====== BLOCCO RISULTATO ====== */
+
+.score-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 36px; /* sposta il 3-0 più in basso */
+}
+
+.score {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--pink);
+}
+
+.result-sets {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin-top: 18px; /* set più in basso */
+}
+
+/* ====== NOMI SQUADRE + VS ====== */
+
+.team-names-line {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center; /* CENTRATURA VERTICALE SU VS */
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.team-name {
+  display: flex;
+  align-items: center; /* centratura verticale testo */
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.2;
+  min-height: 2.6em;   /* se uno va su 2 righe, l'altro resta centrato */
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.team-name.left {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.team-name.right {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.vs-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  white-space: nowrap;
+}
+.score.pending {
+  font-size: 2.2rem;
+  opacity: 0.5;
+  font-weight: 600;
 }
