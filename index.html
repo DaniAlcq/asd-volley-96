@@ -443,37 +443,43 @@ const format = (txt) => {
       const hasScore = casa && osp;
       const sets = parseSets(m.sets);
 
-      d.innerHTML = `
-        <h4 class="result-day">${tidy(m.giorno) || ''}</h4>
+     d.innerHTML = `
+  <div class="tv-scoreboard">
 
-        <div class="logos">
-          <div class="team">
-            <img src="${fixImg(m.squadraCasa_logo)}" alt="">
-          </div>
+    <div class="tv-top">
+      <div class="tv-team">
+        <img src="${fixImg(m.squadraCasa_logo)}" alt="">
+      </div>
 
-          <div class="score-block">
-            ${hasScore 
-              ? `<div class="score">${casa} - ${osp}</div>` 
-              : `<div class="score pending">VS</div>`}
+      <div class="tv-center">
+        <div class="tv-date">${tidy(m.giorno) || ''}</div>
+        ${hasScore 
+          ? `<div class="tv-score">${casa} - ${osp}</div>` 
+          : `<div class="tv-score pending">VS</div>`}
+        
+      </div>
 
-            ${sets.length ? `
-              <ul class="result-sets">
-                ${sets.map(s => `<li>${s}</li>`).join('')}
-              </ul>
-            ` : ''}
-          </div>
+      <div class="tv-team">
+        <img src="${fixImg(m.squadraOspite_logo)}" alt="">
+      </div>
+    </div>
 
-          <div class="team">
-            <img src="${fixImg(m.squadraOspite_logo)}" alt="">
-          </div>
-        </div>
+    ${sets.length ? `
+      <div class="tv-sets">
+        ${sets.map(s => `<span class="tv-set">${s}</span>`).join('')}
+      </div>
+    ` : ''}
 
-        <div class="team-names-line">
-          <div class="team-name left">${tidy(m.squadraCasa_nome) || ''}</div>
-          <div class="vs-text">vs</div>
-          <div class="team-name right">${tidy(m.squadraOspite_nome) || ''}</div>
-        </div>
-      `;
+  <div class="tv-names-stack">
+  <div class="tv-team home">${tidy(m.squadraCasa_nome) || ''}</div>
+  <div class="tv-vs">VS</div>
+  <div class="tv-team away">${tidy(m.squadraOspite_nome) || ''}</div>
+</div>
+
+
+  </div>
+`;
+
 
       box.appendChild(d);
     }
