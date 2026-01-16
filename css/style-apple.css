@@ -300,6 +300,7 @@ html {
 #calendar-table td:last-child{
   font-size: 1.2rem;
   letter-spacing: .5px;
+  white-space: nowrap !important;
 }
 
 /* ---- Cards: depth migliore ---- */
@@ -576,4 +577,40 @@ h1, h2, h3,
 
 .news-carousel .slide {
   height: auto;
+}
+
+@media (max-width: 600px) {
+  #calendar-table {
+    table-layout: fixed;
+  }
+
+  #calendar-table th:nth-child(1),
+  #calendar-table td:nth-child(1) { width: 8%; }
+
+  #calendar-table th:nth-child(2),
+  #calendar-table td:nth-child(2) { width: 22%; }
+
+  #calendar-table th:nth-child(3),
+  #calendar-table td:nth-child(3) { width: 36%; }
+
+  #calendar-table th:nth-child(4),
+  #calendar-table td:nth-child(4) { width: 12%; }
+
+  #calendar-table th:nth-child(5),
+  #calendar-table td:nth-child(5) { width: 12%; }
+}
+.score {
+  white-space: nowrap !important; /* 🔥 impedisce l’andata a capo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+@media (max-width: 600px) {
+  .score {
+    font-size: 2.2rem;   /* riduce un po’ il 3-0 */
+  }
+}
+.score-block {
+  min-width: 100px;
 }

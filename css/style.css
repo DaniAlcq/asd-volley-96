@@ -1598,3 +1598,87 @@ main > h1 {
   opacity: 0.5;
   font-weight: 600;
 }
+@media (max-width: 600px) {
+  .table td.team-cell .team-name {
+    font-size: 0.75rem;     /* più piccolo */
+    line-height: 1.1;
+  }
+
+  .table td.team-cell img.logo-squadra {
+    width: 34px;
+    height: 28px;
+  }
+}
+@media (max-width: 600px) {
+  #calendar-table {
+    font-size: 0.75rem;
+  }
+
+  #calendar-table th,
+  #calendar-table td {
+    padding: 6px 4px;
+  }
+
+  /* Data compatta */
+  #calendar-table td.data-cell {
+    font-size: 0.7rem;
+    line-height: 1.1;
+  }
+
+  /* Avversario: logo + nome */
+  #calendar-table td.avversario-cell img {
+    width: 30px;
+    height: 30px;
+  }
+
+  #calendar-table td.avversario-cell span {
+    font-size: 0.7rem;
+    line-height: 1.1;
+  }
+
+  /* Risultato */
+  #calendar-table td:last-child {
+    font-size: 0.9rem;
+  }
+
+  /* Icone casa/trasferta */
+  #calendar-table td.luogo-cell .icon-luogo {
+    width: 18px;
+    height: 18px;
+  }
+}
+@media (max-width: 600px) {
+  #calendar-table {
+    table-layout: fixed;
+  }
+
+  #calendar-table th:nth-child(1),
+  #calendar-table td:nth-child(1) { width: 8%; }
+
+  #calendar-table th:nth-child(2),
+  #calendar-table td:nth-child(2) { width: 22%; }
+
+  #calendar-table th:nth-child(3),
+  #calendar-table td:nth-child(3) { width: 36%; }
+
+  #calendar-table th:nth-child(4),
+  #calendar-table td:nth-child(4) { width: 12%; }
+
+  #calendar-table th:nth-child(5),
+  #calendar-table td:nth-child(5) { width: 12%; }
+}
+.score {
+  white-space: nowrap !important; /* 🔥 impedisce l’andata a capo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+@media (max-width: 600px) {
+  .score {
+    font-size: 2.2rem;   /* riduce un po’ il 3-0 */
+  }
+}
+.score-block {
+  min-width: 100px;
+}
