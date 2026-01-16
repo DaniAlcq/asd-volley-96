@@ -11,6 +11,10 @@
   --soft-shadow: 0 20px 40px rgba(0,0,0,.45);
   --hover-row: rgba(255,255,255,.03);
 }
+html, body {
+  touch-action: manipulation;
+}
+
 
 /* Header: vetro, più premium */
 .header-tot{
