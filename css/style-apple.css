@@ -176,15 +176,11 @@ main {
 .news-carousel {
   border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0,0,0,.5);
+  
+  overflow: hidden;
 }
 
 .slide-right {
-  background: linear-gradient(
-    180deg,
-    rgba(18,18,18,.92),
-    rgba(18,18,18,.75)
-  ) !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
@@ -470,7 +466,7 @@ main > h1::after{
 
 /* ---- Avversario: badge look ---- */
 #calendar-table .avv-wrap img{
-  border-radius: 50%;
+  
   background: rgba(255,255,255,.05);
   padding: 4px;
 }
@@ -682,7 +678,7 @@ h1, h2, h3,
   background: radial-gradient(circle at top, #1a1a1a 0%, #0a0a0a 70%);
   border: 2px solid var(--pink);
   border-radius: 20px;
-  padding: 1.6rem;
+  /*padding: 1.6rem;*/
   box-shadow: 0 10px 30px rgba(0,0,0,.6);
   display: flex;
   flex-direction: column;
@@ -1311,7 +1307,7 @@ main{
   background-color: #fff;
   border: 2px solid var(--pink);
   border-radius: 10px;
-  padding: 1rem;
+  /*padding: 1rem;*/
   text-align: center;
   box-shadow: var(--shadow);
   display: flex;
@@ -1565,7 +1561,7 @@ main{
   width: 100%;
   max-width: 800px;
   margin: 0 auto 40px;
-  border-collapse: collapse;
+ 
   color: var(--blue);
   background: #fff;
   border-radius: 10px;
@@ -1695,7 +1691,7 @@ main{
    FOOTER
 ============================== */
 .site-footer{
-  background: var(--gradient);
+  background:linear-gradient(180deg, transparent 40%, rgba(164, 0, 120, 0.792)) !important;
   color: #fff;
   text-align: center;
   padding: 1.5rem 1rem;
@@ -1860,12 +1856,12 @@ main{
   width: 100%;
   max-width: 1000px;
   margin: 0 auto 40px;
-  border-collapse: separate;
+  border-collapse: collapse;
   border-spacing: 0;
   background: #fff;
   border-radius: 14px;
   overflow: hidden;
-  border: 2px solid var(--pink);
+  border: 1px solid var(--pink);
   table-layout: fixed;
 }
 
@@ -1916,8 +1912,8 @@ main{
 }
 
 #calendar-table td.avversario-cell img.logo-squadra {
-  width: 42px;
-  height: 42px;
+  width: 62px;
+  height: 62px;
   object-fit: contain;
 }
 
@@ -1992,7 +1988,7 @@ main{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 0px;
 }
 
 #calendar-table td.avversario-cell img {
@@ -2064,7 +2060,7 @@ main > h1 {
 #calendar-table td.avversario-cell {
   text-align: center;
   vertical-align: middle;
-  padding: 12px 6px;
+  padding: 3px;
 }
 
 #calendar-table .avv-wrap {
@@ -2193,12 +2189,12 @@ main > h1 {
 ============================== */
 
 .news-wrapper {
-  overflow: visible;
+  
   height: auto;
 }
 
 .news-carousel {
-  overflow: visible;
+
   height: auto;
   align-items: stretch;
 }
@@ -2284,6 +2280,8 @@ main > h1 {
   position: relative;
   width: 100%;
   height: auto;
+  overflow: hidden;
+   background: transparent; /* oppure il tuo gradiente */
   overflow: hidden;
 }
 
@@ -2422,8 +2420,8 @@ main > h1 {
   }
 
   .table td.team-cell img.logo-squadra {
-    width: 34px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
   }
 }
 @media (max-width: 600px) {
@@ -2539,10 +2537,10 @@ main > h1 {
 /* CARD */
 .training-card {
   background: #0f0f0f;
-  border: 2px solid var(--pink);
+  border: 0.2px solid var(--pink);
   border-radius: 16px;
   padding: 1.4rem;
-  box-shadow: 0 6px 18px rgba(0,0,0,.4);
+  box-shadow: 0 6px 18px rgba(87, 0, 62, 0.4);
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -2630,7 +2628,7 @@ main > h1 {
 .tv-scoreboard {
   background: radial-gradient(circle at top, #1a1a1a, #050505 70%);
   border-radius: 22px;
-  padding: 1.5rem;
+  /*padding: 1.5rem;*/
   box-shadow: 0 12px 30px rgba(0,0,0,.6);
   display: flex;
   flex-direction: column;
@@ -2783,5 +2781,153 @@ main > h1 {
 
   .tv-vs {
     font-size: 0.8rem;
+  }
+}
+/* ==============================
+   CAROSELLO — FIX DEFINITIVO STRATI
+============================== */
+
+.news-wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.news-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 22px;              /* UNICO radius */
+  
+}
+
+/* SLIDES */
+.news-carousel .slides {
+  display: flex;
+  width: 100%;
+  height: fit-content !important;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* SLIDE */
+.news-carousel .slide {
+  flex: 0 0 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+/* COLONNE */
+.slide-left {
+  flex: 0 0 60%;
+}
+
+.slide-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* TESTO */
+.slide-right {
+  flex: 0 0 40%;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background:linear-gradient(180deg, transparent 40%, rgba(164, 0, 120, 0.792)) !important;
+}
+
+/* FRECCE */
+.news-carousel .prev,
+.news-carousel .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+.news-carousel .slide {
+  height: auto;
+  align-items: stretch;
+}
+
+  
+  .news-carousel .slides {
+  display: flex;
+  width: 100%;
+  align-items: flex-start !important; /* IMPORTANTISSIMO */
+}
+
+
+  .slide-left,
+  .slide-right {
+    width: 100%;
+ max-height: fit-content;
+    
+  }
+
+ 
+  .slide-left {
+  display: flex !important;
+}
+
+.slide-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+  
+}
+@media (max-width: 900px) {
+  .slide-left img {
+    object-fit: cover;
+  }
+}
+/* =========================
+   FIX DEFINITIVO MOBILE CAROSELLO
+========================= */
+@media (max-width: 900px) {
+
+  .news-wrapper,
+  .news-carousel,
+  .news-carousel .slides,
+  .news-carousel .slide {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: min-content !important;
+    border-radius: 20px;
+
+  }
+
+  .news-carousel .slide {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .slide-left,
+  .slide-right {
+    width: 100%;
+    height: auto !important;
+    flex: none !important;
+  }
+
+  .slide-left img {
+    width: 100%;
+    height: auto !important;
+    object-fit: cover !important;
+    display: block;
+  }
+
+  .news-carousel {
+    overflow: hidden;
+  }
+
+  .news-wrapper {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
   }
 }
