@@ -365,8 +365,8 @@ html {
 /* ---- Carousel: più “app” ---- */
 .news-carousel .prev,
 .news-carousel .next{
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
   border: 1px solid rgba(255,255,255,.1);
   border-radius: 14px;
   box-shadow: 0 10px 30px rgba(0,0,0,.5);
