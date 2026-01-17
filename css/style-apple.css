@@ -1092,6 +1092,7 @@ main{
 .slide-right h3{
   color: var(--pink-strong);
   font-size: 1.6rem;
+  padding: 20px;
 }
 
 .slide-right p{
