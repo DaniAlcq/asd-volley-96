@@ -1092,7 +1092,6 @@ main{
 .slide-right h3{
   color: var(--pink-strong);
   font-size: 1.6rem;
-  padding: 20px;
 }
 
 .slide-right p{
@@ -1952,7 +1951,10 @@ main{
   #calendar-table {
     font-size: 0.8rem;
   }
-
+.slide-right h3{
+  color: var(--pink-strong);
+  font-size: 1.1rem;
+}
   #calendar-table th,
   #calendar-table td {
     padding: 8px 6px;
@@ -2858,7 +2860,13 @@ main > h1 {
   height: auto;
   align-items: stretch;
 }
-
+.news-carousel .prev,
+.news-carousel .next {
+  position: absolute;
+  top: 30%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
   
   .news-carousel .slides {
   display: flex;
