@@ -1449,9 +1449,9 @@ main{
   margin-bottom: 1.5rem;
 }
 
-.teams-grid{
+.teams-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.2rem;
 }
 
@@ -2943,4 +2943,36 @@ main > h1 {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }
+}
+.role-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 5;
+  background: rgba(0,0,0,0.75);
+  color: #ff03bc;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,3,188,.4);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  backdrop-filter: blur(6px);
+}
+.staff-role-label{
+  position:absolute;
+  top: 0px;
+  left:10px;
+  right:10px;
+  background:rgba(0,0,0,0.60);
+  color:#ff03bc;
+  font-weight:700;
+  text-align:center;
+  padding:6px 10px;
+  border-radius:10px;
+  font-size:18px;
+  z-index:3;
+  text-transform:uppercase;
+  letter-spacing:.5px;
 }

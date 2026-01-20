@@ -59,7 +59,7 @@
         transform:scale(.94);transform-origin:center top;
       }
       .player-media{aspect-ratio:3/4;background:#1a1a1a;display:flex;align-items:flex-end;justify-content:center}
-      .player-media img{width:100%;height:100%;object-fit:cover}
+      .player-media img{width:100%;height:90%;object-fit:cover}
 
       .player-overlay{
         position:absolute;left:0;right:0;bottom:0;
@@ -122,6 +122,7 @@
     <div class="filter-buttons">
       <button id="btn-femminile">Serie C Femminile</button>
       <button id="btn-maschile">Serie C Maschile</button>
+      <button id="btn-staff">Dirigenza & Staff</button>
     </div>
 
     <section id="giocatori-list"></section>
@@ -161,53 +162,73 @@
     // Riferimenti DOM
     const btnFemminile = document.getElementById("btn-femminile");
     const btnMaschile  = document.getElementById("btn-maschile");
+    const btnStaff  = document.getElementById("btn-staff");
     const container    = document.getElementById("giocatori-list");
 
     btnFemminile?.addEventListener("click", () => switchCat("femminile"));
     btnMaschile ?.addEventListener("click", () => switchCat("maschile"));
+    btnStaff ?.addEventListener("click", () => switchCat("staff"));
 
     function setActive(cat){
       btnFemminile?.classList.toggle("active", cat === "femminile");
       btnMaschile ?.classList.toggle("active", cat === "maschile");
+      btnStaff ?.classList.toggle("active", cat === "staff");
     }
 
     // ===== RUOLI con genere dinamico =====
-    function normalizeBaseRole(s){
-      if(!nonEmpty(s)) return "allenatore-giocatore";
-      const x = String(s).toLowerCase().trim();
-      if (x.startsWith("centr")) return "centrale";
-      if (x.startsWith("pall")) return "palleggiatore";
-      if (x.startsWith("oppos")) return "opposto";
-      if (x.startsWith("schiac")) return "schiacciatore";
-      if (x.includes("lib"))     return "libero";
-      if (x.includes("ala"))     return "ala";
-      if (x.includes("allen"))   return "allenatore";
-      if (x.includes("dirig"))   return "dirigente";
-      if (x.includes("prepar"))  return "preparatore";
-      
-      return "allenatore-giocatore";
-    }
+function normalizeBaseRole(s){
+  if(!nonEmpty(s)) return "altro";
+  const x = String(s).toLowerCase().trim();
+
+  if (x.includes("centr")) return "centrale";
+  if (x.includes("pall")) return "palleggiatore";
+  if (x.includes("oppos")) return "opposto";
+  if (x.includes("schiac")) return "schiacciatore";
+  if (x.includes("lib")) return "libero";
+  if (x.includes("allenatore - giocatore")) return "allenatore - giocatore";
+  if (x.includes("allen")) return "allenatore";
+  if (x.includes("dirig")) return "dirigente";
+  if (x.includes("mass")) return "massaggiatore";
+  if (x.includes("foto")) return "fotografa";
+  if (x.includes("direttore sportivo")) return "direttore-sportivo";
+  if (x.includes("direttore generale")) return "direttore-generale";
+  if (x.includes("tecnico")) return "tecnico";
+  if (x.includes("responsabile")) return "responsabile";
+  if (x.includes("vicepresidente")) return "vicepresidente";
+  if (x.includes("presidente")) return "presidente";
+
+  return "altro";
+}
+
 
     function inflectRole(baseKey, categoria){
-      const fem = categoria === "femminile";
-      switch(baseKey){
-        case "centrale":      return "Centrali";
-        case "palleggiatore": return fem ? "Palleggiatrici" : "Palleggiatori";
-        case "opposto":       return "Opposti";
-        case "schiacciatore": return fem ? "Schiacciatrici" : "Schiacciatori";
-        case "libero":        return "Liberi";
-        case "ala":           return "Ali";
-        case "allenatore":    return "Allenatore";
-        case "dirigente":     return "Dirigenti";
-        case "preparatore":   return "Preparatore";
-        
-        default:              return "Allenatore - Giocatore";
-      }
-    }
+  const fem = categoria === "femminile";
+  switch(baseKey){
+    case "centrale": return "Centrali";
+    case "palleggiatore": return fem ? "Palleggiatrici" : "Palleggiatori";
+    case "opposto": return "Opposti";
+    case "schiacciatore": return fem ? "Schiacciatrici" : "Schiacciatori";
+    case "libero": return "Liberi";
+    case "allenatore - giocatore": return "Allenatore - Giocatore";
+    case "allenatore": return "Allenatori";
+    case "dirigente": return "Dirigenti";
+    case "massaggiatore": return "Massaggiatori";
+    case "fotografa": return "Fotografi";
+    case "direttore-sportivo": return "Direttore Sportivo";
+    case "direttore-generale": return "Direttore Generale";
+    case "tecnico": return "Tecnici";
+    case "responsabile": return "Responsabili";
+    case "vicepresidente": return "Vicepresidente";
+    case "presidente": return "Presidente";
+
+    default: return "Altro";
+  }
+}
+
 
     const ROLE_ORDER_BASE = [
       "centrale","palleggiatore","opposto","schiacciatore","libero","ala",
-      "allenatore","dirigente","preparatore"
+      "allenatore","dirigente","preparatore","allenatore - giocatore","tecnico","vicepresidente"
     ];
     function byBaseOrder(a,b){
       const ia = ROLE_ORDER_BASE.indexOf(a), ib = ROLE_ORDER_BASE.indexOf(b);
@@ -216,58 +237,59 @@
       if (ib === -1) return -1;
       return ia - ib;
     }
+function playerCard(p, cat){
+  const el = document.createElement("article");
+  el.className = "player-card";
 
-    function playerCard(p){
-      const el = document.createElement("article");
-      el.className = "player-card";
+  if(cat === "staff" && nonEmpty(p.ruolo)){
+    const roleLabel = document.createElement("div");
+    roleLabel.className = "staff-role-label";
+    roleLabel.textContent = p.ruolo;
+    el.appendChild(roleLabel);
+  }
 
-      const media = document.createElement("div");
-      media.className = "player-media";
-      const img = document.createElement("img");
-      img.loading = "lazy"; img.decoding = "async";
-      img.src = tidy(p.immagine) || "";
-      img.alt = p.nome ? `Foto di ${p.nome}` : "Foto giocatore";
-      media.appendChild(img);
-      el.appendChild(media);
+  const media = document.createElement("div");
+  media.className = "player-media";
 
-      const overlay = document.createElement("div");
-      overlay.className = "player-overlay";
+  const img = document.createElement("img");
+  img.loading = "lazy"; 
+  img.decoding = "async";
+  img.src = tidy(p.immagine) || "";
+  img.alt = p.nome ? `Foto di ${p.nome}` : "Foto";
+  media.appendChild(img);
+  el.appendChild(media);
 
-      const num = document.createElement("p");
-      num.className = "player-num";
-      num.textContent = nonEmpty(p.numero) ? String(p.numero).trim() : "";
-      overlay.appendChild(num);
+  const overlay = document.createElement("div");
+  overlay.className = "player-overlay";
 
-      const parts = String(p.nome || "").trim().split(/\s+/);
-      const first = parts[0] || "";
-      const last  = parts.slice(1).join(" ") || first;
+  const num = document.createElement("p");
+  num.className = "player-num";
+  num.textContent = nonEmpty(p.numero) ? String(p.numero).trim() : "";
+  overlay.appendChild(num);
 
-      const nameBlock = document.createElement("div");
-      nameBlock.className = "name-block";
+  const parts = String(p.nome || "").trim().split(/\s+/);
+  const first = parts[0] || "";
+  const last  = parts.slice(1).join(" ") || first;
 
-      const f = document.createElement("p");
-      f.className = "player-first";
-      f.textContent = first;
+  const nameBlock = document.createElement("div");
+  nameBlock.className = "name-block";
 
-      const l = document.createElement("p");
-      l.className = "player-last";
-      l.textContent = last;
+  const f = document.createElement("p");
+  f.className = "player-first";
+  f.textContent = first;
 
-      nameBlock.appendChild(f);
-      nameBlock.appendChild(l);
-      overlay.appendChild(nameBlock);
+  const l = document.createElement("p");
+  l.className = "player-last";
+  l.textContent = last;
 
-      el.appendChild(overlay);
+  nameBlock.appendChild(f);
+  nameBlock.appendChild(l);
+  overlay.appendChild(nameBlock);
 
-      const acts = document.createElement("div");
-      acts.className = "player-actions";
-      if (nonEmpty(p.profilo)){const a=document.createElement("a");a.className="btn";a.href=p.profilo;a.target="_blank";a.rel="noopener";a.textContent="Profilo";acts.appendChild(a);}
-      if (nonEmpty(p.video)){const a=document.createElement("a");a.className="btn";a.href=p.video;a.target="_blank";a.rel="noopener";a.textContent="Guarda su video";acts.appendChild(a);}
-      if (nonEmpty(p.shop)){const a=document.createElement("a");a.className="btn";a.setAttribute("primary","");a.href=p.shop;a.target="_blank";a.rel="noopener";a.textContent="Compra la maglia";acts.appendChild(a);}
-      if (acts.children.length) el.appendChild(acts);
+  el.appendChild(overlay);
+  return el;
+}
 
-      return el;
-    }
 
     function renderRoleSection(displayTitle, list){
       const sec = document.createElement("section");
@@ -311,38 +333,77 @@
       DATA = { femminile:fem, maschile:mas, staff:stf };
 
       const qs = new URLSearchParams(location.search);
-      const cat = (qs.get("cat")||"femminile").toLowerCase()==="maschile"?"maschile":"femminile";
+      const raw = (qs.get("cat") || "femminile").toLowerCase();
+const allowed = ["femminile", "maschile", "staff"];
+const cat = allowed.includes(raw) ? raw : "femminile";
+
       setActive(cat);
       render(cat);
     }
 
-    function render(cat){
-      const list = [...DATA[cat], ...DATA.staff];
-      if(!list.length){ container.innerHTML = `<p style="text-align:center;color:#bdbdbd">Nessun dato.</p>`; return; }
+  function render(cat){
+  const list = DATA[cat];
 
-      const map = new Map();
-      list.forEach(p=>{
-        const key = normalizeBaseRole(p.ruolo);
-        if(!map.has(key)) map.set(key, []);
-        map.get(key).push(p);
-      });
+  if(!list.length){ 
+    container.innerHTML = `<p style="text-align:center;color:#bdbdbd">Nessun dato.</p>`; 
+    return; 
+  }
 
-      for(const [k,arr] of map){
-        arr.sort((a,b)=>{
-          const na=parseInt(a.numero,10), nb=parseInt(b.numero,10);
-          if(!isNaN(na)&&!isNaN(nb)&&na!==nb) return na-nb;
-          return String(a.nome||"").localeCompare(String(b.nome||""));
-        });
-      }
+  container.innerHTML = "";
 
-      const orderedKeys = Array.from(map.keys()).sort(byBaseOrder);
+  // ===== STAFF: niente macro-sezioni =====
+  if(cat === "staff"){
+    const grid = document.createElement("div");
+    grid.className = "juve-grid";
 
-      container.innerHTML = "";
-      orderedKeys.forEach(baseKey=>{
-        const title = inflectRole(baseKey, cat);
-        container.appendChild(renderRoleSection(title, map.get(baseKey)));
-      });
-    }
+    list.forEach(p => {
+      grid.appendChild(playerCard(p, "staff"));
+    });
+
+    container.appendChild(grid);
+    return;
+  }
+
+  // ===== FEMMINILE / MASCHILE: con macro-sezioni =====
+  const map = new Map();
+  list.forEach(p=>{
+    const key = normalizeBaseRole(p.ruolo);
+    if(!map.has(key)) map.set(key, []);
+    map.get(key).push(p);
+  });
+
+  for(const [k,arr] of map){
+    arr.sort((a,b)=>{
+      const na=parseInt(a.numero,10), nb=parseInt(b.numero,10);
+      if(!isNaN(na)&&!isNaN(nb)&&na!==nb) return na-nb;
+      return String(a.nome||"").localeCompare(String(b.nome||""));
+    });
+  }
+
+  const orderedKeys = Array.from(map.keys()).sort(byBaseOrder);
+
+  orderedKeys.forEach(baseKey=>{
+    const title = inflectRole(baseKey, cat);
+    const sec = document.createElement("section");
+    sec.className = "role-section";
+
+    const h2 = document.createElement("h2");
+    h2.className = "role-title";
+    h2.textContent = title;
+    sec.appendChild(h2);
+
+    const grid = document.createElement("div");
+    grid.className = "juve-grid";
+
+    map.get(baseKey).forEach(p => {
+      grid.appendChild(playerCard(p, cat));
+    });
+
+    sec.appendChild(grid);
+    container.appendChild(sec);
+  });
+}
+
 
     function switchCat(cat){
       setActive(cat);
