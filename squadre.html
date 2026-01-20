@@ -237,6 +237,8 @@ function normalizeBaseRole(s){
       if (ib === -1) return -1;
       return ia - ib;
     }
+    let imagePriorityCounter = 0;
+
 function playerCard(p, cat){
   const el = document.createElement("article");
   el.className = "player-card";
@@ -252,10 +254,21 @@ function playerCard(p, cat){
   media.className = "player-media";
 
   const img = document.createElement("img");
-  img.loading = "lazy"; 
   img.decoding = "async";
+
+  // 🔥 PRIORITÀ INTELLIGENTE
+  if (imagePriorityCounter < 4) {
+    img.fetchPriority = "high";
+    img.loading = "eager";
+  } else {
+    img.loading = "lazy";
+  }
+
+  imagePriorityCounter++;
+
   img.src = tidy(p.immagine) || "";
   img.alt = p.nome ? `Foto di ${p.nome}` : "Foto";
+
   media.appendChild(img);
   el.appendChild(media);
 
@@ -289,6 +302,7 @@ function playerCard(p, cat){
   el.appendChild(overlay);
   return el;
 }
+
 
 
     function renderRoleSection(displayTitle, list){
@@ -342,6 +356,8 @@ const cat = allowed.includes(raw) ? raw : "femminile";
     }
 
   function render(cat){
+    imagePriorityCounter = 0;
+
   const list = DATA[cat];
 
   if(!list.length){ 
