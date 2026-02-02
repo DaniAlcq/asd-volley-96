@@ -8,16 +8,15 @@
   src: url('../fonts/SS-Nickson-One.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 @font-face {
   font-family: 'Faculty';
   src: url('../fonts/FacultyGlyphic-Regular.ttf') format('opentype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700;800&display=swap');
 
 :root {
   --blue:#121212;
@@ -36,6 +35,9 @@
   );
   --gradientCarosell: linear-gradient(-135deg, #ff03bc 0%,#1a1a1a 19%, #1a1a1a 80%, #ff03bc 100%);
 }
+html {
+  scrollbar-gutter: stable;
+}
 
 /* Reset */
 *,
@@ -51,12 +53,14 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Faculty', 'Oswald', system-ui, sans-serif;
+  font-family: 'Faculty';
   line-height: 1.5;
   background-color: var(--bg);
   color: var(--text);
   overflow-x: hidden;
+  overflow-y: scroll;
 }
+
 
 img {
   max-width: 100%;
@@ -93,7 +97,7 @@ h1, h2, h3, h4 {
 }
 
 .brand-logo{
-  height: 60px;
+  height: 50px;
   width: auto;
 }
 
@@ -120,7 +124,15 @@ h1, h2, h3, h4 {
   padding: 8px 12px;
   font-family: 'Faculty';
   transition: color .3s ease;
+  border-bottom: 2px solid transparent; /* 🔥 spazio sempre riservato */
 }
+
+#navbar a.active{
+  color: var(--pink);
+  border-bottom-color: var(--pink);
+  pointer-events: none;
+}
+
 
 #navbar a::after{
   content: "";
@@ -137,11 +149,7 @@ h1, h2, h3, h4 {
 #navbar a:hover{ color: #fff; }
 #navbar a:hover::after{ width: 100%; }
 
-#navbar a.active{
-  color: var(--pink);
-  border-bottom: 2px solid var(--pink);
-  pointer-events: none;
-}
+
 
 /* ==============================
    HAMBURGER
@@ -673,7 +681,6 @@ main{
 ============================== */
 .table-wrapper,
 .calendar-wrapper{
-  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   width: 100%;
   margin: 2rem 0;
@@ -1691,7 +1698,6 @@ main > h1 {
   margin: 3rem auto;
   padding: 0 1rem;
   text-align: center;
-  overflow-x: hidden;
 }
 
 

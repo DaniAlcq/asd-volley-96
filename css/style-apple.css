@@ -3,6 +3,7 @@
    Overlay estetico (non rompe layout)
 ========================================= */
 
+
 /* ---------- Superfici & glass ---------- */
 :root{
   --glass-bg: rgba(18,18,18,.55);
@@ -561,7 +562,7 @@ h1, h2, h3,
 #navbar a,
 .filter-btn,
 .filter-buttons button {
-  font-family: 'Faculty', system-ui, sans-serif !important;
+  font-family: 'Faculty' !important;
   letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
 }
@@ -819,16 +820,16 @@ h1, h2, h3,
   src: url('../fonts/SS-Nickson-One.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 @font-face {
   font-family: 'Faculty';
   src: url('../fonts/FacultyGlyphic-Regular.ttf') format('opentype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700;800&display=swap');
+
 
 :root {
   --blue:#121212;
@@ -857,16 +858,20 @@ h1, h2, h3,
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+
 }
+
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Faculty', 'Oswald', system-ui, sans-serif;
+  font-family: 'Faculty';
   line-height: 1.5;
   background-color: var(--bg);
   color: var(--text);
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 img {
@@ -904,7 +909,7 @@ h1, h2, h3, h4 {
 }
 
 .brand-logo{
-  height: 60px;
+  height: 50px;
   width: auto;
 }
 
@@ -1491,7 +1496,6 @@ main{
 ============================== */
 .table-wrapper,
 .calendar-wrapper{
-  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   width: 100%;
   margin: 2rem 0;
@@ -2979,4 +2983,32 @@ main > h1 {
   z-index:3;
   text-transform:uppercase;
   letter-spacing:.5px;
+}
+main {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+html.ready main {
+  opacity: 1;
+}
+#navbar a{
+  position: relative;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 8px 12px;
+  font-family: 'Faculty';
+  transition: color .3s ease;
+  border-bottom: 2px solid transparent; /* 🔥 spazio sempre riservato */
+}
+
+#navbar a.active{
+  color: var(--pink);
+  border-bottom-color: var(--pink);
+  pointer-events: none;
+}
+.sponsor-title{
+color: #ff03bc;
 }

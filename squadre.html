@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="it">
   <head>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-35L1FT2V6S"></script>
 <script>
@@ -94,7 +96,7 @@
 <body>
   <!-- HEADER INVARIATO -->
   <header class="header-tot">
-    <img class="brand-logo" src="img/bianco.png" alt="Logo">
+    <img class="brand-logo" src="img/log.png" alt="Logo">
     <button class="hamburger" id="hamburger" aria-label="Apri menu">&#9776;</button>
     <nav id="navbar">
       <a href="index.html" data-url="index.html">Home</a>
@@ -451,6 +453,9 @@ document.addEventListener('touchend', function (event) {
   }
   lastTouchEnd = now;
 }, { passive: false });
+</script>
+<script>
+  document.documentElement.classList.add('ready');
 </script>
 
 </body>
