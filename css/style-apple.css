@@ -3012,3 +3012,20 @@ html.ready main {
 .sponsor-title{
 color: #ff03bc;
 }
+/* 🔥 FIX iOS tap: niente stato persistente */
+.filter-buttons button:active {
+  background: var(--pink);
+  color: #fff;
+}
+
+.filter-buttons button {
+  -webkit-tap-highlight-color: transparent;
+}
+.filter-buttons button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.filter-buttons button:active {
+  background: var(--pink);
+  color: #fff;
+}

@@ -163,31 +163,44 @@
         if (!tbody) return;
         tbody.innerHTML = rows.map(rowHTML).join("");
       }
+let loadingCalendar = false;
 
-      async function loadCalendar(tabName, activeBtn) {
-        try {
-          const rowsRaw = await fetchSheet(tabName);
-          const rows = rowsRaw
-            .filter(r => r && (r.giornata || r.data || r.avversario || r.logo || r.luogo || r.risultato))
-            .sort((a, b) => {
-              const ga = num(a.giornata);
-              const gb = num(b.giornata);
-              if (ga === null && gb === null) return 0;
-              if (ga === null) return 1;
-              if (gb === null) return -1;
-              return ga - gb;
-            });
+async function loadCalendar(tabName, activeBtn) {
+  if (loadingCalendar) return;
+  loadingCalendar = true;
 
-          render(rows);
+  try {
+    const rowsRaw = await fetchSheet(tabName);
+    const rows = rowsRaw
+      .filter(r => r && (r.giornata || r.data || r.avversario || r.logo || r.luogo || r.risultato))
+      .sort((a, b) => {
+        const ga = num(a.giornata);
+        const gb = num(b.giornata);
+        if (ga === null && gb === null) return 0;
+        if (ga === null) return 1;
+        if (gb === null) return -1;
+        return ga - gb;
+      });
 
-          // stato attivo pulsanti
-          [btnFem, btnMas].filter(Boolean).forEach(b => b.classList.remove("active"));
-          if (activeBtn) activeBtn.classList.add("active");
-        } catch (e) {
-          console.error("Errore calendario:", e);
-          if (tbody) tbody.innerHTML = `<tr><td colspan="5">Impossibile caricare il calendario.</td></tr>`;
-        }
-      }
+    render(rows);
+
+    // stato attivo
+    [btnFem, btnMas].forEach(b => b && b.classList.remove("active"));
+    if (activeBtn) activeBtn.classList.add("active");
+
+  } catch (e) {
+    console.error("Errore calendario:", e);
+    if (tbody) tbody.innerHTML = `<tr><td colspan="5">Impossibile caricare il calendario.</td></tr>`;
+  } finally {
+    // 🔥 FIX iOS: rilascia stato :active
+    if (activeBtn) activeBtn.blur();
+
+    setTimeout(() => {
+      loadingCalendar = false;
+    }, 150);
+  }
+}
+
 
       // Click handler
       if (btnFem) btnFem.addEventListener("click", () => loadCalendar(TABS.femminile, btnFem));

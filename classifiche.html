@@ -132,8 +132,12 @@
       const tbody     = $("#tabella-classifica");
       const btnFem    = $("#btn-femminile");
       const btnMas    = $("#btn-maschile");
-    
+
+    let loadingClassifica = false;
+
      async function caricaClassifica(tabName, bottoneAttivo) {
+        if (loadingClassifica) return;   // 🔥 blocca click rapidi
+  loadingClassifica = true;
   try {
     if (!tbody) return;
 
@@ -177,9 +181,17 @@
   } catch (err) {
     console.error("Errore nel caricamento della classifica:", err);
     if (tbody) tbody.innerHTML = `<tr><td colspan="6">Impossibile caricare la classifica.</td></tr>`;
-  } finally {
+    } finally {
     tbody.classList.remove("table-loading");
+
+    // 🔥 rilascia stato iOS
+    if (bottoneAttivo) bottoneAttivo.blur();
+
+    setTimeout(() => {
+      loadingClassifica = false;
+    }, 150);
   }
+
 }
 
     

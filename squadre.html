@@ -171,11 +171,30 @@
     btnMaschile ?.addEventListener("click", () => switchCat("maschile"));
     btnStaff ?.addEventListener("click", () => switchCat("staff"));
 
-    function setActive(cat){
-      btnFemminile?.classList.toggle("active", cat === "femminile");
-      btnMaschile ?.classList.toggle("active", cat === "maschile");
-      btnStaff ?.classList.toggle("active", cat === "staff");
-    }
+   function setActive(cat){
+  [btnFemminile, btnMaschile, btnStaff].forEach(btn => {
+    if (!btn) return;
+    btn.classList.remove("active");
+    btn.blur(); // 🔥 rimuove stato iOS :active
+  });
+
+  if (cat === "femminile") btnFemminile.classList.add("active");
+  if (cat === "maschile") btnMaschile.classList.add("active");
+  if (cat === "staff") btnStaff.classList.add("active");
+}
+let switching = false;
+
+function switchCat(cat){
+  if (switching) return;
+  switching = true;
+
+  setActive(cat);
+  render(cat);
+  history.replaceState(null, "", `?cat=${cat}`);
+
+  setTimeout(() => switching = false, 150);
+}
+
 
     // ===== RUOLI con genere dinamico =====
 function normalizeBaseRole(s){
