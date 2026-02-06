@@ -157,7 +157,7 @@ h1, h2, h3, h4 {
 .hamburger{
   display: none;
   position: absolute;
-  right: 90px;
+  right: 20px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
