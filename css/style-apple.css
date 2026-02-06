@@ -966,7 +966,7 @@ h1, h2, h3, h4 {
   display: none;
   position: absolute;
     right: 20px;          /* 🔥 bordo reale */
-  top: 50%;
+  top: 48%;
   transform: translateY(-50%);
   background: none;
   color: var(--pink-strong);
