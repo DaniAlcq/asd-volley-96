@@ -965,7 +965,7 @@ h1, h2, h3, h4 {
 .hamburger{
   display: none;
   position: absolute;
-  right: 90px;
+    right: 20px;          /* 🔥 bordo reale */
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -1005,9 +1005,27 @@ main{
 /* ==============================
    MENU MOBILE
 ============================== */
-@media (max-width: 768px){
+@media (max-width: 1068px){
   .hamburger{ display: block; }
+.social-icons {
+    position: absolute;
+    right: 70px;            /* ← spazio prima dell’hamburger */
+    top: 50%;
+    transform: translateY(-50%);
+    gap: 10px;
+  }
 
+  .social-icons img {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* YouTube leggermente più grande se vuoi */
+  .social-icons .social-logo-youtube {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+  }
   #navbar{
     display: none;
     flex-direction: column;
@@ -1832,7 +1850,7 @@ main{
   align-items: center;
   gap: 14px;
   position: absolute;
-  right: 20px;
+  right: 70px;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -1851,7 +1869,7 @@ main{
 }
 
 /* Facebook un filo più piccolo */
-.social-icons .social-logo-facebook {
+.social-icons .social-logo-facebook .social-logo-youtube {
   width: 24px;
   height: 24px;
 }
@@ -3028,4 +3046,34 @@ color: #ff03bc;
 .filter-buttons button:active {
   background: var(--pink);
   color: #fff;
+}
+.social-icons .social-logo-youtube {
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+}
+/* ==============================
+   SOCIAL ICONS — MOBILE A SINISTRA HAMBURGER
+============================== */
+@media (max-width: 768px) {
+  .social-icons {
+    position: absolute;
+    right: 70px;            /* ← spazio prima dell’hamburger */
+    top: 50%;
+    transform: translateY(-50%);
+    gap: 10px;
+  }
+
+  .social-icons img {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* YouTube leggermente più grande se vuoi */
+  .social-icons .social-logo-youtube {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+  }
+
 }
