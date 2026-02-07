@@ -920,7 +920,7 @@ h1, h2, h3, h4 {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.2rem;
   margin: 0 auto;
   padding: 0;
   width: fit-content;
@@ -1845,15 +1845,7 @@ main{
   }
 }
 /* === SOCIAL ICONS HEADER FIX === */
-.social-icons {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  position: absolute;
-  right: 70px;
-  top: 50%;
-  transform: translateY(-50%);
-}
+
 
 .social-icons img {
   width: 26px;
@@ -3077,3 +3069,4 @@ color: #ff03bc;
   }
 
 }
+

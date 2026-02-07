@@ -1015,7 +1015,7 @@ main{
 .social-icons {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   position: absolute;
   right: 20px;
   top: 50%;
