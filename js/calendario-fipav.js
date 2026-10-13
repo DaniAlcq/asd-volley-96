@@ -93,11 +93,22 @@
       tr.appendChild(opp);
       const place = document.createElement('td');
       place.className = 'luogo-cell';
-      const badge = document.createElement('span');
-      badge.className = 'location-badge';
-      badge.textContent = r.luogo === 'C' ? 'C' : r.luogo === 'T' ? 'T' : '-';
-      badge.title = r.luogo === 'C' ? 'Casa' : 'Trasferta';
-      place.appendChild(badge);
+      const iconeLuogo = {
+  C: 'img/casa.png',
+  T: 'img/bus.png'
+};
+
+const percorso = iconeLuogo[r.luogo];
+
+if (percorso) {
+  const img = document.createElement('img');
+  img.src = percorso;
+  img.alt = r.luogo === 'C' ? 'Casa' : 'Trasferta';
+  img.className = 'icon-luogo';
+  place.appendChild(img);
+} else {
+  place.textContent = '-';
+}
       tr.appendChild(place);
       td(tr, r.risultato || '-');
       fragment.appendChild(tr);
