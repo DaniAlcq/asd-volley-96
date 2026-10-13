@@ -4,7 +4,7 @@
     {
       "id": "2026-27",
       "etichetta": "2026/27",
-      "stato": "in_attesa",
+      "stato": "attiva",
       "campionati": {
         "femminile": { "cid": 93277, "girone": "B" },
         "maschile": { "cid": 93417, "girone": "A" }
