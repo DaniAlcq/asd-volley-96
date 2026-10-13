@@ -1,245 +1,75 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-35L1FT2V6S"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-35L1FT2V6S');
-</script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#121212">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Calendario ASD Volley 96</title>
- <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/style-apple.css">
+  <title>Calendario e risultati — ASD Volley '96</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style-apple.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-35L1FT2V6S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-35L1FT2V6S');
+  </script>
 </head>
 <body>
   <header class="header-tot">
-    <img class="brand-logo" src="img/newvolleylogo.png" alt="Logo">
-    <button class="hamburger" id="hamburger" aria-label="Apri menu">&#9776;</button>
+    <img class="brand-logo" src="img/newvolleylogo.png" alt="Logo ASD Volley '96">
+    <button class="hamburger" id="hamburger" aria-label="Apri menu" type="button">&#9776;</button>
     <nav id="navbar">
       <a href="index.html" data-url="index.html">Home</a>
       <a href="squadre.html" data-url="squadre.html">Squadre e Società</a>
       <a href="calendario.html" data-url="calendario.html">Calendario e Risultati</a>
       <a href="classifiche.html" data-url="classifiche.html">Classifiche</a>
       <a href="contatti.html" data-url="contatti.html">Contatti</a>
-      
-      
-      
-      
     </nav>
     <div class="social-icons">
-      <a href="https://www.instagram.com/a.s.d.volley96/" target="_blank" rel="noopener noreferrer">
-        <img class="social-logo-insta" src="img/instagram.png" alt="Instagram">
-      </a>
-    
-      <a href="https://www.facebook.com/asdvolley96" target="_blank" rel="noopener noreferrer">
-        <img class="social-logo-facebook" src="img/facebook.png" alt="Facebook">
-      </a>
-        <a href="https://www.youtube.com/@ASD_VOLLEY96" target="_blank" rel="noopener noreferrer">
-        <img class="social-logo-youtube" src="img/youtube.png" alt="Youtube">
-      </a>
+      <a href="https://www.instagram.com/a.s.d.volley96/" target="_blank" rel="noopener noreferrer"><img class="social-logo-insta" src="img/instagram.png" alt="Instagram"></a>
+      <a href="https://www.facebook.com/asdvolley96" target="_blank" rel="noopener noreferrer"><img class="social-logo-facebook" src="img/facebook.png" alt="Facebook"></a>
+      <a href="https://www.youtube.com/@ASD_VOLLEY96" target="_blank" rel="noopener noreferrer"><img class="social-logo-youtube" src="img/youtube.png" alt="Youtube"></a>
     </div>
   </header>
-
   <main>
     <h1>Calendario Partite</h1>
-
     <div class="filter-buttons">
-      <button id="btn-femminile" class="filter-btn">Serie C Femminile</button>
-      <button id="btn-maschile"  class="filter-btn">Serie C Maschile</button>
+      <button id="btn-femminile" class="filter-btn" type="button">Serie C Femminile</button>
+      <button id="btn-maschile" class="filter-btn" type="button">Serie C Maschile</button>
     </div>
-
     <div class="calendar-wrapper">
       <table id="calendar-table" class="table rounded">
-        <thead>
-          <tr>
-            <th>G</th>
-            <th>Data</th>
-            <th>Avversario</th>
-            <th>C/T</th>
-            <th>Ris.</th>
-          </tr>
-        </thead>
+        <thead><tr><th>G</th><th>Data</th><th>Avversario</th><th>C/T</th><th>Ris.</th></tr></thead>
         <tbody id="calendar-body"></tbody>
       </table>
-      
     </div>
-
-    <script src="js/fade.js"></script>
-    <a id="live-button" class="live-fab live-hidden" href="#" target="_blank" rel="noopener">
-      <span class="dot"></span> Guarda la diretta
-    </a>
-    
+    <a id="live-button" class="live-fab live-hidden" href="#" target="_blank" rel="noopener"><span class="dot"></span> Guarda la diretta</a>
   </main>
-
   <footer class="site-footer">
     <p>© <span id="year"></span> ASD VOLLEY 96 — Tutti i diritti riservati</p>
-    <p>
-      Web design & sviluppo © 2025 
-      <a href="mailto:danilo.lcq@gmail.com">Danilo Alacqua</a>
-
-    </p>
+    <p>Web design &amp; sviluppo © 2025 <a href="mailto:danilo.lcq@gmail.com">Danilo Alacqua</a></p>
   </footer>
+  <script src="js/fade.js" defer></script>
+  <script src="js/menu.js" defer></script>
+  <script src="js/live.js" defer></script>
+  <script src="js/calendario-fipav.js?v=1" defer></script>
   <script>
-    // anno footer
     document.addEventListener('DOMContentLoaded', () => {
       const y = document.getElementById('year');
       if (y) y.textContent = new Date().getFullYear();
     });
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', (event) => {
+      const now = Date.now();
+      if (now - lastTouchEnd <= 300) event.preventDefault();
+      lastTouchEnd = now;
+    }, {passive: false});
+    document.documentElement.classList.add('ready');
   </script>
-
-  <script src="js/menu.js" defer></script>
-  <script src="js/live.js" defer></script>
-
-
-  <script>
-    // ======= Google Sheets via Opensheet =======
-    const SHEET_ID = "1ucM1JY5MXHF7-9mpjp2mfB41TvoA1ziMUGGz86woQXA"; // <-- sostituisci con l'ID del tuo foglio
-    const GS = (tab) => `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(tab)}`;
-
-    async function fetchSheet(tab) {
-      const res = await fetch(GS(tab), { cache: "no-store" });
-      if (!res.ok) throw new Error(`Fetch fallito: ${tab} (${res.status})`);
-      return res.json();
-    }
-
-    // Utils
-    const tidy = (s) => (typeof s === "string" ? s.trim() : s);
-    const num = (s) => {
-      const n = parseInt(String(s || "").replace(/\D/g, ""), 10);
-      return Number.isFinite(n) ? n : null;
-    };
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const btnFem = document.getElementById("btn-femminile");
-      const btnMas = document.getElementById("btn-maschile");
-      const tbody  = document.getElementById("calendar-body");
-
-      // Nomi dei fogli (tab) su Google Sheets
-      const TABS = {
-        femminile: "Calendario_Femminile",
-        maschile:  "Calendario_Maschile",
-      };
-
-      function rowHTML(r) {
-  const giornata   = tidy(r.giornata) ?? "-";
-  const data       = tidy(r.data) ?? "-";
-  const orario     = tidy(r.orario) ?? "";   // <-- colonna aggiuntiva nello sheet
-  const avversario = tidy(r.avversario) ?? "";
-  const logo       = tidy(r.logo) || "";
-  const luogo      = tidy(r.luogo) || "";
-  const risultato  = tidy(r.risultato) ?? "-";
-
-  return `
-    <tr>
-      <td>${giornata}</td>
-      <td class="data-cell">${data}${orario ? "\nore " + orario : ""}</td>
-      <td class="avversario-cell">
-  <div class="avv-wrap">
-    ${logo ? `<img src="${logo}" alt="${avversario}" class="logo-squadra">` : ""}
-    <span>${avversario}</span>
-  </div>
-</td>
-
-      <td class="luogo-cell">
-        ${luogo ? `<img src="${luogo}" alt="C/T" class="icon-luogo" />` : ""}
-      </td>
-      <td>${risultato}</td>
-    </tr>
-  `;
-}
-
-
-
-      function render(rows) {
-        if (!tbody) return;
-        tbody.innerHTML = rows.map(rowHTML).join("");
-      }
-let loadingCalendar = false;
-
-async function loadCalendar(tabName, activeBtn) {
-  if (loadingCalendar) return;
-  loadingCalendar = true;
-
-  try {
-    const rowsRaw = await fetchSheet(tabName);
-    const rows = rowsRaw
-      .filter(r => r && (r.giornata || r.data || r.avversario || r.logo || r.luogo || r.risultato))
-      .sort((a, b) => {
-        const ga = num(a.giornata);
-        const gb = num(b.giornata);
-        if (ga === null && gb === null) return 0;
-        if (ga === null) return 1;
-        if (gb === null) return -1;
-        return ga - gb;
-      });
-
-    render(rows);
-
-    // stato attivo
-    [btnFem, btnMas].forEach(b => b && b.classList.remove("active"));
-    if (activeBtn) activeBtn.classList.add("active");
-
-  } catch (e) {
-    console.error("Errore calendario:", e);
-    if (tbody) tbody.innerHTML = `<tr><td colspan="5">Impossibile caricare il calendario.</td></tr>`;
-  } finally {
-    // 🔥 FIX iOS: rilascia stato :active
-    if (activeBtn) activeBtn.blur();
-
-    setTimeout(() => {
-      loadingCalendar = false;
-    }, 150);
-  }
-}
-
-
-      // Click handler
-      if (btnFem) btnFem.addEventListener("click", () => loadCalendar(TABS.femminile, btnFem));
-      if (btnMas) btnMas.addEventListener("click", () => loadCalendar(TABS.maschile,  btnMas));
-
-      // Iniziale (supporta ?cat=Femminile|Maschile)
-      (function init() {
-        const params = new URLSearchParams(location.search);
-        const cat = (params.get("cat") || "Femminile").toLowerCase();
-        if (cat === "maschile" && btnMas) {
-          loadCalendar(TABS.maschile, btnMas);
-        } else if (btnFem) {
-          loadCalendar(TABS.femminile, btnFem);
-        }
-      })();
-
-      // Evidenzia link di menu attivo
-      const current = location.pathname.split('/').pop() || 'index.html';
-      document.querySelectorAll('nav a').forEach(a => {
-        a.classList.toggle('active', a.getAttribute('href') === current);
-      });
-    });
-  </script>
-  <script>
-let lastTouchEnd = 0;
-document.addEventListener('touchend', function (event) {
-  const now = Date.now();
-  if (now - lastTouchEnd <= 300) {
-    event.preventDefault();
-  }
-  lastTouchEnd = now;
-}, { passive: false });
-</script>
-<script>
-  document.documentElement.classList.add('ready');
-</script>
-
 </body>
 </html>

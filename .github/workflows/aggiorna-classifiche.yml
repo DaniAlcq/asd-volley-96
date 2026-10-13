@@ -43,11 +43,17 @@ jobs:
         continue-on-error: true
         run: python scripts/aggiorna_classifiche.py
 
+      - name: Aggiorna calendari e risultati FIPAV
+        id: calendari
+        continue-on-error: true
+        run: python scripts/aggiorna_calendari.py
+
       - name: Salva archivio e loghi nel repository
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           if [ -d data/classifiche ]; then git add data/classifiche/; fi
+          if [ -d data/calendari ]; then git add data/calendari/; fi
           if [ -d img/loghi-fipav ]; then git add img/loghi-fipav/; fi
           if ! git diff --cached --quiet; then
             git commit -m 'Archivia classifiche FIPAV e loghi'
@@ -83,4 +89,10 @@ jobs:
         if: steps.recupero.outcome == 'failure'
         run: |
           echo 'Il sito è stato pubblicato con i JSON archiviati, ma uno o più aggiornamenti FIPAV non sono riusciti.'
+          exit 1
+
+      - name: Segnala eventuali errori calendario FIPAV
+        if: steps.calendari.outcome == 'failure'
+        run: |
+          echo 'Le classifiche e il sito sono stati pubblicati, ma il recupero dei calendari non è riuscito. Controllare il log del passo Aggiorna calendari.'
           exit 1

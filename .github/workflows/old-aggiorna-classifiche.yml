@@ -1,0 +1,86 @@
+name: Aggiorna classifiche FIPAV e pubblica il sito
+
+on:
+  workflow_dispatch:
+  # Ogni 3 ore circa; GitHub può posticipare l'avvio programmato.
+  schedule:
+    - cron: '37 */3 * * *'
+  # Pubblica il sito anche quando lo modifichi manualmente su GitHub.
+  push:
+    branches: [main, master]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Scarica il repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Configura Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Installa le librerie
+        run: python -m pip install -r scripts/requirements.txt
+
+      - name: Archivia stagioni e aggiorna quella attiva
+        id: recupero
+        continue-on-error: true
+        run: python scripts/aggiorna_classifiche.py
+
+      - name: Salva archivio e loghi nel repository
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if [ -d data/classifiche ]; then git add data/classifiche/; fi
+          if [ -d img/loghi-fipav ]; then git add img/loghi-fipav/; fi
+          if ! git diff --cached --quiet; then
+            git commit -m 'Archivia classifiche FIPAV e loghi'
+            git push
+          fi
+
+      - name: Prepara la versione pubblica
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='_site/' \
+            --exclude='scripts/' \
+            --exclude='*.php' \
+            --exclude='*.zip' \
+            --exclude='README.md' \
+            ./ _site/
+
+      - name: Configura GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Carica il sito
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site/
+
+      - name: Pubblica GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Segnala eventuali errori FIPAV
+        if: steps.recupero.outcome == 'failure'
+        run: |
+          echo 'Il sito è stato pubblicato con i JSON archiviati, ma uno o più aggiornamenti FIPAV non sono riusciti.'
+          exit 1
