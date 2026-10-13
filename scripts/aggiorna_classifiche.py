@@ -179,7 +179,7 @@ def update(category: str, cid: int, session: requests.Session) -> None:
         "dati": ranking,
         "verificataIl": int(time.time()),
         "fonte": url,
-        "stagione": "2025/26",  # Cambia anche questo quando aggiorni i CId.
+        "stagione": "2026/27",  # Cambia anche questo quando aggiorni i CId.
         "girone": "B" if category == "femminile" else "A",
     }
     OUTPUT.mkdir(parents=True, exist_ok=True)
