@@ -3179,3 +3179,86 @@ color: #ff03bc;
   .news-carousel .prev { left: 6px !important; }
   .news-carousel .next { right: 6px !important; }
 }
+
+/* =============================================================
+   CLASSIFICHE FIPAV — LAYOUT SMARTPHONE
+   Agisce solo sulla tabella che contiene #tabella-classifica.
+   Nessuna modifica richiesta a HTML, JS o ad altre tabelle.
+   ============================================================= */
+@media screen and (max-width: 600px) {
+
+  .table-wrapper:has(#tabella-classifica) {
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 18px auto !important;
+    padding: 0 8px !important;
+    overflow-x: hidden !important;
+  }
+
+  .table-wrapper:has(#tabella-classifica) > table.table {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 auto !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+  }
+
+  .table-wrapper:has(#tabella-classifica) .table th,
+  .table-wrapper:has(#tabella-classifica) .table td {
+    box-sizing: border-box;
+    padding: 7px 2px !important;
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    text-align: center;
+    vertical-align: middle;
+    white-space: normal !important;
+  }
+
+  /* 7 + 49 + 10 + 12 + 11 + 11 = 100% */
+  .table-wrapper:has(#tabella-classifica) .table :is(th, td):nth-child(1) { width: 7% !important; }
+  .table-wrapper:has(#tabella-classifica) .table :is(th, td):nth-child(2) { width: 49% !important; }
+  .table-wrapper:has(#tabella-classifica) .table :is(th, td):nth-child(3) { width: 10% !important; }
+  .table-wrapper:has(#tabella-classifica) .table :is(th, td):nth-child(4) { width: 12% !important; }
+  .table-wrapper:has(#tabella-classifica) .table :is(th, td):nth-child(5) { width: 11% !important; }
+  .table-wrapper:has(#tabella-classifica) .table :is(th, td):nth-child(6) { width: 11% !important; }
+
+  /* La cella deve restare una vera cella di tabella, non display:flex. */
+  .table-wrapper:has(#tabella-classifica) .table td.team-cell {
+    display: table-cell !important;
+    text-align: left !important;
+    overflow-wrap: anywhere;
+  }
+
+  .table-wrapper:has(#tabella-classifica) .table td.team-cell img.logo-squadra {
+    display: block !important;
+    float: left;
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 0 !important;
+    max-width: 24px !important;
+    object-fit: contain;
+    margin: 0 5px 2px 0 !important;
+  }
+
+  .table-wrapper:has(#tabella-classifica) .table td.team-cell .team-name {
+    display: block !important;
+    min-height: 0 !important;
+    font-size: 11px !important;
+    line-height: 1.25 !important;
+    text-align: left !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  /* Anche i due pulsanti non devono causare overflow. */
+  .filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 8px;
+  }
+}
