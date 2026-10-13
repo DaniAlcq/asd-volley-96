@@ -6,8 +6,8 @@
       "etichetta": "2026/27",
       "stato": "attiva",
       "campionati": {
-        "femminile": { "cid": 93277, "girone": "B" },
-        "maschile": { "cid": 93417, "girone": "A" }
+        "femminile": { "cid": 93277, "st_id": 2417, "sid": 2225, "girone": "B" },
+        "maschile": { "cid": 93417, "st_id": 2417, "sid": 2225, "girone": "A" }
       }
     },
     {
@@ -15,8 +15,8 @@
       "etichetta": "2025/26",
       "stato": "archiviata",
       "campionati": {
-        "femminile": { "cid": 85779, "girone": "B" },
-        "maschile": { "cid": 85777, "girone": "A" }
+        "femminile": { "cid": 85779, "st_id": 2299, "sid": 2225, "girone": "B" },
+        "maschile": { "cid": 85777, "st_id": 2299, "sid": 2225, "girone": "A" }
       }
     }
   ]
