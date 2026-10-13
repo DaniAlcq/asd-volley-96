@@ -94,7 +94,7 @@
       const place = document.createElement('td');
       place.className = 'luogo-cell';
       const iconeLuogo = {
-  C: 'img/casa.png',
+  C: 'img/house.png',
   T: 'img/bus.png'
 };
 
