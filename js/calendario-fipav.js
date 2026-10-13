@@ -93,9 +93,9 @@
       tr.appendChild(opp);
       const place = document.createElement('td');
       place.className = 'luogo-cell';
-      const iconeLuogo = {
-  C: 'img/house.png',
-  T: 'img/bus.png'
+const iconeLuogo = {
+  C: '/img/house.png',
+  T: '/img/bus.png'
 };
 
 const percorso = iconeLuogo[r.luogo];
