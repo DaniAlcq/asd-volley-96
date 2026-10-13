@@ -1,0 +1,107 @@
+{
+  "dati": [
+    {
+      "posizione": 1,
+      "nome": "DON ORIONE & CAPACENSE",
+      "logo": "img/loghi-fipav/2275-LogoS2275.jpg",
+      "punti": 53,
+      "partite_giocate": 20,
+      "vittorie": 17,
+      "sconfitte": 3
+    },
+    {
+      "posizione": 2,
+      "nome": "ASD VOLLEY GIBELLINA 2004",
+      "logo": "img/loghi-fipav/2380-LogoS2380.jpg",
+      "punti": 50,
+      "partite_giocate": 20,
+      "vittorie": 17,
+      "sconfitte": 3
+    },
+    {
+      "posizione": 3,
+      "nome": "ADG NDT SOLUTIONS - VOLLEY '96",
+      "logo": "img/loghi-fipav/2225-LogoS2225.jpg",
+      "punti": 45,
+      "partite_giocate": 20,
+      "vittorie": 15,
+      "sconfitte": 5
+    },
+    {
+      "posizione": 4,
+      "nome": "PLAY VOLLEY BARCELLONA",
+      "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
+      "punti": 45,
+      "partite_giocate": 20,
+      "vittorie": 15,
+      "sconfitte": 5
+    },
+    {
+      "posizione": 5,
+      "nome": "CANTIERI ELEWATT ENTELLO",
+      "logo": "img/loghi-fipav/2396-LogoS2396.jpg",
+      "punti": 43,
+      "partite_giocate": 20,
+      "vittorie": 14,
+      "sconfitte": 6
+    },
+    {
+      "posizione": 6,
+      "nome": "ESSEPIAUTO A29",
+      "logo": "img/loghi-fipav/2391-LogoS2391.jpeg",
+      "punti": 24,
+      "partite_giocate": 20,
+      "vittorie": 9,
+      "sconfitte": 11
+    },
+    {
+      "posizione": 7,
+      "nome": "NEW GI.CA. SPORT MONREALE",
+      "logo": "img/loghi-fipav/4439-LogoS4439.jpg",
+      "punti": 22,
+      "partite_giocate": 20,
+      "vittorie": 8,
+      "sconfitte": 12
+    },
+    {
+      "posizione": 8,
+      "nome": "ACQUA SABRINELLA",
+      "logo": "img/loghi-fipav/2314-LogoS2314.jpg",
+      "punti": 20,
+      "partite_giocate": 20,
+      "vittorie": 6,
+      "sconfitte": 14
+    },
+    {
+      "posizione": 9,
+      "nome": "G.S. PALLAVOLO TERRASINI",
+      "logo": "img/loghi-fipav/2262-LogoS2262.jpg",
+      "punti": 19,
+      "partite_giocate": 20,
+      "vittorie": 7,
+      "sconfitte": 13
+    },
+    {
+      "posizione": 10,
+      "nome": "ENERGY ITALY POL. LIBERTAS PARTANNA",
+      "logo": "img/loghi-fipav/2394-LogoS2394.png",
+      "punti": 9,
+      "partite_giocate": 20,
+      "vittorie": 2,
+      "sconfitte": 18
+    },
+    {
+      "posizione": 11,
+      "nome": "ORLANDINAVOLLEY",
+      "logo": "img/loghi-fipav/5210-LogoS5210.jpg",
+      "punti": 0,
+      "partite_giocate": 20,
+      "vittorie": 0,
+      "sconfitte": 20
+    }
+  ],
+  "verificataIl": 1791852224,
+  "fonte": "https://sicilia.portalefipav.net/classifica.aspx?CId=85777",
+  "stagione": "2025/26",
+  "girone": "A"
+}
