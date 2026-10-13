@@ -1,240 +1,99 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
- 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-35L1FT2V6S"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-35L1FT2V6S');
-</script>
-
-  <meta name="theme-color" content="#121212">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Classifica</title>
-   <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/style-apple.css">
+  <meta name="theme-color" content="#121212">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Classifiche — ASD Volley '96</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style-apple.css">
+  <!-- Google Analytics originale -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-35L1FT2V6S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-35L1FT2V6S');
+  </script>
 </head>
 <body>
   <header class="header-tot">
-    <img class="brand-logo" src="img/log.png" alt="Logo">
-    <button class="hamburger" id="hamburger" aria-label="Apri menu">
-        &#9776; <!-- simbolo ☰ -->
-      </button>
-      <nav id="navbar">
-        <a href="index.html" data-url="index.html">Home</a>
-        <a href="squadre.html" data-url="squadre.html">Squadre e Società</a>
-        <a href="calendario.html" data-url="calendario.html">Calendario e Risultati</a>
-        <a href="classifiche.html" data-url="classifiche.html">Classifiche</a>
-        <a href="contatti.html" data-url="contatti.html">Contatti</a>
-        
-        
-        
-      </nav>
-      <div class="social-icons">
-        <a href="https://www.instagram.com/a.s.d.volley96/" target="_blank" rel="noopener noreferrer">
-          <img class="social-logo-insta" src="img/instagram.png" alt="Instagram">
-        </a>
-      
-        <a href="https://www.facebook.com/asdvolley96" target="_blank" rel="noopener noreferrer">
-          <img class="social-logo-facebook" src="img/facebook.png" alt="Facebook">
-        </a>
-          <a href="https://www.youtube.com/@ASD_VOLLEY96" target="_blank" rel="noopener noreferrer">
-        <img class="social-logo-youtube" src="img/youtube.png" alt="Youtube">
+    <img class="brand-logo" src="img/newvolleylogo.png" alt="Logo ASD Volley '96">
+    <button class="hamburger" id="hamburger" aria-label="Apri menu" type="button">&#9776;</button>
+    <nav id="navbar">
+      <a href="index.html" data-url="index.html">Home</a>
+      <a href="squadre.html" data-url="squadre.html">Squadre e Società</a>
+      <a href="calendario.html" data-url="calendario.html">Calendario e Risultati</a>
+      <a href="classifiche.html" data-url="classifiche.html">Classifiche</a>
+      <a href="contatti.html" data-url="contatti.html">Contatti</a>
+    </nav>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/a.s.d.volley96/" target="_blank" rel="noopener noreferrer">
+        <img class="social-logo-insta" src="img/instagram.png" alt="Instagram">
       </a>
-      </div>
+      <a href="https://www.facebook.com/asdvolley96" target="_blank" rel="noopener noreferrer">
+        <img class="social-logo-facebook" src="img/facebook.png" alt="Facebook">
+      </a>
+      <a href="https://www.youtube.com/@ASD_VOLLEY96" target="_blank" rel="noopener noreferrer">
+        <img class="social-logo-youtube" src="img/youtube.png" alt="YouTube">
+      </a>
+    </div>
   </header>
 
   <main>
     <h1>Classifiche</h1>
-
     <div class="filter-buttons">
-      <button id="btn-femminile">Serie C Femminile</button>
-      <button id="btn-maschile">Serie C Maschile</button>
+      <button id="btn-femminile" type="button">Serie C Femminile</button>
+      <button id="btn-maschile" type="button">Serie C Maschile</button>
     </div>
     <div class="table-wrapper">
-        <table class="table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Squadra</th>
-                <th>P</th>
-                <th>PG</th>
-                <th>V</th>
-                <th>S</th>
-              </tr>
-            </thead>
-            <tbody id="tabella-classifica"></tbody>
-          </table>
-      </div>
-      
- 
-  <script src="js/fade.js"></script>
-  <a id="live-button" class="live-fab live-hidden" href="#" target="_blank" rel="noopener">
-    <span class="dot"></span> Guarda la diretta
-  </a>
-  
-</main>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Squadra</th>
+            <th scope="col">P</th>
+            <th scope="col">PG</th>
+            <th scope="col">V</th>
+            <th scope="col">S</th>
+          </tr>
+        </thead>
+        <tbody id="tabella-classifica"></tbody>
+      </table>
+    </div>
+    <a id="live-button" class="live-fab live-hidden" href="#" target="_blank" rel="noopener">
+      <span class="dot"></span> Guarda la diretta
+    </a>
+  </main>
 
+  <footer class="site-footer">
+    <p>© <span id="year"></span> ASD VOLLEY 96 — Tutti i diritti riservati</p>
+    <p>Web design &amp; sviluppo © 2025
+      <a href="mailto:danilo.alacqua@example.com">Danilo Alacqua</a>
+    </p>
+  </footer>
 
-<footer class="site-footer">
-  <p>© <span id="year"></span> ASD VOLLEY 96 — Tutti i diritti riservati</p>
-  <p>
-    Web design & sviluppo © 2025 
-    <a href="mailto:danilo.alacqua@example.com">Danilo Alacqua</a>
-
-  </p>
-</footer>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const y = document.getElementById('year');
-    if (y) y.textContent = new Date().getFullYear();
-  });
-</script>
-
-  <!-- Script JS -->
- 
-  <script src="js/fade.js"></script>
+  <script src="js/fade.js" defer></script>
   <script src="js/menu.js" defer></script>
   <script src="js/live.js" defer></script>
-
-  
+  <!-- Nuovo caricamento da FIPAV: non serve lo script Google Sheets -->
+  <script src="js/classifiche-fipav.js" defer></script>
   <script>
-    /* ====== Google Sheets via Opensheet ====== */
-    const SHEET_ID = "1ucM1JY5MXHF7-9mpjp2mfB41TvoA1ziMUGGz86woQXA"; // <-- metti il tuo ID
-    const GS = tab => `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(tab)}`;
-    
-    async function fetchSheet(tab) {
-      const res = await fetch(GS(tab), { cache: "no-store" });
-      if (!res.ok) throw new Error(`Fetch fallito: ${tab} (${res.status})`);
-      return res.json();
-    }
-    
-    /* ====== Helpers DOM ====== */
-    const $  = (sel, root = document) => root.querySelector(sel);
-    const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
-    const tidy = s => (typeof s === "string" ? s.trim() : s);
-    
-    /* ====== App ====== */
-    document.addEventListener("DOMContentLoaded", () => {
-      const TABS = {
-        femminile: "Classifica_Femminile",
-        maschile:  "Classifica_Maschile"
-      };
-    
-      const tbody     = $("#tabella-classifica");
-      const btnFem    = $("#btn-femminile");
-      const btnMas    = $("#btn-maschile");
-
-    let loadingClassifica = false;
-
-     async function caricaClassifica(tabName, bottoneAttivo) {
-        if (loadingClassifica) return;   // 🔥 blocca click rapidi
-  loadingClassifica = true;
-  try {
-    if (!tbody) return;
-
-    tbody.classList.add("table-loading");
-
-    const rows = await fetchSheet(tabName);
-
-    const fragment = document.createDocumentFragment();
-
-    rows.forEach(r => {
-      const posizione = tidy(r.posizione) ?? "-";
-      const nome      = tidy(r.nome) ?? "";
-      const logo      = tidy(r.logo) ?? "";
-      const punti     = tidy(r.punti) ?? "-";
-      const pg        = tidy(r.partite_giocate) ?? "-";
-      const v         = tidy(r.vittorie) ?? "-";
-      const s         = tidy(r.sconfitte) ?? "-";
-
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td>${posizione}</td>
-        <td class="squadra-cell team-cell">
-          ${logo ? `<img src="${logo}" alt="Logo ${nome}" class="logo-squadra">` : ""}
-          <span class="team-name">${nome}</span>
-        </td>
-        <td>${punti}</td>
-        <td>${pg}</td>
-        <td>${v}</td>
-        <td>${s}</td>
-      `;
-      fragment.appendChild(tr);
+    document.addEventListener('DOMContentLoaded', () => {
+      const year = document.getElementById('year');
+      if (year) year.textContent = new Date().getFullYear();
     });
-
-    // Sostituzione atomica (NO SCATTO)
-    tbody.replaceChildren(fragment);
-
-    // Stato 'active'
-    $$(".filter-buttons button").forEach(b => b.classList.remove("active"));
-    if (bottoneAttivo) bottoneAttivo.classList.add("active");
-
-  } catch (err) {
-    console.error("Errore nel caricamento della classifica:", err);
-    if (tbody) tbody.innerHTML = `<tr><td colspan="6">Impossibile caricare la classifica.</td></tr>`;
-    } finally {
-    tbody.classList.remove("table-loading");
-
-    // 🔥 rilascia stato iOS
-    if (bottoneAttivo) bottoneAttivo.blur();
-
-    setTimeout(() => {
-      loadingClassifica = false;
-    }, 150);
-  }
-
-}
-
-    
-      // Click bottoni
-      if (btnFem) btnFem.addEventListener("click", function(){ caricaClassifica(TABS.femminile, this); });
-      if (btnMas) btnMas.addEventListener("click", function(){ caricaClassifica(TABS.maschile, this); });
-    
-      // Caricamento iniziale (?cat=Femminile|Maschile)
-      (function init() {
-        const catParam = (new URLSearchParams(location.search).get("cat") || "Femminile").toLowerCase();
-        if (catParam === "maschile" && btnMas) {
-          caricaClassifica(TABS.maschile, btnMas);
-        } else if (btnFem) {
-          caricaClassifica(TABS.femminile, btnFem);
-        }
-      })();
-    
-      // Evidenzia link di menu attivo
-      const currentPage = window.location.pathname.split("/").pop() || "index.html";
-      $$("nav a").forEach(link => {
-        const linkPage = link.getAttribute("href");
-        if (linkPage === currentPage) link.classList.add("active");
-        else link.classList.remove("active");
-      });
-    });
-    </script>
-    <script>
-let lastTouchEnd = 0;
-document.addEventListener('touchend', function (event) {
-  const now = Date.now();
-  if (now - lastTouchEnd <= 300) {
-    event.preventDefault();
-  }
-  lastTouchEnd = now;
-}, { passive: false });
-</script>
-
-    <script>
-  document.documentElement.classList.add('ready');
-</script>
-
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', event => {
+      const now = Date.now();
+      if (now - lastTouchEnd <= 300) event.preventDefault();
+      lastTouchEnd = now;
+    }, { passive: false });
+    document.documentElement.classList.add('ready');
+  </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 /* =========================================
-   APPLE DARK — SPORTIVO ELEGANTE (v1)
+   APPLE DARK â€” SPORTIVO ELEGANTE (v1)
    Overlay estetico (non rompe layout)
 ========================================= */
 
@@ -17,7 +17,7 @@ html, body {
 }
 
 
-/* Header: vetro, più premium */
+/* Header: vetro, piÃ¹ premium */
 .header-tot{
   background: var(--glass-bg) !important;
   backdrop-filter: blur(16px) saturate(160%);
@@ -26,7 +26,7 @@ html, body {
   box-shadow: var(--soft-shadow);
 }
 
-/* Nav più pulita */
+/* Nav piÃ¹ pulita */
 #navbar a{
   opacity: .85;
   letter-spacing: .2px;
@@ -128,7 +128,7 @@ h1,h2,h3{
 main > h1{ margin-bottom: 1.2rem; }
 .table th, .table td,
 #calendar-table th, #calendar-table td{ padding: 14px 12px; }
-/* ===== FIX VISIBILITÀ HEADER TABELLA ===== */
+/* ===== FIX VISIBILITÃ€ HEADER TABELLA ===== */
 #calendar-table thead,
 .table thead {
   background: linear-gradient(
@@ -143,7 +143,7 @@ main > h1{ margin-bottom: 1.2rem; }
   color: #fff !important;
   text-shadow: 0 1px 2px rgba(0,0,0,0.4);
 }
-/* ===== HEADER TABELLA — DARK APPLE FIX ===== */
+/* ===== HEADER TABELLA â€” DARK APPLE FIX ===== */
 #calendar-table thead,
 .table thead {
   background: linear-gradient(
@@ -162,7 +162,7 @@ main > h1{ margin-bottom: 1.2rem; }
   border-bottom: 1px solid rgba(255, 3, 188, 0.35);
 }
 /* ===============================
-   APPLE DARK V2 — UI REFINEMENT
+   APPLE DARK V2 â€” UI REFINEMENT
 =============================== */
 
 /* ---- Hero / Titoli ---- */
@@ -213,7 +213,7 @@ main {
   -webkit-backdrop-filter: blur(8px);
 }
 
-/* ---- Tabelle: più aria ---- */
+/* ---- Tabelle: piÃ¹ aria ---- */
 #calendar-table th,
 #calendar-table td,
 .table th,
@@ -243,23 +243,23 @@ html {
   filter: drop-shadow(0 0 10px rgba(255,3,188,.5));
 }
 /* ===============================
-   APPLE DARK V3 — HEADER, NAV, MICRO-UX
+   APPLE DARK V3 â€” HEADER, NAV, MICRO-UX
 =============================== */
 
-/* ---- Header più iOS/macOS ---- */
+/* ---- Header piÃ¹ iOS/macOS ---- */
 .header-tot{
   height: 76px;
   padding: 0 24px;
   border-bottom: 1px solid rgba(255,255,255,.06);
 }
 
-/* Brand più pulito */
+/* Brand piÃ¹ pulito */
 .brand-logo{
   height: 82px;
   opacity: .95;
 }
 
-/* Nav: più aria, underline soft */
+/* Nav: piÃ¹ aria, underline soft */
 #navbar a{
   font-size: 18px;
   padding: 10px 14px;
@@ -275,7 +275,7 @@ html {
   transition-timing-function: cubic-bezier(.2,.8,.2,1);
 }
 
-/* ---- Hover su righe: più fluido ---- */
+/* ---- Hover su righe: piÃ¹ fluido ---- */
 #calendar-table tbody tr,
 .table tbody tr{
   transition: background .2s ease, transform .2s ease;
@@ -285,19 +285,19 @@ html {
   transform: translateY(-1px);
 }
 
-/* ---- Avversario: più centrato visivamente ---- */
+/* ---- Avversario: piÃ¹ centrato visivamente ---- */
 #calendar-table .avv-wrap span{
   font-weight: 600;
   letter-spacing: .1px;
 }
 
-/* ---- Icone C/T più soft ---- */
+/* ---- Icone C/T piÃ¹ soft ---- */
 #calendar-table td.luogo-cell .icon-luogo{
   filter: drop-shadow(0 2px 6px rgba(0,0,0,.25));
   opacity: .9;
 }
 
-/* ---- Risultato più sportivo ---- */
+/* ---- Risultato piÃ¹ sportivo ---- */
 #calendar-table td:last-child{
   font-size: 1.2rem;
   letter-spacing: .5px;
@@ -313,19 +313,19 @@ html {
   -webkit-backdrop-filter: blur(8px);
 }
 
-/* ---- News grid: più aria ---- */
+/* ---- News grid: piÃ¹ aria ---- */
 .news-grid{
   gap: 28px;
 }
 
-/* ---- Result card: punteggi più “scoreboard” ---- */
+/* ---- Result card: punteggi piÃ¹ â€œscoreboardâ€ ---- */
 .result-card .resCasa,
 .result-card .resOsp{
   font-size: 2.8rem;
   letter-spacing: .5px;
 }
 
-/* ---- Footer: link più eleganti ---- */
+/* ---- Footer: link piÃ¹ eleganti ---- */
 .site-footer a{
   opacity: .85;
 }
@@ -334,12 +334,12 @@ html {
   text-decoration: none;
 }
 
-/* ---- Scrollbar più sottile ---- */
+/* ---- Scrollbar piÃ¹ sottile ---- */
 ::-webkit-scrollbar{
   width: 8px;
 }
 /* ===============================
-   APPLE DARK V4 — MOBILE, CAROUSEL, CTA, RHYTHM
+   APPLE DARK V4 â€” MOBILE, CAROUSEL, CTA, RHYTHM
 =============================== */
 
 /* ---- Navbar mobile: glass panel ---- */
@@ -356,14 +356,14 @@ html {
   }
 }
 
-/* ---- Hamburger: più iOS ---- */
+/* ---- Hamburger: piÃ¹ iOS ---- */
 .hamburger{
   font-size: 1.9rem;
   opacity: .9;
 }
 .hamburger:hover{ opacity: 1; }
 
-/* ---- Carousel: più “app” ---- */
+/* ---- Carousel: piÃ¹ â€œappâ€ ---- */
 .news-carousel .prev,
 .news-carousel .next{
   backdrop-filter: blur(1px);
@@ -385,7 +385,7 @@ html {
 .teams-section{ margin: 3rem auto; }
 .mvp-section{ margin: 3.5rem auto; }
 
-/* ---- Tabelle classifiche: più premium ---- */
+/* ---- Tabelle classifiche: piÃ¹ premium ---- */
 .table thead th{
   font-weight: 600;
 }
@@ -406,7 +406,7 @@ html {
   box-shadow: 0 22px 60px rgba(255,3,188,.6);
 }
 
-/* ---- Focus states (accessibilità, Apple-like) ---- */
+/* ---- Focus states (accessibilitÃ , Apple-like) ---- */
 a:focus-visible,
 button:focus-visible{
   outline: 2px solid rgba(255,3,188,.8);
@@ -414,7 +414,7 @@ button:focus-visible{
   border-radius: 6px;
 }
 /* ===============================
-   APPLE DARK V5 — FINAL POLISH
+   APPLE DARK V5 â€” FINAL POLISH
 =============================== */
 
 /* ---- Hero iOS-style (spotlight + depth) ---- */
@@ -505,7 +505,7 @@ main > h1::after{
   filter: drop-shadow(0 0 6px rgba(255,3,188,.4));
 }
 
-/* ---- Mobile: tabelle più leggibili ---- */
+/* ---- Mobile: tabelle piÃ¹ leggibili ---- */
 @media (max-width:600px){
   .table thead th,
   #calendar-table thead th{
@@ -534,7 +534,7 @@ main > h1::after{
 .calendar-wrapper {
   min-height: 400px;
 }
-/* ===== GLOW PULSANTI — CONTORNO, NON DIETRO ===== */
+/* ===== GLOW PULSANTI â€” CONTORNO, NON DIETRO ===== */
 .filter-btn,
 .filter-buttons button,
 .buttons-filter button {
@@ -601,7 +601,7 @@ h1, h2, h3,
   #calendar-table td:nth-child(5) { width: 12%; }
 }
 .score {
-  white-space: nowrap !important; /* 🔥 impedisce l’andata a capo */
+  white-space: nowrap !important; /* ðŸ”¥ impedisce lâ€™andata a capo */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -609,7 +609,7 @@ h1, h2, h3,
 }
 @media (max-width: 600px) {
   .score {
-    font-size: 2.2rem;   /* riduce un po’ il 3-0 */
+    font-size: 2.2rem;   /* riduce un poâ€™ il 3-0 */
   }
 }
 .score-block {
@@ -628,7 +628,7 @@ h1, h2, h3,
   height: 90px;
   width: auto;
   min-height: 90px;      /* blocco dimensione */
-  flex-shrink: 0;        /* 🔥 non si riduce */
+  flex-shrink: 0;        /* ðŸ”¥ non si riduce */
 }
 
 .result-sets {
@@ -638,12 +638,12 @@ h1, h2, h3,
   list-style: none;
   padding: 0;
   margin-top: 18px;
-  flex-wrap: nowrap;           /* 🔥 non andare a capo */
+  flex-wrap: nowrap;           /* ðŸ”¥ non andare a capo */
 }
 
 .result-sets li {
-  white-space: nowrap;        /* 🔥 mai a capo */
-  min-width: 48px;            /* 🔥 spazio sufficiente per 16-25 */
+  white-space: nowrap;        /* ðŸ”¥ mai a capo */
+  min-width: 48px;            /* ðŸ”¥ spazio sufficiente per 16-25 */
   text-align: center;
   background-color: var(--blue);
   color: #fff;
@@ -659,13 +659,13 @@ h1, h2, h3,
   list-style: none;
   padding: 0;
   margin-top: 18px;
-  flex-wrap: wrap;              /* 🔥 se non ci stanno, vanno sotto */
+  flex-wrap: wrap;              /* ðŸ”¥ se non ci stanno, vanno sotto */
   max-width: 100%;
 }
 
 .result-sets li {
-  white-space: nowrap;         /* 🔥 mai spezzare 16-25 */
-  min-width: 60px;             /* 🔥 spazio reale */
+  white-space: nowrap;         /* ðŸ”¥ mai spezzare 16-25 */
+  min-width: 60px;             /* ðŸ”¥ spazio reale */
   padding: 6px 12px;
   text-align: center;
   background: rgba(255,255,255,0.08);
@@ -909,7 +909,7 @@ h1, h2, h3, h4 {
 }
 
 .brand-logo{
-  height: 50px;
+  height: 60px;
   width: auto;
 }
 
@@ -965,7 +965,7 @@ h1, h2, h3, h4 {
 .hamburger{
   display: none;
   position: absolute;
-    right: 20px;          /* 🔥 bordo reale */
+    right: 20px;          /* ðŸ”¥ bordo reale */
   top: 48%;
   transform: translateY(-50%);
   background: none;
@@ -1009,7 +1009,7 @@ main{
   .hamburger{ display: block; }
 .social-icons {
     position: absolute;
-    right: 70px;            /* ← spazio prima dell’hamburger */
+    right: 70px;            /* â† spazio prima dellâ€™hamburger */
     top: 50%;
     transform: translateY(-50%);
     gap: 10px;
@@ -1020,7 +1020,7 @@ main{
     height: 24px;
   }
 
-  /* YouTube leggermente più grande se vuoi */
+  /* YouTube leggermente piÃ¹ grande se vuoi */
   .social-icons .social-logo-youtube {
     width: 30px;
     height: 30px;
@@ -1051,7 +1051,7 @@ main{
   }
 }
 /* ==============================
-   CAROSELLO PRINCIPALE — FIXATO
+   CAROSELLO PRINCIPALE â€” FIXATO
    Altezza dinamica, niente spazi neri
 ============================== */
 
@@ -1263,7 +1263,7 @@ main{
    SPONSOR BANNER
 ============================== */
 .sponsor-banner{
-  background-color: #dcdcdc;
+  background-color: #ff00a6c1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1854,13 +1854,13 @@ main{
   display: block;
 }
 
-/* Se vuoi Instagram leggermente più grande */
+/* Se vuoi Instagram leggermente piÃ¹ grande */
 .social-icons .social-logo-insta {
   width: 28px;
   height: 28px;
 }
 
-/* Facebook un filo più piccolo */
+/* Facebook un filo piÃ¹ piccolo */
 .social-icons .social-logo-facebook .social-logo-youtube {
   width: 24px;
   height: 24px;
@@ -2287,7 +2287,7 @@ main > h1 {
   height: auto;
 }
 /* ==============================
-   CAROSELLO — FIX DEFINITIVO
+   CAROSELLO â€” FIX DEFINITIVO
 ============================== */
 
 .news-wrapper {
@@ -2373,7 +2373,7 @@ main > h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 36px; /* sposta il 3-0 più in basso */
+  margin-top: 36px; /* sposta il 3-0 piÃ¹ in basso */
 }
 
 .score {
@@ -2388,7 +2388,7 @@ main > h1 {
   justify-content: center;
   list-style: none;
   padding: 0;
-  margin-top: 18px; /* set più in basso */
+  margin-top: 18px; /* set piÃ¹ in basso */
 }
 
 /* ====== NOMI SQUADRE + VS ====== */
@@ -2436,7 +2436,7 @@ main > h1 {
 }
 @media (max-width: 600px) {
   .table td.team-cell .team-name {
-    font-size: 0.75rem;     /* più piccolo */
+    font-size: 0.75rem;     /* piÃ¹ piccolo */
     line-height: 1.1;
   }
 
@@ -2504,7 +2504,7 @@ main > h1 {
   #calendar-table td:nth-child(5) { width: 12%; }
 }
 .score {
-  white-space: nowrap !important; /* 🔥 impedisce l’andata a capo */
+  white-space: nowrap !important; /* ðŸ”¥ impedisce lâ€™andata a capo */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2512,7 +2512,7 @@ main > h1 {
 }
 @media (max-width: 600px) {
   .score {
-    font-size: 2.2rem;   /* riduce un po’ il 3-0 */
+    font-size: 2.2rem;   /* riduce un poâ€™ il 3-0 */
   }
 }
 .score-block {
@@ -2599,7 +2599,7 @@ main > h1 {
 .time-row .hour {
   color: var(--pink);
   font-weight: 700;
-  white-space: nowrap; /* 🔥 NON VA A CAPO */
+  white-space: nowrap; /* ðŸ”¥ NON VA A CAPO */
 }
 
 /* LUOGO */
@@ -2607,7 +2607,7 @@ main > h1 {
   opacity: .8;
   font-size: .85rem;
   text-align: right;
-  white-space: nowrap; /* 🔥 NON VA A CAPO */
+  white-space: nowrap; /* ðŸ”¥ NON VA A CAPO */
 }
 
 /* ==============================
@@ -2805,7 +2805,7 @@ main > h1 {
   }
 }
 /* ==============================
-   CAROSELLO — FIX DEFINITIVO STRATI
+   CAROSELLO â€” FIX DEFINITIVO STRATI
 ============================== */
 
 .news-wrapper {
@@ -3011,7 +3011,7 @@ html.ready main {
   padding: 8px 12px;
   font-family: 'Faculty';
   transition: color .3s ease;
-  border-bottom: 2px solid transparent; /* 🔥 spazio sempre riservato */
+  border-bottom: 2px solid transparent; /* ðŸ”¥ spazio sempre riservato */
 }
 
 #navbar a.active{
@@ -3022,7 +3022,7 @@ html.ready main {
 .sponsor-title{
 color: #ff03bc;
 }
-/* 🔥 FIX iOS tap: niente stato persistente */
+/* ðŸ”¥ FIX iOS tap: niente stato persistente */
 .filter-buttons button:active {
   background: var(--pink);
   color: #fff;
@@ -3045,12 +3045,12 @@ color: #ff03bc;
   padding: 5px;
 }
 /* ==============================
-   SOCIAL ICONS — MOBILE A SINISTRA HAMBURGER
+   SOCIAL ICONS â€” MOBILE A SINISTRA HAMBURGER
 ============================== */
 @media (max-width: 768px) {
   .social-icons {
     position: absolute;
-    right: 70px;            /* ← spazio prima dell’hamburger */
+    right: 70px;            /* â† spazio prima dellâ€™hamburger */
     top: 50%;
     transform: translateY(-50%);
     gap: 10px;
@@ -3061,7 +3061,7 @@ color: #ff03bc;
     height: 24px;
   }
 
-  /* YouTube leggermente più grande se vuoi */
+  /* YouTube leggermente piÃ¹ grande se vuoi */
   .social-icons .social-logo-youtube {
     width: 30px;
     height: 30px;
@@ -3070,3 +3070,112 @@ color: #ff03bc;
 
 }
 
+/* CAROSELLO RIDOTTO E CENTRATO */
+
+.news-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.news-carousel {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Adattamento smartphone */
+@media (max-width: 768px) {
+    .news-wrapper {
+        width: 95%;
+        margin: 20px auto;
+    }
+}
+
+
+/* ============================================================
+   CAROSELLO SOLO IMMAGINI - OVERRIDE FINALE
+   Immagini 100%, nessuna area descrizione, frecce sull'immagine
+   ============================================================ */
+.news-wrapper {
+  width: calc(100% - 32px) !important;
+  max-width: 900px !important;
+  margin: 30px auto !important;
+  padding: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+.news-carousel {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border-radius: 20px;
+}
+
+.news-carousel .slides {
+  display: flex !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  align-items: stretch !important;
+}
+
+.news-carousel .slide {
+  flex: 0 0 100% !important;
+  width: 100% !important;
+  aspect-ratio: 16 / 9;
+  height: auto !important;
+  max-height: none !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  overflow: hidden !important;
+}
+
+.news-carousel .slide-right {
+  display: none !important;
+}
+
+.news-carousel .slide-left {
+  display: block !important;
+  flex: 0 0 100% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+}
+
+.news-carousel .slide-left img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none !important;
+  object-fit: cover !important;
+}
+
+.news-carousel .prev,
+.news-carousel .next,
+.news-carousel .prev:hover,
+.news-carousel .next:hover {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 10 !important;
+}
+
+.news-carousel .prev { left: 12px !important; }
+.news-carousel .next { right: 12px !important; }
+
+@media (max-width: 768px) {
+  .news-wrapper {
+    width: calc(100% - 24px) !important;
+    margin: 20px auto !important;
+  }
+  .news-carousel .prev { left: 6px !important; }
+  .news-carousel .next { right: 6px !important; }
+}
