@@ -27,7 +27,7 @@
       cella(tr, r.posizione);
       const squadra = document.createElement('td');
       squadra.className = 'squadra-cell team-cell';
-      if (r.logo && /^https:\/\//i.test(r.logo)) {
+      if (r.logo && (/^https:\/\//i.test(r.logo) || /^img\/loghi-fipav\/[a-zA-Z0-9_.-]+$/.test(r.logo))) {
         const img = document.createElement('img');
         img.src = r.logo;
         img.alt = `Logo ${r.nome || ''}`;
