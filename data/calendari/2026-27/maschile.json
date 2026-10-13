@@ -1,0 +1,230 @@
+{
+  "stagione": "2026/27",
+  "girone": "A",
+  "categoria": "maschile",
+  "cid": 93417,
+  "fonte": "https://sicilia.portalefipav.net/risultati-classifiche.aspx?ComitatoId=37&StId=2417&DataDa=&StatoGara=&CId=93417&SId=2225&PId=7306&btFiltro=CERCA",
+  "verificataIl": 1791891211,
+  "dati": [
+    {
+      "gara": 1002,
+      "giornata": 1,
+      "data": "25/10/26",
+      "orario": "17:00",
+      "avversario": "GS PALLAVOLO TERRASINI",
+      "logo": "img/loghi-fipav/2262-LogoS2262.jpg",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 1008,
+      "giornata": 2,
+      "data": "01/11/26",
+      "orario": "18:30",
+      "avversario": "ASD SGM SPADAFORA",
+      "logo": "img/loghi-fipav/5476-LogoS5476.jpg",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 1013,
+      "giornata": 3,
+      "data": "07/11/26",
+      "orario": "18:30",
+      "avversario": "ESSEPIAUTO A29",
+      "logo": "img/loghi-fipav/2391-LogoS2391.jpeg",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 1019,
+      "giornata": 4,
+      "data": "14/11/26",
+      "orario": "19:00",
+      "avversario": "TEAM AMBIENTE e SICUREZZA MESSINA",
+      "logo": "img/loghi-fipav/3827-LogoS3827.png",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 1024,
+      "giornata": 5,
+      "data": "22/11/26",
+      "orario": "19:30",
+      "avversario": "GRUPPO CORRADINO VOLLEY PRIMULA",
+      "logo": "img/loghi-fipav/2270-LogoS2270.jpg",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 1030,
+      "giornata": 6,
+      "data": "29/11/26",
+      "orario": "18:30",
+      "avversario": "ACQUA SABRINELLA ALTAVILLA MILICIA",
+      "logo": "img/loghi-fipav/2314-LogoS2314.jpg",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 1036,
+      "giornata": 7,
+      "data": "05/12/26",
+      "orario": "18:30",
+      "avversario": "A.S.D. POL. LIBERTAS PARTANNA",
+      "logo": "img/loghi-fipav/2394-LogoS2394.png",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 1043,
+      "giornata": 8,
+      "data": "13/12/26",
+      "orario": "17:30",
+      "avversario": "CANTIERI ELEWATT & ARREDI ROMANO",
+      "logo": "img/loghi-fipav/2396-LogoS2396.jpg",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 1053,
+      "giornata": 9,
+      "data": "19/12/26",
+      "orario": "17:30",
+      "avversario": "PLAY VOLLEY BARCELLONA",
+      "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 1055,
+      "giornata": 10,
+      "data": "10/01/27",
+      "orario": "18:00",
+      "avversario": "VOLLEY CLUB RIBERA",
+      "logo": "img/loghi-fipav/3313-LogoS3313.jpg",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 1061,
+      "giornata": 11,
+      "data": "17/01/27",
+      "orario": "18:30",
+      "avversario": "BUILD UP - VOLO PALERMO",
+      "logo": "img/loghi-fipav/2287-LogoS2287.png",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 1068,
+      "giornata": 12,
+      "data": "31/01/27",
+      "orario": "18:30",
+      "avversario": "GS PALLAVOLO TERRASINI",
+      "logo": "img/loghi-fipav/2262-LogoS2262.jpg",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 1074,
+      "giornata": 13,
+      "data": "04/02/27",
+      "orario": "19:30",
+      "avversario": "ASD SGM SPADAFORA",
+      "logo": "img/loghi-fipav/5476-LogoS5476.jpg",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 1079,
+      "giornata": 14,
+      "data": "14/02/27",
+      "orario": "18:30",
+      "avversario": "ESSEPIAUTO A29",
+      "logo": "img/loghi-fipav/2391-LogoS2391.jpeg",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 1085,
+      "giornata": 15,
+      "data": "20/02/27",
+      "orario": "17:30",
+      "avversario": "TEAM AMBIENTE e SICUREZZA MESSINA",
+      "logo": "img/loghi-fipav/3827-LogoS3827.png",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 1090,
+      "giornata": 16,
+      "data": "07/03/27",
+      "orario": "18:30",
+      "avversario": "GRUPPO CORRADINO VOLLEY PRIMULA",
+      "logo": "img/loghi-fipav/2270-LogoS2270.jpg",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 1096,
+      "giornata": 17,
+      "data": "13/03/27",
+      "orario": "19:30",
+      "avversario": "ACQUA SABRINELLA ALTAVILLA MILICIA",
+      "logo": "img/loghi-fipav/2314-LogoS2314.jpg",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 1102,
+      "giornata": 18,
+      "data": "20/03/27",
+      "orario": "18:30",
+      "avversario": "A.S.D. POL. LIBERTAS PARTANNA",
+      "logo": "img/loghi-fipav/2394-LogoS2394.png",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 1109,
+      "giornata": 19,
+      "data": "04/04/27",
+      "orario": "18:30",
+      "avversario": "CANTIERI ELEWATT & ARREDI ROMANO",
+      "logo": "img/loghi-fipav/2396-LogoS2396.jpg",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 1119,
+      "giornata": 20,
+      "data": "10/04/27",
+      "orario": "17:30",
+      "avversario": "PLAY VOLLEY BARCELLONA",
+      "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 1121,
+      "giornata": 21,
+      "data": "18/04/27",
+      "orario": "18:30",
+      "avversario": "VOLLEY CLUB RIBERA",
+      "logo": "img/loghi-fipav/3313-LogoS3313.jpg",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 1127,
+      "giornata": 22,
+      "data": "24/04/27",
+      "orario": "18:30",
+      "avversario": "BUILD UP - VOLO PALERMO",
+      "logo": "img/loghi-fipav/2287-LogoS2287.png",
+      "luogo": "T",
+      "risultato": "-"
+    }
+  ]
+}

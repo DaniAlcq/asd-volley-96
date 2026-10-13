@@ -1,0 +1,230 @@
+{
+  "stagione": "2026/27",
+  "girone": "B",
+  "categoria": "femminile",
+  "cid": 93277,
+  "fonte": "https://sicilia.portalefipav.net/risultati-classifiche.aspx?ComitatoId=37&StId=2417&DataDa=&StatoGara=&CId=93277&SId=2225&PId=7306&btFiltro=CERCA",
+  "verificataIl": 1791891211,
+  "dati": [
+    {
+      "gara": 2136,
+      "giornata": 1,
+      "data": "24/10/26",
+      "orario": "17:30",
+      "avversario": "ASD ZAFFERANA VOLLEY",
+      "logo": "img/loghi-fipav/5347-LogoS5347.jpg",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 2142,
+      "giornata": 2,
+      "data": "31/10/26",
+      "orario": "18:00",
+      "avversario": "ASD NEW RANDAZZO VOLLEY 2022",
+      "logo": "img/loghi-fipav/5230-LogoS5230.jpg",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 2147,
+      "giornata": 3,
+      "data": "08/11/26",
+      "orario": "18:30",
+      "avversario": "PANER LIBERAMENTE ACI CATENA",
+      "logo": "img/loghi-fipav/2088-LogoS2088.jpg",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 2153,
+      "giornata": 4,
+      "data": "14/11/26",
+      "orario": "16:30",
+      "avversario": "G2ENNE CDO VOLLEY",
+      "logo": "img/loghi-fipav/5210-LogoS5210.jpg",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 2158,
+      "giornata": 5,
+      "data": "21/11/26",
+      "orario": "19:30",
+      "avversario": "ITERA WARRIORS VIAGRANDE",
+      "logo": "img/loghi-fipav/2167-LogoS2167.png",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 2164,
+      "giornata": 6,
+      "data": "28/11/26",
+      "orario": "18:00",
+      "avversario": "SPORT VOLLEY LETOJANNI ASD",
+      "logo": "img/loghi-fipav/4223-LogoS4223.jpeg",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 2169,
+      "giornata": 7,
+      "data": "06/12/26",
+      "orario": "18:00",
+      "avversario": "GIARDINI DEL VOLLEY",
+      "logo": "img/loghi-fipav/5313-LogoS5313.jpg",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 2175,
+      "giornata": 8,
+      "data": "12/12/26",
+      "orario": "18:00",
+      "avversario": "GOLDEN VOLLEY ACICATENA",
+      "logo": "img/loghi-fipav/2156-LogoS2156.jpg",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 2180,
+      "giornata": 9,
+      "data": "19/12/26",
+      "orario": "20:00",
+      "avversario": "SSD UNIME",
+      "logo": "img/loghi-fipav/5059-LogoS5059.png",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 2186,
+      "giornata": 10,
+      "data": "09/01/27",
+      "orario": "18:00",
+      "avversario": "PIU' FORMAZIONE BARCELLONA",
+      "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 2197,
+      "giornata": 11,
+      "data": "16/01/27",
+      "orario": "18:00",
+      "avversario": "POL. NINO ROMANO",
+      "logo": "img/loghi-fipav/2227-LogoS2227.jpg",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 2202,
+      "giornata": 12,
+      "data": "30/01/27",
+      "orario": "18:00",
+      "avversario": "ASD ZAFFERANA VOLLEY",
+      "logo": "img/loghi-fipav/5347-LogoS5347.jpg",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 2208,
+      "giornata": 13,
+      "data": "06/02/27",
+      "orario": "18:00",
+      "avversario": "ASD NEW RANDAZZO VOLLEY 2022",
+      "logo": "img/loghi-fipav/5230-LogoS5230.jpg",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 2213,
+      "giornata": 14,
+      "data": "13/02/27",
+      "orario": "18:00",
+      "avversario": "PANER LIBERAMENTE ACI CATENA",
+      "logo": "img/loghi-fipav/2088-LogoS2088.jpg",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 2219,
+      "giornata": 15,
+      "data": "20/02/27",
+      "orario": "18:30",
+      "avversario": "G2ENNE CDO VOLLEY",
+      "logo": "img/loghi-fipav/5210-LogoS5210.jpg",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 2224,
+      "giornata": 16,
+      "data": "06/03/27",
+      "orario": "18:00",
+      "avversario": "ITERA WARRIORS VIAGRANDE",
+      "logo": "img/loghi-fipav/2167-LogoS2167.png",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 2230,
+      "giornata": 17,
+      "data": "14/03/27",
+      "orario": "17:30",
+      "avversario": "SPORT VOLLEY LETOJANNI ASD",
+      "logo": "img/loghi-fipav/4223-LogoS4223.jpeg",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 2235,
+      "giornata": 18,
+      "data": "20/03/27",
+      "orario": "18:00",
+      "avversario": "GIARDINI DEL VOLLEY",
+      "logo": "img/loghi-fipav/5313-LogoS5313.jpg",
+      "luogo": "C",
+      "risultato": "-"
+    },
+    {
+      "gara": 2241,
+      "giornata": 19,
+      "data": "04/04/27",
+      "orario": "19:30",
+      "avversario": "GOLDEN VOLLEY ACICATENA",
+      "logo": "img/loghi-fipav/2156-LogoS2156.jpg",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 2246,
+      "giornata": 20,
+      "data": "10/04/27",
+      "orario": "19:00",
+      "avversario": "SSD UNIME",
+      "logo": "img/loghi-fipav/5059-LogoS5059.png",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 2252,
+      "giornata": 21,
+      "data": "17/04/27",
+      "orario": "18:00",
+      "avversario": "PIU' FORMAZIONE BARCELLONA",
+      "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
+      "luogo": "T",
+      "risultato": "-"
+    },
+    {
+      "gara": 2263,
+      "giornata": 22,
+      "data": "24/04/27",
+      "orario": "18:00",
+      "avversario": "POL. NINO ROMANO",
+      "logo": "img/loghi-fipav/2227-LogoS2227.jpg",
+      "luogo": "T",
+      "risultato": "-"
+    }
+  ]
+}
