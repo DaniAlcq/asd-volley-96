@@ -56,8 +56,25 @@ jobs:
           if [ -d data/calendari ]; then git add data/calendari/; fi
           if [ -d img/loghi-fipav ]; then git add img/loghi-fipav/; fi
           if ! git diff --cached --quiet; then
-            git commit -m 'Archivia classifiche FIPAV e loghi'
-            git push
+            git commit -m 'Aggiorna classifiche e calendari FIPAV'
+            branch="${GITHUB_REF_NAME:-main}"
+            pushed=false
+            for attempt in 1 2 3 4 5; do
+              echo "Sincronizzazione con origin/$branch (tentativo $attempt/5)"
+              git fetch origin "$branch"
+              # Non forzare il push e non sovrascrivere modifiche remote.
+              git rebase "origin/$branch"
+              if git push origin "HEAD:$branch"; then
+                pushed=true
+                break
+              fi
+              echo "Un altro aggiornamento ha modificato $branch: nuovo tentativo..."
+              sleep 3
+            done
+            if [ "$pushed" != true ]; then
+              echo 'ERRORE: impossibile pubblicare i JSON dopo 5 tentativi.' >&2
+              exit 1
+            fi
           fi
 
       - name: Prepara la versione pubblica
