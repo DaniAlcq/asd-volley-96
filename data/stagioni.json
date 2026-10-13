@@ -1,13 +1,13 @@
 {
-  "predefinita": "2025-26",
+  "predefinita": "2026-27",
   "stagioni": [
     {
       "id": "2026-27",
       "etichetta": "2026/27",
       "stato": "in_attesa",
       "campionati": {
-        "femminile": { "cid": null, "girone": "B" },
-        "maschile": { "cid": null, "girone": "A" }
+        "femminile": { "cid": 93277, "girone": "B" },
+        "maschile": { "cid": 93417, "girone": "A" }
       }
     },
     {
