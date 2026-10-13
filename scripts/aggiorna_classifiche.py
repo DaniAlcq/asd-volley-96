@@ -27,6 +27,64 @@ CID = {
 BASE_URL = "https://sicilia.portalefipav.net/"
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "data"
+LOGOS_DIR = ROOT / "img" / "loghi-fipav"
+
+
+def salva_logo(url: str, session: requests.Session) -> str:
+    """Salva il logo nel repository per evitare l'hotlink a FIPAV da GitHub Pages."""
+    if not url:
+        return ""
+
+    parsed = urlparse(url)
+    if parsed.scheme != "https" or parsed.netloc.lower() != "sicilia.portalefipav.net":
+        return ""
+
+    # I nomi sono ricavati soltanto dai percorsi ufficiali delle società FIPAV.
+    match = re.fullmatch(
+        r"/mngArea/Societa/img/(\d+)/Loghi/(LogoS\d+\.(?:png|jpg|jpeg|webp|gif))",
+        parsed.path,
+        flags=re.IGNORECASE,
+    )
+    if not match:
+        return ""
+
+    filename = f"{match.group(1)}-{match.group(2)}"
+    destination = LOGOS_DIR / filename
+    relative = f"img/loghi-fipav/{filename}"
+    # Una volta salvato su GitHub, il logo rimane disponibile anche se FIPAV è offline.
+    if destination.is_file() and destination.stat().st_size > 200:
+        return relative
+
+    try:
+        result = session.get(
+            url,
+            timeout=20,
+            headers={
+                "Referer": BASE_URL,
+                "Accept": "image/avif,image/webp,image/apng,image/*,*/*;q=0.8",
+            },
+        )
+        result.raise_for_status()
+        data = result.content
+        extension = match.group(2).rsplit(".", 1)[-1].lower()
+        signatures = {
+            "png": data.startswith(b"\x89PNG\r\n\x1a\n"),
+            "jpg": data.startswith(b"\xff\xd8"),
+            "jpeg": data.startswith(b"\xff\xd8"),
+            "gif": data.startswith((b"GIF87a", b"GIF89a")),
+            "webp": data.startswith(b"RIFF") and data[8:12] == b"WEBP",
+        }
+        if len(data) < 200 or not signatures[extension]:
+            raise ValueError("risposta senza un'immagine valida")
+        LOGOS_DIR.mkdir(parents=True, exist_ok=True)
+        temp = destination.with_name(destination.name + ".tmp")
+        temp.write_bytes(data)
+        temp.replace(destination)
+        print(f"Logo salvato: {relative}")
+        return relative
+    except (requests.RequestException, ValueError, OSError) as exc:
+        print(f"ATTENZIONE: impossibile scaricare il logo {url}: {exc}", file=sys.stderr)
+        return relative if destination.is_file() else ""
 
 
 def clean(value: str) -> str:
@@ -114,6 +172,9 @@ def update(category: str, cid: int, session: requests.Session) -> None:
     response = session.get(url, timeout=25)
     response.raise_for_status()
     ranking = parse_ranking(response.content)
+    for team in ranking:
+        # Le immagini FIPAV sono servite dal nostro sito, non incorporando link esterni.
+        team["logo"] = salva_logo(team["logo"], session)
     payload = {
         "dati": ranking,
         "verificataIl": int(time.time()),
