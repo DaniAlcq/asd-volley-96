@@ -3,7 +3,7 @@
     {
       "posizione": 1,
       "nome": "NEW AMANDO IONICA VOLLEY",
-      "logo": "https://sicilia.portalefipav.net/mngArea/Societa/img/5624/Loghi/LogoS5624.png",
+      "logo": "img/loghi-fipav/5624-LogoS5624.png",
       "punti": 60,
       "partite_giocate": 22,
       "vittorie": 19,
@@ -12,7 +12,7 @@
     {
       "posizione": 2,
       "nome": "MESSINA VOLLEY",
-      "logo": "https://sicilia.portalefipav.net/mngArea/Societa/img/2208/Loghi/LogoS2208.jpg",
+      "logo": "img/loghi-fipav/2208-LogoS2208.jpg",
       "punti": 56,
       "partite_giocate": 22,
       "vittorie": 20,
@@ -21,7 +21,7 @@
     {
       "posizione": 3,
       "nome": "FUTURA VOLLEY SANTA TERESA DI RIVA",
-      "logo": "https://sicilia.portalefipav.net/mngArea/Societa/img/5617/Loghi/LogoS5617.jpg",
+      "logo": "img/loghi-fipav/5617-LogoS5617.jpg",
       "punti": 56,
       "partite_giocate": 22,
       "vittorie": 18,
@@ -30,7 +30,7 @@
     {
       "posizione": 4,
       "nome": "POLISPORTIVA NINO ROMANO",
-      "logo": "https://sicilia.portalefipav.net/mngArea/Societa/img/2227/Loghi/LogoS2227.jpg",
+      "logo": "img/loghi-fipav/2227-LogoS2227.jpg",
       "punti": 55,
       "partite_giocate": 22,
       "vittorie": 19,
@@ -39,7 +39,7 @@
     {
       "posizione": 5,
       "nome": "FI.MA. FORMAZIONE MILAZZO",
-      "logo": "https://sicilia.portalefipav.net/mngArea/Societa/img/2225/Loghi/LogoS2225.jpg",
+      "logo": "img/loghi-fipav/2225-LogoS2225.jpg",
       "punti": 35,
       "partite_giocate": 22,
       "vittorie": 11,
@@ -48,7 +48,7 @@
     {
       "posizione": 6,
       "nome": "PIU' FORMAZIONE BARCELLONA",
-      "logo": "https://sicilia.portalefipav.net/mngArea/Societa/img/4020/Loghi/LogoS4020.jpg",
+      "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
       "punti": 31,
       "partite_giocate": 22,
       "vittorie": 10,
@@ -57,7 +57,7 @@
     {
       "posizione": 7,
       "nome": "ASD NEW RANDAZZO VOLLEY 2022",
-      "logo": "https://sicilia.portalefipav.net/mngArea/Societa/img/5230/Loghi/LogoS5230.jpg",
+      "logo": "img/loghi-fipav/5230-LogoS5230.jpg",
       "punti": 28,
       "partite_giocate": 22,
       "vittorie": 10,
@@ -66,7 +66,7 @@
     {
       "posizione": 8,
       "nome": "ASD ZAFFERANA VOLLEY",
-      "logo": "https://sicilia.portalefipav.net/mngArea/Societa/img/5347/Loghi/LogoS5347.jpg",
+      "logo": "img/loghi-fipav/5347-LogoS5347.jpg",
       "punti": 28,
       "partite_giocate": 22,
       "vittorie": 9,
@@ -75,7 +75,7 @@
     {
       "posizione": 9,
       "nome": "SSD UNIME",
-      "logo": "https://sicilia.portalefipav.net/mngArea/Societa/img/5059/Loghi/LogoS5059.png",
+      "logo": "img/loghi-fipav/5059-LogoS5059.png",
       "punti": 22,
       "partite_giocate": 22,
       "vittorie": 7,
@@ -84,7 +84,7 @@
     {
       "posizione": 10,
       "nome": "GIARDINI DEL VOLLEY",
-      "logo": "https://sicilia.portalefipav.net/mngArea/Societa/img/5313/Loghi/LogoS5313.jpg",
+      "logo": "img/loghi-fipav/5313-LogoS5313.jpg",
       "punti": 18,
       "partite_giocate": 22,
       "vittorie": 7,
@@ -93,7 +93,7 @@
     {
       "posizione": 11,
       "nome": "ASD NEW VOLLEY TEAM TORREGROTTA",
-      "logo": "https://sicilia.portalefipav.net/mngArea/Societa/img/5051/Loghi/LogoS5051.jpg",
+      "logo": "img/loghi-fipav/5051-LogoS5051.jpg",
       "punti": 6,
       "partite_giocate": 22,
       "vittorie": 2,
@@ -102,14 +102,14 @@
     {
       "posizione": 12,
       "nome": "TEAM VOLLEY MESSINA",
-      "logo": "https://sicilia.portalefipav.net/mngArea/Societa/img/3827/Loghi/LogoS3827.png",
+      "logo": "img/loghi-fipav/3827-LogoS3827.png",
       "punti": 1,
       "partite_giocate": 22,
       "vittorie": 0,
       "sconfitte": 22
     }
   ],
-  "verificataIl": 1791850733,
+  "verificataIl": 1791851291,
   "fonte": "https://sicilia.portalefipav.net/classifica.aspx?CId=85779",
   "stagione": "2025/26",
   "girone": "B"
