@@ -1,0 +1,107 @@
+{
+  "dati": [
+    {
+      "posizione": 1,
+      "nome": "DON ORIONE & CAPACENSE",
+      "logo": "",
+      "punti": 53,
+      "partite_giocate": 20,
+      "vittorie": 17,
+      "sconfitte": 3
+    },
+    {
+      "posizione": 2,
+      "nome": "ASD VOLLEY GIBELLINA 2004",
+      "logo": "",
+      "punti": 50,
+      "partite_giocate": 20,
+      "vittorie": 17,
+      "sconfitte": 3
+    },
+    {
+      "posizione": 3,
+      "nome": "ADG NDT SOLUTIONS - VOLLEY '96",
+      "logo": "",
+      "punti": 45,
+      "partite_giocate": 20,
+      "vittorie": 15,
+      "sconfitte": 5
+    },
+    {
+      "posizione": 4,
+      "nome": "PLAY VOLLEY BARCELLONA",
+      "logo": "",
+      "punti": 45,
+      "partite_giocate": 20,
+      "vittorie": 15,
+      "sconfitte": 5
+    },
+    {
+      "posizione": 5,
+      "nome": "CANTIERI ELEWATT ENTELLO",
+      "logo": "",
+      "punti": 43,
+      "partite_giocate": 20,
+      "vittorie": 14,
+      "sconfitte": 6
+    },
+    {
+      "posizione": 6,
+      "nome": "ESSEPIAUTO A29",
+      "logo": "",
+      "punti": 24,
+      "partite_giocate": 20,
+      "vittorie": 9,
+      "sconfitte": 11
+    },
+    {
+      "posizione": 7,
+      "nome": "NEW GI.CA. SPORT MONREALE",
+      "logo": "",
+      "punti": 22,
+      "partite_giocate": 20,
+      "vittorie": 8,
+      "sconfitte": 12
+    },
+    {
+      "posizione": 8,
+      "nome": "ACQUA SABRINELLA",
+      "logo": "",
+      "punti": 20,
+      "partite_giocate": 20,
+      "vittorie": 6,
+      "sconfitte": 14
+    },
+    {
+      "posizione": 9,
+      "nome": "G.S. PALLAVOLO TERRASINI",
+      "logo": "",
+      "punti": 19,
+      "partite_giocate": 20,
+      "vittorie": 7,
+      "sconfitte": 13
+    },
+    {
+      "posizione": 10,
+      "nome": "ENERGY ITALY POL. LIBERTAS PARTANNA",
+      "logo": "",
+      "punti": 9,
+      "partite_giocate": 20,
+      "vittorie": 2,
+      "sconfitte": 18
+    },
+    {
+      "posizione": 11,
+      "nome": "ORLANDINAVOLLEY",
+      "logo": "",
+      "punti": 0,
+      "partite_giocate": 20,
+      "vittorie": 0,
+      "sconfitte": 20
+    }
+  ],
+  "verificataIl": null,
+  "fonte": "https://sicilia.portalefipav.net/classifica.aspx?CId=85777",
+  "stagione": "2025/26",
+  "girone": "A"
+}

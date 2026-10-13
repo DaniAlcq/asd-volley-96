@@ -1,0 +1,116 @@
+{
+  "dati": [
+    {
+      "posizione": 1,
+      "nome": "NEW AMANDO IONICA VOLLEY",
+      "logo": "",
+      "punti": 60,
+      "partite_giocate": 22,
+      "vittorie": 19,
+      "sconfitte": 3
+    },
+    {
+      "posizione": 2,
+      "nome": "MESSINA VOLLEY",
+      "logo": "",
+      "punti": 56,
+      "partite_giocate": 22,
+      "vittorie": 20,
+      "sconfitte": 2
+    },
+    {
+      "posizione": 3,
+      "nome": "FUTURA VOLLEY SANTA TERESA DI RIVA",
+      "logo": "",
+      "punti": 56,
+      "partite_giocate": 22,
+      "vittorie": 18,
+      "sconfitte": 4
+    },
+    {
+      "posizione": 4,
+      "nome": "POLISPORTIVA NINO ROMANO",
+      "logo": "",
+      "punti": 55,
+      "partite_giocate": 22,
+      "vittorie": 19,
+      "sconfitte": 3
+    },
+    {
+      "posizione": 5,
+      "nome": "FI.MA. FORMAZIONE MILAZZO",
+      "logo": "",
+      "punti": 35,
+      "partite_giocate": 22,
+      "vittorie": 11,
+      "sconfitte": 11
+    },
+    {
+      "posizione": 6,
+      "nome": "PIU' FORMAZIONE BARCELLONA",
+      "logo": "",
+      "punti": 31,
+      "partite_giocate": 22,
+      "vittorie": 10,
+      "sconfitte": 12
+    },
+    {
+      "posizione": 7,
+      "nome": "ASD NEW RANDAZZO VOLLEY 2022",
+      "logo": "",
+      "punti": 28,
+      "partite_giocate": 22,
+      "vittorie": 10,
+      "sconfitte": 12
+    },
+    {
+      "posizione": 8,
+      "nome": "ASD ZAFFERANA VOLLEY",
+      "logo": "",
+      "punti": 28,
+      "partite_giocate": 22,
+      "vittorie": 9,
+      "sconfitte": 13
+    },
+    {
+      "posizione": 9,
+      "nome": "SSD UNIME",
+      "logo": "",
+      "punti": 22,
+      "partite_giocate": 22,
+      "vittorie": 7,
+      "sconfitte": 15
+    },
+    {
+      "posizione": 10,
+      "nome": "GIARDINI DEL VOLLEY",
+      "logo": "",
+      "punti": 18,
+      "partite_giocate": 22,
+      "vittorie": 7,
+      "sconfitte": 15
+    },
+    {
+      "posizione": 11,
+      "nome": "ASD NEW VOLLEY TEAM TORREGROTTA",
+      "logo": "",
+      "punti": 6,
+      "partite_giocate": 22,
+      "vittorie": 2,
+      "sconfitte": 20
+    },
+    {
+      "posizione": 12,
+      "nome": "TEAM VOLLEY MESSINA",
+      "logo": "",
+      "punti": 1,
+      "partite_giocate": 22,
+      "vittorie": 0,
+      "sconfitte": 22
+    }
+  ],
+  "verificataIl": null,
+  "fonte": "https://sicilia.portalefipav.net/classifica.aspx?CId=85779",
+  "stagione": "2025/26",
+  "girone": "B"
+}
