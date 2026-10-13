@@ -2,20 +2,19 @@ name: Aggiorna classifiche FIPAV e pubblica il sito
 
 on:
   workflow_dispatch:
-  # Ogni 3 ore circa; GitHub può posticipare l'avvio programmato.
   schedule:
     - cron: '37 */3 * * *'
-  # Pubblica il sito anche quando lo modifichi manualmente su GitHub.
   push:
-    branches: [main, master]
+    branches: [main]
 
 permissions:
   contents: write
   pages: write
   id-token: write
 
+# Evita che due esecuzioni di QUESTO workflow scrivano insieme sul repository.
 concurrency:
-  group: pages
+  group: volley96-fipav-main
   cancel-in-progress: false
 
 jobs:
@@ -28,6 +27,7 @@ jobs:
       - name: Scarica il repository
         uses: actions/checkout@v4
         with:
+          fetch-depth: 0
           persist-credentials: true
 
       - name: Configura Python
@@ -38,43 +38,84 @@ jobs:
       - name: Installa le librerie
         run: python -m pip install -r scripts/requirements.txt
 
-      - name: Archivia stagioni e aggiorna quella attiva
-        id: recupero
-        continue-on-error: true
-        run: python scripts/aggiorna_classifiche.py
-
-      - name: Aggiorna calendari e risultati FIPAV
-        id: calendari
-        continue-on-error: true
-        run: python scripts/aggiorna_calendari.py
-
-      - name: Salva archivio e loghi nel repository
+      - name: Aggiorna e salva classifiche e calendari senza conflitti
+        shell: bash
         run: |
+          set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          if [ -d data/classifiche ]; then git add data/classifiche/; fi
-          if [ -d data/calendari ]; then git add data/calendari/; fi
-          if [ -d img/loghi-fipav ]; then git add img/loghi-fipav/; fi
-          if ! git diff --cached --quiet; then
-            git commit -m 'Aggiorna classifiche e calendari FIPAV'
-            branch="${GITHUB_REF_NAME:-main}"
-            pushed=false
-            for attempt in 1 2 3 4 5; do
-              echo "Sincronizzazione con origin/$branch (tentativo $attempt/5)"
-              git fetch origin "$branch"
-              # Non forzare il push e non sovrascrivere modifiche remote.
-              git rebase "origin/$branch"
-              if git push origin "HEAD:$branch"; then
-                pushed=true
-                break
-              fi
-              echo "Un altro aggiornamento ha modificato $branch: nuovo tentativo..."
-              sleep 3
-            done
-            if [ "$pushed" != true ]; then
-              echo 'ERRORE: impossibile pubblicare i JSON dopo 5 tentativi.' >&2
-              exit 1
+          branch="${GITHUB_REF_NAME:-main}"
+          pubblicato=false
+
+          # In caso di nuovo commit remoto, si riparte dall'ultimo main e
+          # si RIGENERANO i dati: non si esegue MAI un rebase su JSON generati.
+          for attempt in 1 2 3 4 5; do
+            echo "Aggiornamento, tentativo $attempt/5"
+            git fetch origin "$branch"
+            git reset --hard "origin/$branch"
+
+            # Un problema temporaneo FIPAV non elimina i JSON gia' archiviati.
+            if ! python scripts/aggiorna_classifiche.py; then
+              echo '::warning::Recupero classifiche parziale o non riuscito: dati gia presenti conservati.'
             fi
+            if ! python scripts/aggiorna_calendari.py; then
+              echo '::warning::Recupero calendari parziale o non riuscito: dati gia presenti conservati.'
+            fi
+
+            # Non pubblicare un sito privo dei dati delle stagioni attive.
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+          config = json.loads(Path('data/stagioni.json').read_text(encoding='utf-8'))
+          errors = []
+          for season in config.get('stagioni', []):
+              if season.get('stato') != 'attiva':
+                  continue
+              for root in ('classifiche', 'calendari'):
+                  for category in ('femminile', 'maschile'):
+                      path = Path('data') / root / season['id'] / (category + '.json')
+                      if not path.is_file():
+                          errors.append(str(path) + ' mancante')
+                          continue
+                      try:
+                          obj = json.loads(path.read_text(encoding='utf-8'))
+                          count = len(obj.get('dati', []))
+                          if count == 0:
+                              errors.append(str(path) + ' vuoto')
+                          else:
+                              print(f'{path}: {count} righe')
+                      except (ValueError, TypeError) as exc:
+                          errors.append(str(path) + ': ' + str(exc))
+          for error in errors:
+              print('::error::' + error)
+          if errors:
+              sys.exit(1)
+          PY
+
+            for directory in data/classifiche data/calendari img/loghi-fipav; do
+              if [ -d "$directory" ]; then git add -A -- "$directory"; fi
+            done
+
+            if git diff --cached --quiet; then
+              echo 'Nessuna modifica ai JSON da salvare.'
+              pubblicato=true
+              break
+            fi
+
+            git commit -m 'Aggiorna classifiche e calendari FIPAV'
+            if git push origin "HEAD:$branch"; then
+              echo 'Dati salvati nel repository.'
+              pubblicato=true
+              break
+            fi
+            echo '::warning::Branch aggiornato da un altro processo, ritento da origin/main senza rebase.'
+            sleep 5
+          done
+
+          if [ "$pubblicato" != true ]; then
+            echo '::error::Impossibile salvare i dati dopo 5 tentativi: verificare workflow duplicati e permessi.'
+            exit 1
           fi
 
       - name: Prepara la versione pubblica
@@ -101,15 +142,3 @@ jobs:
       - name: Pubblica GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-      - name: Segnala eventuali errori FIPAV
-        if: steps.recupero.outcome == 'failure'
-        run: |
-          echo 'Il sito è stato pubblicato con i JSON archiviati, ma uno o più aggiornamenti FIPAV non sono riusciti.'
-          exit 1
-
-      - name: Segnala eventuali errori calendario FIPAV
-        if: steps.calendari.outcome == 'failure'
-        run: |
-          echo 'Le classifiche e il sito sono stati pubblicati, ma il recupero dei calendari non è riuscito. Controllare il log del passo Aggiorna calendari.'
-          exit 1
