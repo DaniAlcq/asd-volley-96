@@ -1,0 +1,230 @@
+{
+  "stagione": "2025/26",
+  "girone": "B",
+  "categoria": "femminile",
+  "cid": 85779,
+  "fonte": "https://sicilia.portalefipav.net/risultati-classifiche.aspx?ComitatoId=37&StId=2299&DataDa=&StatoGara=&CId=85779&SId=2225&PId=7306&btFiltro=CERCA",
+  "verificataIl": 1791892026,
+  "dati": [
+    {
+      "gara": 2136,
+      "giornata": 1,
+      "data": "26/10/25",
+      "orario": "18:00",
+      "avversario": "ASD NEW VOLLEY TEAM TORREGROTTA",
+      "logo": "img/loghi-fipav/5051-LogoS5051.jpg",
+      "luogo": "C",
+      "risultato": "3-0"
+    },
+    {
+      "gara": 2143,
+      "giornata": 2,
+      "data": "02/11/25",
+      "orario": "18:00",
+      "avversario": "FUTURA VOLLEY SANTA TERESA DI RIVA",
+      "logo": "img/loghi-fipav/5617-LogoS5617.jpg",
+      "luogo": "T",
+      "risultato": "0-3"
+    },
+    {
+      "gara": 2148,
+      "giornata": 3,
+      "data": "08/11/25",
+      "orario": "19:30",
+      "avversario": "SSD UNIME",
+      "logo": "img/loghi-fipav/5059-LogoS5059.png",
+      "luogo": "T",
+      "risultato": "3-0"
+    },
+    {
+      "gara": 2154,
+      "giornata": 4,
+      "data": "15/11/25",
+      "orario": "18:00",
+      "avversario": "TEAM VOLLEY MESSINA",
+      "logo": "img/loghi-fipav/3827-LogoS3827.png",
+      "luogo": "C",
+      "risultato": "3-0"
+    },
+    {
+      "gara": 2159,
+      "giornata": 5,
+      "data": "23/11/25",
+      "orario": "18:00",
+      "avversario": "ASD NEW RANDAZZO VOLLEY 2022",
+      "logo": "img/loghi-fipav/5230-LogoS5230.jpg",
+      "luogo": "T",
+      "risultato": "3-2"
+    },
+    {
+      "gara": 2165,
+      "giornata": 6,
+      "data": "29/11/25",
+      "orario": "18:00",
+      "avversario": "POLISPORTIVA NINO ROMANO",
+      "logo": "img/loghi-fipav/2227-LogoS2227.jpg",
+      "luogo": "C",
+      "risultato": "0-3"
+    },
+    {
+      "gara": 2170,
+      "giornata": 7,
+      "data": "08/01/26",
+      "orario": "20:30",
+      "avversario": "ASD ZAFFERANA VOLLEY",
+      "logo": "img/loghi-fipav/5347-LogoS5347.jpg",
+      "luogo": "T",
+      "risultato": "3-1"
+    },
+    {
+      "gara": 2176,
+      "giornata": 8,
+      "data": "13/01/26",
+      "orario": "19:45",
+      "avversario": "NEW AMANDO IONICA VOLLEY",
+      "logo": "img/loghi-fipav/5624-LogoS5624.png",
+      "luogo": "C",
+      "risultato": "1-3"
+    },
+    {
+      "gara": 2181,
+      "giornata": 9,
+      "data": "24/01/26",
+      "orario": "18:00",
+      "avversario": "GIARDINI DEL VOLLEY",
+      "logo": "img/loghi-fipav/5313-LogoS5313.jpg",
+      "luogo": "C",
+      "risultato": "2-3"
+    },
+    {
+      "gara": 2187,
+      "giornata": 10,
+      "data": "10/01/26",
+      "orario": "18:00",
+      "avversario": "PIU' FORMAZIONE BARCELLONA",
+      "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
+      "luogo": "C",
+      "risultato": "1-3"
+    },
+    {
+      "gara": 2192,
+      "giornata": 11,
+      "data": "28/01/26",
+      "orario": "20:00",
+      "avversario": "MESSINA VOLLEY",
+      "logo": "img/loghi-fipav/2208-LogoS2208.jpg",
+      "luogo": "T",
+      "risultato": "0-3"
+    },
+    {
+      "gara": 2202,
+      "giornata": 12,
+      "data": "01/02/26",
+      "orario": "18:00",
+      "avversario": "ASD NEW VOLLEY TEAM TORREGROTTA",
+      "logo": "img/loghi-fipav/5051-LogoS5051.jpg",
+      "luogo": "T",
+      "risultato": "3-0"
+    },
+    {
+      "gara": 2209,
+      "giornata": 13,
+      "data": "07/02/26",
+      "orario": "18:00",
+      "avversario": "FUTURA VOLLEY SANTA TERESA DI RIVA",
+      "logo": "img/loghi-fipav/5617-LogoS5617.jpg",
+      "luogo": "C",
+      "risultato": "0-3"
+    },
+    {
+      "gara": 2214,
+      "giornata": 14,
+      "data": "14/02/26",
+      "orario": "18:00",
+      "avversario": "SSD UNIME",
+      "logo": "img/loghi-fipav/5059-LogoS5059.png",
+      "luogo": "C",
+      "risultato": "3-1"
+    },
+    {
+      "gara": 2220,
+      "giornata": 15,
+      "data": "21/02/26",
+      "orario": "19:00",
+      "avversario": "TEAM VOLLEY MESSINA",
+      "logo": "img/loghi-fipav/3827-LogoS3827.png",
+      "luogo": "T",
+      "risultato": "3-0"
+    },
+    {
+      "gara": 2225,
+      "giornata": 16,
+      "data": "28/02/26",
+      "orario": "18:00",
+      "avversario": "ASD NEW RANDAZZO VOLLEY 2022",
+      "logo": "img/loghi-fipav/5230-LogoS5230.jpg",
+      "luogo": "C",
+      "risultato": "2-3"
+    },
+    {
+      "gara": 2231,
+      "giornata": 17,
+      "data": "07/03/26",
+      "orario": "18:00",
+      "avversario": "POLISPORTIVA NINO ROMANO",
+      "logo": "img/loghi-fipav/2227-LogoS2227.jpg",
+      "luogo": "T",
+      "risultato": "2-3"
+    },
+    {
+      "gara": 2236,
+      "giornata": 18,
+      "data": "14/03/26",
+      "orario": "18:00",
+      "avversario": "ASD ZAFFERANA VOLLEY",
+      "logo": "img/loghi-fipav/5347-LogoS5347.jpg",
+      "luogo": "C",
+      "risultato": "3-0"
+    },
+    {
+      "gara": 2242,
+      "giornata": 19,
+      "data": "21/03/26",
+      "orario": "18:00",
+      "avversario": "NEW AMANDO IONICA VOLLEY",
+      "logo": "img/loghi-fipav/5624-LogoS5624.png",
+      "luogo": "T",
+      "risultato": "0-3"
+    },
+    {
+      "gara": 2247,
+      "giornata": 20,
+      "data": "29/03/26",
+      "orario": "18:00",
+      "avversario": "GIARDINI DEL VOLLEY",
+      "logo": "img/loghi-fipav/5313-LogoS5313.jpg",
+      "luogo": "T",
+      "risultato": "3-1"
+    },
+    {
+      "gara": 2253,
+      "giornata": 21,
+      "data": "11/04/26",
+      "orario": "17:00",
+      "avversario": "PIU' FORMAZIONE BARCELLONA",
+      "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
+      "luogo": "T",
+      "risultato": "3-1"
+    },
+    {
+      "gara": 2258,
+      "giornata": 22,
+      "data": "18/04/26",
+      "orario": "18:00",
+      "avversario": "MESSINA VOLLEY",
+      "logo": "img/loghi-fipav/2208-LogoS2208.jpg",
+      "luogo": "C",
+      "risultato": "1-3"
+    }
+  ]
+}
