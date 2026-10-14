@@ -1,4 +1,7 @@
-/* ASD Volley '96 — calendario e risultati FIPAV da JSON GitHub Pages. */
+/* ASD Volley '96 — Calendario FIPAV: risultati in ordine CASA–OSPITE.
+   I JSON storici e correnti sono salvati dal generatore dalla prospettiva
+   Volley '96; per le gare in trasferta il punteggio viene invertito SOLO
+   nella visualizzazione. Non modificare i JSON né lo script Python. */
 (() => {
   'use strict';
   const tbody = document.getElementById('calendar-body');
@@ -22,9 +25,6 @@
       border:1px solid #ff00a7; border-radius:10px; min-width:170px; padding:10px 14px;}
     #calendar-source {text-align:center; font-size:13px; line-height:1.5;
       padding:0 15px; margin:12px auto 25px; opacity:.85;}
-    #calendar-table .location-badge {display:inline-flex; align-items:center;
-      justify-content:center; min-width:26px; height:26px; padding:0 5px;
-      border-radius:6px; background:#1a1a1a; color:#fff; font-weight:700;}
     #calendar-table .avv-wrap {display:flex; align-items:center; gap:8px; min-width:0;}
     #calendar-table .avv-wrap img {object-fit:contain; flex-shrink:0; width:32px; height:32px;}
     #calendar-table .avv-wrap span {min-width:0; overflow-wrap:anywhere;}
@@ -32,7 +32,6 @@
       #calendar-table .avv-wrap {gap:4px;}
       #calendar-table .avv-wrap img {width:22px; height:22px;}
       #calendar-table .avv-wrap span {font-size:11px;}
-      #calendar-table .location-badge {min-width:21px; height:22px; font-size:11px;}
     }
   `;
   document.head.appendChild(css);
@@ -64,7 +63,21 @@
     cell.colSpan = 5;
     tbody.replaceChildren(tr);
   }
-  function draw(rows) {
+  // I JSON attualmente prodotti dal workflow riportano il punteggio di
+  // Volley '96 per primo. FIPAV usa sempre squadra CASA - squadra OSPITE.
+  // Per le partite in trasferta invertiamo i due valori, senza toccare i dati.
+  // Supporta anche eventuali JSON futuri gia' marcati in ordine FIPAV.
+  function risultatoFipav(gara, ordineRisultato) {
+    const raw = String(gara?.risultato ?? '').trim();
+    if (!raw || raw === '-') return '-';
+    const score = raw.match(/^(\d{1,2})\s*[-–—:]\s*(\d{1,2})$/);
+    if (!score) return raw;
+    const [ , primo, secondo ] = score;
+    if (ordineRisultato === 'casa-ospite') return `${primo}-${secondo}`;
+    return gara.luogo === 'T' ? `${secondo}-${primo}` : `${primo}-${secondo}`;
+  }
+
+  function draw(rows, ordineRisultato) {
     const fragment = document.createDocumentFragment();
     for (const r of rows) {
       const tr = document.createElement('tr');
@@ -93,24 +106,19 @@
       tr.appendChild(opp);
       const place = document.createElement('td');
       place.className = 'luogo-cell';
-const iconeLuogo = {
-  C: '/img/house.png',
-  T: '/img/bus.png'
-};
-
-const percorso = iconeLuogo[r.luogo];
-
-if (percorso) {
-  const img = document.createElement('img');
-  img.src = percorso;
-  img.alt = r.luogo === 'C' ? 'Casa' : 'Trasferta';
-  img.className = 'icon-luogo';
-  place.appendChild(img);
-} else {
-  place.textContent = '-';
-}
+      const percorso = r.luogo === 'C' ? 'img/house.png' :
+                        r.luogo === 'T' ? 'img/bus.png' : '';
+      if (percorso) {
+        const icona = document.createElement('img');
+        icona.src = percorso;
+        icona.alt = r.luogo === 'C' ? 'Casa' : 'Trasferta';
+        icona.className = 'icon-luogo';
+        place.appendChild(icona);
+      } else {
+        place.textContent = '-';
+      }
       tr.appendChild(place);
-      td(tr, r.risultato || '-');
+      td(tr, risultatoFipav(r, ordineRisultato));
       fragment.appendChild(tr);
     }
     tbody.replaceChildren(fragment);
@@ -145,12 +153,12 @@ if (percorso) {
       const payload = await loadJson(`data/calendari/${stagione}/${categoria}.json`);
       if (req !== latestRequest) return;
       if (!Array.isArray(payload.dati) || !payload.dati.length) throw new Error('Nessuna gara disponibile');
-      draw(payload.dati);
+      draw(payload.dati, payload.ordineRisultato);
       const last = payload.verificataIl
         ? new Date(payload.verificataIl * 1000).toLocaleString('it-IT', {dateStyle:'short', timeStyle:'short'}) : '';
       source.textContent = `Fonte: FIPAV Sicilia — ${season.etichetta}` +
         (season.stato === 'archiviata' ? ' — archivio storico' : ' — aggiornamento automatico') +
-        (last ? ` — verifica: ${last}` : '') + ' — Risultati dalla prospettiva Volley ’96';
+        (last ? ` — verifica: ${last}` : '') + ' — Risultati nell’ordine casa–ospite (come FIPAV)';
     } catch (e) {
       if (req !== latestRequest) return;
       console.error('Calendario FIPAV:', e);

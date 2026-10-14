@@ -1,0 +1,46 @@
+/* ASD Volley '96 — Foto del Castello di Milazzo nella homepage.
+   Nessun collage. Caricato DOPO v96-clean.css e v96-fixes.css. */
+
+body.v96-index .v96-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: #111215 !important;
+  background-image:
+    linear-gradient(180deg,
+      rgba(12, 13, 17, .28) 0%,
+      rgba(12, 13, 17, .41) 53%,
+      rgba(12, 13, 17, .73) 80%,
+      #111215 100%),
+    linear-gradient(90deg,
+      rgba(12, 13, 17, .55) 0%,
+      rgba(12, 13, 17, .34) 50%,
+      rgba(12, 13, 17, .34) 100%),
+    url('../img/castello-milazzo-hero.jpg') !important;
+  background-position: center, center, center 32% !important;
+  background-size: cover, cover, cover !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Il logo, il titolo e i pulsanti restano sopra la fotografia. */
+body.v96-index .v96-hero .v96-hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Mobile: inquadratura orientata al castello e sfumatura più intensa
+   per garantire contrasto a titoli e pulsanti. */
+@media (max-width: 650px) {
+  body.v96-index .v96-hero {
+    background-image:
+      linear-gradient(180deg,
+        rgba(12, 13, 17, .48) 0%,
+        rgba(12, 13, 17, .59) 58%,
+        #111215 100%),
+      linear-gradient(90deg,
+        rgba(12, 13, 17, .42),
+        rgba(12, 13, 17, .34)),
+      url('../img/castello-milazzo-hero.jpg') !important;
+    background-position: center, center, 34% 40% !important;
+  }
+}

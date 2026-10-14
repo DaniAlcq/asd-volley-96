@@ -1,0 +1,608 @@
+/* ASD Volley '96 — correzioni richieste: homepage, roster, calendario.
+
+   Caricare DOPO v96-clean.css. Font originale Faculty Glyphic invariato. */
+
+
+
+/* Hero neutrale: nessuna squadra privilegiata. */
+
+body.v96-index .v96-hero {
+
+  min-height:clamp(480px,63svh,640px)!important;
+
+  background:radial-gradient(ellipse 35% 40% at 50% 45%,rgba(255,0,167,.11),transparent 85%),
+
+             linear-gradient(145deg,#151518,#0e0e11 65%);
+
+  text-align:center;isolation:isolate;
+
+}
+
+body.v96-index .v96-hero-inner {
+
+  justify-content:center!important;align-items:center!important;
+
+  padding-top:62px!important;padding-bottom:70px!important;
+
+}
+
+body.v96-index .v96-hero-content {width:100%;max-width:760px;padding:0;display:flex;align-items:center;flex-direction:column}
+
+body.v96-index .v96-hero-emblem {
+
+  width:clamp(136px,17vw,205px)!important;height:clamp(136px,17vw,205px)!important;
+
+  object-fit:contain;filter:drop-shadow(0 10px 30px rgba(0,0,0,.3));margin-bottom:20px;
+
+}
+
+body.v96-index .v96-hero h1 {
+
+  font:500 clamp(43px,5.2vw,75px)/1.12 var(--v96-display)!important;
+
+  letter-spacing:-.03em!important;margin:0 0 12px!important;text-align:center!important;
+
+}
+
+body.v96-index .v96-hero-content>p {font-size:clamp(13px,1.3vw,16px)!important;max-width:650px;margin:0 0 26px;text-align:center;color:#d5d4d7}
+
+body.v96-index .v96-hero .v96-actions {justify-content:center!important;gap:10px}
+
+body.v96-index .v96-hero .v96-btn {min-width:130px;justify-content:center;padding:14px 20px}
+
+
+
+/* Notizie: sempre due riquadri equilibrati e titoli sotto controllo. */
+
+body.v96-index .v96-news-grid {display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important}
+
+body.v96-index .v96-news-grid > .v96-news-card,
+
+body.v96-index .v96-news-grid > .v96-news-card:first-child {
+
+  grid-row:auto!important;grid-column:auto!important;
+
+  min-height:0!important;height:clamp(315px,36vw,430px)!important;
+
+  border-radius:10px!important;
+
+}
+
+body.v96-index .v96-news-card-img{object-position:center center}
+
+body.v96-index .v96-news-card::after {inset:0;background:linear-gradient(180deg,rgba(0,0,0,.01) 30%,rgba(0,0,0,.85) 100%)}
+
+body.v96-index .v96-news-card-content{padding:clamp(18px,2.2vw,30px);gap:9px;max-width:100%}
+
+body.v96-index .v96-news-card-content strong {
+
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;
+
+  font:500 clamp(18px,2vw,27px)/1.2 var(--v96-display)!important;
+
+  overflow-wrap:anywhere;text-transform:none!important;letter-spacing:0!important;
+
+}
+
+body.v96-index .v96-news-card-content b {font-size:17px}
+
+
+
+/* Scarabei: due card centrate, grandi e leggibili. */
+
+body.v96-index .v96-scarabei .v96-container{display:flex;flex-direction:column;align-items:center}
+
+body.v96-index .v96-scarabei .v96-section-head {justify-content:center!important;text-align:center!important}
+
+body.v96-index .v96-scarabei .v96-section-head h2{text-align:center!important}
+
+body.v96-index .v96-scarabei-grid {
+
+  width:100%;max-width:940px;margin-inline:auto;
+
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:22px!important;
+
+}
+
+body.v96-index .v96-scarabei-card {
+
+  min-width:0;min-height:0;display:flex!important;flex-direction:column!important;
+
+  align-items:center!important;justify-content:flex-start!important;
+
+  gap:0!important;padding:0!important;overflow:hidden;
+
+  background:white!important;border:1px solid #e2e2e2!important;border-radius:12px!important;
+
+  text-align:center;box-shadow:none;
+
+}
+
+body.v96-index .v96-scarabei-card > img {
+
+  display:block!important;width:100%!important;height:clamp(225px,28vw,345px)!important;
+
+  object-fit:contain!important;object-position:center!important;
+
+  background:linear-gradient(135deg,#262328,#111114);padding:12px;
+
+}
+
+body.v96-index .v96-scarabei-card > div {padding:20px 12px 22px;width:100%}
+
+body.v96-index .v96-scarabei-card strong {
+
+  font:500 clamp(21px,2.3vw,30px)/1.2 var(--v96-display)!important;
+
+  margin-top:6px!important;overflow-wrap:anywhere;
+
+}
+
+body.v96-index .v96-scarabei-card p {font-size:12px!important;color:#76757b!important}
+
+
+
+/* Squadre: intestazione neutrale e cards del roster visibili. */
+
+body.v96-squadre .v96-team-title-band {
+
+  min-height:205px!important;display:flex;align-items:center!important;
+
+  background:linear-gradient(125deg,#1b1920,#0f1012)!important;
+
+}
+
+body.v96-squadre .v96-team-title-band .v96-page-hero-content {position:relative;padding:46px 0!important}
+
+body.v96-squadre .v96-team-title-band h1 {font:500 clamp(42px,5vw,65px)/1.12 var(--v96-display)!important;margin:0 0 12px!important}
+
+body.v96-squadre .v96-roster {min-height:420px!important}
+
+body.v96-squadre #giocatori-list {min-height:160px!important;height:auto!important;display:block!important;opacity:1!important;visibility:visible!important}
+
+body.v96-squadre .v96-roster-filters {position:relative;z-index:2}
+
+body.v96-squadre .v96-roster-filters button {position:relative;pointer-events:auto!important;cursor:pointer!important}
+
+body.v96-squadre .v96-person-grid {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+
+body.v96-squadre .v96-person-card {background:#202024;border:1px solid #333238;border-radius:10px;overflow:hidden;min-width:0}
+
+body.v96-squadre .v96-person-media {aspect-ratio:3/4;background:#26262c;overflow:hidden;display:flex;justify-content:center;align-items:center}
+
+body.v96-squadre .v96-person-media img{width:100%;height:100%;object-fit:cover;object-position:top center}
+
+body.v96-squadre .v96-person-placeholder{font:500 60px/1 var(--v96-display);color:#ff00a7;opacity:.5}
+
+body.v96-squadre .v96-person-details{padding:17px 15px 20px}
+
+body.v96-squadre .v96-person-details h3{font:500 clamp(18px,1.6vw,23px)/1.2 var(--v96-display)!important;color:#fff!important;margin:7px 0 5px!important;overflow-wrap:anywhere}
+
+body.v96-squadre .v96-person-details p{font-size:13px;color:#b7b5bc;margin:0}
+
+body.v96-squadre .v96-person-number{font:600 30px/1.2 var(--v96-body);color:#ff00a7}
+
+body.v96-squadre .v96-roster-status{color:#d5d2d7;padding:20px 0;max-width:700px}
+
+
+
+/* Calendario: rimuove la colonna bianca vuota e stabilizza le proporzioni. */
+
+body.v96-calendario .calendar-wrapper.v96-table-shell {
+
+  display:block!important;width:100%!important;min-width:0!important;
+
+  overflow-x:auto!important;overflow-y:hidden!important;
+
+  background:#f4f3f3!important;border-radius:10px!important;
+
+}
+
+body.v96-calendario .calendar-wrapper.v96-table-shell #calendar-table.table {
+
+  display:table!important;width:100%!important;min-width:100%!important;max-width:none!important;
+
+  table-layout:fixed!important;border-collapse:collapse!important;border-spacing:0!important;margin:0!important;
+
+}
+
+body.v96-calendario #calendar-table col.v96-col-giornata {width:7%}
+
+body.v96-calendario #calendar-table col.v96-col-data {width:21%}
+
+body.v96-calendario #calendar-table col.v96-col-avversario {width:48%}
+
+body.v96-calendario #calendar-table col.v96-col-luogo {width:12%}
+
+body.v96-calendario #calendar-table col.v96-col-risultato {width:12%}
+
+body.v96-calendario #calendar-table :is(th,td) {box-sizing:border-box!important;max-width:none!important;white-space:normal;vertical-align:middle!important}
+
+body.v96-calendario #calendar-table .avversario-cell {min-width:0!important}
+
+body.v96-calendario #calendar-table .avv-wrap {
+
+  display:flex!important;flex-direction:column!important;align-items:center!important;
+
+  justify-content:center!important;gap:9px!important;min-width:0!important;width:100%!important;
+
+}
+
+body.v96-calendario #calendar-table .avv-wrap img,
+
+body.v96-calendario #calendar-table .logo-squadra {height:42px!important;width:42px!important;object-fit:contain!important;flex:0 0 auto!important}
+
+body.v96-calendario #calendar-table .avv-wrap span {min-width:0!important;font-size:14px!important;line-height:1.3;overflow-wrap:anywhere!important;text-align:center!important}
+
+body.v96-calendario #calendar-table .luogo-cell img.icon-luogo {height:30px!important;width:30px!important;object-fit:contain!important;display:block;margin:auto}
+
+body.v96-calendario #calendar-table td {padding:18px 8px!important}
+
+body.v96-calendario .v96-table-legend{font-size:12px;color:#bcb9c0}
+
+
+
+@media(max-width:950px){
+
+  body.v96-squadre .v96-person-grid {grid-template-columns:repeat(3,minmax(0,1fr))}
+
+}
+
+@media(max-width:650px){
+
+  body.v96-index .v96-hero {min-height:530px!important}
+
+  body.v96-index .v96-hero-inner{padding:54px 0!important}
+
+  body.v96-index .v96-hero-emblem{width:155px!important;height:155px!important}
+
+  body.v96-index .v96-hero h1 {font-size:clamp(38px,10vw,55px)!important}
+
+  body.v96-index .v96-hero-content>p{font-size:13px!important}
+
+  body.v96-index .v96-hero .v96-actions {width:100%;flex-direction:row!important;gap:8px!important}
+
+  body.v96-index .v96-hero .v96-btn {flex:1 1 45%;min-width:0;padding:11px 8px;font-size:11px}
+
+  body.v96-index .v96-news-grid {grid-template-columns:1fr!important}
+
+  body.v96-index .v96-news-grid > .v96-news-card,
+
+  body.v96-index .v96-news-grid > .v96-news-card:first-child {height:310px!important}
+
+  body.v96-index .v96-scarabei-grid {grid-template-columns:1fr!important;max-width:460px}
+
+  body.v96-index .v96-scarabei-card > img {height:300px!important}
+
+  body.v96-squadre .v96-person-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+
+  body.v96-squadre .v96-person-details{padding:12px 10px 14px}
+
+  body.v96-squadre .v96-person-details h3{font-size:17px!important}
+
+  body.v96-calendario .calendar-wrapper.v96-table-shell #calendar-table.table {width:100%!important;min-width:0!important}
+
+  body.v96-calendario #calendar-table td{padding:12px 5px!important;font-size:12px!important}
+
+  body.v96-calendario #calendar-table .avv-wrap img{width:32px!important;height:32px!important}
+
+  body.v96-calendario #calendar-table .avv-wrap span{font-size:12px!important}
+
+  body.v96-calendario #calendar-table .luogo-cell img.icon-luogo{width:24px!important;height:24px!important}
+
+  body.v96-calendario .v96-table-legend::after{content:none}
+
+}
+
+@media(max-width:360px){
+
+  body.v96-squadre .v96-person-grid{grid-template-columns:1fr}
+
+}
+
+/* ===== Scarabei di giornata ===== */
+
+
+
+#v96-scarabei-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 28px;
+
+  align-items: stretch;
+
+}
+
+
+
+.v96-scarabei-card {
+
+  background: #ffffff;
+
+  border: 1px solid rgba(0,0,0,0.08);
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+
+/* QUESTO È IL PEZZO IMPORTANTE */
+
+.v96-scarabei-card > img {
+
+  width: 100%;
+
+  height: 520px;              /* puoi aumentare o diminuire */
+
+  display: block;
+
+  object-fit: cover;          /* riempie tutto senza vuoti */
+
+  object-position: center top;/* tiene più visibile la parte alta */
+
+  background: #111;
+
+  margin: 0;
+
+  border: 0;
+
+  padding: 0;
+
+}
+
+
+
+.v96-scarabei-card > div {
+
+  padding: 26px 24px 28px;
+
+  text-align: center;
+
+}
+
+
+
+.v96-scarabei-sub {
+
+  display: block;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  color: #ff00a7;
+
+  margin-bottom: 14px;
+
+  text-transform: none;
+
+}
+
+
+
+.v96-scarabei-card strong {
+
+  display: block;
+
+  font-size: 32px;
+
+  line-height: 1.1;
+
+  color: #111;
+
+  margin-bottom: 10px;
+
+}
+
+
+
+.v96-scarabei-card p {
+
+  margin: 0;
+
+  font-size: 16px;
+
+  color: #666;
+
+}
+
+
+
+@media (max-width: 900px) {
+
+  #v96-scarabei-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+
+  .v96-scarabei-card > img {
+
+    height: 460px;
+
+  }
+
+
+
+  .v96-scarabei-card strong {
+
+    font-size: 28px;
+
+  }
+
+}
+
+
+
+@media (max-width: 640px) {
+
+  .v96-scarabei-card > img {
+
+    height: 380px;
+
+  }
+
+
+
+  .v96-scarabei-card > div {
+
+    padding: 22px 18px 24px;
+
+  }
+
+
+
+  .v96-scarabei-card strong {
+
+    font-size: 24px;
+
+  }
+
+}
+
+/* ===========================================================
+   CALENDARIO MOBILE — RIPRISTINO FLUIDO, 14-10-2026
+   Corregge il 560px fisso nel file originale e impedisce
+   che la colonna RIS. esca dallo schermo.
+   =========================================================== */
+@media (max-width: 700px) {
+  /* L'intera pagina resta dentro la larghezza dello smartphone */
+  html:has(body.v96-calendario),
+  body.v96-calendario {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: clip !important;
+  }
+  body.v96-calendario main,
+  body.v96-calendario .v96-data-section,
+  body.v96-calendario .v96-data-hero,
+  body.v96-calendario .v96-data-section > .v96-container,
+  body.v96-calendario .v96-data-hero > .v96-container,
+  body.v96-calendario .v96-panel-head,
+  body.v96-calendario .v96-data-filters {
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  body.v96-calendario .v96-container {
+    width: calc(100% - 24px) !important;
+    max-width: calc(100% - 24px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  /* Le stagioni e i filtri non spingono fuori il contenuto */
+  body.v96-calendario .calendar-season-picker {
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  body.v96-calendario .calendar-season-picker select {min-width: 118px !important; max-width: 100% !important;}
+  body.v96-calendario .v96-panel-head h2 {font-size: clamp(25px,7vw,33px) !important;}
+  body.v96-calendario .v96-live-indicator {font-size: 9px !important;}
+
+  /* La TABELLA torna al 100% del riquadro, non 560 px */
+  body.v96-calendario .calendar-wrapper.v96-table-shell {
+    display: block !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+  }
+  body.v96-calendario .calendar-wrapper.v96-table-shell table#calendar-table.table {
+    display: table !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+  }
+  /* Suddivisione esatta delle cinque colonne (totale 100%). */
+  body.v96-calendario #calendar-table col.v96-col-giornata {width: 7% !important;}
+  body.v96-calendario #calendar-table col.v96-col-data {width: 21% !important;}
+  body.v96-calendario #calendar-table col.v96-col-avversario {width: 49% !important;}
+  body.v96-calendario #calendar-table col.v96-col-luogo {width: 11% !important;}
+  body.v96-calendario #calendar-table col.v96-col-risultato {width: 12% !important;}
+  body.v96-calendario #calendar-table th:nth-child(1) {width: 7% !important;}
+  body.v96-calendario #calendar-table th:nth-child(2) {width: 21% !important;}
+  body.v96-calendario #calendar-table th:nth-child(3) {width: 49% !important;}
+  body.v96-calendario #calendar-table th:nth-child(4) {width: 11% !important;}
+  body.v96-calendario #calendar-table th:nth-child(5) {width: 12% !important;}
+  body.v96-calendario #calendar-table th,
+  body.v96-calendario #calendar-table td {
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    max-width: none !important;
+    padding: 12px 2px !important;
+    font-size: 10px !important;
+    line-height: 1.3 !important;
+    white-space: normal !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    overflow-wrap: anywhere !important;
+  }
+  body.v96-calendario #calendar-table th {
+    padding: 12px 1px !important;
+    font-size: 9px !important;
+    letter-spacing: 0 !important;
+  }
+  body.v96-calendario #calendar-table .data-cell {font-size: 10px !important; line-height: 1.35 !important;}
+  body.v96-calendario #calendar-table .avv-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 4px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  body.v96-calendario #calendar-table .avv-wrap img,
+  body.v96-calendario #calendar-table .logo-squadra {
+    display: block !important;
+    width: 25px !important;
+    height: 25px !important;
+    max-width: 25px !important;
+    flex: 0 0 25px !important;
+    object-fit: contain !important;
+    margin: 0 auto !important;
+  }
+  body.v96-calendario #calendar-table .avv-wrap span {
+    font-size: 10px !important;
+    line-height: 1.3 !important;
+    overflow-wrap: anywhere !important;
+    white-space: normal !important;
+  }
+  body.v96-calendario #calendar-table .luogo-cell img.icon-luogo {
+    width: 19px !important;
+    height: 19px !important;
+    max-width: 100% !important;
+    display: block !important;
+    margin: auto !important;
+  }
+  body.v96-calendario #calendar-table td:last-child {font-size: 10px !important; white-space: nowrap !important;}
+  body.v96-calendario .v96-table-legend::after {content: none !important;}
+}
+@media (max-width: 360px) {
+  body.v96-calendario #calendar-table th,
+  body.v96-calendario #calendar-table td {font-size: 9px !important; padding-inline: 1px !important;}
+  body.v96-calendario #calendar-table .avv-wrap span {font-size: 9px !important;}
+  body.v96-calendario #calendar-table .luogo-cell img.icon-luogo {width: 17px !important; height: 17px !important;}
+}

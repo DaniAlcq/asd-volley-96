@@ -1,0 +1,496 @@
+/* ASD Volley '96 — header: icone social uniformi e sottolineatura corretta.
+   Caricare DOPO css/v96-clean.css e css/v96-fixes.css. */
+
+/* L'hover non usa più ::after, che riceve posizionamenti da vecchi CSS. */
+body.v96 .header-tot.v96-header #navbar a:not(.v96-nav-live)::before,
+body.v96 .header-tot.v96-header #navbar a:not(.v96-nav-live)::after {
+  content:none!important;display:none!important;
+}
+body.v96 .header-tot.v96-header #navbar a:not(.v96-nav-live) {
+  box-shadow:none!important;
+  border-bottom:2px solid transparent!important;
+  border-radius:0!important;
+  padding:10px 0 8px!important;
+  text-decoration:none!important;
+  transition:color .2s ease,border-color .2s ease!important;
+}
+@media (min-width:801px) {
+  body.v96 .header-tot.v96-header #navbar a:not(.v96-nav-live):is(:hover,:focus-visible,.active,[aria-current="page"]) {
+    border-bottom-color:#ff00a7!important;
+    color:#fff!important;
+  }
+}
+body.v96 .header-tot.v96-header .social-icons {
+  display:flex!important;align-items:center!important;gap:14px!important;
+}
+body.v96 .header-tot.v96-header .social-icons a {
+  display:grid!important;place-items:center!important;
+  width:28px!important;height:28px!important;flex:0 0 28px!important;
+  color:#f4f4f5!important;padding:0!important;margin:0!important;line-height:1!important;
+  opacity:.9;transition:opacity .15s ease,transform .15s ease;
+}
+body.v96 .header-tot.v96-header .social-icons a:hover {opacity:1;transform:none!important}
+body.v96 .header-tot.v96-header .social-icons svg {
+  display:block!important;width:22px!important;height:22px!important;
+  overflow:visible!important;object-fit:contain!important;
+}
+@media (max-width:800px) {
+  body.v96 .header-tot.v96-header #navbar a:not(.v96-nav-live) {
+    padding:13px 0!important;border-bottom:1px solid rgba(255,255,255,.12)!important;
+  }
+  body.v96 .header-tot.v96-header #navbar a:not(.v96-nav-live).active {color:#ff00a7!important}
+}
+
+
+
+/* ================================================================
+   ALLINEAMENTO STRUTTURALE RESPONSIVE — niente translateY / top.
+   Desktop: logo | navigazione centrata | social sulla stessa linea.
+   Mobile: logo | social | hamburger, tutti sulla stessa linea.
+   ================================================================ */
+
+@media (min-width: 801px) {
+  body.v96 .header-tot.v96-header {
+    display: grid !important;
+    grid-template-columns: minmax(190px, 1fr) auto minmax(112px, 1fr) !important;
+    align-items: center !important;
+    column-gap: clamp(12px, 1.6vw, 26px) !important;
+  }
+  body.v96 .header-tot.v96-header > .v96-brand {
+    justify-self: start !important;
+    align-self: center !important;
+  }
+  body.v96 .header-tot.v96-header > #navbar {
+    position: static !important;
+    width: max-content !important;
+    flex: none !important;
+    justify-self: center !important;
+    align-self: center !important;
+    margin: 0 !important;
+  }
+  body.v96 .header-tot.v96-header > .social-icons {
+    position: static !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-self: end !important;
+    align-self: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    top: auto !important;
+    bottom: auto !important;
+  }
+  body.v96 .header-tot.v96-header > #hamburger {
+    display: none !important;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1050px) {
+  body.v96 .header-tot.v96-header {
+    grid-template-columns: minmax(175px, 1fr) auto minmax(100px, 1fr) !important;
+    column-gap: 10px !important;
+  }
+  body.v96 .header-tot.v96-header #navbar { gap: 12px !important; }
+  body.v96 .header-tot.v96-header #navbar a {font-size: 11px !important;}
+}
+
+@media (max-width: 800px) {
+  body.v96 .header-tot.v96-header {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto 38px !important;
+    grid-template-areas: "brand socials hamburger" !important;
+    align-items: center !important;
+    column-gap: 10px !important;
+    justify-content: space-between !important;
+  }
+  body.v96 .header-tot.v96-header > .v96-brand {
+    grid-area: brand;
+    min-width: 0 !important;
+    justify-self: start !important;
+    align-self: center !important;
+    margin: 0 !important;
+  }
+  body.v96 .header-tot.v96-header > .v96-brand .v96-brand-type {
+    font-size: clamp(15px, 3.6vw, 21px) !important;
+    white-space: nowrap !important;
+  }
+  body.v96 .header-tot.v96-header > .v96-brand .brand-logo {
+    width: clamp(36px, 9vw, 45px) !important;
+    height: clamp(36px, 9vw, 45px) !important;
+    max-width: 45px !important;
+  }
+  body.v96 .header-tot.v96-header > .social-icons {
+    grid-area: socials;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    justify-self: end !important;
+    align-self: center !important;
+    gap: clamp(3px, 1.1vw, 9px) !important;
+    flex: none !important;
+    position: static !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    top: auto !important;
+    bottom: auto !important;
+  }
+  body.v96 .header-tot.v96-header .social-icons a {
+    width: 25px !important;
+    height: 28px !important;
+    flex: 0 0 25px !important;
+    transform: none !important;
+  }
+  body.v96 .header-tot.v96-header .social-icons svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  body.v96 .header-tot.v96-header > #hamburger {
+    grid-area: hamburger;
+    display: block !important;
+    position: relative !important;
+    justify-self: center !important;
+    align-self: center !important;
+    margin: 0 !important;
+    padding: 6px 0 !important;
+    width: 38px !important;
+    height: 38px !important;
+    line-height: 1 !important;
+    order: initial !important;
+    transform: none !important;
+  }
+  /* Il menu a tendina resta assoluto: nessun nuovo ingombro nella griglia. */
+  body.v96 .header-tot.v96-header > #navbar {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 410px) {
+  body.v96 .header-tot.v96-header {
+    grid-template-columns: minmax(0, 1fr) auto 32px !important;
+    column-gap: 6px !important;
+    padding-left: 11px !important;
+    padding-right: 11px !important;
+  }
+  body.v96 .header-tot.v96-header > .v96-brand {gap: 6px !important;}
+  body.v96 .header-tot.v96-header > .v96-brand .v96-brand-type {
+    font-size: clamp(13px, 3.6vw, 16px) !important;
+  }
+  body.v96 .header-tot.v96-header > .v96-brand .v96-brand-type small {
+    font-size: 7px !important;
+    letter-spacing: 0 !important;
+  }
+  body.v96 .header-tot.v96-header .social-icons a {
+    width: 22px !important;
+    height: 26px !important;
+    flex-basis: 22px !important;
+  }
+  body.v96 .header-tot.v96-header .social-icons svg {
+    width: 19px !important;
+    height: 19px !important;
+  }
+  body.v96 .header-tot.v96-header > #hamburger {
+    width: 32px !important;
+    height: 34px !important;
+    font-size: 25px !important;
+  }
+}
+
+/* ==============================================================
+   CORREZIONE 14/10/2026 — MENU HAMBURGER SU UN'UNICA RIGA
+   Il pulsante non partecipa più al layout a griglia: viene
+   centrato verticalmente rispetto all'intero header.
+   ============================================================= */
+@media (max-width: 800px) {
+  body.v96 .header-tot.v96-header {
+    position: sticky !important;
+    top: 0 !important;
+    display: flex !important;
+    flex-flow: row nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    min-height: 68px !important;
+    padding: 8px 12px !important;
+    gap: 0 !important;
+    overflow: visible !important;
+  }
+
+  body.v96 .header-tot.v96-header > .v96-brand {
+    display: flex !important;
+    align-items: center !important;
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+    max-width: calc(100% - 142px) !important;
+    margin: 0 !important;
+    align-self: center !important;
+  }
+
+  body.v96 .header-tot.v96-header > .social-icons {
+    position: absolute !important;
+    display: flex !important;
+    flex-flow: row nowrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    top: 50% !important;
+    right: 61px !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: auto !important;
+    height: 30px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: translateY(-50%) !important;
+  }
+
+  body.v96 .header-tot.v96-header .social-icons a {
+    display: grid !important;
+    place-items: center !important;
+    width: 23px !important;
+    height: 28px !important;
+    flex: 0 0 23px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body.v96 .header-tot.v96-header > #hamburger {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: absolute !important;
+    top: 50% !important;
+    right: 12px !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 37px !important;
+    height: 37px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    flex: none !important;
+    float: none !important;
+    order: initial !important;
+    line-height: 1 !important;
+    transform: translateY(-50%) !important;
+    z-index: 3 !important;
+  }
+
+  body.v96 .header-tot.v96-header > #navbar {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+}
+
+/* Su telefoni stretti si riduce il marchio, non si sposta il menu. */
+@media (max-width: 375px) {
+  body.v96 .header-tot.v96-header {
+    padding-inline: 9px !important;
+  }
+  body.v96 .header-tot.v96-header > .v96-brand {
+    gap: 5px !important;
+    max-width: calc(100% - 126px) !important;
+  }
+  body.v96 .header-tot.v96-header > .v96-brand .brand-logo {
+    width: 32px !important;
+    height: 32px !important;
+    max-width: 32px !important;
+  }
+  body.v96 .header-tot.v96-header > .v96-brand .v96-brand-type {
+    font-size: clamp(12px, 3.7vw, 14px) !important;
+  }
+  body.v96 .header-tot.v96-header > .v96-brand .v96-brand-type small {
+    font-size: 6px !important;
+  }
+  body.v96 .header-tot.v96-header > .social-icons {
+    right: 46px !important;
+    gap: 2px !important;
+  }
+  body.v96 .header-tot.v96-header .social-icons a {
+    width: 20px !important;
+    flex-basis: 20px !important;
+  }
+  body.v96 .header-tot.v96-header .social-icons svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  body.v96 .header-tot.v96-header > #hamburger {
+    right: 8px !important;
+    width: 31px !important;
+    height: 34px !important;
+  }
+}
+
+
+/* ===============================================================
+   VOLLEY '96 — FIX MENU INTERMEDIO (tablet / finestre strette)
+   In 801–1200 px la nav desktop non ha spazio e si rompe su più
+   righe sovrapponendosi al titolo. Usa il menu hamburger fino
+   a 1200px; mantieni il desktop originale oltre questa misura.
+   Questa sezione deve rimanere ALLA FINE del CSS.
+   =============================================================== */
+@media (max-width: 1200px) {
+  body.v96 .header-tot.v96-header {
+    display: flex !important;
+    flex-flow: row nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    position: sticky !important;
+    top: 0 !important;
+    min-height: 72px !important;
+    padding: 9px clamp(12px, 2.4vw, 30px) !important;
+    gap: 0 !important;
+    overflow: visible !important;
+  }
+  body.v96 .header-tot.v96-header > .v96-brand {
+    display: flex !important;
+    align-items: center !important;
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+    max-width: calc(100% - 160px) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+  body.v96 .header-tot.v96-header > .social-icons {
+    display: flex !important;
+    flex-flow: row nowrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: absolute !important;
+    top: 50% !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: 67px !important;
+    width: auto !important;
+    height: 30px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 5px !important;
+    transform: translateY(-50%) !important;
+  }
+  body.v96 .header-tot.v96-header .social-icons a {
+    display: grid !important;
+    place-items: center !important;
+    width: 24px !important;
+    height: 28px !important;
+    flex: 0 0 24px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+  body.v96 .header-tot.v96-header .social-icons svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  body.v96 .header-tot.v96-header > #hamburger {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: absolute !important;
+    top: 50% !important;
+    right: 17px !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 38px !important;
+    height: 38px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: none !important;
+    order: initial !important;
+    float: none !important;
+    line-height: 1 !important;
+    transform: translateY(-50%) !important;
+    z-index: 3 !important;
+  }
+  body.v96 .header-tot.v96-header > #navbar {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: calc(100dvh - 70px) !important;
+    overflow-y: auto !important;
+    background: #18161b !important;
+    border: 0 !important;
+    border-bottom: 2px solid #ff00a7 !important;
+    padding: 14px clamp(16px, 4vw, 35px) 20px !important;
+    margin: 0 !important;
+    box-shadow: 0 20px 34px rgba(0,0,0,.42) !important;
+    flex: none !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+    transform: none !important;
+    z-index: 2000 !important;
+  }
+  body.v96 .header-tot.v96-header > #navbar:is(.active, .open, .show, .is-open),
+  body.v96 .header-tot.v96-header > #hamburger[aria-expanded="true"] + #navbar,
+  body.v96 .header-tot.v96-header.menu-open > #navbar {
+    display: flex !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+  body.v96 .header-tot.v96-header #navbar a {
+    display: block !important;
+    width: 100% !important;
+    white-space: normal !important;
+    text-align: left !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    padding: 13px 0 !important;
+    border: 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,.12) !important;
+  }
+  body.v96 .header-tot.v96-header #navbar a.active {
+    color: #ff00a7 !important;
+  }
+}
+@media (max-width: 440px) {
+  body.v96 .header-tot.v96-header {
+    min-height: 68px !important;
+    padding: 8px 10px !important;
+  }
+  body.v96 .header-tot.v96-header > .v96-brand {
+    max-width: calc(100% - 125px) !important;
+    gap: 5px !important;
+  }
+  body.v96 .header-tot.v96-header > .v96-brand img.brand-logo {
+    width: 32px !important;
+    height: 32px !important;
+    max-width: 32px !important;
+  }
+  body.v96 .header-tot.v96-header > .v96-brand .v96-brand-type {
+    font-size: clamp(12px, 3.7vw, 16px) !important;
+  }
+  body.v96 .header-tot.v96-header > .social-icons {
+    right: 46px !important;
+    gap: 2px !important;
+  }
+  body.v96 .header-tot.v96-header .social-icons a {
+    width: 20px !important;
+    flex-basis: 20px !important;
+  }
+  body.v96 .header-tot.v96-header .social-icons svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  body.v96 .header-tot.v96-header > #hamburger {
+    right: 7px !important;
+    width: 32px !important;
+  }
+}
