@@ -1,0 +1,138 @@
+/* ASD Volley '96 — Ritocchi editoriali rosa
+   Caricare come ULTIMO CSS soltanto in index.html, squadre.html, contatti.html.
+   Non interviene su navigazione, dati, tabelle, filtri o componenti FIPAV. */
+:root { --v96-accent-detail: #ff00a7; }
+
+/* Filigrana '96' su Squadre e Contatti, con il font dei titoli esistente. */
+body.v96-squadre .v96-page-hero,
+body.v96-contatti .v96-data-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(135deg,#1b171e 0%,#111215 78%) !important;
+  border-bottom: 1px solid rgba(255,0,167,.24) !important;
+}
+body.v96-squadre .v96-page-hero::after,
+body.v96-contatti .v96-data-hero::before {
+  content: '96';
+  position: absolute;
+  z-index: 0;
+  left: clamp(-70px,-4vw,-24px);
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--v96-display,'Faculty',Georgia,serif);
+  font-weight: 400;
+  font-size: clamp(220px,33vw,600px);
+  line-height: .8;
+  letter-spacing: -.13em;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255,0,167,.23);
+  pointer-events:none;
+  user-select:none;
+}
+/* In Contatti il vecchio ::after è decorativo: lo rimuovo per evitare un secondo 96. */
+body.v96-contatti .v96-data-hero::after { content: none !important; }
+body.v96-squadre .v96-page-hero .v96-container,
+body.v96-contatti .v96-data-hero .v96-container {
+  position:relative;
+  z-index:1;
+}
+body.v96-squadre .v96-page-hero h1,
+body.v96-contatti .v96-data-hero h1 { color:#fff !important; }
+body.v96-squadre .v96-page-hero h1::after,
+body.v96-contatti .v96-data-hero h1::after {
+  content:'';
+  display:block;
+  width:64px;
+  height:3px;
+  margin:16px 0 0;
+  background:var(--v96-accent-detail);
+  border-radius:2px;
+}
+/* Squadre e Contatti — punti fucsia e dettagli misurati. */
+body.v96-squadre .v96-roster .v96-section-head h2::after,
+body.v96-contatti .v96-contact-main h2::after,
+body.v96-contatti .v96-training-section .v96-section-head h2::after {
+  content:'.';
+  color:var(--v96-accent-detail);
+}
+body.v96-squadre .v96-roster-filters .filter-btn.active {
+  box-shadow:0 5px 18px rgba(255,0,167,.16) !important;
+}
+body.v96-contatti .v96-contact-links a:hover strong,
+body.v96-contatti .v96-contact-social a:hover { color:var(--v96-accent-detail) !important; }
+body.v96-contatti .v96-contact-links { border-top-color:rgba(255,0,167,.35); }
+body.v96-contatti .v96-contact-side { border-top:3px solid var(--v96-accent-detail); }
+body.v96-contatti .v96-training-grid article { border-top:2px solid rgba(255,0,167,.55); }
+
+/* Homepage — più rosa nelle intestazioni senza riempire tutto di fucsia. */
+body.v96-index .v96-next .v96-section-head h2::after,
+body.v96-index .v96-news-section .v96-section-head h2::after,
+body.v96-index .v96-teams-section .v96-section-head h2::after,
+body.v96-index .v96-youth .v96-section-head h2::after,
+body.v96-index .v96-scarabei .v96-section-head h2::after,
+body.v96-index .v96-sponsors .v96-section-head h2::after {
+  content:'.';
+  color:var(--v96-accent-detail);
+}
+body.v96-index .v96-section-head h2 { position:relative; }
+body.v96-index .v96-section-head h2::before {
+  content:'';
+  display:block;
+  width:34px;
+  height:3px;
+  margin-bottom:16px;
+  background:var(--v96-accent-detail);
+  border-radius:2px;
+}
+body.v96-index .v96-match-card { border-top:3px solid var(--v96-accent-detail) !important; }
+body.v96-index .v96-match-top .v96-pulse { color:var(--v96-accent-detail) !important; }
+body.v96-index .v96-news-card .v96-news-tag { color:#ff55be !important; }
+body.v96-index .v96-news-card-content b { color:var(--v96-accent-detail); }
+body.v96-index .v96-team-tile .v96-tile-index { color:#ff86d5; }
+body.v96-index .v96-scarabei-sub { color:var(--v96-accent-detail) !important; }
+body.v96-index .v96-text-link:hover { color:var(--v96-accent-detail) !important; }
+body.v96-index .v96-sponsors .v96-sponsor-grid a:hover { border-color:rgba(255,0,167,.55); }
+
+@media (max-width:700px){
+ body.v96-squadre .v96-page-hero::after,
+ body.v96-contatti .v96-data-hero::before {
+  left:-35px;
+  font-size:clamp(210px,65vw,345px);
+  -webkit-text-stroke-width:1.5px;
+ }
+ body.v96-index .v96-section-head h2::before { margin-bottom:10px; width:25px; }
+}
+
+/* FIX FILIGRANA SQUADRE — lo sfondo ::before dei CSS precedenti era sopra al 96 */
+body.v96-squadre section.v96-page-hero.v96-team-title-band::before {
+  z-index: 0 !important;
+}
+body.v96-squadre section.v96-page-hero.v96-team-title-band::after {
+  content: "96" !important;
+  z-index: 1 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  top: 50% !important;
+  left: clamp(-55px, -3vw, -18px) !important;
+  font-family: var(--v96-display, 'Faculty', Georgia, serif) !important;
+  font-weight: 400 !important;
+  font-size: clamp(250px, 32vw, 560px) !important;
+  line-height: .8 !important;
+  color: transparent !important;
+  -webkit-text-stroke: 2px rgba(255,0,167,.42) !important;
+  transform: translateY(-50%) !important;
+  pointer-events: none !important;
+}
+body.v96-squadre section.v96-page-hero.v96-team-title-band .v96-page-hero-content {
+  position: relative !important;
+  z-index: 3 !important;
+}
+@media (max-width: 700px) {
+  body.v96-squadre section.v96-page-hero.v96-team-title-band::after {
+    font-size: clamp(210px, 65vw, 345px) !important;
+    -webkit-text-stroke-width: 1.5px !important;
+  }
+}

@@ -1,0 +1,101 @@
+/* ASD Volley '96 — identità visiva per Calendario e Classifiche
+   Da includere come ULTIMO foglio di stile in entrambe le pagine.
+   Non modifica layout, colonne o dati FIPAV. */
+
+body.v96-calendario .v96-data-hero,
+body.v96-classifiche .v96-data-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1b171e 0%, #101013 78%) !important;
+  border-bottom: 1px solid rgba(255,0,167,.28);
+}
+
+/* Il 96 viene disegnato con lo stesso font dei titoli del sito. */
+body.v96-calendario .v96-data-hero::before,
+body.v96-classifiche .v96-data-hero::before {
+  content: "96";
+  position: absolute;
+  z-index: -1;
+  top: 48%;
+  left: max(-2vw, -35px);
+  transform: translateY(-50%);
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255,0,167,.24);
+  font-family: var(--v96-display, 'Faculty', Georgia, serif);
+  font-size: clamp(240px, 36vw, 660px);
+  font-weight: 400;
+  line-height: .8;
+  letter-spacing: -.13em;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+body.v96-calendario .v96-data-hero .v96-container,
+body.v96-classifiche .v96-data-hero .v96-container {
+  position: relative;
+  z-index: 1;
+}
+body.v96-calendario .v96-data-hero h1,
+body.v96-classifiche .v96-data-hero h1 {
+  color: #faf9fb !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,.22);
+}
+/* Piccolo tratto fucsia, senza cambiare il testo del titolo */
+body.v96-calendario .v96-data-title::after,
+body.v96-classifiche .v96-data-title::after {
+  content: "";
+  display: block;
+  width: 65px;
+  height: 3px;
+  border-radius: 3px;
+  background: #ff00a7;
+  margin: 4px 0 17px;
+}
+body.v96-calendario .v96-data-hero p,
+body.v96-classifiche .v96-data-hero p { color: #d4cdd5 !important; }
+
+/* Ritocchi editoriali rosa, senza toccare larghezza delle tabelle. */
+body.v96-calendario .v96-panel-head h2,
+body.v96-classifiche .v96-panel-head h2 { position: relative; }
+body.v96-calendario .v96-panel-head h2::after,
+body.v96-classifiche .v96-panel-head h2::after {
+  content: ".";
+  color: #ff00a7;
+}
+body.v96-calendario .v96-live-indicator,
+body.v96-classifiche .v96-live-indicator { color: #d1c1cf !important; }
+body.v96-calendario .v96-live-indicator::before,
+body.v96-classifiche .v96-live-indicator::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+  background: #ff00a7;
+}
+body.v96-calendario .v96-table-shell,
+body.v96-classifiche .v96-table-shell {
+  border-top: 3px solid #ff00a7 !important;
+}
+body.v96-calendario .v96-data-filters .filter-btn.active,
+body.v96-classifiche .v96-data-filters .filter-btn.active {
+  box-shadow: 0 5px 22px rgba(255,0,167,.15) !important;
+}
+
+@media (max-width: 700px) {
+  body.v96-calendario .v96-data-hero::before,
+  body.v96-classifiche .v96-data-hero::before {
+    top: 52%; left: -40px;
+    font-size: clamp(230px, 68vw, 350px);
+    -webkit-text-stroke-width: 1.5px;
+  }
+  body.v96-calendario .v96-data-title::after,
+  body.v96-classifiche .v96-data-title::after {
+    width: 42px;
+    height: 2px;
+    margin-bottom: 12px;
+  }
+}
