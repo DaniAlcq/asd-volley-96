@@ -14,7 +14,13 @@
       "avversario": "NEW GI.CA. SPORT MONREALE",
       "logo": "img/loghi-fipav/4439-LogoS4439.jpg",
       "luogo": "T",
-      "risultato": "3-1"
+      "risultato": "3-1",
+      "parziali": [
+        "16-25",
+        "25-20",
+        "17-25",
+        "13-25"
+      ]
     },
     {
       "gara": 1005,
@@ -24,7 +30,12 @@
       "avversario": "DON ORIONE & CAPACENSE",
       "logo": "img/loghi-fipav/2275-LogoS2275.jpg",
       "luogo": "C",
-      "risultato": "0-3"
+      "risultato": "0-3",
+      "parziali": [
+        "22-25",
+        "23-25",
+        "20-25"
+      ]
     },
     {
       "gara": 1010,
@@ -34,7 +45,12 @@
       "avversario": "ORLANDINAVOLLEY",
       "logo": "img/loghi-fipav/5210-LogoS5210.jpg",
       "luogo": "C",
-      "risultato": "3-0"
+      "risultato": "3-0",
+      "parziali": [
+        "25-13",
+        "25-15",
+        "25-21"
+      ]
     },
     {
       "gara": 1016,
@@ -44,7 +60,12 @@
       "avversario": "G.S. PALLAVOLO TERRASINI",
       "logo": "img/loghi-fipav/2262-LogoS2262.jpg",
       "luogo": "T",
-      "risultato": "3-0"
+      "risultato": "3-0",
+      "parziali": [
+        "25-27",
+        "19-25",
+        "19-25"
+      ]
     },
     {
       "gara": 1021,
@@ -54,7 +75,12 @@
       "avversario": "ACQUA SABRINELLA",
       "logo": "img/loghi-fipav/2314-LogoS2314.jpg",
       "luogo": "C",
-      "risultato": "3-0"
+      "risultato": "3-0",
+      "parziali": [
+        "25-22",
+        "25-19",
+        "25-18"
+      ]
     },
     {
       "gara": 1027,
@@ -64,7 +90,13 @@
       "avversario": "ASD VOLLEY GIBELLINA 2004",
       "logo": "img/loghi-fipav/2380-LogoS2380.jpg",
       "luogo": "T",
-      "risultato": "1-3"
+      "risultato": "1-3",
+      "parziali": [
+        "25-19",
+        "25-19",
+        "19-25",
+        "25-22"
+      ]
     },
     {
       "gara": 1037,
@@ -74,7 +106,13 @@
       "avversario": "ENERGY ITALY POL. LIBERTAS PARTANNA",
       "logo": "img/loghi-fipav/2394-LogoS2394.png",
       "luogo": "T",
-      "risultato": "3-1"
+      "risultato": "3-1",
+      "parziali": [
+        "17-25",
+        "21-25",
+        "27-25",
+        "16-25"
+      ]
     },
     {
       "gara": 1042,
@@ -84,7 +122,12 @@
       "avversario": "ESSEPIAUTO A29",
       "logo": "img/loghi-fipav/2391-LogoS2391.jpeg",
       "luogo": "C",
-      "risultato": "3-0"
+      "risultato": "3-0",
+      "parziali": [
+        "25-20",
+        "25-14",
+        "25-14"
+      ]
     },
     {
       "gara": 1048,
@@ -94,7 +137,13 @@
       "avversario": "PLAY VOLLEY BARCELLONA",
       "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
       "luogo": "T",
-      "risultato": "1-3"
+      "risultato": "1-3",
+      "parziali": [
+        "20-25",
+        "31-29",
+        "25-20",
+        "25-22"
+      ]
     },
     {
       "gara": 1053,
@@ -104,7 +153,12 @@
       "avversario": "CANTIERI ELEWATT ENTELLO",
       "logo": "img/loghi-fipav/2396-LogoS2396.jpg",
       "luogo": "C",
-      "risultato": "3-0"
+      "risultato": "3-0",
+      "parziali": [
+        "25-22",
+        "25-22",
+        "25-20"
+      ]
     },
     {
       "gara": 1055,
@@ -114,7 +168,12 @@
       "avversario": "NEW GI.CA. SPORT MONREALE",
       "logo": "img/loghi-fipav/4439-LogoS4439.jpg",
       "luogo": "C",
-      "risultato": "3-0"
+      "risultato": "3-0",
+      "parziali": [
+        "25-19",
+        "25-17",
+        "25-22"
+      ]
     },
     {
       "gara": 1060,
@@ -124,7 +183,13 @@
       "avversario": "DON ORIONE & CAPACENSE",
       "logo": "img/loghi-fipav/2275-LogoS2275.jpg",
       "luogo": "T",
-      "risultato": "1-3"
+      "risultato": "1-3",
+      "parziali": [
+        "25-12",
+        "20-25",
+        "25-17",
+        "25-14"
+      ]
     },
     {
       "gara": 1065,
@@ -134,7 +199,12 @@
       "avversario": "ORLANDINAVOLLEY",
       "logo": "img/loghi-fipav/5210-LogoS5210.jpg",
       "luogo": "T",
-      "risultato": "3-0"
+      "risultato": "3-0",
+      "parziali": [
+        "14-25",
+        "18-25",
+        "17-25"
+      ]
     },
     {
       "gara": 1071,
@@ -144,7 +214,12 @@
       "avversario": "G.S. PALLAVOLO TERRASINI",
       "logo": "img/loghi-fipav/2262-LogoS2262.jpg",
       "luogo": "C",
-      "risultato": "3-0"
+      "risultato": "3-0",
+      "parziali": [
+        "25-23",
+        "25-15",
+        "25-14"
+      ]
     },
     {
       "gara": 1076,
@@ -154,7 +229,12 @@
       "avversario": "ACQUA SABRINELLA",
       "logo": "img/loghi-fipav/2314-LogoS2314.jpg",
       "luogo": "T",
-      "risultato": "3-0"
+      "risultato": "3-0",
+      "parziali": [
+        "20-25",
+        "22-25",
+        "13-25"
+      ]
     },
     {
       "gara": 1082,
@@ -164,7 +244,12 @@
       "avversario": "ASD VOLLEY GIBELLINA 2004",
       "logo": "img/loghi-fipav/2380-LogoS2380.jpg",
       "luogo": "C",
-      "risultato": "3-0"
+      "risultato": "3-0",
+      "parziali": [
+        "25-11",
+        "26-24",
+        "25-18"
+      ]
     },
     {
       "gara": 1092,
@@ -174,7 +259,12 @@
       "avversario": "ENERGY ITALY POL. LIBERTAS PARTANNA",
       "logo": "img/loghi-fipav/2394-LogoS2394.png",
       "luogo": "C",
-      "risultato": "3-0"
+      "risultato": "3-0",
+      "parziali": [
+        "25-23",
+        "25-19",
+        "25-12"
+      ]
     },
     {
       "gara": 1097,
@@ -184,7 +274,12 @@
       "avversario": "ESSEPIAUTO A29",
       "logo": "img/loghi-fipav/2391-LogoS2391.jpeg",
       "luogo": "T",
-      "risultato": "3-0"
+      "risultato": "3-0",
+      "parziali": [
+        "16-25",
+        "18-25",
+        "22-25"
+      ]
     },
     {
       "gara": 1103,
@@ -194,7 +289,14 @@
       "avversario": "PLAY VOLLEY BARCELLONA",
       "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
       "luogo": "C",
-      "risultato": "2-3"
+      "risultato": "2-3",
+      "parziali": [
+        "20-25",
+        "21-25",
+        "25-20",
+        "25-10",
+        "11-15"
+      ]
     },
     {
       "gara": 1108,
@@ -204,7 +306,14 @@
       "avversario": "CANTIERI ELEWATT ENTELLO",
       "logo": "img/loghi-fipav/2396-LogoS2396.jpg",
       "luogo": "T",
-      "risultato": "3-2"
+      "risultato": "3-2",
+      "parziali": [
+        "25-20",
+        "23-25",
+        "25-16",
+        "20-25",
+        "10-15"
+      ]
     }
   ]
 }

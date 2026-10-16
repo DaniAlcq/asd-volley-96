@@ -14,7 +14,12 @@
       "avversario": "ASD NEW VOLLEY TEAM TORREGROTTA",
       "logo": "img/loghi-fipav/5051-LogoS5051.jpg",
       "luogo": "C",
-      "risultato": "3-0"
+      "risultato": "3-0",
+      "parziali": [
+        "25-19",
+        "25-5",
+        "25-17"
+      ]
     },
     {
       "gara": 2143,
@@ -24,7 +29,12 @@
       "avversario": "FUTURA VOLLEY SANTA TERESA DI RIVA",
       "logo": "img/loghi-fipav/5617-LogoS5617.jpg",
       "luogo": "T",
-      "risultato": "0-3"
+      "risultato": "0-3",
+      "parziali": [
+        "25-18",
+        "25-14",
+        "25-23"
+      ]
     },
     {
       "gara": 2148,
@@ -34,7 +44,12 @@
       "avversario": "SSD UNIME",
       "logo": "img/loghi-fipav/5059-LogoS5059.png",
       "luogo": "T",
-      "risultato": "3-0"
+      "risultato": "3-0",
+      "parziali": [
+        "17-25",
+        "23-25",
+        "14-25"
+      ]
     },
     {
       "gara": 2154,
@@ -44,7 +59,12 @@
       "avversario": "TEAM VOLLEY MESSINA",
       "logo": "img/loghi-fipav/3827-LogoS3827.png",
       "luogo": "C",
-      "risultato": "3-0"
+      "risultato": "3-0",
+      "parziali": [
+        "25-14",
+        "25-12",
+        "25-21"
+      ]
     },
     {
       "gara": 2159,
@@ -54,7 +74,14 @@
       "avversario": "ASD NEW RANDAZZO VOLLEY 2022",
       "logo": "img/loghi-fipav/5230-LogoS5230.jpg",
       "luogo": "T",
-      "risultato": "3-2"
+      "risultato": "3-2",
+      "parziali": [
+        "24-26",
+        "23-25",
+        "25-14",
+        "25-15",
+        "13-15"
+      ]
     },
     {
       "gara": 2165,
@@ -64,7 +91,12 @@
       "avversario": "POLISPORTIVA NINO ROMANO",
       "logo": "img/loghi-fipav/2227-LogoS2227.jpg",
       "luogo": "C",
-      "risultato": "0-3"
+      "risultato": "0-3",
+      "parziali": [
+        "19-25",
+        "14-25",
+        "19-25"
+      ]
     },
     {
       "gara": 2170,
@@ -74,7 +106,13 @@
       "avversario": "ASD ZAFFERANA VOLLEY",
       "logo": "img/loghi-fipav/5347-LogoS5347.jpg",
       "luogo": "T",
-      "risultato": "3-1"
+      "risultato": "3-1",
+      "parziali": [
+        "16-25",
+        "20-25",
+        "25-20",
+        "20-25"
+      ]
     },
     {
       "gara": 2176,
@@ -84,7 +122,13 @@
       "avversario": "NEW AMANDO IONICA VOLLEY",
       "logo": "img/loghi-fipav/5624-LogoS5624.png",
       "luogo": "C",
-      "risultato": "1-3"
+      "risultato": "1-3",
+      "parziali": [
+        "24-26",
+        "12-25",
+        "25-22",
+        "15-25"
+      ]
     },
     {
       "gara": 2181,
@@ -94,7 +138,14 @@
       "avversario": "GIARDINI DEL VOLLEY",
       "logo": "img/loghi-fipav/5313-LogoS5313.jpg",
       "luogo": "C",
-      "risultato": "2-3"
+      "risultato": "2-3",
+      "parziali": [
+        "25-22",
+        "25-27",
+        "25-16",
+        "18-25",
+        "7-15"
+      ]
     },
     {
       "gara": 2187,
@@ -104,7 +155,13 @@
       "avversario": "PIU' FORMAZIONE BARCELLONA",
       "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
       "luogo": "C",
-      "risultato": "1-3"
+      "risultato": "1-3",
+      "parziali": [
+        "23-25",
+        "20-25",
+        "25-16",
+        "22-25"
+      ]
     },
     {
       "gara": 2192,
@@ -114,7 +171,12 @@
       "avversario": "MESSINA VOLLEY",
       "logo": "img/loghi-fipav/2208-LogoS2208.jpg",
       "luogo": "T",
-      "risultato": "0-3"
+      "risultato": "0-3",
+      "parziali": [
+        "25-20",
+        "25-11",
+        "25-13"
+      ]
     },
     {
       "gara": 2202,
@@ -124,7 +186,12 @@
       "avversario": "ASD NEW VOLLEY TEAM TORREGROTTA",
       "logo": "img/loghi-fipav/5051-LogoS5051.jpg",
       "luogo": "T",
-      "risultato": "3-0"
+      "risultato": "3-0",
+      "parziali": [
+        "16-25",
+        "20-25",
+        "23-25"
+      ]
     },
     {
       "gara": 2209,
@@ -134,7 +201,12 @@
       "avversario": "FUTURA VOLLEY SANTA TERESA DI RIVA",
       "logo": "img/loghi-fipav/5617-LogoS5617.jpg",
       "luogo": "C",
-      "risultato": "0-3"
+      "risultato": "0-3",
+      "parziali": [
+        "16-25",
+        "19-25",
+        "16-25"
+      ]
     },
     {
       "gara": 2214,
@@ -144,7 +216,13 @@
       "avversario": "SSD UNIME",
       "logo": "img/loghi-fipav/5059-LogoS5059.png",
       "luogo": "C",
-      "risultato": "3-1"
+      "risultato": "3-1",
+      "parziali": [
+        "25-12",
+        "16-25",
+        "25-17",
+        "25-13"
+      ]
     },
     {
       "gara": 2220,
@@ -154,7 +232,12 @@
       "avversario": "TEAM VOLLEY MESSINA",
       "logo": "img/loghi-fipav/3827-LogoS3827.png",
       "luogo": "T",
-      "risultato": "3-0"
+      "risultato": "3-0",
+      "parziali": [
+        "16-25",
+        "12-25",
+        "10-25"
+      ]
     },
     {
       "gara": 2225,
@@ -164,7 +247,14 @@
       "avversario": "ASD NEW RANDAZZO VOLLEY 2022",
       "logo": "img/loghi-fipav/5230-LogoS5230.jpg",
       "luogo": "C",
-      "risultato": "2-3"
+      "risultato": "2-3",
+      "parziali": [
+        "21-25",
+        "25-14",
+        "25-20",
+        "18-25",
+        "9-15"
+      ]
     },
     {
       "gara": 2231,
@@ -174,7 +264,14 @@
       "avversario": "POLISPORTIVA NINO ROMANO",
       "logo": "img/loghi-fipav/2227-LogoS2227.jpg",
       "luogo": "T",
-      "risultato": "2-3"
+      "risultato": "2-3",
+      "parziali": [
+        "22-25",
+        "25-10",
+        "16-25",
+        "25-14",
+        "15-11"
+      ]
     },
     {
       "gara": 2236,
@@ -184,7 +281,12 @@
       "avversario": "ASD ZAFFERANA VOLLEY",
       "logo": "img/loghi-fipav/5347-LogoS5347.jpg",
       "luogo": "C",
-      "risultato": "3-0"
+      "risultato": "3-0",
+      "parziali": [
+        "25-21",
+        "25-14",
+        "25-18"
+      ]
     },
     {
       "gara": 2242,
@@ -194,7 +296,12 @@
       "avversario": "NEW AMANDO IONICA VOLLEY",
       "logo": "img/loghi-fipav/5624-LogoS5624.png",
       "luogo": "T",
-      "risultato": "0-3"
+      "risultato": "0-3",
+      "parziali": [
+        "25-11",
+        "26-24",
+        "25-15"
+      ]
     },
     {
       "gara": 2247,
@@ -204,7 +311,13 @@
       "avversario": "GIARDINI DEL VOLLEY",
       "logo": "img/loghi-fipav/5313-LogoS5313.jpg",
       "luogo": "T",
-      "risultato": "3-1"
+      "risultato": "3-1",
+      "parziali": [
+        "25-22",
+        "19-25",
+        "19-25",
+        "23-25"
+      ]
     },
     {
       "gara": 2253,
@@ -214,7 +327,13 @@
       "avversario": "PIU' FORMAZIONE BARCELLONA",
       "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
       "luogo": "T",
-      "risultato": "3-1"
+      "risultato": "3-1",
+      "parziali": [
+        "25-19",
+        "23-25",
+        "18-25",
+        "25-27"
+      ]
     },
     {
       "gara": 2258,
@@ -224,7 +343,13 @@
       "avversario": "MESSINA VOLLEY",
       "logo": "img/loghi-fipav/2208-LogoS2208.jpg",
       "luogo": "C",
-      "risultato": "1-3"
+      "risultato": "1-3",
+      "parziali": [
+        "14-25",
+        "19-25",
+        "25-23",
+        "19-25"
+      ]
     }
   ]
 }
