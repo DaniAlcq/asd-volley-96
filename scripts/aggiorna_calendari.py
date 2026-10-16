@@ -58,7 +58,7 @@ CATEGORIES = ('femminile', 'maschile')
 
 DEFAULT_CLUB_SID = 2225
 
-STID_KNOWN = {'2026-27': 2417}
+STID_KNOWN = {'2025-26': 2299, '2026-27': 2417}
 
 
 
@@ -457,11 +457,8 @@ def main() -> int:
 
             target = OUTPUT / season['id'] / f'{category}.json'
 
-            if state == 'archiviata' and target.exists():
-
-                print(f'Archivio protetto: {target.relative_to(ROOT)}')
-
-                continue
+            # Anche gli archivi possono essere arricchiti con i parziali,
+            # ma non modifichiamo nessun campo storico gia' salvato.
 
             cid = season['campionati'][category].get('cid')
 
@@ -474,6 +471,27 @@ def main() -> int:
             try:
 
                 rows, source = download_matches(session, cid, season, category)
+
+                if state == 'archiviata' and target.exists():
+                    previous = json.loads(target.read_text(encoding='utf-8'))
+                    old_rows = previous.get('dati', [])
+                    if not isinstance(old_rows, list) or not old_rows:
+                        raise ValueError('Archivio storico vuoto o non valido: nessuna modifica')
+                    fetched = {int(r['gara']): r for r in rows if str(r.get('gara', '')).isdigit()}
+                    added = 0
+                    for old in old_rows:
+                        if not isinstance(old, dict) or not str(old.get('gara', '')).isdigit():
+                            continue
+                        fresh = fetched.get(int(old['gara']))
+                        if (fresh and fresh.get('parziali') and not old.get('parziali')
+                                and str(old.get('risultato', '-')).strip() not in ('', '-')):
+                            old['parziali'] = fresh['parziali']
+                            added += 1
+                    if added:
+                        previous['dati'] = old_rows
+                        write_json(target, previous)
+                    print(f'Archivio {season["id"]}/{category}: parziali aggiunti a {added} gare; altri dati invariati')
+                    continue
 
                 if target.exists() and state == 'attiva':
 
