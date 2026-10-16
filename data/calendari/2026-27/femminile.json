@@ -4,7 +4,7 @@
   "categoria": "femminile",
   "cid": 93277,
   "fonte": "https://sicilia.portalefipav.net/risultati-classifiche.aspx?ComitatoId=37&StId=2417&DataDa=&StatoGara=&CId=93277&SId=2225&PId=7306&btFiltro=CERCA",
-  "verificataIl": 1792117168,
+  "verificataIl": 1792118367,
   "dati": [
     {
       "gara": 2136,
@@ -14,7 +14,8 @@
       "avversario": "ASD ZAFFERANA VOLLEY",
       "logo": "img/loghi-fipav/5347-LogoS5347.jpg",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2142,
@@ -24,7 +25,8 @@
       "avversario": "ASD NEW RANDAZZO VOLLEY 2022",
       "logo": "img/loghi-fipav/5230-LogoS5230.jpg",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2147,
@@ -34,7 +36,8 @@
       "avversario": "PANER LIBERAMENTE ACI CATENA",
       "logo": "img/loghi-fipav/2088-LogoS2088.jpg",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2153,
@@ -44,7 +47,8 @@
       "avversario": "G2ENNE CDO VOLLEY",
       "logo": "img/loghi-fipav/5210-LogoS5210.jpg",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2158,
@@ -54,7 +58,8 @@
       "avversario": "ITERA WARRIORS VIAGRANDE",
       "logo": "img/loghi-fipav/2167-LogoS2167.png",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2164,
@@ -64,7 +69,8 @@
       "avversario": "SPORT VOLLEY LETOJANNI ASD",
       "logo": "img/loghi-fipav/4223-LogoS4223.jpeg",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2169,
@@ -74,7 +80,8 @@
       "avversario": "GIARDINI DEL VOLLEY",
       "logo": "img/loghi-fipav/5313-LogoS5313.jpg",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2175,
@@ -84,7 +91,8 @@
       "avversario": "GOLDEN VOLLEY ACICATENA",
       "logo": "img/loghi-fipav/2156-LogoS2156.jpg",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2180,
@@ -94,7 +102,8 @@
       "avversario": "SSD UNIME",
       "logo": "img/loghi-fipav/5059-LogoS5059.png",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2186,
@@ -104,7 +113,8 @@
       "avversario": "PIU' FORMAZIONE BARCELLONA",
       "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2197,
@@ -114,7 +124,8 @@
       "avversario": "POL. NINO ROMANO",
       "logo": "img/loghi-fipav/2227-LogoS2227.jpg",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2202,
@@ -124,7 +135,8 @@
       "avversario": "ASD ZAFFERANA VOLLEY",
       "logo": "img/loghi-fipav/5347-LogoS5347.jpg",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2208,
@@ -134,7 +146,8 @@
       "avversario": "ASD NEW RANDAZZO VOLLEY 2022",
       "logo": "img/loghi-fipav/5230-LogoS5230.jpg",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2213,
@@ -144,7 +157,8 @@
       "avversario": "PANER LIBERAMENTE ACI CATENA",
       "logo": "img/loghi-fipav/2088-LogoS2088.jpg",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2219,
@@ -154,7 +168,8 @@
       "avversario": "G2ENNE CDO VOLLEY",
       "logo": "img/loghi-fipav/5210-LogoS5210.jpg",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2224,
@@ -164,7 +179,8 @@
       "avversario": "ITERA WARRIORS VIAGRANDE",
       "logo": "img/loghi-fipav/2167-LogoS2167.png",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2230,
@@ -174,7 +190,8 @@
       "avversario": "SPORT VOLLEY LETOJANNI ASD",
       "logo": "img/loghi-fipav/4223-LogoS4223.jpeg",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2235,
@@ -184,7 +201,8 @@
       "avversario": "GIARDINI DEL VOLLEY",
       "logo": "img/loghi-fipav/5313-LogoS5313.jpg",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2241,
@@ -194,7 +212,8 @@
       "avversario": "GOLDEN VOLLEY ACICATENA",
       "logo": "img/loghi-fipav/2156-LogoS2156.jpg",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2246,
@@ -204,7 +223,8 @@
       "avversario": "SSD UNIME",
       "logo": "img/loghi-fipav/5059-LogoS5059.png",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2252,
@@ -214,7 +234,8 @@
       "avversario": "PIU' FORMAZIONE BARCELLONA",
       "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 2263,
@@ -224,7 +245,8 @@
       "avversario": "POL. NINO ROMANO",
       "logo": "img/loghi-fipav/2227-LogoS2227.jpg",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     }
   ]
 }

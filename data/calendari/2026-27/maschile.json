@@ -4,7 +4,7 @@
   "categoria": "maschile",
   "cid": 93417,
   "fonte": "https://sicilia.portalefipav.net/risultati-classifiche.aspx?ComitatoId=37&StId=2417&DataDa=&StatoGara=&CId=93417&SId=2225&PId=7306&btFiltro=CERCA",
-  "verificataIl": 1792117168,
+  "verificataIl": 1792118367,
   "dati": [
     {
       "gara": 1002,
@@ -14,7 +14,8 @@
       "avversario": "GS PALLAVOLO TERRASINI",
       "logo": "img/loghi-fipav/2262-LogoS2262.jpg",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1008,
@@ -24,7 +25,8 @@
       "avversario": "ASD SGM SPADAFORA",
       "logo": "img/loghi-fipav/5476-LogoS5476.jpg",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1013,
@@ -34,7 +36,8 @@
       "avversario": "ESSEPIAUTO A29",
       "logo": "img/loghi-fipav/2391-LogoS2391.jpeg",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1019,
@@ -44,7 +47,8 @@
       "avversario": "TEAM AMBIENTE e SICUREZZA MESSINA",
       "logo": "img/loghi-fipav/3827-LogoS3827.png",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1024,
@@ -54,7 +58,8 @@
       "avversario": "GRUPPO CORRADINO VOLLEY PRIMULA",
       "logo": "img/loghi-fipav/2270-LogoS2270.jpg",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1030,
@@ -64,7 +69,8 @@
       "avversario": "ACQUA SABRINELLA ALTAVILLA MILICIA",
       "logo": "img/loghi-fipav/2314-LogoS2314.jpg",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1036,
@@ -74,7 +80,8 @@
       "avversario": "A.S.D. POL. LIBERTAS PARTANNA",
       "logo": "img/loghi-fipav/2394-LogoS2394.png",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1043,
@@ -84,7 +91,8 @@
       "avversario": "CANTIERI ELEWATT & ARREDI ROMANO",
       "logo": "img/loghi-fipav/2396-LogoS2396.jpg",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1053,
@@ -94,7 +102,8 @@
       "avversario": "PLAY VOLLEY BARCELLONA",
       "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1055,
@@ -104,7 +113,8 @@
       "avversario": "VOLLEY CLUB RIBERA",
       "logo": "img/loghi-fipav/3313-LogoS3313.jpg",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1061,
@@ -114,7 +124,8 @@
       "avversario": "BUILD UP - VOLO PALERMO",
       "logo": "img/loghi-fipav/2287-LogoS2287.png",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1068,
@@ -124,7 +135,8 @@
       "avversario": "GS PALLAVOLO TERRASINI",
       "logo": "img/loghi-fipav/2262-LogoS2262.jpg",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1074,
@@ -134,7 +146,8 @@
       "avversario": "ASD SGM SPADAFORA",
       "logo": "img/loghi-fipav/5476-LogoS5476.jpg",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1079,
@@ -144,7 +157,8 @@
       "avversario": "ESSEPIAUTO A29",
       "logo": "img/loghi-fipav/2391-LogoS2391.jpeg",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1085,
@@ -154,7 +168,8 @@
       "avversario": "TEAM AMBIENTE e SICUREZZA MESSINA",
       "logo": "img/loghi-fipav/3827-LogoS3827.png",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1090,
@@ -164,7 +179,8 @@
       "avversario": "GRUPPO CORRADINO VOLLEY PRIMULA",
       "logo": "img/loghi-fipav/2270-LogoS2270.jpg",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1096,
@@ -174,7 +190,8 @@
       "avversario": "ACQUA SABRINELLA ALTAVILLA MILICIA",
       "logo": "img/loghi-fipav/2314-LogoS2314.jpg",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1102,
@@ -184,7 +201,8 @@
       "avversario": "A.S.D. POL. LIBERTAS PARTANNA",
       "logo": "img/loghi-fipav/2394-LogoS2394.png",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1109,
@@ -194,7 +212,8 @@
       "avversario": "CANTIERI ELEWATT & ARREDI ROMANO",
       "logo": "img/loghi-fipav/2396-LogoS2396.jpg",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1119,
@@ -204,7 +223,8 @@
       "avversario": "PLAY VOLLEY BARCELLONA",
       "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1121,
@@ -214,7 +234,8 @@
       "avversario": "VOLLEY CLUB RIBERA",
       "logo": "img/loghi-fipav/3313-LogoS3313.jpg",
       "luogo": "C",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     },
     {
       "gara": 1127,
@@ -224,7 +245,8 @@
       "avversario": "BUILD UP - VOLO PALERMO",
       "logo": "img/loghi-fipav/2287-LogoS2287.png",
       "luogo": "T",
-      "risultato": "-"
+      "risultato": "-",
+      "parziali": []
     }
   ]
 }
