@@ -1,0 +1,22 @@
+/* ASD Volley '96 – Ultimi risultati, stessa identità visiva delle prossime partite */
+body.v96 .v96-results-section{background:#111215!important;padding:55px 0 82px!important}
+body.v96 .v96-results-section .v96-section-head h2{color:#f5f5f5!important}
+body.v96 .v96-results-section .v96-section-head h2 em{color:#ff00a7;font-style:italic}
+.v96-results-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.v96-result-card{border:1px solid rgba(255,255,255,.16);border-top:3px solid #ff00a7;border-radius:8px;background:#1a1b1f;color:#f7f7f7;display:flex;flex-direction:column;min-width:0;overflow:hidden}
+.v96-result-top{padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #38383b;font-size:12px;font-weight:700}
+.v96-result-round{color:#ff00a7;font-size:11px;white-space:nowrap}
+.v96-result-body{padding:26px 25px 24px;flex:1}
+.v96-result-hint{color:#aaa;font-size:12px;margin:0 0 12px!important}
+.v96-result-opponent{font-size:clamp(19px,2vw,30px);font-weight:600;line-height:1.2;display:block;overflow-wrap:anywhere}
+.v96-result-meta{font-size:12px;color:#b7b7b7;margin:12px 0!important}
+.v96-result-score{display:flex;align-items:baseline;flex-wrap:wrap;gap:12px;margin:18px 0}
+.v96-result-score[hidden]{display:none}
+.v96-result-score strong{color:#ff00a7;font-size:clamp(37px,4vw,58px);line-height:1}
+.v96-result-score small{font-size:11px;color:#aaa}
+.v96-result-sets{min-height:24px}.v96-set-label{display:block;font-size:11px;color:#bbb;margin-bottom:8px}
+.v96-sets-list{display:flex;gap:8px;flex-wrap:wrap}.v96-sets-list span{font-size:12px;background:#292930;border:1px solid #48434c;padding:5px 8px;border-radius:4px;white-space:nowrap}
+.v96-set-missing{font-size:11px;color:#aaa;font-style:italic}
+.v96-result-foot{display:flex;align-items:center;justify-content:space-between;gap:15px;color:#f7f7f7!important;background:#16171a;border-top:1px solid #38383b;padding:16px 23px;font-size:12px;text-decoration:none}
+.v96-result-foot span{color:#ff00a7;font-size:20px}
+@media(max-width:800px){.v96-results-grid{grid-template-columns:1fr}.v96-result-body{padding:23px 20px}.v96-result-top{padding:15px 20px}}

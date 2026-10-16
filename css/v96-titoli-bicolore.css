@@ -1,0 +1,18 @@
+/* ASD Volley '96 — correzione accento fucsia dei titoli
+   Caricare questo foglio PER ULTIMO, dopo gli altri CSS. */
+body.v96 main h1 span.v96-title-accent,
+body.v96 main h2 span.v96-title-accent,
+body.v96-index main .v96-section-head h2 span.v96-title-accent,
+body.v96-squadre main h1 span.v96-title-accent,
+body.v96-squadre main h2 span.v96-title-accent {
+  color: #ff00a7 !important;
+  -webkit-text-fill-color: #ff00a7 !important;
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  font-family: inherit !important;
+  font-style: italic !important;
+  font-weight: inherit !important;
+  opacity: 1 !important;
+}
