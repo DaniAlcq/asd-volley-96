@@ -1,0 +1,70 @@
+/* ASD Volley '96 - tabella classifiche, intestazione senza bordo bianco.
+   Caricare per ultimo nella pagina classifiche.html.
+   Non cambia il calendario. */
+body.v96-classifiche .table-wrapper.v96-table-shell {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  border: 1px solid #353137 !important;
+  background: #252028 !important;
+  overflow: hidden !important;
+  border-radius: 10px !important;
+}
+body.v96-classifiche .table-wrapper.v96-table-shell > table.table {
+  display: table !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  table-layout: fixed !important;
+  border-spacing: 0 !important;
+  border-collapse: collapse !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #f4f2f2 !important;
+  box-sizing: border-box !important;
+}
+body.v96-classifiche .table-wrapper.v96-table-shell thead {
+  display: table-header-group !important;
+  background: #252028 !important;
+}
+body.v96-classifiche .table-wrapper.v96-table-shell tbody {display: table-row-group !important;}
+body.v96-classifiche .table-wrapper.v96-table-shell tr {display: table-row !important;}
+body.v96-classifiche .table-wrapper.v96-table-shell th,
+body.v96-classifiche .table-wrapper.v96-table-shell td {
+  display: table-cell !important;
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+body.v96-classifiche .table-wrapper.v96-table-shell th {
+  background: #252028 !important;
+  color: white !important;
+  padding: 12px 3px !important;
+  border: 0 !important;
+  border-right: 1px solid #444048 !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+}
+body.v96-classifiche .table-wrapper.v96-table-shell th:last-child {border-right: 0 !important;}
+body.v96-classifiche .table-wrapper.v96-table-shell th:nth-child(1) {width: 7% !important;}
+body.v96-classifiche .table-wrapper.v96-table-shell th:nth-child(2) {width: 45% !important;}
+body.v96-classifiche .table-wrapper.v96-table-shell th:nth-child(3),
+body.v96-classifiche .table-wrapper.v96-table-shell th:nth-child(4),
+body.v96-classifiche .table-wrapper.v96-table-shell th:nth-child(5),
+body.v96-classifiche .table-wrapper.v96-table-shell th:nth-child(6) {width: 12% !important;}
+body.v96-classifiche .table-wrapper.v96-table-shell td:nth-child(2) {text-align: left !important;}
+@media(max-width: 650px) {
+  body.v96-classifiche .table-wrapper.v96-table-shell th {padding: 10px 2px !important; font-size: 10px !important;}
+  body.v96-classifiche .table-wrapper.v96-table-shell td {padding: 10px 3px !important; font-size: 10px !important;}
+  body.v96-classifiche .table-wrapper.v96-table-shell td:nth-child(2) {overflow-wrap: anywhere !important;}
+  body.v96-classifiche .table-wrapper.v96-table-shell td:nth-child(2) img {max-width: 23px !important; max-height: 23px !important; object-fit: contain !important;}
+  body.v96-classifiche .table-wrapper.v96-table-shell .team-name {font-size: 10px !important; line-height: 1.25 !important;}
+}
