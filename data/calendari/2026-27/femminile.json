@@ -4,7 +4,7 @@
   "categoria": "femminile",
   "cid": 93277,
   "fonte": "https://sicilia.portalefipav.net/risultati-classifiche.aspx?ComitatoId=37&StId=2417&DataDa=&StatoGara=&CId=93277&SId=2225&PId=7306&btFiltro=CERCA",
-  "verificataIl": 1792858431,
+  "verificataIl": 1792864775,
   "dati": [
     {
       "gara": 2136,
@@ -14,8 +14,14 @@
       "avversario": "ASD ZAFFERANA VOLLEY",
       "logo": "img/loghi-fipav/5347-LogoS5347.jpg",
       "luogo": "T",
-      "risultato": "-",
-      "parziali": []
+      "risultato": "3-2",
+      "parziali": [
+        "25-19",
+        "25-18",
+        "19-25",
+        "18-25",
+        "7-15"
+      ]
     },
     {
       "gara": 2142,
