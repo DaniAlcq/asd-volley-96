@@ -20,6 +20,42 @@
     },
     {
       "posizione": 3,
+      "nome": "ACQUA SABRINELLA ALTAVILLA MILICIA",
+      "logo": "img/loghi-fipav/2314-LogoS2314.jpg",
+      "punti": 3,
+      "partite_giocate": 1,
+      "vittorie": 1,
+      "sconfitte": 0
+    },
+    {
+      "posizione": 4,
+      "nome": "ASD SGM SPADAFORA",
+      "logo": "img/loghi-fipav/5476-LogoS5476.jpg",
+      "punti": 3,
+      "partite_giocate": 1,
+      "vittorie": 1,
+      "sconfitte": 0
+    },
+    {
+      "posizione": 5,
+      "nome": "GRUPPO CORRADINO VOLLEY PRIMULA",
+      "logo": "img/loghi-fipav/2270-LogoS2270.jpg",
+      "punti": 0,
+      "partite_giocate": 1,
+      "vittorie": 0,
+      "sconfitte": 1
+    },
+    {
+      "posizione": 6,
+      "nome": "PLAY VOLLEY BARCELLONA",
+      "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
+      "punti": 0,
+      "partite_giocate": 1,
+      "vittorie": 0,
+      "sconfitte": 1
+    },
+    {
+      "posizione": 7,
       "nome": "A.S.D. POL. LIBERTAS PARTANNA",
       "logo": "img/loghi-fipav/2394-LogoS2394.png",
       "punti": 0,
@@ -28,7 +64,7 @@
       "sconfitte": 1
     },
     {
-      "posizione": 4,
+      "posizione": 8,
       "nome": "ESSEPIAUTO A29",
       "logo": "img/loghi-fipav/2391-LogoS2391.jpeg",
       "punti": 0,
@@ -37,25 +73,7 @@
       "sconfitte": 1
     },
     {
-      "posizione": 5,
-      "nome": "ACQUA SABRINELLA ALTAVILLA MILICIA",
-      "logo": "img/loghi-fipav/2314-LogoS2314.jpg",
-      "punti": 0,
-      "partite_giocate": 0,
-      "vittorie": 0,
-      "sconfitte": 0
-    },
-    {
-      "posizione": 6,
-      "nome": "ASD SGM SPADAFORA",
-      "logo": "img/loghi-fipav/5476-LogoS5476.jpg",
-      "punti": 0,
-      "partite_giocate": 0,
-      "vittorie": 0,
-      "sconfitte": 0
-    },
-    {
-      "posizione": 7,
+      "posizione": 9,
       "nome": "CANTIERI ELEWATT & ARREDI ROMANO",
       "logo": "img/loghi-fipav/2396-LogoS2396.jpg",
       "punti": 0,
@@ -64,16 +82,7 @@
       "sconfitte": 0
     },
     {
-      "posizione": 8,
-      "nome": "GRUPPO CORRADINO VOLLEY PRIMULA",
-      "logo": "img/loghi-fipav/2270-LogoS2270.jpg",
-      "punti": 0,
-      "partite_giocate": 0,
-      "vittorie": 0,
-      "sconfitte": 0
-    },
-    {
-      "posizione": 9,
+      "posizione": 10,
       "nome": "GS PALLAVOLO TERRASINI",
       "logo": "img/loghi-fipav/2262-LogoS2262.jpg",
       "punti": 0,
@@ -82,18 +91,9 @@
       "sconfitte": 0
     },
     {
-      "posizione": 10,
+      "posizione": 11,
       "nome": "PERSEC VOLLEY 96",
       "logo": "img/loghi-fipav/2225-LogoS2225.jpg",
-      "punti": 0,
-      "partite_giocate": 0,
-      "vittorie": 0,
-      "sconfitte": 0
-    },
-    {
-      "posizione": 11,
-      "nome": "PLAY VOLLEY BARCELLONA",
-      "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
       "punti": 0,
       "partite_giocate": 0,
       "vittorie": 0,
@@ -109,7 +109,7 @@
       "sconfitte": 0
     }
   ],
-  "verificataIl": 1792864774,
+  "verificataIl": 1792876213,
   "fonte": "https://sicilia.portalefipav.net/classifica.aspx?CId=93417",
   "stagione": "2026/27",
   "girone": "A"
