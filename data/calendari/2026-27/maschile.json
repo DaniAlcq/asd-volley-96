@@ -4,7 +4,7 @@
   "categoria": "maschile",
   "cid": 93417,
   "fonte": "https://sicilia.portalefipav.net/risultati-classifiche.aspx?ComitatoId=37&StId=2417&DataDa=&StatoGara=&CId=93417&SId=2225&PId=7306&btFiltro=CERCA",
-  "verificataIl": 1792946896,
+  "verificataIl": 1792954238,
   "dati": [
     {
       "gara": 1002,
@@ -14,8 +14,14 @@
       "avversario": "GS PALLAVOLO TERRASINI",
       "logo": "img/loghi-fipav/2262-LogoS2262.jpg",
       "luogo": "T",
-      "risultato": "-",
-      "parziali": []
+      "risultato": "3-2",
+      "parziali": [
+        "25-19",
+        "16-25",
+        "26-24",
+        "13-25",
+        "5-15"
+      ]
     },
     {
       "gara": 1008,
