@@ -2,6 +2,33 @@
   "dati": [
     {
       "posizione": 1,
+      "nome": "ITERA WARRIORS VIAGRANDE",
+      "logo": "img/loghi-fipav/2167-LogoS2167.png",
+      "punti": 6,
+      "partite_giocate": 2,
+      "vittorie": 2,
+      "sconfitte": 0
+    },
+    {
+      "posizione": 2,
+      "nome": "PIU' FORMAZIONE BARCELLONA",
+      "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
+      "punti": 6,
+      "partite_giocate": 2,
+      "vittorie": 2,
+      "sconfitte": 0
+    },
+    {
+      "posizione": 3,
+      "nome": "GOLDEN VOLLEY ACICATENA",
+      "logo": "img/loghi-fipav/2156-LogoS2156.jpg",
+      "punti": 5,
+      "partite_giocate": 2,
+      "vittorie": 2,
+      "sconfitte": 0
+    },
+    {
+      "posizione": 4,
       "nome": "FI.MA. FORMAZIONE MILAZZO",
       "logo": "img/loghi-fipav/2225-LogoS2225.jpg",
       "punti": 5,
@@ -10,40 +37,13 @@
       "sconfitte": 0
     },
     {
-      "posizione": 2,
+      "posizione": 5,
       "nome": "PANER LIBERAMENTE ACI CATENA",
       "logo": "img/loghi-fipav/2088-LogoS2088.jpg",
       "punti": 4,
       "partite_giocate": 2,
       "vittorie": 1,
       "sconfitte": 1
-    },
-    {
-      "posizione": 3,
-      "nome": "ITERA WARRIORS VIAGRANDE",
-      "logo": "img/loghi-fipav/2167-LogoS2167.png",
-      "punti": 3,
-      "partite_giocate": 1,
-      "vittorie": 1,
-      "sconfitte": 0
-    },
-    {
-      "posizione": 4,
-      "nome": "GIARDINI DEL VOLLEY",
-      "logo": "img/loghi-fipav/5313-LogoS5313.jpg",
-      "punti": 3,
-      "partite_giocate": 1,
-      "vittorie": 1,
-      "sconfitte": 0
-    },
-    {
-      "posizione": 5,
-      "nome": "PIU' FORMAZIONE BARCELLONA",
-      "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
-      "punti": 3,
-      "partite_giocate": 1,
-      "vittorie": 1,
-      "sconfitte": 0
     },
     {
       "posizione": 6,
@@ -65,12 +65,12 @@
     },
     {
       "posizione": 8,
-      "nome": "GOLDEN VOLLEY ACICATENA",
-      "logo": "img/loghi-fipav/2156-LogoS2156.jpg",
-      "punti": 2,
-      "partite_giocate": 1,
+      "nome": "GIARDINI DEL VOLLEY",
+      "logo": "img/loghi-fipav/5313-LogoS5313.jpg",
+      "punti": 3,
+      "partite_giocate": 2,
       "vittorie": 1,
-      "sconfitte": 0
+      "sconfitte": 1
     },
     {
       "posizione": 9,
@@ -92,24 +92,24 @@
     },
     {
       "posizione": 11,
-      "nome": "G2ENNE CDO VOLLEY",
-      "logo": "img/loghi-fipav/5210-LogoS5210.jpg",
-      "punti": 0,
-      "partite_giocate": 1,
-      "vittorie": 0,
-      "sconfitte": 1
-    },
-    {
-      "posizione": 12,
       "nome": "SPORT VOLLEY LETOJANNI ASD",
       "logo": "img/loghi-fipav/4223-LogoS4223.jpeg",
       "punti": 0,
-      "partite_giocate": 1,
+      "partite_giocate": 2,
       "vittorie": 0,
-      "sconfitte": 1
+      "sconfitte": 2
+    },
+    {
+      "posizione": 12,
+      "nome": "G2ENNE CDO VOLLEY",
+      "logo": "img/loghi-fipav/5210-LogoS5210.jpg",
+      "punti": 0,
+      "partite_giocate": 2,
+      "vittorie": 0,
+      "sconfitte": 2
     }
   ],
-  "verificataIl": 1793550042,
+  "verificataIl": 1793563280,
   "fonte": "https://sicilia.portalefipav.net/classifica.aspx?CId=93277",
   "stagione": "2026/27",
   "girone": "B"
