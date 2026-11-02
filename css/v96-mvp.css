@@ -1,0 +1,102 @@
+/* Sezione MVP: contenitore nativo del sito */
+.v96-mvp-intro{background:#111215;color:#f8f6f8;padding-block:clamp(30px,5vw,74px)}
+.v96-mvp-intro .v96-section-head{margin-bottom:25px}.v96-mvp-intro .v96-section-head p{color:#c5c1c7;max-width:760px;line-height:1.65;margin-top:13px}
+.v96-mvp-kicker{color:#ff00a7;font-size:12px;font-weight:800;letter-spacing:.15em}
+.v96-mvp-steps{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0 26px}.v96-mvp-steps span{border:1px solid #35343b;padding:13px 18px;background:#1b1b20;color:#eee;border-radius:6px;font-size:13px;font-weight:700}.v96-mvp-steps b{color:#ff00a7;margin-right:9px}
+.v96-mvp-embed{overflow:hidden;background:#111115;border:1px solid #39343c;border-top:3px solid #ff00a7;border-radius:14px}
+.v96-mvp-embed iframe{border:0;display:block;width:100%;height:1150px;background:#111115}
+.v96-mvp-privacy{font-size:12px;color:#a7a2ac;margin-top:18px;line-height:1.6}
+@media(max-width:700px){.v96-mvp-steps{display:grid;grid-template-columns:1fr}.v96-mvp-embed{margin-inline:-9px}.v96-mvp-embed iframe{height:1200px}.v96-mvp-intro{padding-top:30px}}
+
+/* Stato prenotazione e podio gestiti dalla app web incorporata. */
+.v96-mvp-embed iframe{display:block;width:100%;min-height:850px;border:0;background:#111115}
+@media(max-width:650px){.v96-mvp-embed iframe{min-height:950px}}
+
+/* MVP: contenuto mai sovrapposto all'header sticky */
+body.v96-mvp main#contenuto{padding-top:clamp(78px,7vw,102px)}
+body.v96-mvp .v96-page-hero{scroll-margin-top:108px}
+body.v96-mvp .v96-mvp-embed iframe{height:1350px}
+@media(max-width:700px){body.v96-mvp main#contenuto{padding-top:82px}body.v96-mvp .v96-mvp-embed iframe{height:1450px}}
+
+/* Correzione: titolo e hero visibili sotto l'header fisso anche a refresh. */
+body.v96-mvp main#contenuto{padding-top:0}
+body.v96-mvp main#contenuto>.v96-page-hero{padding-top:clamp(90px,9vw,130px)}
+body.v96-mvp .v96-mvp-intro{scroll-margin-top:90px}
+@media(max-width:700px){body.v96-mvp main#contenuto{padding-top:0}body.v96-mvp main#contenuto>.v96-page-hero{padding-top:100px}}
+
+
+/* Hero MVP coerente con Classifiche e Calendario, senza toccare il resto della pagina. */
+body.v96-mvp main#contenuto{padding-top:0!important}
+body.v96-mvp main#contenuto > .v96-data-hero.v96-mvp-hero{
+  position:relative;isolation:isolate;overflow:hidden;
+  display:block;min-height:0;
+  padding:86px 0 85px!important;
+  background:linear-gradient(135deg,#1b171e 0%,#101013 78%)!important;
+  border-bottom:1px solid rgba(255,0,167,.28);
+}
+body.v96-mvp .v96-mvp-hero::before{
+  content:'96';position:absolute;z-index:-1;top:48%;left:max(-2vw,-35px);
+  transform:translateY(-50%);color:transparent;
+  -webkit-text-stroke:2px rgba(255,0,167,.24);
+  font-family:var(--v96-display,'Faculty',Georgia,serif);
+  font-size:clamp(240px,36vw,660px);font-weight:400;line-height:.8;
+  letter-spacing:-.13em;white-space:nowrap;pointer-events:none;user-select:none;
+}
+body.v96-mvp .v96-mvp-hero::after{content:none!important}
+body.v96-mvp .v96-mvp-hero .v96-container{position:relative;z-index:1}
+body.v96-mvp .v96-mvp-hero h1{
+  font:700 clamp(68px,8vw,130px)/1 var(--v96-display)!important;
+  letter-spacing:-.035em!important;color:#faf9fb!important;
+  text-transform:uppercase!important;margin:19px 0 23px!important;
+  text-align:left!important;max-width:none!important;
+  text-shadow:0 2px 12px rgba(0,0,0,.22)!important;
+}
+body.v96-mvp .v96-mvp-hero .v96-data-title::after{
+  content:'';display:block;width:65px;height:3px;border-radius:3px;
+  background:#ff00a7;margin:4px 0 17px;
+}
+body.v96-mvp .v96-mvp-hero .v96-data-title{display:block}
+body.v96-mvp .v96-mvp-hero p{
+  max-width:565px;color:#d4cdd5!important;font-size:15px;
+  line-height:1.8;margin:0;text-align:left!important;
+}
+body.v96-mvp .v96-mvp-intro{background:#101013;padding-top:clamp(30px,5vw,74px)}
+body.v96-mvp .v96-mvp-steps{display:flex}
+@media(max-width:700px){
+  body.v96-mvp main#contenuto > .v96-data-hero.v96-mvp-hero{padding:86px 0 85px!important}
+  body.v96-mvp .v96-mvp-hero::before{top:52%;left:-40px;font-size:clamp(230px,68vw,350px);-webkit-text-stroke-width:1.5px}
+  body.v96-mvp .v96-mvp-hero .v96-data-title::after{width:42px;height:2px;margin-bottom:12px}
+  body.v96-mvp .v96-mvp-steps{display:grid}
+}
+
+/* 2026-11-02 — Introduction merged into the existing compact hero. */
+body.v96-mvp main#contenuto > .v96-data-hero.v96-mvp-hero {
+  padding:clamp(42px,5.5vw,78px) 0 clamp(35px,4.5vw,65px)!important;
+}
+body.v96-mvp .v96-mvp-hero .v96-mvp-kicker {display:block;font-size:12px;font-weight:800;letter-spacing:.16em;color:#ff00a7;margin-bottom:12px}
+body.v96-mvp .v96-mvp-hero h1 {font-family:var(--v96-display,Georgia,serif)!important;font-size:clamp(40px,5.4vw,84px)!important;text-transform:none!important;line-height:1.05!important;margin:0 0 14px!important;letter-spacing:-.025em!important}
+body.v96-mvp .v96-mvp-hero .v96-data-title::after {margin:0 0 18px!important}
+body.v96-mvp .v96-mvp-hero p.v96-mvp-statement {max-width:980px!important;font-size:clamp(20px,2.5vw,35px)!important;line-height:1.22!important;color:#fff!important;font-weight:700!important;letter-spacing:-.02em;margin:0 0 12px!important}
+body.v96-mvp .v96-mvp-hero p.v96-mvp-description {max-width:850px!important;font-size:clamp(14px,1.1vw,16px)!important;line-height:1.6!important;color:#c5c1c7!important;margin:0!important}
+body.v96-mvp .v96-mvp-hero .v96-mvp-steps {margin:22px 0 0;display:flex;gap:10px;flex-wrap:wrap}
+body.v96-mvp .v96-mvp-hero .v96-mvp-steps span {background:rgba(27,27,32,.72);border:1px solid rgba(255,255,255,.15);padding:10px 14px}
+body.v96-mvp .v96-mvp-intro {padding-block:clamp(18px,2vw,30px) 55px!important}
+body.v96-mvp .v96-mvp-hero::before {opacity:.7;z-index:-1}
+@media(max-width:700px){
+ body.v96-mvp main#contenuto > .v96-data-hero.v96-mvp-hero {padding:42px 0 35px!important}
+ body.v96-mvp .v96-mvp-hero .v96-mvp-steps {display:flex;gap:8px}
+ body.v96-mvp .v96-mvp-hero .v96-mvp-steps span {font-size:11px;padding:9px 11px}
+ body.v96-mvp .v96-mvp-intro {padding-top:16px!important}
+}
+
+/* MVP: lo scroll appartiene solo alla pagina principale, non all'iframe. */
+body.v96-mvp .v96-mvp-embed{overflow:visible!important;}
+body.v96-mvp .v96-mvp-embed iframe{
+  display:block;width:100%;height:1700px;min-height:0!important;
+  border:0;overflow:hidden!important;scrollbar-width:none;
+}
+@media(max-width:700px){body.v96-mvp .v96-mvp-embed iframe{height:1950px;min-height:0!important}}
+
+/* Altezza di riserva: il valore effettivo arriva dal contenuto Apps Script. */
+body.v96-mvp .v96-mvp-embed iframe {height:800px;min-height:0!important;}
+@media(max-width:700px){body.v96-mvp .v96-mvp-embed iframe {height:900px;min-height:0!important;}}
