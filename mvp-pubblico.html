@@ -83,5 +83,154 @@
  });
 })();
 </script>
+ 
+<dialog id="v96-confirm-dialog" aria-labelledby="v96-confirm-title">
+  <h2 id="v96-confirm-title">CONFERMA IL VOTO</h2>
+  <p>Vuoi votare <strong id="v96-confirm-name"></strong>?</p>
+  <p>La scelta non potrà essere modificata.</p>
+  <div class="v96-confirm-actions">
+    <button type="button" id="v96-confirm-cancel">Annulla</button>
+    <button type="button" id="v96-confirm-ok">Conferma voto</button>
+  </div>
+</dialog>
+
+<style>
+#v96-confirm-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(420px, calc(100% - 32px));
+  max-height: calc(100dvh - 48px);
+  box-sizing: border-box;
+  padding: 28px 24px;
+  background: #1c1923;
+  color: #fff;
+  border: 1px solid #ff00a7;
+  border-radius: 16px;
+  box-shadow: 0 24px 80px #000a;
+  z-index: 99999;
+}
+#v96-confirm-dialog::backdrop {
+  background: rgba(0, 0, 0, .8);
+  backdrop-filter: blur(8px);
+}
+#v96-confirm-dialog h2 {
+  margin: 0 0 15px;
+  font-size: 27px;
+}
+#v96-confirm-dialog p {
+  color: #d3ced6;
+}
+.v96-confirm-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+.v96-confirm-actions button {
+  flex: 1;
+  padding: 14px 10px;
+  border-radius: 7px;
+  border: 1px solid #555;
+  background: #302d35;
+  color: white;
+  font-weight: 700;
+}
+#v96-confirm-ok {
+  background: #ff00a7;
+  color: #111;
+  border-color: #ff00a7;
+}
+</style>
+
+<script>
+(function () {
+  const dialog = document.getElementById('v96-confirm-dialog');
+  const name = document.getElementById('v96-confirm-name');
+  let request = null;
+  let scrollPosition = 0;
+  let oldStyles = null;
+
+  function trusted(origin) {
+    try {
+      const url = new URL(origin);
+      return url.protocol === 'https:' &&
+        (url.hostname === 'script.google.com' ||
+         url.hostname === 'script.googleusercontent.com' ||
+         url.hostname.endsWith('.googleusercontent.com'));
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function finish(confirmed) {
+    if (!request) return;
+    try {
+      request.source.postMessage({
+        type: 'V96_MODAL_RESULT',
+        id: request.id,
+        confirmed
+      }, request.origin);
+    } catch (_) {}
+
+    request = null;
+    dialog.close();
+
+    if (oldStyles) {
+      document.body.style.position = oldStyles.position;
+      document.body.style.top = oldStyles.top;
+      document.body.style.width = oldStyles.width;
+      document.documentElement.style.overflow = oldStyles.overflow;
+      oldStyles = null;
+      window.scrollTo(0, scrollPosition);
+    }
+  }
+
+  window.addEventListener('message', event => {
+    if (event.data?.type !== 'V96_MODAL_REQUEST') return;
+    if (!trusted(event.origin) || !event.source) return;
+    if (request || typeof event.data.id !== 'string') return;
+
+    request = {
+      source: event.source,
+      origin: event.origin,
+      id: event.data.id
+    };
+
+    name.textContent = String(event.data.atleta || 'questo atleta');
+
+    scrollPosition = window.scrollY;
+    oldStyles = {
+      position: document.body.style.position,
+      top: document.body.style.top,
+      width: document.body.style.width,
+      overflow: document.documentElement.style.overflow
+    };
+
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.width = '100%';
+    document.documentElement.style.overflow = 'hidden';
+
+    dialog.showModal();
+
+    event.source.postMessage({
+      type: 'V96_MODAL_OPENED',
+      id: event.data.id
+    }, event.origin);
+  });
+
+  document.getElementById('v96-confirm-cancel')
+    .addEventListener('click', () => finish(false));
+
+  document.getElementById('v96-confirm-ok')
+    .addEventListener('click', () => finish(true));
+
+  dialog.addEventListener('cancel', event => {
+    event.preventDefault();
+    finish(false);
+  });
+})();
+</script>
+
 </body>
 </html>
