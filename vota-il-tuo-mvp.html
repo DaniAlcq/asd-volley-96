@@ -48,7 +48,7 @@
 
 <p class="v96-mvp-description">Ogni lunedì, dalle 00:00 alle 21:00, vota tra gli atleti selezionati dalla società. Al termine scopri il podio e la classifica completa.</p><div class="v96-mvp-steps"><span><b>01</b> Scegli la squadra</span><span><b>02</b> Seleziona l'atleta</span><span><b>03</b> Conferma il voto</span></div></div>
 </section>
-<section class="v96-section v96-mvp-intro"><div class="v96-container"><div class="v96-mvp-embed"><iframe allow="clipboard-write" id="v96-mvp-frame" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://script.google.com/macros/s/AKfycbxqVfQUvyXu5EbLjhVp5NtYbbPMe0an0TTa1wM1YedRYVQhMXTNjgaJ2WofIt9OciU44g/exec" title="Votazioni MVP del pubblico: schede atleti, voto e classifica"></iframe></div><p class="v96-mvp-privacy">Una preferenza per browser e partita. Questo sistema non garantisce l'identificazione univoca delle persone. La società seleziona gli atleti votabili; i risultati sono pubblicati a votazione terminata.</p></div></section></main>
+<section class="v96-section v96-mvp-intro"><div class="v96-container"><div class="v96-mvp-embed"><iframe allow="clipboard-write" id="v96-mvp-frame" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://script.google.com/macros/s/AKfycbxqVfQUvyXu5EbLjhVp5NtYbbPMe0an0TTa1wM1YedRYVQhMXTNjgaJ2WofIt9OciU44g/exec" title="Votazioni MVP del pubblico: schede atleti, voto e classifica"></iframe></div><p class="v96-mvp-privacy">I risultati sono pubblicati a votazione terminata.</p></div></section></main>
 <footer class="site-footer v96-footer">
 <div class="v96-container v96-footer-main">
 <div class="v96-footer-brand"><img alt="" height="80" src="img/newvolleylogo.png" width="80"/><div><strong>ASD Volley ’96</strong><span>SCARABEI SINCE 1996</span></div></div>
@@ -228,6 +228,42 @@
   dialog.addEventListener('cancel', event => {
     event.preventDefault();
     finish(false);
+  });
+})();
+</script>
+<!-- iOS: riceve lo scorrimento dalla pagina di voto Google Apps Script -->
+<script>
+(function () {
+  const frame = document.getElementById('v96-mvp-frame');
+  if (!frame) return;
+
+  function googleAppOrigin(origin) {
+    try {
+      const url = new URL(origin);
+      const host = url.hostname;
+      return url.protocol === 'https:' &&
+        (host === 'script.google.com' || host === 'script.googleusercontent.com' ||
+         host.endsWith('.googleusercontent.com'));
+    } catch (_) { return false; }
+  }
+
+  window.addEventListener('message', function (event) {
+    const data = event.data;
+    if (!data || !googleAppOrigin(event.origin)) return;
+
+    if (data.type === 'VOLLEY96_SCROLL_HELLO') {
+      try {
+        event.source.postMessage({type:'VOLLEY96_SCROLL_ACK'}, event.origin);
+      } catch (_) {}
+      return;
+    }
+
+    if (data.type === 'VOLLEY96_SCROLL_MOVE') {
+      const delta = Number(data.delta);
+      if (!Number.isFinite(delta) || Math.abs(delta) > 500) return;
+      if (document.getElementById('v96-confirm-dialog')?.open) return;
+      window.scrollBy(0, delta);
+    }
   });
 })();
 </script>
