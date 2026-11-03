@@ -8,7 +8,7 @@
 <meta content="ASD Volley ’96 Milazzo — una storia di passione, sport e comunità dal 1996." name="description"/>
 <link href="/favicon.png" rel="icon" type="image/png"/>
 <link href="/favicon.png" rel="apple-touch-icon"/>
-<title>Il tuo MVP — ASD Volley ’96</title>
+<title>MVP del pubblico — ASD Volley ’96</title>
 <!-- CSS esistente mantenuto per compatibilità con i componenti e gli script attuali -->
 <link href="css/style.css" rel="stylesheet"/>
 <link href="css/style-apple.css" rel="stylesheet"/>
@@ -18,7 +18,7 @@
 <link href="css/v96-header-fix.css?v=20261014-6" rel="stylesheet"/>
 <link href="css/v96-titoli-bicolore.css?v=1" rel="stylesheet"/>
 <link href="css/v96-titoli-bicolore.css?v=2" rel="stylesheet"/>
-<link href="css/v96-mvp.css?v=20261102-scroll-unico" rel="stylesheet"/>
+<link href="css/v96-mvp.css?v=20261103-native" rel="stylesheet"/>
 </head>
 <body class="v96 v96-mvp">
 <a class="v96-skip" href="#contenuto">Vai al contenuto</a>
@@ -48,11 +48,23 @@
 
 <p class="v96-mvp-description">Ogni lunedì, dalle 00:00 alle 21:00, vota tra gli atleti selezionati dalla società. Al termine scopri il podio e la classifica completa.</p><div class="v96-mvp-steps"><span><b>01</b> Scegli la squadra</span><span><b>02</b> Seleziona l'atleta</span><span><b>03</b> Conferma il voto</span></div></div>
 </section>
-<section class="v96-section v96-mvp-intro"><div class="v96-container"><div class="v96-mvp-embed"><iframe allow="clipboard-write" id="v96-mvp-frame" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://script.google.com/macros/s/AKfycbxqVfQUvyXu5EbLjhVp5NtYbbPMe0an0TTa1wM1YedRYVQhMXTNjgaJ2WofIt9OciU44g/exec" title="Votazioni MVP del pubblico: schede atleti, voto e classifica"></iframe></div><p class="v96-mvp-privacy">I risultati sono pubblicati a votazione terminata.</p></div></section></main>
+<section class="v96-section v96-mvp-intro"><div class="v96-container"><div id="v96-mvp-native" class="mvp-native" aria-label="Votazioni MVP del pubblico">
+  <p class="mvp-instructions">Il campo ha parlato. Ora tocca a te. Scegli il tuo MVP di giornata.</p>
+  <div class="mvp-tabs" role="group" aria-label="Scegli la squadra">
+    <button type="button" data-mvp-team="femminile" aria-pressed="true">SERIE C FEMMINILE</button>
+    <button type="button" data-mvp-team="maschile" aria-pressed="false">SERIE C MASCHILE</button>
+  </div>
+  <div id="v96-mvp-content" aria-live="polite">
+    <div class="mvp-loading" role="status"><span class="mvp-spinner" aria-hidden="true"></span> Caricamento votazioni…</div>
+    <div class="mvp-skeleton-grid" aria-hidden="true"><div></div><div></div><div></div></div>
+  </div>
+  <p id="v96-mvp-feedback" class="mvp-feedback" role="status" aria-live="polite"></p>
+</div>
+<p class="v96-mvp-privacy">I risultati saranno pubblicati a votazione terminata.</p></div></section></main>
 <footer class="site-footer v96-footer">
 <div class="v96-container v96-footer-main">
 <div class="v96-footer-brand"><img alt="" height="80" src="img/newvolleylogo.png" width="80"/><div><strong>ASD Volley ’96</strong><span>SCARABEI SINCE 1996</span></div></div>
-<div class="v96-footer-links"><span class="v96-eyebrow">Pagine</span><a href="squadre.html">Le squadre</a><a href="calendario.html">Calendario e risultati</a><a href="classifiche.html">Classifiche</a><a href="contatti.html">Contatti</a><a href="mvp-pubblico.html">MVP del pubblico</a></div>
+<div class="v96-footer-links"><span class="v96-eyebrow">Pagine</span><a href="squadre.html">Le squadre</a><a href="calendario.html">Calendario e risultati</a><a href="classifiche.html">Classifiche</a><a href="contatti.html">Contatti</a><a href="vota-il-tuo-mvp.html">Vota il tuo MVP</a></div>
 <div class="v96-footer-links"><span class="v96-eyebrow">Social</span><a href="https://www.instagram.com/a.s.d.volley96/" rel="noopener noreferrer" target="_blank">Instagram ↗</a><a href="https://www.facebook.com/asdvolley96" rel="noopener noreferrer" target="_blank">Facebook ↗</a><a href="https://www.youtube.com/@ASD_VOLLEY96" rel="noopener noreferrer" target="_blank">YouTube ↗</a></div>
 </div>
 <div class="v96-container v96-footer-bottom"><p>© <span id="year">2026</span> ASD VOLLEY 96 — Tutti i diritti riservati</p><p>Web design &amp; sviluppo © 2025 <a href="mailto:danilo.lcq@gmail.com">Danilo Alacqua</a></p></div>
@@ -64,209 +76,15 @@
 <script>document.addEventListener('DOMContentLoaded',function(){const y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();});</script>
 <script defer="" src="js/v96-titoli-bicolore.js?v=1"></script>
 
-<script>
-(function(){
- const frame=document.getElementById('v96-mvp-frame');
- if(!frame)return;
- window.addEventListener('message',function(event){
-   if(!event.data||event.data.type!=='VOLLEY96_MVP_HEIGHT')return;
-   try{
-     const host=new URL(event.origin).hostname;
-     if(!(host==='script.google.com'||host==='script.googleusercontent.com'||host.endsWith('.googleusercontent.com')))return;
-   }catch(e){return;}
-   const value=Number(event.data.height);
-   if(!Number.isFinite(value)||value<200||value>12000)return;
-   const target=Math.ceil(value);
-   const current=parseFloat(frame.style.height)||0;
-   if(Math.abs(target-current)<4)return;
-   frame.style.height=target+'px';
- });
-})();
-</script>
- 
-<dialog id="v96-confirm-dialog" aria-labelledby="v96-confirm-title">
-  <h2 id="v96-confirm-title">CONFERMA IL VOTO</h2>
-  <p>Vuoi votare <strong id="v96-confirm-name"></strong>?</p>
-  <p>La scelta non potrà essere modificata.</p>
-  <div class="v96-confirm-actions">
-    <button type="button" id="v96-confirm-cancel">Annulla</button>
-    <button type="button" id="v96-confirm-ok">Conferma voto</button>
+<dialog id="v96-mvp-dialog" aria-labelledby="v96-mvp-dialog-title" aria-modal="true">
+  <h2 id="v96-mvp-dialog-title">CONFERMA IL VOTO</h2>
+  <p>Confermi il voto per <strong id="v96-mvp-dialog-name"></strong>? La tua scelta non potrà essere modificata.</p>
+  <div class="mvp-confirm-actions">
+    <button type="button" id="v96-mvp-cancel">Annulla</button>
+    <button type="button" id="v96-mvp-confirm">CONFERMA VOTO</button>
   </div>
 </dialog>
-
-<style>
-#v96-confirm-dialog {
-  position: fixed;
-  inset: 0;
-  margin: auto;
-  width: min(420px, calc(100% - 32px));
-  max-height: calc(100dvh - 48px);
-  box-sizing: border-box;
-  padding: 28px 24px;
-  background: #1c1923;
-  color: #fff;
-  border: 1px solid #ff00a7;
-  border-radius: 16px;
-  box-shadow: 0 24px 80px #000a;
-  z-index: 99999;
-}
-#v96-confirm-dialog::backdrop {
-  background: rgba(0, 0, 0, .8);
-  backdrop-filter: blur(8px);
-}
-#v96-confirm-dialog h2 {
-  margin: 0 0 15px;
-  font-size: 27px;
-}
-#v96-confirm-dialog p {
-  color: #d3ced6;
-}
-.v96-confirm-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 24px;
-}
-.v96-confirm-actions button {
-  flex: 1;
-  padding: 14px 10px;
-  border-radius: 7px;
-  border: 1px solid #555;
-  background: #302d35;
-  color: white;
-  font-weight: 700;
-}
-#v96-confirm-ok {
-  background: #ff00a7;
-  color: #111;
-  border-color: #ff00a7;
-}
-</style>
-
-<script>
-(function () {
-  const dialog = document.getElementById('v96-confirm-dialog');
-  const name = document.getElementById('v96-confirm-name');
-  let request = null;
-  let scrollPosition = 0;
-  let oldStyles = null;
-
-  function trusted(origin) {
-    try {
-      const url = new URL(origin);
-      return url.protocol === 'https:' &&
-        (url.hostname === 'script.google.com' ||
-         url.hostname === 'script.googleusercontent.com' ||
-         url.hostname.endsWith('.googleusercontent.com'));
-    } catch (_) {
-      return false;
-    }
-  }
-
-  function finish(confirmed) {
-    if (!request) return;
-    try {
-      request.source.postMessage({
-        type: 'V96_MODAL_RESULT',
-        id: request.id,
-        confirmed
-      }, request.origin);
-    } catch (_) {}
-
-    request = null;
-    dialog.close();
-
-    if (oldStyles) {
-      document.body.style.position = oldStyles.position;
-      document.body.style.top = oldStyles.top;
-      document.body.style.width = oldStyles.width;
-      document.documentElement.style.overflow = oldStyles.overflow;
-      oldStyles = null;
-      window.scrollTo(0, scrollPosition);
-    }
-  }
-
-  window.addEventListener('message', event => {
-    if (event.data?.type !== 'V96_MODAL_REQUEST') return;
-    if (!trusted(event.origin) || !event.source) return;
-    if (request || typeof event.data.id !== 'string') return;
-
-    request = {
-      source: event.source,
-      origin: event.origin,
-      id: event.data.id
-    };
-
-    name.textContent = String(event.data.atleta || 'questo atleta');
-
-    scrollPosition = window.scrollY;
-    oldStyles = {
-      position: document.body.style.position,
-      top: document.body.style.top,
-      width: document.body.style.width,
-      overflow: document.documentElement.style.overflow
-    };
-
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollPosition}px`;
-    document.body.style.width = '100%';
-    document.documentElement.style.overflow = 'hidden';
-
-    dialog.showModal();
-
-    event.source.postMessage({
-      type: 'V96_MODAL_OPENED',
-      id: event.data.id
-    }, event.origin);
-  });
-
-  document.getElementById('v96-confirm-cancel')
-    .addEventListener('click', () => finish(false));
-
-  document.getElementById('v96-confirm-ok')
-    .addEventListener('click', () => finish(true));
-
-  dialog.addEventListener('cancel', event => {
-    event.preventDefault();
-    finish(false);
-  });
-})();
-</script>
-<!-- iOS: riceve lo scorrimento dalla pagina di voto Google Apps Script -->
-<script>
-(function () {
-  const frame = document.getElementById('v96-mvp-frame');
-  if (!frame) return;
-
-  function googleAppOrigin(origin) {
-    try {
-      const url = new URL(origin);
-      const host = url.hostname;
-      return url.protocol === 'https:' &&
-        (host === 'script.google.com' || host === 'script.googleusercontent.com' ||
-         host.endsWith('.googleusercontent.com'));
-    } catch (_) { return false; }
-  }
-
-  window.addEventListener('message', function (event) {
-    const data = event.data;
-    if (!data || !googleAppOrigin(event.origin)) return;
-
-    if (data.type === 'VOLLEY96_SCROLL_HELLO') {
-      try {
-        event.source.postMessage({type:'VOLLEY96_SCROLL_ACK'}, event.origin);
-      } catch (_) {}
-      return;
-    }
-
-    if (data.type === 'VOLLEY96_SCROLL_MOVE') {
-      const delta = Number(data.delta);
-      if (!Number.isFinite(delta) || Math.abs(delta) > 500) return;
-      if (document.getElementById('v96-confirm-dialog')?.open) return;
-      window.scrollBy(0, delta);
-    }
-  });
-})();
-</script>
-
+<!-- Interfaccia nativa: Apps Script e Google Sheets sono accessibili tramite richieste web. -->
+<script defer src="js/v96-mvp.js?v=20261103-testi"></script>
 </body>
 </html>
