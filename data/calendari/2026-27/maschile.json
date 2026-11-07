@@ -4,7 +4,7 @@
   "categoria": "maschile",
   "cid": 93417,
   "fonte": "https://sicilia.portalefipav.net/risultati-classifiche.aspx?ComitatoId=37&StId=2417&DataDa=&StatoGara=&CId=93417&SId=2225&PId=7306&btFiltro=CERCA",
-  "verificataIl": 1794073866,
+  "verificataIl": 1794089803,
   "dati": [
     {
       "gara": 1002,
@@ -46,8 +46,13 @@
       "avversario": "ESSEPIAUTO A29",
       "logo": "img/loghi-fipav/2391-LogoS2391.jpeg",
       "luogo": "T",
-      "risultato": "-",
-      "parziali": []
+      "risultato": "3-1",
+      "parziali": [
+        "15-25",
+        "25-16",
+        "20-25",
+        "18-25"
+      ]
     },
     {
       "gara": 1019,
