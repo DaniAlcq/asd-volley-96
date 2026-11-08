@@ -4,7 +4,7 @@
   "categoria": "femminile",
   "cid": 93277,
   "fonte": "https://sicilia.portalefipav.net/risultati-classifiche.aspx?ComitatoId=37&StId=2417&DataDa=&StatoGara=&CId=93277&SId=2225&PId=7306&btFiltro=CERCA",
-  "verificataIl": 1794154682,
+  "verificataIl": 1794176896,
   "dati": [
     {
       "gara": 2136,
@@ -46,8 +46,12 @@
       "avversario": "PANER LIBERAMENTE ACI CATENA",
       "logo": "img/loghi-fipav/2088-LogoS2088.jpg",
       "luogo": "T",
-      "risultato": "-",
-      "parziali": []
+      "risultato": "3-0",
+      "parziali": [
+        "20-25",
+        "15-25",
+        "11-25"
+      ]
     },
     {
       "gara": 2153,
