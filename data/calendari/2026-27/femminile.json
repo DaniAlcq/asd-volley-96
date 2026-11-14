@@ -4,7 +4,7 @@
   "categoria": "femminile",
   "cid": 93277,
   "fonte": "https://sicilia.portalefipav.net/risultati-classifiche.aspx?ComitatoId=37&StId=2417&DataDa=&StatoGara=&CId=93277&SId=2225&PId=7306&btFiltro=CERCA",
-  "verificataIl": 1794653611,
+  "verificataIl": 1794680900,
   "dati": [
     {
       "gara": 2136,
@@ -61,8 +61,12 @@
       "avversario": "G2ENNE CDO VOLLEY",
       "logo": "img/loghi-fipav/5210-LogoS5210.jpg",
       "luogo": "C",
-      "risultato": "-",
-      "parziali": []
+      "risultato": "3-0",
+      "parziali": [
+        "25-11",
+        "25-8",
+        "25-8"
+      ]
     },
     {
       "gara": 2158,

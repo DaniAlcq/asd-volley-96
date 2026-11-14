@@ -20,6 +20,15 @@
     },
     {
       "posizione": 3,
+      "nome": "ASD SGM SPADAFORA",
+      "logo": "img/loghi-fipav/5476-LogoS5476.jpg",
+      "punti": 9,
+      "partite_giocate": 4,
+      "vittorie": 3,
+      "sconfitte": 1
+    },
+    {
+      "posizione": 4,
       "nome": "PERSEC VOLLEY 96",
       "logo": "img/loghi-fipav/2225-LogoS2225.jpg",
       "punti": 8,
@@ -28,7 +37,7 @@
       "sconfitte": 0
     },
     {
-      "posizione": 4,
+      "posizione": 5,
       "nome": "VOLLEY CLUB RIBERA",
       "logo": "img/loghi-fipav/3313-LogoS3313.jpg",
       "punti": 6,
@@ -37,18 +46,9 @@
       "sconfitte": 1
     },
     {
-      "posizione": 5,
+      "posizione": 6,
       "nome": "GS PALLAVOLO TERRASINI",
       "logo": "img/loghi-fipav/2262-LogoS2262.jpg",
-      "punti": 6,
-      "partite_giocate": 3,
-      "vittorie": 2,
-      "sconfitte": 1
-    },
-    {
-      "posizione": 6,
-      "nome": "ASD SGM SPADAFORA",
-      "logo": "img/loghi-fipav/5476-LogoS5476.jpg",
       "punti": 6,
       "partite_giocate": 3,
       "vittorie": 2,
@@ -86,9 +86,9 @@
       "nome": "CANTIERI ELEWATT & ARREDI ROMANO",
       "logo": "img/loghi-fipav/2396-LogoS2396.jpg",
       "punti": 1,
-      "partite_giocate": 3,
+      "partite_giocate": 4,
       "vittorie": 0,
-      "sconfitte": 3
+      "sconfitte": 4
     },
     {
       "posizione": 11,
@@ -109,7 +109,7 @@
       "sconfitte": 3
     }
   ],
-  "verificataIl": 1794653610,
+  "verificataIl": 1794680899,
   "fonte": "https://sicilia.portalefipav.net/classifica.aspx?CId=93417",
   "stagione": "2026/27",
   "girone": "A"
