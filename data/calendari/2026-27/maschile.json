@@ -4,7 +4,7 @@
   "categoria": "maschile",
   "cid": 93417,
   "fonte": "https://sicilia.portalefipav.net/risultati-classifiche.aspx?ComitatoId=37&StId=2417&DataDa=&StatoGara=&CId=93417&SId=2225&PId=7306&btFiltro=CERCA",
-  "verificataIl": 1794680900,
+  "verificataIl": 1794693365,
   "dati": [
     {
       "gara": 1002,
@@ -62,8 +62,12 @@
       "avversario": "TEAM AMBIENTE e SICUREZZA MESSINA",
       "logo": "img/loghi-fipav/3827-LogoS3827.png",
       "luogo": "C",
-      "risultato": "-",
-      "parziali": []
+      "risultato": "3-0",
+      "parziali": [
+        "25-19",
+        "25-18",
+        "25-16"
+      ]
     },
     {
       "gara": 1024,

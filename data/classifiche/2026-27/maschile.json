@@ -2,11 +2,11 @@
   "dati": [
     {
       "posizione": 1,
-      "nome": "TEAM AMBIENTE e SICUREZZA MESSINA",
-      "logo": "img/loghi-fipav/3827-LogoS3827.png",
-      "punti": 9,
-      "partite_giocate": 3,
-      "vittorie": 3,
+      "nome": "PERSEC VOLLEY 96",
+      "logo": "img/loghi-fipav/2225-LogoS2225.jpg",
+      "punti": 11,
+      "partite_giocate": 4,
+      "vittorie": 4,
       "sconfitte": 0
     },
     {
@@ -20,8 +20,8 @@
     },
     {
       "posizione": 3,
-      "nome": "ASD SGM SPADAFORA",
-      "logo": "img/loghi-fipav/5476-LogoS5476.jpg",
+      "nome": "TEAM AMBIENTE e SICUREZZA MESSINA",
+      "logo": "img/loghi-fipav/3827-LogoS3827.png",
       "punti": 9,
       "partite_giocate": 4,
       "vittorie": 3,
@@ -29,12 +29,12 @@
     },
     {
       "posizione": 4,
-      "nome": "PERSEC VOLLEY 96",
-      "logo": "img/loghi-fipav/2225-LogoS2225.jpg",
-      "punti": 8,
-      "partite_giocate": 3,
+      "nome": "ASD SGM SPADAFORA",
+      "logo": "img/loghi-fipav/5476-LogoS5476.jpg",
+      "punti": 9,
+      "partite_giocate": 4,
       "vittorie": 3,
-      "sconfitte": 0
+      "sconfitte": 1
     },
     {
       "posizione": 5,
@@ -74,6 +74,15 @@
     },
     {
       "posizione": 9,
+      "nome": "ESSEPIAUTO A29",
+      "logo": "img/loghi-fipav/2391-LogoS2391.jpeg",
+      "punti": 3,
+      "partite_giocate": 4,
+      "vittorie": 1,
+      "sconfitte": 3
+    },
+    {
+      "posizione": 10,
       "nome": "ACQUA SABRINELLA ALTAVILLA MILICIA",
       "logo": "img/loghi-fipav/2314-LogoS2314.jpg",
       "punti": 3,
@@ -82,7 +91,7 @@
       "sconfitte": 2
     },
     {
-      "posizione": 10,
+      "posizione": 11,
       "nome": "CANTIERI ELEWATT & ARREDI ROMANO",
       "logo": "img/loghi-fipav/2396-LogoS2396.jpg",
       "punti": 1,
@@ -91,25 +100,16 @@
       "sconfitte": 4
     },
     {
-      "posizione": 11,
+      "posizione": 12,
       "nome": "A.S.D. POL. LIBERTAS PARTANNA",
       "logo": "img/loghi-fipav/2394-LogoS2394.png",
       "punti": 0,
-      "partite_giocate": 3,
+      "partite_giocate": 4,
       "vittorie": 0,
-      "sconfitte": 3
-    },
-    {
-      "posizione": 12,
-      "nome": "ESSEPIAUTO A29",
-      "logo": "img/loghi-fipav/2391-LogoS2391.jpeg",
-      "punti": 0,
-      "partite_giocate": 3,
-      "vittorie": 0,
-      "sconfitte": 3
+      "sconfitte": 4
     }
   ],
-  "verificataIl": 1794680899,
+  "verificataIl": 1794693364,
   "fonte": "https://sicilia.portalefipav.net/classifica.aspx?CId=93417",
   "stagione": "2026/27",
   "girone": "A"
