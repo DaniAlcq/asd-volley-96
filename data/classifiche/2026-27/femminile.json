@@ -11,20 +11,20 @@
     },
     {
       "posizione": 2,
-      "nome": "FI.MA. FORMAZIONE MILAZZO",
-      "logo": "img/loghi-fipav/2225-LogoS2225.jpg",
-      "punti": 11,
+      "nome": "PIU' FORMAZIONE BARCELLONA",
+      "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
+      "punti": 12,
       "partite_giocate": 4,
       "vittorie": 4,
       "sconfitte": 0
     },
     {
       "posizione": 3,
-      "nome": "PIU' FORMAZIONE BARCELLONA",
-      "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
-      "punti": 9,
-      "partite_giocate": 3,
-      "vittorie": 3,
+      "nome": "FI.MA. FORMAZIONE MILAZZO",
+      "logo": "img/loghi-fipav/2225-LogoS2225.jpg",
+      "punti": 11,
+      "partite_giocate": 4,
+      "vittorie": 4,
       "sconfitte": 0
     },
     {
@@ -38,21 +38,21 @@
     },
     {
       "posizione": 5,
-      "nome": "GIARDINI DEL VOLLEY",
-      "logo": "img/loghi-fipav/5313-LogoS5313.jpg",
-      "punti": 6,
-      "partite_giocate": 3,
-      "vittorie": 2,
+      "nome": "GOLDEN VOLLEY ACICATENA",
+      "logo": "img/loghi-fipav/2156-LogoS2156.jpg",
+      "punti": 8,
+      "partite_giocate": 4,
+      "vittorie": 3,
       "sconfitte": 1
     },
     {
       "posizione": 6,
-      "nome": "GOLDEN VOLLEY ACICATENA",
-      "logo": "img/loghi-fipav/2156-LogoS2156.jpg",
-      "punti": 5,
-      "partite_giocate": 3,
+      "nome": "GIARDINI DEL VOLLEY",
+      "logo": "img/loghi-fipav/5313-LogoS5313.jpg",
+      "punti": 6,
+      "partite_giocate": 4,
       "vittorie": 2,
-      "sconfitte": 1
+      "sconfitte": 2
     },
     {
       "posizione": 7,
@@ -95,9 +95,9 @@
       "nome": "SPORT VOLLEY LETOJANNI ASD",
       "logo": "img/loghi-fipav/4223-LogoS4223.jpeg",
       "punti": 0,
-      "partite_giocate": 3,
+      "partite_giocate": 4,
       "vittorie": 0,
-      "sconfitte": 3
+      "sconfitte": 4
     },
     {
       "posizione": 12,
@@ -109,7 +109,7 @@
       "sconfitte": 4
     }
   ],
-  "verificataIl": 1794760455,
+  "verificataIl": 1794784180,
   "fonte": "https://sicilia.portalefipav.net/classifica.aspx?CId=93277",
   "stagione": "2026/27",
   "girone": "B"
