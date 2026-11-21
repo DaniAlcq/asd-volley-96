@@ -2,17 +2,17 @@
   "dati": [
     {
       "posizione": 1,
-      "nome": "ITERA WARRIORS VIAGRANDE",
-      "logo": "img/loghi-fipav/2167-LogoS2167.png",
-      "punti": 12,
-      "partite_giocate": 4,
-      "vittorie": 4,
+      "nome": "PIU' FORMAZIONE BARCELLONA",
+      "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
+      "punti": 15,
+      "partite_giocate": 5,
+      "vittorie": 5,
       "sconfitte": 0
     },
     {
       "posizione": 2,
-      "nome": "PIU' FORMAZIONE BARCELLONA",
-      "logo": "img/loghi-fipav/4020-LogoS4020.jpg",
+      "nome": "ITERA WARRIORS VIAGRANDE",
+      "logo": "img/loghi-fipav/2167-LogoS2167.png",
       "punti": 12,
       "partite_giocate": 4,
       "vittorie": 4,
@@ -59,9 +59,9 @@
       "nome": "ASD NEW RANDAZZO VOLLEY 2022",
       "logo": "img/loghi-fipav/5230-LogoS5230.jpg",
       "punti": 5,
-      "partite_giocate": 4,
+      "partite_giocate": 5,
       "vittorie": 2,
-      "sconfitte": 2
+      "sconfitte": 3
     },
     {
       "posizione": 8,
@@ -109,7 +109,7 @@
       "sconfitte": 4
     }
   ],
-  "verificataIl": 1795261478,
+  "verificataIl": 1795290357,
   "fonte": "https://sicilia.portalefipav.net/classifica.aspx?CId=93277",
   "stagione": "2026/27",
   "girone": "B"
