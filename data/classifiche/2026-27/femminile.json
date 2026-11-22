@@ -11,21 +11,21 @@
     },
     {
       "posizione": 2,
-      "nome": "ITERA WARRIORS VIAGRANDE",
-      "logo": "img/loghi-fipav/2167-LogoS2167.png",
-      "punti": 12,
-      "partite_giocate": 4,
-      "vittorie": 4,
+      "nome": "FI.MA. FORMAZIONE MILAZZO",
+      "logo": "img/loghi-fipav/2225-LogoS2225.jpg",
+      "punti": 14,
+      "partite_giocate": 5,
+      "vittorie": 5,
       "sconfitte": 0
     },
     {
       "posizione": 3,
-      "nome": "FI.MA. FORMAZIONE MILAZZO",
-      "logo": "img/loghi-fipav/2225-LogoS2225.jpg",
-      "punti": 11,
-      "partite_giocate": 4,
+      "nome": "ITERA WARRIORS VIAGRANDE",
+      "logo": "img/loghi-fipav/2167-LogoS2167.png",
+      "punti": 12,
+      "partite_giocate": 5,
       "vittorie": 4,
-      "sconfitte": 0
+      "sconfitte": 1
     },
     {
       "posizione": 4,
@@ -109,7 +109,7 @@
       "sconfitte": 4
     }
   ],
-  "verificataIl": 1795290357,
+  "verificataIl": 1795311218,
   "fonte": "https://sicilia.portalefipav.net/classifica.aspx?CId=93277",
   "stagione": "2026/27",
   "girone": "B"

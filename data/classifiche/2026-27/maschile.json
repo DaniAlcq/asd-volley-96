@@ -11,6 +11,15 @@
     },
     {
       "posizione": 2,
+      "nome": "BUILD UP - VOLO PALERMO",
+      "logo": "img/loghi-fipav/2287-LogoS2287.png",
+      "punti": 12,
+      "partite_giocate": 5,
+      "vittorie": 4,
+      "sconfitte": 1
+    },
+    {
+      "posizione": 3,
       "nome": "VOLLEY CLUB RIBERA",
       "logo": "img/loghi-fipav/3313-LogoS3313.jpg",
       "punti": 12,
@@ -19,7 +28,7 @@
       "sconfitte": 1
     },
     {
-      "posizione": 3,
+      "posizione": 4,
       "nome": "ASD SGM SPADAFORA",
       "logo": "img/loghi-fipav/5476-LogoS5476.jpg",
       "punti": 12,
@@ -28,22 +37,13 @@
       "sconfitte": 1
     },
     {
-      "posizione": 4,
+      "posizione": 5,
       "nome": "PERSEC VOLLEY 96",
       "logo": "img/loghi-fipav/2225-LogoS2225.jpg",
       "punti": 11,
       "partite_giocate": 4,
       "vittorie": 4,
       "sconfitte": 0
-    },
-    {
-      "posizione": 5,
-      "nome": "BUILD UP - VOLO PALERMO",
-      "logo": "img/loghi-fipav/2287-LogoS2287.png",
-      "punti": 9,
-      "partite_giocate": 4,
-      "vittorie": 3,
-      "sconfitte": 1
     },
     {
       "posizione": 6,
@@ -86,9 +86,9 @@
       "nome": "ACQUA SABRINELLA ALTAVILLA MILICIA",
       "logo": "img/loghi-fipav/2314-LogoS2314.jpg",
       "punti": 4,
-      "partite_giocate": 4,
+      "partite_giocate": 5,
       "vittorie": 1,
-      "sconfitte": 3
+      "sconfitte": 4
     },
     {
       "posizione": 11,
@@ -109,7 +109,7 @@
       "sconfitte": 5
     }
   ],
-  "verificataIl": 1795290357,
+  "verificataIl": 1795311219,
   "fonte": "https://sicilia.portalefipav.net/classifica.aspx?CId=93417",
   "stagione": "2026/27",
   "girone": "A"
