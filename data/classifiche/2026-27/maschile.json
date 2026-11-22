@@ -2,6 +2,15 @@
   "dati": [
     {
       "posizione": 1,
+      "nome": "PERSEC VOLLEY 96",
+      "logo": "img/loghi-fipav/2225-LogoS2225.jpg",
+      "punti": 14,
+      "partite_giocate": 5,
+      "vittorie": 5,
+      "sconfitte": 0
+    },
+    {
+      "posizione": 2,
       "nome": "TEAM AMBIENTE e SICUREZZA MESSINA",
       "logo": "img/loghi-fipav/3827-LogoS3827.png",
       "punti": 12,
@@ -10,7 +19,7 @@
       "sconfitte": 1
     },
     {
-      "posizione": 2,
+      "posizione": 3,
       "nome": "BUILD UP - VOLO PALERMO",
       "logo": "img/loghi-fipav/2287-LogoS2287.png",
       "punti": 12,
@@ -19,7 +28,7 @@
       "sconfitte": 1
     },
     {
-      "posizione": 3,
+      "posizione": 4,
       "nome": "VOLLEY CLUB RIBERA",
       "logo": "img/loghi-fipav/3313-LogoS3313.jpg",
       "punti": 12,
@@ -28,22 +37,13 @@
       "sconfitte": 1
     },
     {
-      "posizione": 4,
+      "posizione": 5,
       "nome": "ASD SGM SPADAFORA",
       "logo": "img/loghi-fipav/5476-LogoS5476.jpg",
       "punti": 12,
       "partite_giocate": 5,
       "vittorie": 4,
       "sconfitte": 1
-    },
-    {
-      "posizione": 5,
-      "nome": "PERSEC VOLLEY 96",
-      "logo": "img/loghi-fipav/2225-LogoS2225.jpg",
-      "punti": 11,
-      "partite_giocate": 4,
-      "vittorie": 4,
-      "sconfitte": 0
     },
     {
       "posizione": 6,
@@ -68,9 +68,9 @@
       "nome": "GRUPPO CORRADINO VOLLEY PRIMULA",
       "logo": "img/loghi-fipav/2270-LogoS2270.jpg",
       "punti": 5,
-      "partite_giocate": 4,
+      "partite_giocate": 5,
       "vittorie": 2,
-      "sconfitte": 2
+      "sconfitte": 3
     },
     {
       "posizione": 9,
@@ -109,7 +109,7 @@
       "sconfitte": 5
     }
   ],
-  "verificataIl": 1795377437,
+  "verificataIl": 1795386050,
   "fonte": "https://sicilia.portalefipav.net/classifica.aspx?CId=93417",
   "stagione": "2026/27",
   "girone": "A"

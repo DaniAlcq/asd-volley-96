@@ -4,7 +4,7 @@
   "categoria": "maschile",
   "cid": 93417,
   "fonte": "https://sicilia.portalefipav.net/risultati-classifiche.aspx?ComitatoId=37&StId=2417&DataDa=&StatoGara=&CId=93417&SId=2225&PId=7306&btFiltro=CERCA",
-  "verificataIl": 1795377438,
+  "verificataIl": 1795386051,
   "dati": [
     {
       "gara": 1002,
@@ -77,8 +77,12 @@
       "avversario": "GRUPPO CORRADINO VOLLEY PRIMULA",
       "logo": "img/loghi-fipav/2270-LogoS2270.jpg",
       "luogo": "T",
-      "risultato": "-",
-      "parziali": []
+      "risultato": "3-0",
+      "parziali": [
+        "21-25",
+        "20-25",
+        "23-25"
+      ]
     },
     {
       "gara": 1030,
